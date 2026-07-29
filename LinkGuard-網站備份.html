@@ -1407,6 +1407,60 @@ html.no-motion .slides { transition: none; }
         <div class="bars" data-chart="capacity"></div>
       </div>
     </div>
+
+    <div class="sec-head reveal" style="margin-top:48px">
+      <div class="eyebrow"><span class="l-zh">系統規格一覽</span><span class="l-en">System specs</span></div>
+      <h2 class="l-zh">關鍵數字，一次看完。</h2>
+      <h2 class="l-en">The key numbers, in one place.</h2>
+      <p class="sec-note l-zh">設計目標／工程估算；場測後以 <code>docs/system-specs.md</code> 與本表同步覆寫。</p>
+      <p class="sec-note l-en">Design targets / engineering estimates; update this table with <code>docs/system-specs.md</code> after field tests.</p>
+    </div>
+
+    <div class="table-scroll reveal" style="margin-top:24px">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"><span class="l-zh">項目</span><span class="l-en">Item</span></th>
+            <th scope="col"><span class="l-zh">設計目標</span><span class="l-en">Design target</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="l-zh">LoRa 通訊距離</span><span class="l-en">LoRa link distance</span></th>
+            <td><span class="l-zh">開闊地 1000 m · 林區 600 m · 建築遮蔽 300 m</span><span class="l-en">Open 1000 m · Forest 600 m · Built-up 300 m</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">生存信標節點電池續航</span><span class="l-en">Beacon battery life</span></th>
+            <td><span class="l-zh">一般回報約 120 小時（低頻 240 h／高頻 48 h）</span><span class="l-en">~120 h normal (low 240 h / high 48 h)</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">環境感測節點回報週期</span><span class="l-en">Env. report interval</span></th>
+            <td><span class="l-zh">每 5 分鐘；超過閾值立即回報</span><span class="l-en">Every 5 min; immediate on threshold</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">指揮中心同時追蹤節點數</span><span class="l-en">Nodes tracked at once</span></th>
+            <td><span class="l-zh">穩定 40 · 尖峰 55</span><span class="l-en">Stable 40 · Peak 55</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">地面車續航與越野</span><span class="l-en">UGV endurance / terrain</span></th>
+            <td><span class="l-zh">約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">~40 min · flat / light rubble</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">無人機航程與飛行時間</span><span class="l-en">UAV range / flight time</span></th>
+            <td><span class="l-zh">定翼約 8 km／40 分；四旋翼約 1.5 km／15 分</span><span class="l-en">Fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">封包傳送頻率、大小及遺失率</span><span class="l-en">Packet rate, size, loss</span></th>
+            <td><span class="l-zh">16 bytes；信標 30 秒／環境 5 分鐘；開闊地 &lt; 5%、邊緣 &lt; 15%</span><span class="l-en">16 bytes; beacon 30 s / env 5 min; open &lt; 5%, edge &lt; 15%</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">單一節點物料成本（BOM）</span><span class="l-en">BOM per node</span></th>
+            <td><span class="l-zh">約 NT$2,000（目標 NT$1,200），無月租</span><span class="l-en">~NT$2,000 (target NT$1,200), no subscription</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </section>
 
