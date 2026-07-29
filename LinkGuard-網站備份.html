@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/jpeg" href="assets/linkguard-logo.jpg">
 <title>LinkGuard — 災害搜救系統（單檔備份）</title>
 <meta name="description" content="LinkGuard 是一套以 MRT UNO X 為核心的災害救援通訊系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <style>
@@ -166,9 +167,11 @@ tr:has(.ph-inline),
   font-family: var(--mono); font-size: 13px; letter-spacing: .14em; white-space: nowrap;
 }
 .brand b { color: var(--brand); font-weight: 700; }
-.brand-dot {
-  width: 9px; height: 9px; border-radius: 50%; background: var(--brand); flex: none;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+.brand-logo {
+  width: 40px; height: 40px; border-radius: 9px; flex: none;
+  object-fit: cover; background: #fff;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 .nav-links { display: flex; gap: 2px; flex-wrap: wrap; }
 .nav-links a {
@@ -664,7 +667,10 @@ html.no-motion .slides { transition: none; }
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top"><span class="brand-dot"></span>LINK<b>GUARD</b></a>
+    <a class="brand" href="#top">
+      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
+      <span>LINK<b>GUARD</b></span>
+    </a>
 
     <div class="nav-links" id="navLinks">
       <a href="#summary"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
