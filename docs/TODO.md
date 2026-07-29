@@ -4,6 +4,7 @@
 
 - [x] 整理 LinkGuard 系統規格設計目標值（LoRa 距離、電池、回報週期、追蹤容量、載具、封包、BOM）→ `docs/system-specs.md`
 - [x] 將上述數值填入 `LinkGuard-網站備份.html` 待填欄位與 `CHART_DATA`
+- [x] 在「實測數據」區塊加入完整「系統規格一覽」表格
 
 ## Next（需實測／人工補齊）
 
