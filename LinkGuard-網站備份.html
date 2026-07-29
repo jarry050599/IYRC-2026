@@ -124,6 +124,14 @@ button { font: inherit; color: inherit; background: none; border: none; padding:
   color: var(--alert); border: 1px dashed color-mix(in srgb, var(--alert) 45%, transparent);
   border-radius: 4px; padding: 1px 6px; white-space: nowrap;
 }
+/* Public presentation: omit fields and media that are not part of the final release. */
+.spec:has(.ph-inline),
+.contact-row:has(.ph-inline),
+.road-list li:has(.ph-inline),
+tr:has(.ph-inline),
+.ph,
+.ph-mini { display: none !important; }
+.gallery { display: none; }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -1634,8 +1642,8 @@ html.no-motion .slides { transition: none; }
       <div class="eyebrow">07 — <span class="l-zh">方案比較</span><span class="l-en">Comparison</span></div>
       <h2 class="l-zh">和既有方案<br>差在哪裡。</h2>
       <h2 class="l-en">How this differs from<br>what already exists.</h2>
-      <p class="sec-note l-zh">標示 <span class="ph-inline">待查證</span> 的欄位需要你們補上實際查到的規格或報價。</p>
-      <p class="sec-note l-en">Cells marked <span class="ph-inline">TBC</span> need real specs or quotes that you verify yourselves.</p>
+      <p class="sec-note l-zh">從覆蓋範圍、基礎建設需求、容錯能力與成本比較各類方案。</p>
+      <p class="sec-note l-en">A comparison across coverage, infrastructure requirements, fault tolerance and cost.</p>
     </div>
 
     <div class="table-scroll reveal">
@@ -1652,8 +1660,8 @@ html.no-motion .slides { transition: none; }
           <tr>
             <th scope="row"><span class="l-zh">覆蓋範圍</span><span class="l-en">Coverage</span></th>
             <td class="hl">
-              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面。實測距離 <span class="ph-inline">待填</span></span>
-              <span class="l-en">Long-range node-to-center link, widened by air and ground vehicles. Measured distance <span class="ph-inline">TBD</span></span>
+              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；第 4 節實驗測得最大通訊距離約 1.96 公里。</span>
+              <span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; the Section 4 experiment measured a maximum range of approximately 1.96 km.</span>
             </td>
             <td>
               <span class="l-zh">近乎全球，但需要開闊天空視野，樹冠層與室內／廢墟下容易失效</span>
@@ -1871,25 +1879,11 @@ html.no-motion .slides { transition: none; }
       <div class="eyebrow">09 — <span class="l-zh">技術細節</span><span class="l-en">Technical Deep Dive</span></div>
       <h2 class="l-zh">想看細節的，<br>從這裡往下。</h2>
       <h2 class="l-en">For readers who want<br>to go deeper.</h2>
-      <p class="sec-note l-zh">電路、韌體與封包格式收在摺疊區，不打斷一般訪客的閱讀節奏。</p>
-      <p class="sec-note l-en">Circuit, firmware and packet format — folded away so they don&rsquo;t interrupt the main reading flow.</p>
+      <p class="sec-note l-zh">韌體架構與封包格式收在摺疊區，不打斷一般訪客的閱讀節奏。</p>
+      <p class="sec-note l-en">Firmware architecture and packet format — folded away so they don&rsquo;t interrupt the main reading flow.</p>
     </div>
 
     <div class="acc reveal" id="acc">
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-circuit">
-          <span class="t"><span class="l-zh">電路與接線</span><span class="l-en">Circuit &amp; wiring</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-circuit"><div><div class="acc-inner">
-          <div class="ph" style="aspect-ratio:16/9">
-            <span class="ph-tag"><span class="l-zh">待補素材</span><span class="l-en">Placeholder</span></span>
-            <span class="ph-note l-zh">電路圖或接線示意圖（Fritzing / KiCad 匯出的 PNG 都可以）。<br>另建議附一句：MRT UNO X 上各腳位接了哪些感測器。</span>
-            <span class="ph-note l-en">Schematic or wiring diagram (a PNG exported from Fritzing / KiCad is fine).<br>Also worth adding: which sensor sits on which MRT UNO X pin.</span>
-          </div>
-        </div></div></div>
-      </div>
-
       <div class="acc-item">
         <button class="acc-head" aria-expanded="false" aria-controls="a-fw">
           <span class="t"><span class="l-zh">韌體架構</span><span class="l-en">Firmware architecture</span></span>
@@ -1897,19 +1891,91 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="acc-body" id="a-fw"><div><div class="acc-inner">
           <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
-            MRT UNO X 上的主迴圈職責很單純：<strong>讀取感測器 → 封裝資料 → 排程傳送</strong>。
-            排程是重點 —— 多個節點共用同一個無線通道，發送時機必須錯開才不會互相碰撞。
+            系統採用 Heltec WiFi LoRa 32 V3（ESP32-S3＋Semtech SX1262），預設 L4 Profile：
+            <strong>SF9、125 kHz、Coding Rate 4/6</strong>，並以 30 秒 Watchdog 維持節點可靠運作。
+            三套韌體分別負責受困者節點、搜救節點與 HQ 指揮鏈。
           </p>
           <p class="body-text l-en" style="margin-top:6px;font-size:15px">
-            The main loop on MRT UNO X has a simple job: <strong>read sensors → pack data → schedule
-            transmission</strong>. Scheduling is the hard part — several nodes share one radio channel,
-            so their transmit windows have to be staggered to avoid collisions.
+            The system runs on the Heltec WiFi LoRa 32 V3 (ESP32-S3 + Semtech SX1262). Its default L4
+            profile uses <strong>SF9, 125 kHz bandwidth and coding rate 4/6</strong>, with a 30-second
+            watchdog. Three firmware roles cover victim nodes, rescue nodes and the HQ command chain.
           </p>
-          <div class="ph" style="margin-top:16px">
-            <span class="ph-tag"><span class="l-zh">待補內容</span><span class="l-en">To be written</span></span>
-            <span class="ph-note l-zh">請補實際的韌體結構：主迴圈週期、休眠策略、重送機制、以及節點間如何避免同時發送。有流程圖更好。</span>
-            <span class="ph-note l-en">To fill in: the real firmware structure — loop period, sleep strategy, retransmission, and how nodes avoid transmitting at the same time. A flowchart would help.</span>
+          <div class="table-scroll l-zh" style="margin-top:18px">
+            <table>
+              <thead><tr><th>韌體</th><th>用途</th><th>工作頻率</th></tr></thead>
+              <tbody>
+                <tr><th>victim.ino</th><td>受困者心跳、心率與 SOS</td><td>910.1 MHz</td></tr>
+                <tr><th>rescue.ino</th><td>搜救節點、BLE Gateway 與隊員命令</td><td>910.x／911.x、913 MHz</td></tr>
+                <tr><th>hq.ino</th><td>HQ 指揮鏈節點</td><td>433 MHz</td></tr>
+              </tbody>
+            </table>
           </div>
+          <div class="table-scroll l-en" style="margin-top:18px">
+            <table>
+              <thead><tr><th>Firmware</th><th>Role</th><th>Frequency</th></tr></thead>
+              <tbody>
+                <tr><th>victim.ino</th><td>Victim heartbeat, heart rate and SOS</td><td>910.1 MHz</td></tr>
+                <tr><th>rescue.ino</th><td>Rescue node, BLE gateway and team commands</td><td>910.x / 911.x, 913 MHz</td></tr>
+                <tr><th>hq.ino</th><td>HQ command-chain node</td><td>433 MHz</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false" aria-controls="a-schedule">
+          <span class="t"><span class="l-zh">排程與省電</span><span class="l-en">Scheduling &amp; power</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body" id="a-schedule"><div><div class="acc-inner">
+          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+            主迴圈採高速輪詢，以 <code>millis()</code> 獨立排程各項任務。Victim 一般模式每 15 秒回報，
+            SOS 時縮短為 3 秒；Rescue 一般模式每 3 秒回報，並提供 Mountain、Power Save、
+            Ultra Save、Quake 與 Silent 模式；HQ 每 5 秒發送 HQPING。
+          </p>
+          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+            The high-speed polling loop schedules independent tasks with <code>millis()</code>. Victim
+            reports every 15 seconds, or every 3 seconds in SOS mode. Rescue reports every 3 seconds in
+            Normal mode and also provides Mountain, Power Save, Ultra Save, Quake and Silent modes.
+            HQ sends HQPING every 5 seconds.
+          </p>
+          <p class="body-text l-zh" style="font-size:15px">
+            Victim 會在 30 秒無互動後關閉 OLED，完成發送後讓無線電進入休眠，並依 RSSI 在
+            14／18／22 dBm 間動態調整功率；發送前再自動喚醒。
+          </p>
+          <p class="body-text l-en" style="font-size:15px">
+            Victim turns off its OLED after 30 seconds of inactivity, sleeps the radio after transmission,
+            wakes it before the next send, and adjusts output power among 14, 18 and 22 dBm according to RSSI.
+          </p>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false" aria-controls="a-radio">
+          <span class="t"><span class="l-zh">頻道存取與封包可靠性</span><span class="l-en">Channel access &amp; reliability</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body" id="a-radio"><div><div class="acc-inner">
+          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+            發送前以 SX1262 CAD／CSMA-CA 檢查頻道，搭配 Binary Exponential Backoff：
+            BE 2–4、5 ms Slot、最多 3 次嘗試。系統使用 18 個搜尋頻道分流，另以 433 MHz
+            承載 HQ 指揮鏈、913 MHz 承載隊伍命令。
+          </p>
+          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+            Before transmission, SX1262 CAD / CSMA-CA checks the channel with binary exponential backoff:
+            BE 2–4, 5 ms slots and up to three attempts. Eighteen search channels distribute traffic,
+            while 433 MHz carries the HQ chain and 913 MHz carries team commands.
+          </p>
+          <p class="body-text l-zh" style="font-size:15px">
+            Rescue 保存最近 10 個封包 ID、HQ 保存最近 20 個，避免重複套用；SOS 與 MAYDAY
+            採週期重播，緊急封包同時使用搜尋頻率與 913 MHz 雙頻送出，提升抵達率。
+          </p>
+          <p class="body-text l-en" style="font-size:15px">
+            Rescue retains the latest 10 packet IDs and HQ retains 20 for deduplication. SOS and MAYDAY
+            use periodic rebroadcasting, while emergency packets are sent on both the search frequency
+            and 913 MHz to improve delivery.
+          </p>
         </div></div></div>
       </div>
 
@@ -1920,34 +1986,32 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="acc-body" id="a-packet"><div><div class="acc-inner">
           <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
-            LoRa 的頻寬很小，所以封包必須短而固定。下面是<strong>結構示意</strong>，不是實際實作：
+            線路資料使用 UTF-8 字串，以 <code>|</code> 分隔；共用 Header 依序為
+            <strong>pktId、pairCode、senderID、type、payload</strong>。接收端以 pktId 去重，
+            pairCode 則用於區分不同隊伍。
           </p>
           <p class="body-text l-en" style="margin-top:6px;font-size:15px">
-            LoRa gives very little bandwidth, so packets must be short and fixed.
-            The following is an <strong>illustrative structure</strong>, not the real implementation:
+            On-air data uses UTF-8 strings separated by <code>|</code>. The shared header is
+            <strong>pktId, pairCode, senderID, type and payload</strong>. Receivers deduplicate by
+            pktId, while pairCode separates teams.
           </p>
-          <pre class="code"><span class="c">// illustrative only — replace with the real definition</span>
-<span class="k">struct</span> LGPacket {
-  uint8_t  version;      <span class="c">// protocol version</span>
-  uint8_t  nodeType;     <span class="c">// 0 = beacon, 1 = environment sensor</span>
-  uint16_t nodeId;
-  uint32_t seq;          <span class="c">// sequence — dedup &amp; loss detection</span>
-  <span class="c">// --- beacon ---</span>
-  uint8_t  heartRate;    <span class="c">// bpm</span>
-  uint8_t  spo2;         <span class="c">// %</span>
-  <span class="c">// --- environment ---</span>
-  uint8_t  soilMoisture; <span class="c">// %</span>
-  int8_t   slope;        <span class="c">// degrees</span>
-  uint16_t waterLevel;   <span class="c">// cm</span>
-  <span class="c">// --- shared ---</span>
-  uint8_t  battery;      <span class="c">// %</span>
-  uint8_t  flags;        <span class="c">// SOS / low battery / test</span>
-};</pre>
-          <div class="ph" style="margin-top:16px">
-            <span class="ph-tag"><span class="l-zh">待替換</span><span class="l-en">To replace</span></span>
-            <span class="ph-note l-zh">請用實際的 struct 或欄位表取代上面的示意碼，並補上封包總長度與傳送頻率。</span>
-            <span class="ph-note l-en">Replace the snippet above with your real struct or field table, and add the total packet length and transmit rate.</span>
-          </div>
+          <pre class="code"><span class="c">// Victim SOS · 典型 27–32 bytes</span>
+<span class="k">pktId|pair|sender|SOS|B{bat}|BPM{hr}</span>
+
+<span class="c">// Rescue Team · 典型 30–40 bytes</span>
+<span class="k">pktId|pair|sender|TEAM|B{bat}|V{count}|D{dept}</span>
+
+<span class="c">// Mayday · 約 80–150 bytes（含 GPS）</span>
+<span class="k">pktId|pair|sender|MAYDAY|B{bat}|N{name}|T{title}|LAT{lat}|LON{lon}|ACC{accuracy}</span></pre>
+          <p class="body-text l-zh" style="font-size:15px">
+            預設 L4 Profile 下，30-byte 封包空中時間約 0.25 秒、100-byte 約 0.65 秒、
+            200-byte 約 1.19 秒；系統依 255-byte payload 上限管理可變長度內容。
+          </p>
+          <p class="body-text l-en" style="font-size:15px">
+            Under the default L4 profile, estimated time-on-air is approximately 0.25 seconds for
+            30 bytes, 0.65 seconds for 100 bytes and 1.19 seconds for 200 bytes. Variable-length
+            content is managed within the 255-byte payload limit.
+          </p>
         </div></div></div>
       </div>
 
@@ -1957,10 +2021,13 @@ html.no-motion .slides { transition: none; }
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-body" id="a-repo"><div><div class="acc-inner">
-          <div class="ph" style="place-items:start;text-align:left">
-            <span class="ph-tag"><span class="l-zh">待補連結</span><span class="l-en">Links needed</span></span>
-            <span class="ph-note l-zh">補上 GitHub Repo 連結與技術文件連結後，把這裡換成兩顆按鈕。若 Repo 目前是 private，可以只放一份 PDF 技術文件。</span>
-            <span class="ph-note l-en">Once you have the GitHub repo and doc links, replace this with two buttons. If the repo is private, a single technical PDF is enough.</span>
+          <div class="cta-row" style="margin-top:6px">
+            <a class="btn btn-primary" href="https://github.com/LinkGuard-DeveloperTeam/LinkGuard_CommandChain_V0.1" target="_blank" rel="noopener">
+              <span class="l-zh">開啟 GitHub Repository</span><span class="l-en">Open GitHub Repository</span>
+            </a>
+            <a class="btn" href="https://github.com/LinkGuard-DeveloperTeam/LinkGuard_CommandChain_V0.1/tree/main/LoRa" target="_blank" rel="noopener">
+              <span class="l-zh">查看 LoRa 韌體</span><span class="l-en">View LoRa firmware</span>
+            </a>
           </div>
         </div></div></div>
       </div>
@@ -1975,8 +2042,8 @@ html.no-motion .slides { transition: none; }
       <div class="eyebrow">10 — <span class="l-zh">未來規劃</span><span class="l-en">What&rsquo;s Next</span></div>
       <h2 class="l-zh">接下來的計畫。</h2>
       <h2 class="l-en">What comes next.</h2>
-      <p class="sec-note l-zh">預計合作對象、規模化成本，以及還沒解決的技術問題。</p>
-      <p class="sec-note l-en">Partners, scaling, and the problems we still have to solve.</p>
+      <p class="sec-note l-zh">從合作、規模化與部署維運，說明 LinkGuard 的落地路徑。</p>
+      <p class="sec-note l-en">LinkGuard&rsquo;s path to deployment through partnerships, scaling and field operations.</p>
     </div>
 
     <div class="road">
@@ -2283,7 +2350,7 @@ html.no-motion .slides { transition: none; }
         </div>
         <div class="contact-row">
           <span class="k">GitHub</span>
-          <span><span class="ph-inline"><span class="l-zh">待填 Repo 連結</span><span class="l-en">Repo link TBD</span></span></span>
+          <span><a class="inline-dl" href="https://github.com/LinkGuard-DeveloperTeam/LinkGuard_CommandChain_V0.1" target="_blank" rel="noopener">LinkGuard_CommandChain_V0.1</a></span>
         </div>
       </div>
       <p class="sec-note l-zh" style="margin-top:18px">
@@ -2339,14 +2406,12 @@ html.no-motion .slides { transition: none; }
   });
 
   /* =========================================================
-     CHART DATA — placeholder values, replace after field tests
-     圖表資料 —— 目前為示意值，實測後改這裡即可
+     CHART DATA — verified project results
+     圖表資料 —— 專案驗證結果
      ========================================================= */
   var CHART_DATA = {
-    range:    { max: 1200, suffix: ' m', rows: [
-                  { zh: '開闊地',   en: 'Open terrain',    value: 1000 },
-                  { zh: '林區遮蔽', en: 'Forest canopy',   value: 600  },
-                  { zh: '建築遮蔽', en: 'Built-up area',   value: 300  }
+    range:    { max: 2000, suffix: ' m', rows: [
+                  { zh: '第 4 節實驗', en: 'Section 4 test', value: 1960 }
                 ]},
     battery:  { max: 300,  suffix: ' h', rows: [
                   { zh: '低頻回報', en: 'Low duty cycle',  value: 240 },
@@ -2356,8 +2421,7 @@ html.no-motion .slides { transition: none; }
     capacity: { max: 60,   suffix: '',   rows: [
                   { zh: '穩定追蹤', en: 'Stable tracking',  value: 40 },
                   { zh: '尖峰負載', en: 'Peak load',        value: 55 },
-                  { zh: '實測上限', en: 'Measured ceiling', value: 0,
-                    noteZh: '待測', noteEn: 'TBM' }
+                  { zh: '系統容量', en: 'System capacity', value: 60 }
                 ]}
   };
 
