@@ -787,8 +787,18 @@ tbody tr:hover td, tbody tr:hover th { background: color-mix(in srgb, var(--bran
 }
 .social:hover { color: var(--brand); border-color: var(--brand); transform: translateY(-2px); }
 .social svg { width: 15px; height: 15px; }
+.social img { width: 19px; height: 19px; border-radius: 5px; object-fit: cover; }
 .social[aria-disabled="true"] { opacity: .38; pointer-events: none; }
 .social[aria-label="GitHub"] { display: none; }
+.copy-toast {
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 150; max-width: calc(100vw - 32px); padding: 10px 16px;
+  border-radius: 999px; color: #fff; background: var(--fg);
+  box-shadow: var(--shadow-2); font-size: 13px; line-height: 1.4;
+  opacity: 0; transform: translate(-50%, 10px); pointer-events: none;
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.copy-toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 /* ---------- modal ---------- */
 .modal {
@@ -2956,7 +2966,8 @@ html.no-motion .slides { transition: none; }
           </div>
           <div class="socials">
             <a class="social" aria-disabled="true" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg></a>
-            <a class="social" aria-disabled="true" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"/></svg></a>
+            <a class="social" href="https://www.instagram.com/yry._.410/" target="_blank" rel="noopener noreferrer" aria-label="葉柔昀 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
+            <a class="social" href="#" data-copy-email="jouyun@alinkguard.com" aria-label="複製葉柔昀的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
           </div>
         </div></div></div>
       </article>
@@ -2980,7 +2991,8 @@ html.no-motion .slides { transition: none; }
           </div>
           <div class="socials">
             <a class="social" aria-disabled="true" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg></a>
-            <a class="social" aria-disabled="true" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"/></svg></a>
+            <a class="social" href="https://www.instagram.com/jarry050599/" target="_blank" rel="noopener noreferrer" aria-label="朱晢瑞 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
+            <a class="social" href="#" data-copy-email="alphalink@alinkguard.com" aria-label="複製朱晢瑞的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
           </div>
         </div></div></div>
       </article>
@@ -3004,7 +3016,8 @@ html.no-motion .slides { transition: none; }
           </div>
           <div class="socials">
             <a class="social" aria-disabled="true" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg></a>
-            <a class="social" aria-disabled="true" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"/></svg></a>
+            <a class="social" href="https://www.instagram.com/autumncats.mtf/" target="_blank" rel="noopener noreferrer" aria-label="潘彥熏 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
+            <a class="social" href="#" data-copy-email="lagrange@alinkguard.com" aria-label="複製潘彥熏的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
           </div>
         </div></div></div>
       </article>
@@ -3028,7 +3041,8 @@ html.no-motion .slides { transition: none; }
           </div>
           <div class="socials">
             <a class="social" aria-disabled="true" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg></a>
-            <a class="social" aria-disabled="true" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"/></svg></a>
+            <a class="social" href="https://www.instagram.com/101_meow_101/" target="_blank" rel="noopener noreferrer" aria-label="朱映潼 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
+            <a class="social" href="#" data-copy-email="1009sara1009@gmail.com" aria-label="複製朱映潼的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
           </div>
         </div></div></div>
       </article>
@@ -3591,6 +3605,55 @@ html.no-motion .slides { transition: none; }
 
   document.querySelectorAll('[data-play-video]').forEach(function (b) {
     b.addEventListener('click', function () { playVideo(); });
+  });
+
+  /* ---------- copy team email ---------- */
+  var copyToast = document.createElement('div');
+  var copyToastTimer = null;
+  copyToast.className = 'copy-toast';
+  copyToast.setAttribute('role', 'status');
+  copyToast.setAttribute('aria-live', 'polite');
+  document.body.appendChild(copyToast);
+
+  function fallbackCopy(text) {
+    var area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    var copied = document.execCommand('copy');
+    area.remove();
+    return copied;
+  }
+
+  function showCopyToast(email, copied) {
+    window.clearTimeout(copyToastTimer);
+    var isEnglish = document.documentElement.getAttribute('data-lang') === 'en';
+    copyToast.textContent = copied
+      ? (isEnglish ? 'Email copied: ' : '已複製電子郵件：') + email
+      : (isEnglish ? 'Unable to copy email' : '無法複製電子郵件');
+    copyToast.classList.add('show');
+    copyToastTimer = window.setTimeout(function () {
+      copyToast.classList.remove('show');
+    }, 2200);
+  }
+
+  document.querySelectorAll('[data-copy-email]').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      var email = button.getAttribute('data-copy-email');
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(function () {
+          showCopyToast(email, true);
+        }).catch(function () {
+          showCopyToast(email, fallbackCopy(email));
+        });
+      } else {
+        showCopyToast(email, fallbackCopy(email));
+      }
+    });
   });
 
   /* ---------- modals ---------- */
