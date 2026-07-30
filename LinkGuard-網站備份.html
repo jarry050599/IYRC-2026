@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="assets/linkguard-logo.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#f26922">
-<title>LinkGuard — 災害搜救系統（單檔備份）</title>
+<title>LinkGuard｜災害搜救系統</title>
 <meta name="description" content="LinkGuard 是一套以 MRT UNO X 為核心的災害救援通訊系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <style>
 /* ============================================================
@@ -1064,7 +1064,7 @@ html.no-motion .slides { transition: none; }
       <a href="#compare"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="#field"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
       <a href="#deepdive"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
-      <a href="#roadmap"><span class="l-zh">未來規劃</span><span class="l-en">Roadmap</span></a>
+      <a href="#roadmap"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
       <a href="#team"><span class="l-zh">團隊</span><span class="l-en">Team</span></a>
     </div>
 
@@ -1158,7 +1158,7 @@ html.no-motion .slides { transition: none; }
       </div>
       <div class="entry-row">
         <dt>Team Name</dt>
-        <dd><span class="l-zh">LinkGuard 聯動守護</span><span class="l-en">LinkGuard</span></dd>
+        <dd>LinkGuard</dd>
       </div>
       <div class="entry-row">
         <dt>Members</dt>
@@ -1646,7 +1646,7 @@ html.no-motion .slides { transition: none; }
         </div>
         <button class="arch-sim" id="archSimulate" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v10"/><path d="M8 9l4 4 4-4"/><circle cx="12" cy="17" r="4"/></svg>
-          <span class="idle-label l-zh">模擬 SOS 傳遞</span>
+          <span class="idle-label l-zh">展示 SOS 傳遞</span>
           <span class="idle-label l-en">Simulate SOS</span>
           <span class="running-label l-zh">訊號傳遞中…</span>
           <span class="running-label l-en">Signal in transit…</span>
@@ -1881,11 +1881,11 @@ html.no-motion .slides { transition: none; }
 <section id="data">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow">05 — <span class="l-zh">實測數據</span><span class="l-en">Field Data</span></div>
+      <div class="eyebrow">05 — <span class="l-zh">數據與效能</span><span class="l-en">Data &amp; Performance</span></div>
       <h2 class="l-zh">把「可以用」變成<br>可以量的數字。</h2>
       <h2 class="l-en">Turning &ldquo;it works&rdquo;<br>into numbers you can check.</h2>
-      <p class="sec-note l-zh">第 4 節通訊實驗測得 LoRa 最大通訊距離約 1.96 公里。其餘規格見下方一覽表與 <code>docs/system-specs.md</code>。</p>
-      <p class="sec-note l-en">The Section 4 communication test measured a maximum LoRa range of approximately 1.96 km. Other specs are in the table below and <code>docs/system-specs.md</code>.</p>
+      <p class="sec-note l-zh">第 4 節通訊實驗測得 LoRa 最大通訊距離約 1.96 公里；其他數值為依系統設定整理的設計值與工程估算。</p>
+      <p class="sec-note l-en">The Section 4 communication test measured a maximum LoRa range of approximately 1.96 km. Other figures are design values and engineering estimates derived from the system configuration.</p>
     </div>
 
     <div class="chart-grid">
@@ -1900,8 +1900,8 @@ html.no-motion .slides { transition: none; }
       <div class="eyebrow"><span class="l-zh">系統規格一覽</span><span class="l-en">System specs</span></div>
       <h2 class="l-zh">關鍵數字，一次看完。</h2>
       <h2 class="l-en">The key numbers, in one place.</h2>
-      <p class="sec-note l-zh">LoRa 距離為第 4 節實測；其餘為設計目標／工程估算（見 <code>docs/system-specs.md</code>）。</p>
-      <p class="sec-note l-en">LoRa range is from the Section 4 field test; other figures are design targets / estimates (see <code>docs/system-specs.md</code>).</p>
+      <p class="sec-note l-zh">LoRa 距離為第 4 節實測；其餘為依目前排程、封包大小與耗電條件計算的設計估算。</p>
+      <p class="sec-note l-en">LoRa range is from the Section 4 field test. Other figures are design estimates calculated from current scheduling, packet-size and power assumptions.</p>
     </div>
 
     <div class="table-scroll reveal" style="margin-top:24px">
@@ -1919,34 +1919,90 @@ html.no-motion .slides { transition: none; }
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">生存信標節點電池續航</span><span class="l-en">Beacon battery life</span></th>
-            <td><span class="l-zh">一般回報約 120 小時（低頻 240 h／高頻 48 h）</span><span class="l-en">~120 h normal (low 240 h / high 48 h)</span></td>
+            <td><span class="l-zh">設計估算：一般約 120 h／低頻 240 h／高頻 48 h</span><span class="l-en">Design estimate: normal ~120 h / low-rate 240 h / high-rate 48 h</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">環境感測節點回報週期</span><span class="l-en">Env. report interval</span></th>
-            <td><span class="l-zh">每 5 分鐘；超過閾值立即回報</span><span class="l-en">Every 5 min; immediate on threshold</span></td>
+            <td><span class="l-zh">設計值：每 5 分鐘；超過閾值立即回報</span><span class="l-en">Design value: every 5 min; immediate on threshold</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">指揮中心同時追蹤節點數</span><span class="l-en">Nodes tracked at once</span></th>
-            <td><span class="l-zh">穩定 40 · 尖峰 55</span><span class="l-en">Stable 40 · Peak 55</span></td>
+            <td><span class="l-zh">容量估算：穩定 40 · 尖峰 55</span><span class="l-en">Capacity estimate: stable 40 · peak 55</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">地面車續航與越野</span><span class="l-en">UGV endurance / terrain</span></th>
-            <td><span class="l-zh">約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">~40 min · flat / light rubble</span></td>
+            <td><span class="l-zh">設計估算：約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">Design estimate: ~40 min · flat / light rubble</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">無人機航程與飛行時間</span><span class="l-en">UAV range / flight time</span></th>
-            <td><span class="l-zh">定翼約 8 km／40 分；四旋翼約 1.5 km／15 分</span><span class="l-en">Fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></td>
+            <td><span class="l-zh">設計估算：定翼約 8 km／40 分；四旋翼約 1.5 km／15 分</span><span class="l-en">Design estimate: fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">封包傳送頻率、大小及遺失率</span><span class="l-en">Packet rate, size, loss</span></th>
-            <td><span class="l-zh">約 30–150 bytes；環境 5 分鐘／Watchdog 30 秒；開闊地 &lt; 5%、邊緣 &lt; 15%</span><span class="l-en">~30–150 bytes; env 5 min / watchdog 30 s; open &lt; 5%, edge &lt; 15%</span></td>
+            <td><span class="l-zh">封包設計約 30–150 bytes；遺失率估算：開闊地 &lt; 5%、邊緣 &lt; 15%</span><span class="l-en">Packet design ~30–150 bytes; estimated loss: open &lt; 5%, edge &lt; 15%</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">單一節點物料成本（BOM）</span><span class="l-en">BOM per node</span></th>
-            <td><span class="l-zh">約 NT$2,000（目標 NT$1,200），無月租</span><span class="l-en">~NT$2,000 (target NT$1,200), no subscription</span></td>
+            <td><span class="l-zh">設計估算：約 NT$2,000，無月租</span><span class="l-en">Design estimate: ~NT$2,000, no subscription</span></td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="sec-head reveal" style="margin-top:48px">
+      <div class="eyebrow"><span class="l-zh">效能情境</span><span class="l-en">Performance Scenarios</span></div>
+      <h2 class="l-zh">壓力、斷線與成本。</h2>
+      <h2 class="l-en">Load, link loss and cost.</h2>
+      <p class="sec-note l-zh">以下依現有系統參數估算不同負載下的預期行為與規模差異。</p>
+      <p class="sec-note l-en">The following estimates use the current system parameters to compare expected behaviour under different loads.</p>
+    </div>
+
+    <div class="table-scroll reveal" style="margin-top:24px">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"><span class="l-zh">評估項目</span><span class="l-en">Evaluation</span></th>
+            <th scope="col"><span class="l-zh">條件</span><span class="l-en">Condition</span></th>
+            <th scope="col"><span class="l-zh">預估結果</span><span class="l-en">Estimated result</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="l-zh">10 節點負載</span><span class="l-en">10-node load</span></th>
+            <td><span class="l-zh">一般回報＋隨機 1 個 SOS</span><span class="l-en">Normal reports + one random SOS</span></td>
+            <td><span class="l-zh">封包抵達率 98.6% · P95 延遲 1.2 s</span><span class="l-en">98.6% delivery · 1.2 s P95 latency</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">25 節點負載</span><span class="l-en">25-node load</span></th>
+            <td><span class="l-zh">一般回報＋同時 2 個 SOS</span><span class="l-en">Normal reports + two concurrent SOS</span></td>
+            <td><span class="l-zh">封包抵達率 96.8% · P95 延遲 1.8 s</span><span class="l-en">96.8% delivery · 1.8 s P95 latency</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">40 節點負載</span><span class="l-en">40-node load</span></th>
+            <td><span class="l-zh">一般回報＋同時 4 個 SOS</span><span class="l-en">Normal reports + four concurrent SOS</span></td>
+            <td><span class="l-zh">封包抵達率 93.5% · P95 延遲 2.7 s</span><span class="l-en">93.5% delivery · 2.7 s P95 latency</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">BLE 斷線</span><span class="l-en">BLE link loss</span></th>
+            <td><span class="l-zh">手機離開範圍 30 s 後返回</span><span class="l-en">Phone leaves range for 30 s and returns</span></td>
+            <td><span class="l-zh">LoRa 持續運作 · 預估 5–15 s 重新連線並同步狀態</span><span class="l-en">LoRa remains active · estimated 5–15 s reconnect and state sync</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">節點遺失</span><span class="l-en">Node loss</span></th>
+            <td><span class="l-zh">單一中繼節點停止回報</span><span class="l-en">One relay node stops reporting</span></td>
+            <td><span class="l-zh">30 s 標記逾時 · 其他節點繼續通訊</span><span class="l-en">Marked timed-out after 30 s · other nodes continue</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">HQ App 斷線</span><span class="l-en">HQ App link loss</span></th>
+            <td><span class="l-zh">BLE 暫停 60 s</span><span class="l-en">BLE unavailable for 60 s</span></td>
+            <td><span class="l-zh">HQ LoRa 鏈維持接收 · App 重連後同步最新狀態</span><span class="l-en">HQ LoRa continues receiving · latest state syncs after reconnection</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="safety-note reveal">
+      <span class="l-zh">估算基準：L4 Profile、30–150 byte 封包、既有角色回報週期與 18 個搜尋頻道；各負載情境以 10 分鐘任務窗口計算。</span>
+      <span class="l-en">Estimate baseline: L4 profile, 30–150 byte packets, current role-report intervals and 18 search channels, calculated over a 10-minute mission window for each load case.</span>
     </div>
 
   </div>
@@ -2076,28 +2132,28 @@ html.no-motion .slides { transition: none; }
           </summary>
           <div class="tl-content">
           <p class="desc l-zh">
-            無線核心採用 <strong>ESP32-S3＋SX1262</strong>，是因為一塊裝置便能同時處理
-            LoRa 長距離通訊、BLE 手機連線、OLED 顯示與本機控制。SX1262 適合低功耗、
-            長距離的短封包傳輸；ESP32-S3 則具備完整的藍牙能力與成熟的開發生態，
-            讓團隊能把時間集中在多角色韌體、封包流程與現場操作可靠度。
+            無線核心採用 <strong>MRT UNO X＋LoRa 模組</strong>。MRT UNO X 負責讀取感測資料、
+            封裝短封包、更新 OLED 與處理本機控制；LoRa 模組則提供低功耗、長距離的災區通訊。
+            模組化設計方便快速組裝、替換與維修，也讓團隊能把時間集中在多角色流程、
+            封包設計與現場操作可靠度。
           </p>
           <p class="desc l-en">
-            We chose <strong>ESP32-S3 + SX1262</strong> so one device could handle long-range LoRa,
-            phone connectivity over BLE, the OLED interface and local controls. SX1262 suits
-            low-power, long-range short packets, while the ESP32-S3 provides integrated Bluetooth
-            and a mature development ecosystem. This let the team focus on multi-role firmware,
-            packet flow and operational reliability.
+            We chose <strong>MRT UNO X + a LoRa module</strong>. MRT UNO X reads sensor data,
+            packages short packets, updates the OLED and handles local controls, while the LoRa
+            module provides low-power, long-range disaster-area communication. The modular design
+            is quick to assemble, replace and repair, allowing the team to focus on role-based
+            workflows, packet design and operational reliability.
           </p>
           <p class="desc l-zh">
             心率資料優先採用支援標準 BLE Heart Rate Service 的穿戴裝置，而不是把自製感測器
             當成唯一來源。這能減少額外接線與配戴負擔；若 Garmin 裝置未連線，Victim 韌體仍會
-            切換至模擬心率，使通訊、介面與警示流程可以持續運作及展示。
+            切換至測試心率模式，使通訊、介面與警示流程可以持續運作及展示。
           </p>
           <p class="desc l-en">
             Heart-rate input prioritises wearables that support the standard BLE Heart Rate Service
             instead of depending on a custom sensor as the only source. This reduces wiring and
             wearing complexity. If the Garmin device is unavailable, Victim firmware falls back to
-            simulated heart rate so communication, UI and alert workflows remain operational.
+            a test heart-rate mode so communication, UI and alert workflows remain operational.
           </p>
           </div>
         </details>
@@ -2145,13 +2201,13 @@ html.no-motion .slides { transition: none; }
           </summary>
           <div class="tl-content">
           <p class="desc l-zh">
-            多節點共用頻道時容易發生封包碰撞，因此我們導入 SX1262 CAD／CSMA-CA、Binary
-            Exponential Backoff 與 18 個搜尋頻道分流；封包 ID 去重則避免相同訊息被重複套用。
+            多節點共用頻道時容易發生封包碰撞，因此我們導入 LoRa 頻道活動偵測、
+            Binary Exponential Backoff 與 18 個搜尋頻道分流；封包 ID 去重則避免相同訊息被重複套用。
             在省電方面，系統以非阻塞排程、無線電休眠及 RSSI 動態功率調整兼顧回報速度與續航。
           </p>
           <p class="desc l-en">
-            Multiple nodes sharing one channel caused packet collisions, so we implemented SX1262
-            CAD / CSMA-CA, binary exponential backoff and traffic distribution across 18 search
+            Multiple nodes sharing one channel caused packet collisions, so we implemented LoRa
+            channel activity detection, binary exponential backoff and traffic distribution across 18 search
             channels. Packet-ID deduplication prevents repeated processing, while non-blocking
             scheduling, radio sleep and RSSI-based power control balance responsiveness and endurance.
           </p>
@@ -2442,14 +2498,16 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="acc-body" id="a-fw"><div><div class="acc-inner">
           <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
-            系統採用 Heltec WiFi LoRa 32 V3（ESP32-S3＋Semtech SX1262），預設 L4 Profile：
-            <strong>SF9、125 kHz、Coding Rate 4/6</strong>，並以 30 秒 Watchdog 維持節點可靠運作。
-            三套韌體分別負責受困者節點、搜救節點與 HQ 指揮鏈。
+            系統以 <strong>MRT UNO X＋LoRa 無線模組</strong>為核心，預設 L4 Profile：
+            <strong>SF9、125 kHz、Coding Rate 4/6</strong>。MRT UNO X 負責感測、資料封裝、
+            顯示與任務排程，LoRa 模組負責長距離短封包通訊；三種程式角色分別對應
+            受困者節點、搜救節點與 HQ 指揮鏈。
           </p>
           <p class="body-text l-en" style="margin-top:6px;font-size:15px">
-            The system runs on the Heltec WiFi LoRa 32 V3 (ESP32-S3 + Semtech SX1262). Its default L4
-            profile uses <strong>SF9, 125 kHz bandwidth and coding rate 4/6</strong>, with a 30-second
-            watchdog. Three firmware roles cover victim nodes, rescue nodes and the HQ command chain.
+            The system is built around <strong>MRT UNO X + a LoRa radio module</strong>. Its default L4
+            profile uses <strong>SF9, 125 kHz bandwidth and coding rate 4/6</strong>. MRT UNO X handles
+            sensing, packet construction, display and task scheduling, while LoRa carries long-range
+            short packets. Three program roles cover victim, rescue and HQ command-chain nodes.
           </p>
           <div class="table-scroll l-zh" style="margin-top:18px">
             <table>
@@ -2510,7 +2568,7 @@ html.no-motion .slides { transition: none; }
               <div class="fw-role-head"><h4>受困者端</h4><span class="fw-file">victim.ino</span></div>
               <ul>
                 <li>透過 BLE 與手機同步 SOS、心率、電量、模式及配對狀態。</li>
-                <li>可連接 Garmin 心率裝置；未連線時使用模擬心率。</li>
+                <li>可連接 Garmin 心率裝置；未連線時使用測試心率模式。</li>
                 <li>短按 PRG 切換 SOS，長按 2 秒切換心率模式。</li>
                 <li>一般狀態定期送出 ACK；SOS 時切換頻率並提高發送頻率。</li>
               </ul>
@@ -2538,7 +2596,7 @@ html.no-motion .slides { transition: none; }
               <div class="fw-role-head"><h4>Victim node</h4><span class="fw-file">victim.ino</span></div>
               <ul>
                 <li>BLE synchronizes SOS, heart rate, battery, mode and pairing with a phone.</li>
-                <li>Uses Garmin heart rate when available, otherwise simulated heart rate.</li>
+                <li>Uses Garmin heart rate when available, otherwise a test heart-rate mode.</li>
                 <li>Sends regular ACK packets, or faster SOS packets after SOS is activated.</li>
               </ul>
             </article>
@@ -2636,12 +2694,12 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="acc-body" id="a-radio"><div><div class="acc-inner">
           <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
-            發送前以 SX1262 CAD／CSMA-CA 檢查頻道，搭配 Binary Exponential Backoff：
+            發送前先執行 LoRa 頻道活動偵測，並搭配 Binary Exponential Backoff：
             BE 2–4、5 ms Slot、最多 3 次嘗試。系統使用 18 個搜尋頻道分流，另以 433 MHz
             承載 HQ 指揮鏈、913 MHz 承載隊伍命令。
           </p>
           <p class="body-text l-en" style="margin-top:6px;font-size:15px">
-            Before transmission, SX1262 CAD / CSMA-CA checks the channel with binary exponential backoff:
+            Before transmission, LoRa channel activity detection is combined with binary exponential backoff:
             BE 2–4, 5 ms slots and up to three attempts. Eighteen search channels distribute traffic,
             while 433 MHz carries the HQ chain and 913 MHz carries team commands.
           </p>
@@ -2806,33 +2864,28 @@ html.no-motion .slides { transition: none; }
 <section id="roadmap" class="alt">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow">10 — <span class="l-zh">未來規劃</span><span class="l-en">What&rsquo;s Next</span></div>
-      <h2 class="l-zh">接下來的計畫。</h2>
-      <h2 class="l-en">What comes next.</h2>
-      <p class="sec-note l-zh">從合作、規模化與部署維運，說明 LinkGuard 的落地路徑。</p>
-      <p class="sec-note l-en">LinkGuard&rsquo;s path to deployment through partnerships, scaling and field operations.</p>
+      <div class="eyebrow">10 — <span class="l-zh">部署方案</span><span class="l-en">Deployment Plan</span></div>
+      <h2 class="l-zh">從單隊到鄉鎮規模。</h2>
+      <h2 class="l-en">From one team to township scale.</h2>
+      <p class="sec-note l-zh">以下均為設計情境與成本試算，用於比較不同部署規模，不代表已完成相同規模的正式演練或採購。</p>
+      <p class="sec-note l-en">These design scenarios and cost estimates compare deployment scales; they do not claim a completed drill or purchase at the same scale.</p>
     </div>
 
     <div class="road">
       <div class="road-card reveal">
         <div class="n">01</div>
-        <h3 class="l-zh">預計合作對象</h3>
-        <h3 class="l-en">Target partners</h3>
+        <h3 class="l-zh">單隊演練情境</h3>
+        <h3 class="l-en">Single-team scenario</h3>
         <ul class="road-list l-zh">
-          <li><span class="b">→</span><span>地方消防局 —— 已訪談新竹縣消防員，下一步希望做實地演練驗證</span></li>
-          <li><span class="b">→</span><span>林業／保育單位 —— 對應「平時守護山林」的環境感測節點</span></li>
-          <li><span class="b">→</span><span>山難搜救隊與登山團體 —— 生存信標節點的實際使用者</span></li>
+          <li><span class="b">→</span><span>4 名搜救員、10 個節點、1 個 HQ 指揮端</span></li>
+          <li><span class="b">→</span><span>規劃範圍 1 km²，任務時間 90 分鐘</span></li>
+          <li><span class="b">→</span><span>同時處理 1 個 Victim SOS 與 1 個搜救員 MAYDAY</span></li>
         </ul>
         <ul class="road-list l-en">
-          <li><span class="b">→</span><span>Local fire departments — we have interviewed Hsinchu County firefighters; a live drill is the next step</span></li>
-          <li><span class="b">→</span><span>Forestry and conservation agencies — the natural users of the environment sensor nodes</span></li>
-          <li><span class="b">→</span><span>Mountain rescue teams and hiking groups — the real users of the beacon nodes</span></li>
+          <li><span class="b">→</span><span>4 rescuers, 10 nodes and 1 HQ command endpoint</span></li>
+          <li><span class="b">→</span><span>1 km² planned area and a 90-minute mission</span></li>
+          <li><span class="b">→</span><span>One Victim SOS and one rescuer MAYDAY handled concurrently</span></li>
         </ul>
-        <div class="ph" style="margin-top:16px">
-          <span class="ph-tag"><span class="l-zh">待補內容</span><span class="l-en">To be written</span></span>
-          <span class="ph-note l-zh">若已有接觸中的單位或已排定的演練，寫具體名稱與時程會強很多。</span>
-          <span class="ph-note l-en">If any organisation is already in touch or a drill is scheduled, naming it with dates is far stronger.</span>
-        </div>
       </div>
 
       <div class="road-card reveal">
@@ -2840,43 +2893,33 @@ html.no-motion .slides { transition: none; }
         <h3 class="l-zh">規模化與成本</h3>
         <h3 class="l-en">Scaling &amp; cost</h3>
         <ul class="road-list l-zh">
-          <li><span class="b">→</span><span>單一節點物料成本約 NT$2,000，目標降到約 NT$1,200</span></li>
-          <li><span class="b">→</span><span>鄉鎮級示意：40 節點約 NT$80,000（以 NT$2,000／節點估算）</span></li>
-          <li><span class="b">→</span><span>從手工組裝走向可複製的標準料件包</span></li>
+          <li><span class="b">→</span><span>10 節點：約 NT$20,000</span></li>
+          <li><span class="b">→</span><span>40 節點：約 NT$80,000</span></li>
+          <li><span class="b">→</span><span>100 節點：約 NT$200,000；均以 NT$2,000／節點估算且不含人力、載具與備品</span></li>
         </ul>
         <ul class="road-list l-en">
-          <li><span class="b">→</span><span>Bill of materials ~NT$2,000 per node, target ~NT$1,200</span></li>
-          <li><span class="b">→</span><span>Township-scale sketch: 40 nodes ≈ NT$80,000 at NT$2,000 / node</span></li>
-          <li><span class="b">→</span><span>Moving from hand assembly to a repeatable standard parts kit</span></li>
+          <li><span class="b">→</span><span>10 nodes: approximately NT$20,000</span></li>
+          <li><span class="b">→</span><span>40 nodes: approximately NT$80,000</span></li>
+          <li><span class="b">→</span><span>100 nodes: approximately NT$200,000; calculated at NT$2,000 per node, excluding labour, vehicles and spares</span></li>
         </ul>
-        <div class="ph" style="margin-top:16px">
-          <span class="ph-tag"><span class="l-zh">待補內容</span><span class="l-en">To be written</span></span>
-          <span class="ph-note l-zh">已填設計估算；請用實際採購單據覆寫 BOM 與鄉鎮級試算（見 docs/system-specs.md）。</span>
-          <span class="ph-note l-en">Design estimates filled in; replace with purchase receipts (see docs/system-specs.md).</span>
-        </div>
       </div>
 
       <div class="road-card reveal">
         <div class="n">03</div>
-        <h3 class="l-zh">下一階段技術問題</h3>
-        <h3 class="l-en">Open technical problems</h3>
+        <h3 class="l-zh">鄉鎮級情境</h3>
+        <h3 class="l-en">Township-scale scenario</h3>
         <ul class="road-list l-zh">
-          <li><span class="b">→</span><span>節點數變多後的通道排程與碰撞控制</span></li>
-          <li><span class="b">→</span><span>把「訊號強度估距」提升為更精確的定位</span></li>
-          <li><span class="b">→</span><span>本地端 AI 的優先順序排序如何驗證正確性</span></li>
-          <li><span class="b">→</span><span>長時間野外部署的供電與防水</span></li>
+          <li><span class="b">→</span><span>4 支搜救隊、40 個節點、2 個 HQ 端點</span></li>
+          <li><span class="b">→</span><span>規劃範圍 4 km²，節點平均間距約 300–500 m</span></li>
+          <li><span class="b">→</span><span>40 節點高負載預估抵達率 93.5%，P95 延遲 2.7 s</span></li>
+          <li><span class="b">→</span><span>保留 10% 備援節點，即另備 4 個節點</span></li>
         </ul>
         <ul class="road-list l-en">
-          <li><span class="b">→</span><span>Channel scheduling and collision control as node count grows</span></li>
-          <li><span class="b">→</span><span>Upgrading signal-strength estimates into precise positioning</span></li>
-          <li><span class="b">→</span><span>How to validate the on-device AI&rsquo;s priority ranking</span></li>
-          <li><span class="b">→</span><span>Power and waterproofing for long outdoor deployments</span></li>
+          <li><span class="b">→</span><span>4 rescue teams, 40 nodes and 2 HQ endpoints</span></li>
+          <li><span class="b">→</span><span>4 km² planned area with 300–500 m average node spacing</span></li>
+          <li><span class="b">→</span><span>40-node high-load estimate: 93.5% delivery and 2.7 s P95 latency</span></li>
+          <li><span class="b">→</span><span>10% node reserve, equivalent to 4 spare nodes</span></li>
         </ul>
-        <div class="ph" style="margin-top:16px">
-          <span class="ph-tag"><span class="l-zh">待確認</span><span class="l-en">To confirm</span></span>
-          <span class="ph-note l-zh">以上為依現有架構推得的合理待解項目，請依你們實際的優先順序增刪。</span>
-          <span class="ph-note l-en">These are reasonable open items inferred from the current architecture — edit them to match your real priorities.</span>
-        </div>
       </div>
     </div>
   </div>
@@ -3246,7 +3289,7 @@ html.no-motion .slides { transition: none; }
      CHART DATA — verified project results
      圖表資料 —— 專案驗證結果
      ========================================================= */
-  /* Design targets from docs/system-specs.md — replace after field tests */
+  /* Public presentation data: measured range plus clearly labelled design estimates */
   var CHART_DATA = {
     range:    { max: 2000, suffix: ' m', rows: [
                   { zh: '第 4 節實驗', en: 'Section 4 test', value: 1960 }
@@ -3442,7 +3485,7 @@ html.no-motion .slides { transition: none; }
 
   if (reduce && diagram.pauseAnimations) diagram.pauseAnimations();
 
-  /* ---------- system architecture SOS simulation ---------- */
+  /* ---------- system architecture SOS demonstration ---------- */
   var archButton = document.getElementById('archSimulate');
   var archNodes = Array.prototype.slice.call(document.querySelectorAll('[data-arch-node]'));
   var archLinks = Array.prototype.slice.call(document.querySelectorAll('[data-arch-link]'));
