@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" type="image/jpeg" href="assets/linkguard-logo.jpg">
+<link rel="apple-touch-icon" href="assets/linkguard-logo.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f26922">
 <title>LinkGuard — 災害搜救系統（單檔備份）</title>
 <meta name="description" content="LinkGuard 是一套以 MRT UNO X 為核心的災害救援通訊系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <style>
@@ -768,6 +771,18 @@ tbody tr:hover td, tbody tr:hover th { background: color-mix(in srgb, var(--bran
 .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
 .to-top:hover { border-color: var(--brand); color: var(--brand); }
 .to-top svg { width: 17px; height: 17px; }
+.net-status {
+  position: fixed; z-index: 70; left: 50%; bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+  max-width: calc(100% - 32px); padding: 9px 14px;
+  border: 1px solid var(--line); border-radius: 999px;
+  color: var(--fg); background: var(--bg-card); box-shadow: var(--shadow-1);
+  font-size: 12px; opacity: 0; pointer-events: none;
+  transform: translate(-50%, 12px); transition: opacity .25s, transform .25s;
+}
+.net-status.show { opacity: 1; transform: translate(-50%, 0); }
+.net-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--alert); }
+.net-status.online::before { background: var(--ok); }
 
 /* ---------- footer ---------- */
 footer { padding: 56px 0 44px; border-bottom: none; }
@@ -944,6 +959,9 @@ html[data-device="mobile"] .to-top {
   right: max(14px, env(safe-area-inset-right));
   bottom: max(14px, env(safe-area-inset-bottom));
   width: 42px; height: 42px;
+}
+html[data-device="mobile"] .net-status {
+  bottom: max(14px, env(safe-area-inset-bottom)); font-size: 11.5px;
 }
 html[data-device="mobile"] footer {
   padding-bottom: calc(34px + env(safe-area-inset-bottom));
@@ -2863,6 +2881,7 @@ html.no-motion .slides { transition: none; }
 <button class="to-top" id="toTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
 </button>
+<div class="net-status" id="netStatus" role="status" aria-live="polite"></div>
 
 <script>
 (function () {
@@ -2911,6 +2930,35 @@ html.no-motion .slides { transition: none; }
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) document.documentElement.classList.add('no-motion');
+
+  /* ---------- offline support and connection status ---------- */
+  var netStatus = document.getElementById('netStatus');
+  var netStatusTimer = null;
+
+  function showNetworkStatus(isOnline, persist) {
+    if (!netStatus) return;
+    window.clearTimeout(netStatusTimer);
+    netStatus.classList.toggle('online', isOnline);
+    netStatus.innerHTML = isOnline
+      ? '<span class="l-zh">已恢復連線</span><span class="l-en">Connection restored</span>'
+      : '<span class="l-zh">目前離線，已顯示快取內容</span><span class="l-en">Offline — showing cached content</span>';
+    netStatus.classList.add('show');
+    if (!persist) {
+      netStatusTimer = window.setTimeout(function () { netStatus.classList.remove('show'); }, 3200);
+    }
+  }
+
+  window.addEventListener('offline', function () { showNetworkStatus(false, true); });
+  window.addEventListener('online', function () { showNetworkStatus(true, false); });
+  if (!navigator.onLine) showNetworkStatus(false, true);
+
+  if ('serviceWorker' in navigator && window.location.protocol.indexOf('http') === 0) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () {
+        /* The site remains fully usable when service-worker registration is unavailable. */
+      });
+    });
+  }
 
   /* =========================================================
      LANGUAGE SWITCH / 語言切換
