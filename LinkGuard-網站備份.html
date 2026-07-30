@@ -645,6 +645,61 @@ tbody tr:hover td, tbody tr:hover th { background: color-mix(in srgb, var(--bran
 .acc-body > div { overflow: hidden; }
 .acc-item.open .acc-body { grid-template-rows: 1fr; }
 .acc-inner { padding: 0 22px 22px; }
+.fw-role-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px; margin-top: 18px;
+}
+.fw-role {
+  min-width: 0; padding: 18px; border: 1px solid var(--line-soft);
+  border-radius: 10px; background: var(--bg-alt);
+}
+.fw-role-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 12px;
+}
+.fw-role-head h4 { font-size: 16px; font-weight: 650; }
+.fw-file {
+  padding: 4px 8px; border-radius: 999px; background: var(--bg-card);
+  color: var(--fg-dim); font: 10px var(--mono); white-space: nowrap;
+}
+.fw-role ul {
+  margin: 0; padding-left: 18px; color: var(--fg-mid);
+  font-size: 13px; line-height: 1.75;
+}
+.fw-role li + li { margin-top: 5px; }
+.fw-flow-list { display: grid; gap: 10px; margin-top: 20px; }
+.fw-flow {
+  display: flex; align-items: center; gap: 7px; min-width: 0;
+  padding: 12px; border: 1px solid var(--line-soft);
+  border-radius: 10px; background: var(--bg-card);
+}
+.fw-flow-label {
+  flex: 0 0 auto; min-width: 82px; color: var(--fg);
+  font-size: 12px; font-weight: 650;
+}
+.fw-step {
+  min-width: 0; padding: 6px 9px; border-radius: 7px;
+  color: var(--fg-mid); background: var(--bg-alt); font-size: 11px;
+  line-height: 1.35; text-align: center;
+}
+.fw-step.radio { color: var(--brand); background: var(--brand-soft); font-weight: 650; }
+.fw-step.alert { color: var(--accent); background: var(--accent-soft); font-weight: 650; }
+.fw-arrow { flex: 0 0 auto; color: var(--fg-dim); font-size: 13px; }
+@media (max-width: 900px) {
+  .fw-role-grid { grid-template-columns: 1fr; }
+  .fw-flow { flex-wrap: wrap; }
+  .fw-flow-label { flex-basis: 100%; }
+}
+@media (max-width: 560px) {
+  .fw-role { padding: 15px; }
+  .fw-flow {
+    display: grid; grid-template-columns: 1fr; justify-items: stretch;
+    padding: 14px;
+  }
+  .fw-flow-label { min-width: 0; }
+  .fw-step { width: 100%; }
+  .fw-arrow { transform: rotate(90deg); justify-self: center; }
+}
 .safety-block {
   margin-top: 64px; padding-top: 42px; border-top: 1px solid var(--line);
 }
@@ -2013,6 +2068,75 @@ html.no-motion .slides { transition: none; }
       </div>
 
       <div class="tl-item reveal">
+        <div class="tl-when"><span class="l-zh">核心元件如何選定</span><span class="l-en">CHOOSING THE CORE COMPONENTS</span></div>
+        <details class="tl-body">
+          <summary>
+            <h3 class="l-zh">選型理由</h3>
+            <h3 class="l-en">Component choices</h3>
+          </summary>
+          <div class="tl-content">
+          <p class="desc l-zh">
+            無線核心採用 <strong>ESP32-S3＋SX1262</strong>，是因為一塊裝置便能同時處理
+            LoRa 長距離通訊、BLE 手機連線、OLED 顯示與本機控制。SX1262 適合低功耗、
+            長距離的短封包傳輸；ESP32-S3 則具備完整的藍牙能力與成熟的開發生態，
+            讓團隊能把時間集中在多角色韌體、封包流程與現場操作可靠度。
+          </p>
+          <p class="desc l-en">
+            We chose <strong>ESP32-S3 + SX1262</strong> so one device could handle long-range LoRa,
+            phone connectivity over BLE, the OLED interface and local controls. SX1262 suits
+            low-power, long-range short packets, while the ESP32-S3 provides integrated Bluetooth
+            and a mature development ecosystem. This let the team focus on multi-role firmware,
+            packet flow and operational reliability.
+          </p>
+          <p class="desc l-zh">
+            心率資料優先採用支援標準 BLE Heart Rate Service 的穿戴裝置，而不是把自製感測器
+            當成唯一來源。這能減少額外接線與配戴負擔；若 Garmin 裝置未連線，Victim 韌體仍會
+            切換至模擬心率，使通訊、介面與警示流程可以持續運作及展示。
+          </p>
+          <p class="desc l-en">
+            Heart-rate input prioritises wearables that support the standard BLE Heart Rate Service
+            instead of depending on a custom sensor as the only source. This reduces wiring and
+            wearing complexity. If the Garmin device is unavailable, Victim firmware falls back to
+            simulated heart rate so communication, UI and alert workflows remain operational.
+          </p>
+          </div>
+        </details>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-when"><span class="l-zh">第一線回饋改變了設計</span><span class="l-en">FIELD FEEDBACK CHANGED THE DESIGN</span></div>
+        <details class="tl-body">
+          <summary>
+            <h3 class="l-zh">從訪談到重構</h3>
+            <h3 class="l-en">From interview to redesign</h3>
+          </summary>
+          <div class="tl-content">
+          <p class="desc l-zh">
+            消防人員訪談讓團隊重新檢視「功能越多越好」的原始想法。災害現場同時面臨通訊不穩、
+            高壓決策、人員疲勞與戴手套操作，因此介面改以<strong>大按鈕、單手操作、緊急功能固定位置</strong>
+            為原則，並依任務角色拆分 HQ 與 Field App，避免所有資訊擠在同一個畫面。
+          </p>
+          <p class="desc l-en">
+            Firefighter interviews made us reconsider the original assumption that more features
+            always make a better tool. Disaster scenes combine unstable communications, high-pressure
+            decisions, fatigue and gloved operation. We therefore centred the interface on
+            <strong>large controls, one-handed use and fixed emergency actions</strong>, while separating
+            HQ and Field App views by operational role.
+          </p>
+          <p class="desc l-zh">
+            這份回饋也強化了 Offline First 與分層通訊的方向：即使網際網路或手機鏈路中斷，
+            LoRa 節點仍能持續收發短封包，OLED、蜂鳴器與震動馬達則保留最直接的現場提醒。
+          </p>
+          <p class="desc l-en">
+            The same feedback reinforced an offline-first, layered communication design. Even when
+            internet or phone links fail, LoRa nodes continue exchanging short packets, while the
+            OLED, buzzer and vibration motor preserve immediate on-device alerts.
+          </p>
+          </div>
+        </details>
+      </div>
+
+      <div class="tl-item reveal">
         <div class="tl-when"><span class="l-zh">遇到的技術瓶頸與解法</span><span class="l-en">WHAT BROKE, AND HOW WE FIXED IT</span></div>
         <details class="tl-body">
           <summary>
@@ -2346,6 +2470,133 @@ html.no-motion .slides { transition: none; }
                 <tr><th>hq.ino</th><td>HQ command-chain node</td><td>433 MHz</td></tr>
               </tbody>
             </table>
+          </div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false" aria-controls="a-firmware-flow">
+          <span class="t"><span class="l-zh">韌體運作流程</span><span class="l-en">Firmware workflow</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body" id="a-firmware-flow"><div><div class="acc-inner">
+          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+            三種韌體各自處理 LoRa、BLE 與本機警示，讓指揮命令、受困者狀態及緊急求救能在不同角色間傳遞。
+          </p>
+          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+            Three firmware roles coordinate LoRa, BLE and local alerts to carry commands, victim status and emergency calls.
+          </p>
+
+          <div class="fw-role-grid l-zh">
+            <article class="fw-role">
+              <div class="fw-role-head"><h4>HQ 指揮中心端</h4><span class="fw-file">hq.ino</span></div>
+              <ul>
+                <li>初始化 OLED、電池、LoRa 與 BLE，等待 Mac／iPad HQ App 連線。</li>
+                <li>將 App 的指揮命令轉為 CMD 封包，透過 433 MHz 廣播。</li>
+                <li>收到其他節點的 CMD 後解析內容，透過 BLE Notify 回傳 App。</li>
+                <li>定期回報電量、LoRa 檔位、命令數量與節點狀態。</li>
+              </ul>
+            </article>
+            <article class="fw-role">
+              <div class="fw-role-head"><h4>搜救／隊長端</h4><span class="fw-file">rescue.ino</span></div>
+              <ul>
+                <li>由 iPhone Field App 設定人員、配對碼、頻率、模式與功率。</li>
+                <li>長按 PRG 3 秒切換本機 SOS；啟動後每 10 秒廣播 MAYDAY。</li>
+                <li>接收 ACK／SOS 後更新電量、心率、RSSI、SNR 與估算距離。</li>
+                <li>收到 SOS 或 CMD 時啟動 OLED、蜂鳴器與震動提醒，並同步至 App。</li>
+              </ul>
+            </article>
+            <article class="fw-role">
+              <div class="fw-role-head"><h4>受困者端</h4><span class="fw-file">victim.ino</span></div>
+              <ul>
+                <li>透過 BLE 與手機同步 SOS、心率、電量、模式及配對狀態。</li>
+                <li>可連接 Garmin 心率裝置；未連線時使用模擬心率。</li>
+                <li>短按 PRG 切換 SOS，長按 2 秒切換心率模式。</li>
+                <li>一般狀態定期送出 ACK；SOS 時切換頻率並提高發送頻率。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="fw-role-grid l-en">
+            <article class="fw-role">
+              <div class="fw-role-head"><h4>HQ node</h4><span class="fw-file">hq.ino</span></div>
+              <ul>
+                <li>Initializes OLED, battery, LoRa and BLE, then awaits the Mac/iPad HQ App.</li>
+                <li>Converts app commands into CMD packets and broadcasts them over 433 MHz.</li>
+                <li>Relays received CMD packets and periodic node status to the app via BLE Notify.</li>
+              </ul>
+            </article>
+            <article class="fw-role">
+              <div class="fw-role-head"><h4>Rescue / leader node</h4><span class="fw-file">rescue.ino</span></div>
+              <ul>
+                <li>The iPhone Field App configures identity, pairing, frequency, mode and power.</li>
+                <li>A three-second PRG hold toggles local SOS and sends MAYDAY every 10 seconds.</li>
+                <li>ACK, SOS and CMD packets update status, activate alerts and sync to the app.</li>
+              </ul>
+            </article>
+            <article class="fw-role">
+              <div class="fw-role-head"><h4>Victim node</h4><span class="fw-file">victim.ino</span></div>
+              <ul>
+                <li>BLE synchronizes SOS, heart rate, battery, mode and pairing with a phone.</li>
+                <li>Uses Garmin heart rate when available, otherwise simulated heart rate.</li>
+                <li>Sends regular ACK packets, or faster SOS packets after SOS is activated.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="fw-flow-list l-zh" aria-label="韌體資料流程">
+            <div class="fw-flow">
+              <span class="fw-flow-label">指揮命令</span>
+              <span class="fw-step">HQ App</span><span class="fw-arrow">→</span>
+              <span class="fw-step">BLE</span><span class="fw-arrow">→</span>
+              <span class="fw-step radio">433 MHz CMD</span><span class="fw-arrow">→</span>
+              <span class="fw-step">搜救節點</span><span class="fw-arrow">→</span>
+              <span class="fw-step alert">聲音／震動</span><span class="fw-arrow">→</span>
+              <span class="fw-step">iPhone App</span>
+            </div>
+            <div class="fw-flow">
+              <span class="fw-flow-label">受困者 SOS</span>
+              <span class="fw-step">Victim</span><span class="fw-arrow">→</span>
+              <span class="fw-step radio">SOS LoRa</span><span class="fw-arrow">→</span>
+              <span class="fw-step">搜救節點</span><span class="fw-arrow">→</span>
+              <span class="fw-step">OLED 資訊</span><span class="fw-arrow">→</span>
+              <span class="fw-step alert">聲音／震動</span><span class="fw-arrow">→</span>
+              <span class="fw-step">iPhone App</span>
+            </div>
+            <div class="fw-flow">
+              <span class="fw-flow-label">搜救員求救</span>
+              <span class="fw-step">長按 PRG 3 秒</span><span class="fw-arrow">→</span>
+              <span class="fw-step alert">本機 SOS</span><span class="fw-arrow">→</span>
+              <span class="fw-step radio">每 10 秒 MAYDAY</span><span class="fw-arrow">→</span>
+              <span class="fw-step">其他節點</span>
+            </div>
+          </div>
+
+          <div class="fw-flow-list l-en" aria-label="Firmware data flows">
+            <div class="fw-flow">
+              <span class="fw-flow-label">Command</span>
+              <span class="fw-step">HQ App</span><span class="fw-arrow">→</span>
+              <span class="fw-step">BLE</span><span class="fw-arrow">→</span>
+              <span class="fw-step radio">433 MHz CMD</span><span class="fw-arrow">→</span>
+              <span class="fw-step">Rescue node</span><span class="fw-arrow">→</span>
+              <span class="fw-step alert">Alert</span><span class="fw-arrow">→</span>
+              <span class="fw-step">iPhone App</span>
+            </div>
+            <div class="fw-flow">
+              <span class="fw-flow-label">Victim SOS</span>
+              <span class="fw-step">Victim</span><span class="fw-arrow">→</span>
+              <span class="fw-step radio">SOS LoRa</span><span class="fw-arrow">→</span>
+              <span class="fw-step">Rescue node</span><span class="fw-arrow">→</span>
+              <span class="fw-step alert">OLED / alert</span><span class="fw-arrow">→</span>
+              <span class="fw-step">iPhone App</span>
+            </div>
+            <div class="fw-flow">
+              <span class="fw-flow-label">MAYDAY</span>
+              <span class="fw-step">Hold PRG 3 sec</span><span class="fw-arrow">→</span>
+              <span class="fw-step alert">Local SOS</span><span class="fw-arrow">→</span>
+              <span class="fw-step radio">MAYDAY / 10 sec</span><span class="fw-arrow">→</span>
+              <span class="fw-step">Other nodes</span>
+            </div>
           </div>
         </div></div></div>
       </div>
