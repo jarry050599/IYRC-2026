@@ -541,7 +541,11 @@ section.alt { background: var(--bg-alt); }
 
 /* ---------- flow diagram ---------- */
 .flow-wrap { margin-top: 40px; }
-.diagram-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+.diagram-scroll {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  padding: 14px; border: 1px solid var(--line-soft); border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-alt) 72%, var(--bg-card));
+}
 .diagram { min-width: 780px; width: 100%; height: auto; display: block; }
 .dg-box { fill: var(--bg-card); stroke: var(--line); stroke-width: 1.2; transition: stroke .25s var(--ease), fill .25s var(--ease); }
 .dg-label { fill: var(--fg); font-family: var(--sans); font-size: 13px; font-weight: 500; }
@@ -553,6 +557,11 @@ section.alt { background: var(--bg-alt); }
 .dg-seg.is-active .dg-link-label { fill: var(--accent); }
 .dg-seg.is-active .dg-packet { opacity: 1; }
 .dg-node.is-active .dg-box { stroke: var(--accent); fill: var(--accent-soft); }
+@media (max-width: 700px) {
+  .flow-wrap { margin-top: 28px; }
+  .diagram-scroll { overflow: hidden; padding: 8px 4px; border-radius: 12px; }
+  .diagram { min-width: 0; width: 100%; }
+}
 
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
 .step {
@@ -606,6 +615,23 @@ tbody tr:hover td, tbody tr:hover th { background: color-mix(in srgb, var(--bran
 .tl-body .desc { margin-top: 12px; font-size: 15px; color: var(--fg-mid); max-width: 62ch; }
 .tl-body .ph { margin-top: 14px; max-width: 62ch; }
 .tl-body { min-width: 0; }
+.place-profile {
+  margin-top: 22px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.place-card {
+  min-width: 0; padding: 17px; border: 1px solid var(--line-soft);
+  border-radius: 12px; background: var(--bg-card);
+}
+.place-card .place-kicker {
+  color: var(--accent); font: 700 10px var(--mono);
+  letter-spacing: .12em; text-transform: uppercase;
+}
+.place-card h4 { margin-top: 8px; font: 500 18px var(--serif); }
+.place-card p { margin-top: 8px; color: var(--fg-mid); font-size: 12.5px; line-height: 1.7; }
+@media (max-width: 760px) {
+  .place-profile { grid-template-columns: 1fr; }
+}
 .tl-body > summary {
   display: flex; align-items: center; justify-content: space-between; gap: 18px;
   padding: 16px 18px; margin: -16px -18px 0;
@@ -2053,8 +2079,8 @@ html.no-motion .slides { transition: none; }
           <g class="dg-seg" data-seg="1">
             <path class="dg-link" id="p-seg1a" d="M200 214 C300 214 320 210 380 210" marker-end="url(#arrow)"/>
             <path class="dg-link" id="p-seg1b" d="M200 300 C300 300 320 232 380 224" marker-end="url(#arrow)"/>
-            <text class="dg-link-label l-zh" x="228" y="196">LoRa · 長距 · 穿透 / 跨山</text>
-            <text class="dg-link-label l-en" x="228" y="196">LoRa · LONG RANGE · THROUGH RUBBLE</text>
+            <text class="dg-link-label l-zh" x="290" y="196" text-anchor="middle">LoRa · 長距跨山</text>
+            <text class="dg-link-label l-en" x="290" y="196" text-anchor="middle">LoRa · LONG RANGE</text>
             <circle class="dg-packet" r="4.5">
               <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p-seg1a" xlink:href="#p-seg1a"/></animateMotion>
             </circle>
@@ -2327,6 +2353,50 @@ html.no-motion .slides { transition: none; }
             disaster challenges, we designed our rescue scenario model based on Jianshi Township, hoping that LinkGuard
             can help protect both the people and the mountains they cherish.
           </p>
+          <div class="place-profile">
+            <article class="place-card">
+              <div class="place-kicker"><span class="l-zh">場域輪廓</span><span class="l-en">Landscape</span></div>
+              <h4 class="l-zh">527.6 km² 的山林鄉鎮</h4>
+              <h4 class="l-en">A 527.6 km² mountain township</h4>
+              <p class="l-zh">尖石位於新竹縣東南方，海拔約 200–3,000 公尺。山勢、溪谷與分散聚落，使災時通訊與抵達現場都更困難。</p>
+              <p class="l-en">Jianshi lies in southeastern Hsinchu County, rising from roughly 200 to 3,000 metres. Mountains, valleys and dispersed settlements make disaster communication and access difficult.</p>
+            </article>
+            <article class="place-card">
+              <div class="place-kicker"><span class="l-zh">前山／後山</span><span class="l-en">Two regions</span></div>
+              <h4 class="l-zh">兩個流域，兩種救援條件</h4>
+              <h4 class="l-en">Two watersheds, two rescue contexts</h4>
+              <p class="l-zh">前山屬頭前溪流域，交通與人口較集中；後山屬大漢溪流域，山勢更高、森林更密，包含司馬庫斯、鎮西堡等部落。</p>
+              <p class="l-en">The front mountains follow the Touqian River and have better access; the remote Dahan River side is higher and more forested, including Smangus and Cinsbu.</p>
+            </article>
+            <article class="place-card">
+              <div class="place-kicker"><span class="l-zh">文化核心</span><span class="l-en">Cultural heart</span></div>
+              <h4 class="l-zh">泰雅族與山林共生</h4>
+              <h4 class="l-en">Atayal life with the mountains</h4>
+              <p class="l-zh">織布、狩獵、農耕、河川漁撈與祖靈信仰延續至今；司馬庫斯、鎮西堡、那羅與馬里光各自保存並發展部落文化。</p>
+              <p class="l-en">Weaving, hunting, farming, river fishing and ancestral traditions continue today across communities including Smangus, Cinsbu, Naluo and Mrqwang.</p>
+            </article>
+            <article class="place-card">
+              <div class="place-kicker"><span class="l-zh">災害風險</span><span class="l-en">Hazards</span></div>
+              <h4 class="l-zh">豪雨會放大地形阻隔</h4>
+              <h4 class="l-en">Heavy rain amplifies isolation</h4>
+              <p class="l-zh">尖石是頭前溪與大漢溪部分水系的源區。颱風豪雨可能引發坍方、土石流與通訊中斷，正是 LinkGuard 要處理的情境。</p>
+              <p class="l-en">Headwaters of the Touqian and Dahan systems cross Jianshi. Typhoons can trigger landslides, debris flows and network outages—the conditions LinkGuard is designed for.</p>
+            </article>
+            <article class="place-card">
+              <div class="place-kicker"><span class="l-zh">代表場景</span><span class="l-en">Landmarks</span></div>
+              <h4 class="l-zh">從溪谷到高山巨木</h4>
+              <h4 class="l-en">From river valleys to giant trees</h4>
+              <p class="l-zh">司馬庫斯、鎮西堡神木群、秀巒溫泉與青蛙石天空步道，呈現尖石從前山溪谷到後山高海拔森林的多樣地貌。</p>
+              <p class="l-en">Smangus, the Cinsbu giant-tree forest, Xiuluan hot springs and Frog Rock show the terrain’s range from front-country valleys to remote high forests.</p>
+            </article>
+            <article class="place-card">
+              <div class="place-kicker"><span class="l-zh">設計回應</span><span class="l-en">Design response</span></div>
+              <h4 class="l-zh">不依賴網路的在地韌性</h4>
+              <h4 class="l-en">Resilience without the internet</h4>
+              <p class="l-zh">LinkGuard 以 LoRa、自組節點與本地端 AI，在基地台失效時維持生命徵象、環境資料與搜救指令的流動。</p>
+              <p class="l-en">LinkGuard combines LoRa, self-forming nodes and on-device AI to keep vital signs, environmental data and rescue commands moving when cellular service fails.</p>
+            </article>
+          </div>
           </div>
         </details>
       </div>
