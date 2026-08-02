@@ -1,0 +1,14 @@
+build_cache:
+    compilation_count_since_last_purge: 2
+cache:
+    api2:
+        arduino:
+            cc/boards/v1/boards?vid-pid=0x2341-0x0078:
+                data: '[{"name":"Arduino UNO Q","fqbn":"arduino:zephyr:unoq"}]'
+                ts: 2026-08-01T05:06:59.543742+08:00
+            cc/boards/v1/boards?vid-pid=0x2341-0x1002:
+                data: '[{"name":"Arduino UNO R4 WiFi","fqbn":"arduino:renesas_uno:unor4wifi"}]'
+                ts: 2026-08-01T17:03:00.63114+08:00
+installation:
+    id: d9b3f182-fc8a-402b-8f96-e5e610a9e9f1
+    secret: f683b2cf-7c5a-4b82-8adb-58d620320da1

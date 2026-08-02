@@ -1,0 +1,12 @@
+board_manager:
+  additional_urls: []
+directories:
+  data: /Users/rouyun/Desktop/IYRC-2026/.arduino/data
+  downloads: /Users/rouyun/Desktop/IYRC-2026/.arduino/downloads
+  user: /Users/rouyun/Desktop/IYRC-2026/.arduino/user
+library:
+  enable_unsafe_install: false
+logging:
+  level: info
+metrics:
+  enabled: false

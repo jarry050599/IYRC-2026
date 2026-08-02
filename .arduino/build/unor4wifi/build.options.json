@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "",
+  "compiler.optimization_flags": "-Os",
+  "customBuildProperties": "",
+  "fqbn": "arduino:renesas_uno:unor4wifi",
+  "hardwareFolders": "/Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0,/Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0",
+  "otherLibrariesFolders": "/Users/rouyun/Desktop/IYRC-2026/.arduino/user/libraries",
+  "sketchLocation": "/Users/rouyun/Desktop/IYRC-2026/LinkGuard_Arduino"
+}

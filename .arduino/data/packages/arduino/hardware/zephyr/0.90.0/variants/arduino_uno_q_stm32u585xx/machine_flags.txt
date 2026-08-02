@@ -1,0 +1,10 @@
+-mcpu=cortex-m33
+-mthumb
+-mabi=aapcs
+-mfpu=fpv5-sp-d16
+-mfloat-abi=hard
+-mfp16-format=ieee
+-mtp=soft
+-ftls-model=local-exec
+-mlong-calls
+-mthumb

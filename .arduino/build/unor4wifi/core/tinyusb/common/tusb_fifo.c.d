@@ -1,0 +1,16 @@
+/Users/rouyun/Desktop/IYRC-2026/.arduino/build/unor4wifi/core/tinyusb/common/tusb_fifo.c.o: \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_fifo.c \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/osal/osal.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_common.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/tusb_option.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_compiler.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/variants/UNOWIFIR4/tusb_config.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_mcu.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_compiler.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_verify.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_types.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_debug.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_timeout.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/osal/osal_none.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_fifo.h \
+ /Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/renesas_uno/1.6.0/cores/arduino/tinyusb/common/tusb_fifo.h

@@ -1,0 +1,38 @@
+#include <Arduino.h>
+#line 1 "/Users/rouyun/Desktop/IYRC-2026/LinkGuard_Arduino/LinkGuard_Arduino.ino"
+// 12V 四線 RGB LED 燈條控制
+//
+// 燈條接線（依照片與常見線色判斷）：
+//   白線：12V 電源正極（共陽極）
+//   紅線：紅色通道，接紅色 MOSFET 的 Drain
+//   綠線：綠色通道，接綠色 MOSFET 的 Drain
+//   藍線：藍色通道，接藍色 MOSFET 的 Drain
+//
+// 每個 Arduino PWM 腳位需經電阻連到邏輯等級 N-MOSFET 的 Gate，
+// MOSFET Source 接 12V 電源負極，Arduino GND 也要接電源負極（共地）。
+// 請勿將 12V 或燈條直接接到 Arduino 的輸出腳位。
+
+const byte RED_PIN = 5;
+const byte GREEN_PIN = 6;
+const byte BLUE_PIN = 3;
+
+#line 17 "/Users/rouyun/Desktop/IYRC-2026/LinkGuard_Arduino/LinkGuard_Arduino.ino"
+void setup();
+#line 28 "/Users/rouyun/Desktop/IYRC-2026/LinkGuard_Arduino/LinkGuard_Arduino.ino"
+void loop();
+#line 17 "/Users/rouyun/Desktop/IYRC-2026/LinkGuard_Arduino/LinkGuard_Arduino.ino"
+void setup() {
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+
+  // 關閉紅光與藍光，只讓綠光全亮。
+  analogWrite(RED_PIN, 0);
+  analogWrite(GREEN_PIN, 255);
+  analogWrite(BLUE_PIN, 0);
+}
+
+void loop() {
+  // 綠光保持常亮，不需要重複執行。
+}
+

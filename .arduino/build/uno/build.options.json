@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "arduino:avr:uno",
+  "hardwareFolders": "/Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/avr/1.8.8,/Users/rouyun/Desktop/IYRC-2026/.arduino/data/packages/arduino/hardware/avr/1.8.8",
+  "otherLibrariesFolders": "/Users/rouyun/Desktop/IYRC-2026/.arduino/user/libraries",
+  "sketchLocation": "/Users/rouyun/Desktop/IYRC-2026/LinkGuard_Arduino"
+}
