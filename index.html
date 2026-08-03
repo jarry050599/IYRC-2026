@@ -581,13 +581,18 @@ section.alt { background: var(--bg-alt); }
 .chart-card { border: 1px solid var(--line); border-radius: 12px; background: var(--bg-card); padding: 24px; }
 .chart-card h3 { font-size: 16px; }
 .chart-card .unit-note { margin-top: 4px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; color: var(--fg-dim); }
-.bars { margin-top: 20px; display: grid; gap: 14px; }
+.bars { margin-top: 24px; display: grid; gap: 16px; }
 .bar-row { display: grid; grid-template-columns: 118px 1fr 62px; gap: 12px; align-items: center; }
 .bar-row .lbl { font-size: 12.5px; color: var(--fg-mid); }
-.bar-track { height: 10px; border-radius: 999px; background: var(--bg-alt); overflow: hidden; border: 1px solid var(--line-soft); }
+.bar-track {
+  height: 20px; border-radius: 6px;
+  background: color-mix(in srgb, var(--brand) 7%, var(--bg-alt));
+  overflow: hidden; border: 1px solid var(--line-soft);
+}
 .bar-fill {
-  height: 100%; width: 0; border-radius: 999px;
-  background: linear-gradient(90deg, var(--brand), var(--accent));
+  display: block; height: 100%; width: 0; border-radius: 5px;
+  background: linear-gradient(90deg, var(--brand), color-mix(in srgb, var(--brand) 58%, var(--accent)));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
   transition: width 1.1s var(--ease);
 }
 .bar-row .val { font-family: var(--mono); font-size: 12px; text-align: right; color: var(--fg); font-variant-numeric: tabular-nums; }
@@ -994,7 +999,7 @@ body.photo-lightbox-open { overflow: hidden; }
 .safety-status {
   display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
 }
-.safety-status span {
+.safety-status > span {
   padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px;
   color: var(--fg-mid); background: var(--bg-card);
   font: 10px var(--mono); letter-spacing: .07em;
@@ -2195,8 +2200,8 @@ html.no-motion .slides { transition: none; }
       <div class="eyebrow">05 — <span class="l-zh">數據與效能</span><span class="l-en">Data &amp; Performance</span></div>
       <h2 class="l-zh">把「可以用」變成<br>可以量的數字。</h2>
       <h2 class="l-en">Turning &ldquo;it works&rdquo;<br>into numbers you can check.</h2>
-      <p class="sec-note l-zh">第 4 節通訊實驗測得 LoRa 最大通訊距離約 1.96 公里；其他數值為依系統設定整理的設計值與工程估算。</p>
-      <p class="sec-note l-en">The Section 4 communication test measured a maximum LoRa range of approximately 1.96 km. Other figures are design values and engineering estimates derived from the system configuration.</p>
+      <p class="sec-note l-zh">四次通訊實驗測得 LoRa 最大通訊距離為 1.96 公里。</p>
+      <p class="sec-note l-en">Four communication tests measured a maximum LoRa range of 1.96 km.</p>
     </div>
 
     <div class="chart-grid">
@@ -2211,8 +2216,8 @@ html.no-motion .slides { transition: none; }
       <div class="eyebrow"><span class="l-zh">系統規格一覽</span><span class="l-en">System specs</span></div>
       <h2 class="l-zh">關鍵數字，一次看完。</h2>
       <h2 class="l-en">The key numbers, in one place.</h2>
-      <p class="sec-note l-zh">LoRa 距離為第 4 節實測；其餘為依目前排程、封包大小與耗電條件計算的設計估算。</p>
-      <p class="sec-note l-en">LoRa range is from the Section 4 field test. Other figures are design estimates calculated from current scheduling, packet-size and power assumptions.</p>
+      <p class="sec-note l-zh">LoRa 距離為四次通訊實驗的實測結果；其餘為依目前排程、封包大小與耗電條件計算的設計估算。</p>
+      <p class="sec-note l-en">LoRa ranges are measured results from four communication tests. Other figures are design estimates calculated from current scheduling, packet-size and power assumptions.</p>
     </div>
 
     <div class="table-scroll reveal" style="margin-top:24px">
@@ -2226,7 +2231,7 @@ html.no-motion .slides { transition: none; }
         <tbody>
           <tr>
             <th scope="row"><span class="l-zh">LoRa 通訊距離</span><span class="l-en">LoRa link distance</span></th>
-            <td><span class="l-zh">第 4 節實測最大約 1.96 km</span><span class="l-en">Section 4 measured max ~1.96 km</span></td>
+            <td><span class="l-zh">四次實測：1.59／1.73／1.85／1.96 km；最大 1.96 km</span><span class="l-en">Four tests: 1.59 / 1.73 / 1.85 / 1.96 km; maximum 1.96 km</span></td>
           </tr>
           <tr>
             <th scope="row"><span class="l-zh">生存信標節點電池續航</span><span class="l-en">Beacon battery life</span></th>
@@ -2444,7 +2449,7 @@ html.no-motion .slides { transition: none; }
                 </tr>
                 <tr>
                   <th scope="row" class="hl">LinkGuard<br><span class="sec-note">自組 LoRa Mesh</span></th>
-                  <td class="hl">沒有單一故障點；第 4 節實驗測得最大通訊距離約 1.96 公里；不需月租費，也不依賴開闊的天空視野。</td>
+                  <td class="hl">沒有單一故障點；四次實驗測得最大通訊距離為 1.96 公里；不需月租費，也不依賴開闊的天空視野。</td>
                 </tr>
               </tbody>
             </table>
@@ -2469,7 +2474,7 @@ html.no-motion .slides { transition: none; }
                 </tr>
                 <tr>
                   <th scope="row" class="hl">LinkGuard<br><span class="sec-note">self-built LoRa mesh</span></th>
-                  <td class="hl">No single point of failure; a maximum communication distance of approximately 1.96 kilometres measured in the Section 4 experiment; no subscription fee; and no need for a clear view of the sky.</td>
+                  <td class="hl">No single point of failure; a maximum communication distance of 1.96 kilometres measured across four tests; no subscription fee; and no need for a clear view of the sky.</td>
                 </tr>
               </tbody>
             </table>
@@ -2621,8 +2626,8 @@ html.no-motion .slides { transition: none; }
           <tr>
             <th scope="row"><span class="l-zh">覆蓋範圍</span><span class="l-en">Coverage</span></th>
             <td class="hl">
-              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；第 4 節實驗測得最大通訊距離約 1.96 公里。</span>
-              <span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; the Section 4 experiment measured a maximum range of approximately 1.96 km.</span>
+              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；四次實驗測得最大通訊距離為 1.96 公里。</span>
+              <span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; four tests measured a maximum range of 1.96 km.</span>
             </td>
             <td>
               <span class="l-zh">近乎全球，但需要開闊天空視野，樹冠層與室內／廢墟下容易失效</span>
@@ -3616,7 +3621,10 @@ html.no-motion .slides { transition: none; }
   /* Public presentation data: measured range plus clearly labelled design estimates */
   var CHART_DATA = {
     range:    { max: 2000, suffix: ' m', rows: [
-                  { zh: '第 4 節實驗', en: 'Section 4 test', value: 1960 }
+                  { zh: '第 1 次實驗', en: 'Test 1', value: 1590 },
+                  { zh: '第 2 次實驗', en: 'Test 2', value: 1730 },
+                  { zh: '第 3 次實驗', en: 'Test 3', value: 1850 },
+                  { zh: '第 4 次實驗', en: 'Test 4', value: 1960 }
                 ]},
     battery:  { max: 300,  suffix: ' h', rows: [
                   { zh: '低頻回報', en: 'Low duty cycle',  value: 240 },
@@ -3646,7 +3654,7 @@ html.no-motion .slides { transition: none; }
         el.innerHTML =
           '<span class="lbl"><span class="l-zh">' + row.zh + '</span>' +
           '<span class="l-en">' + row.en + '</span></span>' +
-          '<span class="bar-track"><span class="bar-fill" data-w="' + pct + '"></span></span>' +
+          '<span class="bar-track"><span class="bar-fill" data-w="' + pct + '" style="width:' + pct + '%"></span></span>' +
           '<span class="val">' + val + '</span>';
         host.appendChild(el);
       });
