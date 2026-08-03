@@ -1,6 +1,6 @@
-const CACHE_NAME = "linkguard-site-v1";
+const CACHE_NAME = "linkguard-site-v2";
 const OFFLINE_ASSETS = [
-  "./LinkGuard-%E7%B6%B2%E7%AB%99%E5%82%99%E4%BB%BD.html",
+  "./index.html",
   "./manifest.webmanifest",
   "./assets/linkguard-logo.jpg",
   "./assets/linkguard-proposal.pdf"
@@ -39,7 +39,7 @@ self.addEventListener("fetch", (event) => {
       })
       .catch(() =>
         caches.match(event.request).then((cached) =>
-          cached || caches.match("./LinkGuard-%E7%B6%B2%E7%AB%99%E5%82%99%E4%BB%BD.html")
+          cached || caches.match("./index.html")
         )
       )
   );
