@@ -3,7 +3,7 @@
   "short_name": "LinkGuard",
   "description": "以 LoRa 自組通訊、穿戴式感測與指揮應用程式建立災害搜救鏈路。",
   "lang": "zh-Hant",
-  "start_url": "./LinkGuard-%E7%B6%B2%E7%AB%99%E5%82%99%E4%BB%BD.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
