@@ -1932,7 +1932,7 @@ html.no-motion .slides { transition: none; }
             <div class="spec"><span class="k"><span class="l-zh">定翼 · 任務</span><span class="l-en">Fixed-wing · role</span></span><span class="v"><span class="l-zh">廣域掃描 · 標記座標</span><span class="l-en">Wide scan · mark position</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">四旋翼 · 任務</span><span class="l-en">Four-rotor · role</span></span><span class="v"><span class="l-zh">近距查證 · 懸停近拍</span><span class="l-en">Close check · hover &amp; film</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">協同</span><span class="l-en">Teaming</span></span><span class="v"><span class="l-zh">空地一體 · 三層搜索</span><span class="l-en">Air + ground · 3 layers</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">航程 / 飛行時間</span><span class="l-en">Range / flight time</span></span><span class="v"><span class="l-zh">定翼 ~8 km / 40 分；四旋翼 ~1.5 km / 15 分</span><span class="l-en">Fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></span></div>
+            <div class="spec"><span class="k"><span class="l-zh">作業距離 / 飛行時間</span><span class="l-en">Operating distance / flight time</span></span><span class="v"><span class="l-zh">定翼 ~8 km / 40 分；四旋翼 ~1.5 km / 15 分</span><span class="l-en">Fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></span></div>
           </div>
           <figure class="shot" style="margin-bottom:0">
             <img src="assets/optimized/system-06.webp" alt="四旋翼無人機 Four-Rotor Drone" loading="lazy"
@@ -2207,7 +2207,7 @@ html.no-motion .slides { transition: none; }
     <div class="chart-grid">
       <div class="chart-card reveal">
         <h3><span class="l-zh">LoRa 可通訊距離</span><span class="l-en">LoRa link distance</span></h3>
-        <div class="unit-note">BY TERRAIN · <span class="l-zh">單位：公尺 (m)</span><span class="l-en">unit: meters (m)</span></div>
+        <div class="unit-note">BY TEST · <span class="l-zh">單位：公尺 (m)</span><span class="l-en">unit: meters (m)</span></div>
         <div class="bars" data-chart="range"></div>
       </div>
     </div>
@@ -2250,7 +2250,7 @@ html.no-motion .slides { transition: none; }
             <td><span class="l-zh">設計估算：約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">Design estimate: ~40 min · flat / light rubble</span></td>
           </tr>
           <tr>
-            <th scope="row"><span class="l-zh">無人機航程與飛行時間</span><span class="l-en">UAV range / flight time</span></th>
+            <th scope="row"><span class="l-zh">無人機作業距離與飛行時間</span><span class="l-en">UAV operating distance / flight time</span></th>
             <td><span class="l-zh">設計估算：定翼約 8 km／40 分；四旋翼約 1.5 km／15 分</span><span class="l-en">Design estimate: fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></td>
           </tr>
           <tr>
@@ -2258,8 +2258,8 @@ html.no-motion .slides { transition: none; }
             <td><span class="l-zh">封包設計約 30–150 bytes；遺失率估算：開闊地 &lt; 5%、邊緣 &lt; 15%</span><span class="l-en">Packet design ~30–150 bytes; estimated loss: open &lt; 5%, edge &lt; 15%</span></td>
           </tr>
           <tr>
-            <th scope="row"><span class="l-zh">單一節點物料成本（BOM）</span><span class="l-en">BOM per node</span></th>
-            <td><span class="l-zh">設計估算：約 NT$2,000，無月租</span><span class="l-en">Design estimate: ~NT$2,000, no subscription</span></td>
+            <th scope="row"><span class="l-zh">SBN 單一節點物料成本（BOM）</span><span class="l-en">BOM per SBN node</span></th>
+            <td><span class="l-zh">設計估算：約 NT$2,000，無月租；其他模組成本見下表</span><span class="l-en">Design estimate: ~NT$2,000, no subscription; see the table below for other modules</span></td>
           </tr>
         </tbody>
       </table>
@@ -2489,7 +2489,7 @@ html.no-motion .slides { transition: none; }
               <tbody>
                 <tr>
                   <th scope="row">衛星通訊器<br><span class="sec-note">如 Garmin inReach 類產品</span></th>
-                  <td>成本高：每台約 NT$70,000，另需約 NT$2,000 月租費；而且需要開闊的天空視野，在尖石鄉的山谷與林蔭下訊號可能不穩定。</td>
+                  <td>裝置約 NT$12,000 起，另需約 NT$450–2,000 月租費；而且需要開闊的天空視野，在尖石鄉的山谷與林蔭下訊號可能不穩定。</td>
                 </tr>
                 <tr>
                   <th scope="row">Wi-Fi／藍牙 Mesh</th>
@@ -2514,7 +2514,7 @@ html.no-motion .slides { transition: none; }
               <tbody>
                 <tr>
                   <th scope="row">Satellite messenger<br><span class="sec-note">e.g. Garmin inReach-type products</span></th>
-                  <td>High cost: approximately NT$70,000 per device plus a monthly fee of about NT$2,000. It also needs a clear view of the sky, so reception may be unreliable in Jianshi Township&rsquo;s valleys and beneath dense tree cover.</td>
+                  <td>Devices start at approximately NT$12,000, plus a monthly fee of about NT$450–2,000. They also need a clear view of the sky, so reception may be unreliable in Jianshi Township&rsquo;s valleys and beneath dense tree cover.</td>
                 </tr>
                 <tr>
                   <th scope="row">Wi-Fi / Bluetooth mesh</th>
@@ -2741,8 +2741,8 @@ html.no-motion .slides { transition: none; }
           <tr>
             <th scope="row"><span class="l-zh">成本</span><span class="l-en">Cost</span></th>
             <td class="hl">
-              <span class="l-zh">單一節點物料成本約 NT$2,000，無月租費</span>
-              <span class="l-en">Bill of materials ~NT$2,000 per node, no subscription</span>
+              <span class="l-zh">SBN 單一節點物料成本約 NT$2,000，無月租費；其他模組依配置計價</span>
+              <span class="l-en">SBN bill of materials ~NT$2,000 per node, no subscription; other modules vary by configuration</span>
             </td>
             <td>
               <span class="l-zh">裝置費約 NT$12,000 ＋ 月租約 NT$450–2,000</span>
@@ -3275,12 +3275,12 @@ html.no-motion .slides { transition: none; }
         <ul class="road-list l-zh">
           <li><span class="b">→</span><span>10 節點：約 NT$20,000</span></li>
           <li><span class="b">→</span><span>40 節點：約 NT$80,000</span></li>
-          <li><span class="b">→</span><span>100 節點：約 NT$200,000；均以 NT$2,000／節點估算且不含人力、載具與備品</span></li>
+          <li><span class="b">→</span><span>100 節點：約 NT$200,000；均以 SBN 基準 NT$2,000／節點估算，不含人力、載具、SEN 價差與備品</span></li>
         </ul>
         <ul class="road-list l-en">
           <li><span class="b">→</span><span>10 nodes: approximately NT$20,000</span></li>
           <li><span class="b">→</span><span>40 nodes: approximately NT$80,000</span></li>
-          <li><span class="b">→</span><span>100 nodes: approximately NT$200,000; calculated at NT$2,000 per node, excluding labour, vehicles and spares</span></li>
+          <li><span class="b">→</span><span>100 nodes: approximately NT$200,000; calculated from the SBN baseline of NT$2,000 per node, excluding labour, vehicles, SEN cost differences and spares</span></li>
         </ul>
       </div>
 
