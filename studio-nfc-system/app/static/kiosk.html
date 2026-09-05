@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#f6f8fb">
+  <title>工作室打卡站</title>
+  <link rel="stylesheet" href="/static/styles.css?v=resources-1">
+</head>
+<body class="kiosk-body">
+  <main class="kiosk-shell">
+    <header class="kiosk-header">
+      <div class="kiosk-brand"><div class="kiosk-logo">M</div><div><strong>工作室打卡站</strong><small>Maker Space Check-in</small></div></div>
+      <div class="kiosk-time"><div><strong id="clockMain">--:--</strong><span id="clockSeconds">--</span></div><small id="clockDate">---- / -- / --</small></div>
+    </header>
+
+    <section id="nfcStation" class="nfc-station waiting" aria-live="polite">
+      <div class="nfc-visual">
+        <span class="nfc-ripple ripple-one"></span><span class="nfc-ripple ripple-two"></span>
+        <div class="nfc-disc">
+          <svg id="nfcIcon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="13" y="8" width="38" height="48" rx="7" stroke="currentColor" stroke-width="3"/><path d="M25 26c4-4 10-4 14 0M28.5 30c2-2 5-2 7 0M32 35h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <svg id="successIcon" class="hidden" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="3"/><path d="m21 32 7 7 15-16" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg id="errorIcon" class="hidden" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="3"/><path d="m25 25 14 14m0-14L25 39" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+          <span id="loadingSpinner" class="loading-spinner hidden"></span>
+        </div>
+      </div>
+      <div class="nfc-copy">
+        <span id="stateLabel" class="nfc-state-label"><i></i>等待感應</span>
+        <h1 id="stateTitle">請感應卡片</h1>
+        <p id="stateMessage">將 NFC 卡靠近讀卡區</p>
+        <div id="stateDetails" class="state-details hidden"></div>
+        <div id="actions" class="kiosk-actions"></div>
+      </div>
+    </section>
+
+    <section class="computer-section">
+      <div class="computer-heading"><div><span class="resource-kicker">工作室資源</span><h2>電腦即時狀態</h2><p>設備狀態會自動更新</p></div><div class="computer-heading-actions"><span class="device-total"><b id="deviceCount">–</b> 台設備</span><button class="material-entry" onclick="openMaterialCenter()"><span class="material-entry-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4-8 4-8-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7v10l8 4 8-4V7M12 11v10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><span class="material-entry-copy"><strong>材料領用</strong><small>登記本次使用材料</small></span><svg class="material-entry-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      <div id="computers" class="kiosk-pc-grid"><div class="kiosk-skeleton"></div><div class="kiosk-skeleton"></div><div class="kiosk-skeleton"></div><div class="kiosk-skeleton"></div></div>
+    </section>
+  </main>
+  <div id="materialCenter" class="material-center hidden" role="dialog" aria-modal="true">
+    <div class="material-center-panel">
+      <header><div><span class="material-kicker">MATERIAL CHECKOUT</span><h2>材料領用</h2><p id="materialSubtitle">登記本次使用的材料</p></div><button class="material-close" onclick="closeMaterialCenter()" aria-label="關閉">×</button></header>
+      <div id="materialAuth" class="material-auth"><div class="mini-nfc"><svg viewBox="0 0 64 64" fill="none"><rect x="13" y="8" width="38" height="48" rx="7" stroke="currentColor" stroke-width="3"/><path d="M25 26c4-4 10-4 14 0M28.5 30c2-2 5-2 7 0M32 35h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><h3>請感應卡片驗證身份</h3><p>材料領用必須由已驗證的使用者操作</p><button class="btn secondary" onclick="closeMaterialCenter()">取消</button></div>
+      <div id="materialBrowser" class="hidden">
+        <div class="material-tabs"><button class="active" onclick="switchMaterialTab('browse',this)">可領用材料</button><button onclick="switchMaterialTab('mine',this)">我的材料</button></div>
+        <div id="materialFilters" class="material-filters"><input id="kioskMaterialSearch" placeholder="搜尋材料名稱或規格" oninput="scheduleKioskMaterialSearch()"><select id="kioskMaterialCategory" onchange="loadKioskMaterials()"><option value="">全部分類</option><option value="resistor">電阻</option><option value="capacitor">電容</option><option value="transistor">電晶體</option></select></div>
+        <div id="materialList" class="material-list"></div>
+      </div>
+      <div id="takeMaterialModal" class="take-confirm hidden"><div><h3 id="takeMaterialName"></h3><p id="takeMaterialSpec"></p><div class="take-stock">目前庫存 <strong id="takeMaterialStock"></strong> 個</div><label>領用數量<div class="quantity-stepper"><button onclick="changeTakeQuantity(-1)">−</button><input id="takeQuantity" type="number" min="1" value="1" oninput="updateRemaining()"><button onclick="changeTakeQuantity(1)">＋</button></div></label><p class="remaining">領用後剩餘 <strong id="takeRemaining"></strong> 個</p><div class="kiosk-actions"><button class="btn secondary" onclick="closeTakeConfirm()">取消</button><button id="confirmTakeBtn" class="btn" onclick="confirmMaterialTake()">確認領用</button></div></div></div>
+      <div id="materialSuccess" class="material-success hidden"><div class="success-mark">✓</div><h3>材料領用成功</h3><strong id="materialSuccessName"></strong><p class="success-quantity">× <b id="materialSuccessQuantity"></b></p><p>剩餘庫存：<b id="materialSuccessRemaining"></b> 個</p><button class="btn" onclick="finishMaterialTake()">完成</button></div>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"><span class="toast-icon">✓</span><span id="toastText"></span></div>
+  <script src="/static/kiosk.js?v=resources-1"></script>
+</body>
+</html>
