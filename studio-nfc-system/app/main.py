@@ -15,11 +15,12 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Web
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from sqlalchemy import and_, func, inspect, or_, select, text, update
+from sqlalchemy import String, and_, func, inspect, or_, select, text, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, joinedload
 
 from .database import Base, SessionLocal, engine, get_db
+from .labels import labels_pdf
 from .models import (AttendanceRecord, AuditLog, Computer, Inventory, Item, Material,
                      MaterialRental, RentalRecord, Setting, Slot, ToolRental, User, now_local)
 from .security import TOKENS, default_admin_password, hash_password, new_token, verify_password
@@ -296,6 +297,28 @@ def init_db():
         if not db.scalar(select(User).where(User.role == "admin")):
             db.add(User(name="admin", role="admin", status="active",
                         password_hash=hash_password(default_admin_password())))
+        if not db.scalar(select(Slot.id).limit(1)):
+            for cabinet in ("A", "B"):
+                for number in range(1, 151):
+                    db.add(Slot(code=f"{cabinet}{number:03d}", cabinet=cabinet, capacity_hint=1))
+            db.flush()
+        if not db.get(Setting, "items_migrated_from_materials"):
+            subcategory_map = {"resistor": "電阻", "capacitor": "電容", "transistor": "電晶體"}
+            free_slots = list(db.scalars(select(Slot).order_by(Slot.code)))
+            for index, legacy in enumerate(db.scalars(select(Material).order_by(Material.id))):
+                item = Item(name=legacy.name, category="材料",
+                    subcategory=subcategory_map.get(legacy.category, "其他"),
+                    specs={"legacy_specification": legacy.specification or "",
+                           "legacy_location": legacy.location or ""},
+                    total_quantity=legacy.quantity, safe_stock_level=10,
+                    status=None, created_at=legacy.created_at,
+                    updated_at=legacy.updated_at or legacy.created_at)
+                db.add(item)
+                db.flush()
+                if legacy.quantity > 0:
+                    slot = free_slots[index % len(free_slots)]
+                    db.add(Inventory(item_id=item.id, slot_id=slot.id, quantity=legacy.quantity))
+            db.add(Setting(key="items_migrated_from_materials", value=dt(now_local())))
         db.commit()
 
 
@@ -346,6 +369,16 @@ def admin_page():
     return FileResponse(STATIC / "admin.html")
 
 
+@app.get("/manifest.webmanifest", include_in_schema=False)
+def manifest():
+    return FileResponse(STATIC / "manifest.webmanifest", media_type="application/manifest+json")
+
+
+@app.get("/sw.js", include_in_schema=False)
+def service_worker():
+    return FileResponse(STATIC / "sw.js", media_type="application/javascript")
+
+
 @app.get("/health")
 def health():
     return {"status": "ok", "time": dt(now_local())}
@@ -365,6 +398,340 @@ async def websocket_endpoint(ws: WebSocket):
 @app.get("/api/computers")
 def get_computers(db: Session = Depends(get_db)):
     return computers_json(db)
+
+
+def validate_item(data: ItemIn):
+    if data.category not in {"材料", "消耗品", "工具"}:
+        raise HTTPException(422, "品項分類必須是材料、消耗品或工具")
+    if data.category == "工具" and data.status not in {None, "在庫", "借出", "維修中"}:
+        raise HTTPException(422, "工具狀態不正確")
+
+
+def choose_slot(db: Session, item_id: int) -> Slot:
+    existing = db.scalar(select(Slot).join(Inventory).where(
+        Inventory.item_id == item_id).order_by(Slot.code))
+    if existing:
+        return existing
+    for slot in db.scalars(select(Slot).order_by(Slot.code)):
+        kinds = db.scalar(select(func.count(func.distinct(Inventory.item_id))).where(
+            Inventory.slot_id == slot.id, Inventory.quantity > 0)) or 0
+        if kinds < slot.capacity_hint:
+            return slot
+    raise HTTPException(409, "目前沒有可用儲位，請先新增儲位")
+
+
+@app.get("/api/items")
+def list_items(category: Optional[str] = None, subcategory: Optional[str] = None,
+               keyword: Optional[str] = None, admin: User = Depends(current_admin),
+               db: Session = Depends(get_db)):
+    query = select(Item).options(joinedload(Item.borrower)).order_by(Item.category, Item.name)
+    if category:
+        query = query.where(Item.category == category)
+    if subcategory:
+        query = query.where(Item.subcategory == subcategory)
+    rows = list(db.scalars(query))
+    if keyword:
+        needle = keyword.strip().casefold()
+        rows = [row for row in rows if needle in " ".join((row.name or "", row.mpn or "",
+                row.manufacturer or "", json.dumps(row.specs or {}, ensure_ascii=False))).casefold()]
+    return [item_json(row, db) for row in rows]
+
+
+@app.get("/api/items/{item_id}")
+def get_item(item_id: int, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    row = db.scalar(select(Item).options(joinedload(Item.borrower)).where(Item.id == item_id))
+    if not row:
+        raise HTTPException(404, "找不到品項")
+    return item_json(row, db)
+
+
+@app.post("/api/items", status_code=201)
+def create_item(data: ItemIn, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    validate_item(data)
+    if data.category == "工具" and not data.slot_id:
+        raise HTTPException(422, "工具必須指定固定儲位")
+    if data.category == "工具" and data.total_quantity != 1:
+        raise HTTPException(422, "工具採一物一格，初始數量必須是 1")
+    before = None
+    row = Item(name=data.name, category=data.category, subcategory=data.subcategory,
+        manufacturer=data.manufacturer, mpn=data.mpn, specs=data.specs,
+        total_quantity=0, safe_stock_level=data.safe_stock_level,
+        status=data.status or ("在庫" if data.category == "工具" else None))
+    db.add(row)
+    try:
+        db.flush()
+        if data.total_quantity:
+            slot = db.get(Slot, data.slot_id) if data.slot_id else choose_slot(db, row.id)
+            if not slot:
+                raise HTTPException(404, "找不到指定儲位")
+            db.add(Inventory(item_id=row.id, slot_id=slot.id, quantity=data.total_quantity))
+            row.total_quantity = data.total_quantity
+            db.flush()
+        audit(db, admin.id, "item_create", f"item:{row.id}",
+              {"before": before, "after": item_json(row, db)})
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(409, "廠商料號已存在")
+    return item_json(row, db)
+
+
+@app.put("/api/items/{item_id}")
+def update_item(item_id: int, data: ItemIn, admin: User = Depends(current_admin),
+                db: Session = Depends(get_db)):
+    validate_item(data)
+    row = db.get(Item, item_id)
+    if not row:
+        raise HTTPException(404, "找不到品項")
+    before = item_json(row, db)
+    for field in ("name", "category", "subcategory", "manufacturer", "mpn", "specs", "safe_stock_level", "status"):
+        setattr(row, field, getattr(data, field))
+    row.updated_at = now_local()
+    audit(db, admin.id, "item_update", f"item:{row.id}",
+          {"before": before, "after": item_json(row, db)})
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(409, "廠商料號已存在")
+    return item_json(row, db)
+
+
+@app.post("/api/inventory/in")
+def inventory_in(data: InventoryIn, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    item = db.get(Item, data.item_id)
+    if not item:
+        raise HTTPException(404, "找不到品項")
+    if item.category == "工具":
+        raise HTTPException(409, "工具不使用一般入庫流程")
+    slot = db.get(Slot, data.slot_id) if data.slot_id else choose_slot(db, item.id)
+    if not slot:
+        raise HTTPException(404, "找不到指定儲位")
+    before = item.total_quantity
+    inventory = db.scalar(select(Inventory).where(Inventory.item_id == item.id,
+        Inventory.slot_id == slot.id, Inventory.batch_no == data.batch_no))
+    if inventory:
+        inventory.quantity += data.quantity
+        if data.received_date:
+            inventory.received_date = data.received_date
+    else:
+        inventory = Inventory(item_id=item.id, slot_id=slot.id, quantity=data.quantity,
+                              batch_no=data.batch_no, received_date=data.received_date)
+        db.add(inventory)
+    item.total_quantity += data.quantity
+    item.updated_at = now_local()
+    audit(db, admin.id, "inventory_in", f"item:{item.id}",
+          {"before": {"quantity": before}, "after": {"quantity": item.total_quantity},
+           "slot": slot.code, "batch_no": data.batch_no})
+    db.commit()
+    return {"ok": True, "item": item_json(item, db), "slot_code": slot.code}
+
+
+@app.post("/api/inventory/out")
+def inventory_out(data: InventoryOut, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    item = db.get(Item, data.item_id)
+    if not item:
+        raise HTTPException(404, "找不到品項")
+    if item.category == "工具":
+        raise HTTPException(409, "工具請使用借出流程")
+    if item.total_quantity < data.quantity:
+        raise HTTPException(409, f"庫存不足，目前僅剩 {item.total_quantity} 個")
+    remaining = data.quantity
+    allocations = []
+    rows = list(db.scalars(select(Inventory).options(joinedload(Inventory.slot)).where(
+        Inventory.item_id == item.id, Inventory.quantity > 0).order_by(
+        Inventory.received_date.is_(None), Inventory.received_date, Inventory.id)))
+    for inventory in rows:
+        taken = min(remaining, inventory.quantity)
+        inventory.quantity -= taken
+        remaining -= taken
+        allocations.append({"slot": inventory.slot.code, "quantity": taken})
+        if remaining == 0:
+            break
+    if remaining:
+        db.rollback()
+        raise HTTPException(409, "儲位庫存資料不一致，請由管理員檢查")
+    before = item.total_quantity
+    item.total_quantity -= data.quantity
+    item.updated_at = now_local()
+    audit(db, admin.id, "inventory_out", f"item:{item.id}",
+          {"before": {"quantity": before}, "after": {"quantity": item.total_quantity},
+           "allocations": allocations})
+    db.commit()
+    return {"ok": True, "item": item_json(item, db), "allocations": allocations}
+
+
+@app.get("/api/items/{item_id}/slots")
+def item_slots(item_id: int, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    if not db.get(Item, item_id):
+        raise HTTPException(404, "找不到品項")
+    rows = db.execute(select(Inventory, Slot).join(Slot).where(
+        Inventory.item_id == item_id, Inventory.quantity > 0).order_by(Slot.code)).all()
+    return [{"inventory_id": inv.id, "slot_id": slot.id, "code": slot.code,
+             "quantity": inv.quantity, "batch_no": inv.batch_no,
+             "received_date": inv.received_date.isoformat() if inv.received_date else None}
+            for inv, slot in rows]
+
+
+@app.get("/api/slots/low-stock")
+def low_stock(admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    rows = db.scalars(select(Item).where(Item.category != "工具",
+        Item.total_quantity <= Item.safe_stock_level).order_by(Item.total_quantity))
+    return [item_json(row, db) for row in rows]
+
+
+@app.get("/api/slots/labels.pdf")
+def slot_labels_pdf(admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    codes = list(db.scalars(select(Slot.code).order_by(Slot.code)))
+    headers = {"Content-Disposition": 'attachment; filename="slot-labels.pdf"'}
+    return StreamingResponse(labels_pdf(codes), media_type="application/pdf", headers=headers)
+
+
+@app.get("/api/slots")
+def list_slots(keyword: Optional[str] = None, admin: User = Depends(current_admin),
+               db: Session = Depends(get_db)):
+    query = select(Slot).order_by(Slot.code)
+    if keyword:
+        query = query.where(Slot.code.ilike(f"%{keyword.strip()}%"))
+    rows = db.scalars(query)
+    return [{"id": row.id, "code": row.code, "cabinet": row.cabinet,
+             "parent_slot_id": row.parent_slot_id, "capacity_hint": row.capacity_hint}
+            for row in rows]
+
+
+@app.get("/api/slots/{code}")
+def slot_contents(code: str, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    slot = db.scalar(select(Slot).where(func.upper(Slot.code) == code.strip().upper()))
+    if not slot:
+        raise HTTPException(404, "找不到儲位")
+    rows = db.scalars(select(Inventory).options(joinedload(Inventory.item)).where(
+        Inventory.slot_id == slot.id, Inventory.quantity > 0).order_by(Inventory.id))
+    return {"id": slot.id, "code": slot.code, "cabinet": slot.cabinet,
+            "parent_slot_id": slot.parent_slot_id, "capacity_hint": slot.capacity_hint,
+            "items": [{"item_id": inv.item_id, "name": inv.item.name,
+                       "mpn": inv.item.mpn, "quantity": inv.quantity,
+                       "batch_no": inv.batch_no} for inv in rows]}
+
+
+@app.post("/api/slots", status_code=201)
+def create_slot(data: SlotIn, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    code = data.code.strip().upper()
+    if data.parent_slot_id and not db.get(Slot, data.parent_slot_id):
+        raise HTTPException(404, "找不到父儲位")
+    row = Slot(code=code, cabinet=data.cabinet.strip().upper(),
+               parent_slot_id=data.parent_slot_id, capacity_hint=data.capacity_hint)
+    db.add(row)
+    try:
+        db.flush()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(409, "儲位代碼已存在")
+    audit(db, admin.id, "slot_create", f"slot:{row.id}",
+          {"before": None, "after": {"code": code, "cabinet": row.cabinet,
+           "parent_slot_id": row.parent_slot_id, "capacity_hint": row.capacity_hint}})
+    db.commit()
+    return {"id": row.id, "code": row.code, "cabinet": row.cabinet,
+            "parent_slot_id": row.parent_slot_id, "capacity_hint": row.capacity_hint}
+
+
+@app.put("/api/slots/{slot_id}")
+def update_slot(slot_id: int, data: SlotIn, admin: User = Depends(current_admin),
+                db: Session = Depends(get_db)):
+    row = db.get(Slot, slot_id)
+    if not row:
+        raise HTTPException(404, "找不到儲位")
+    if data.parent_slot_id == slot_id:
+        raise HTTPException(422, "儲位不能設自己為父儲位")
+    if data.parent_slot_id and not db.get(Slot, data.parent_slot_id):
+        raise HTTPException(404, "找不到父儲位")
+    before = {"code": row.code, "cabinet": row.cabinet,
+              "parent_slot_id": row.parent_slot_id, "capacity_hint": row.capacity_hint}
+    row.code, row.cabinet = data.code.strip().upper(), data.cabinet.strip().upper()
+    row.parent_slot_id, row.capacity_hint = data.parent_slot_id, data.capacity_hint
+    after = {"code": row.code, "cabinet": row.cabinet,
+             "parent_slot_id": row.parent_slot_id, "capacity_hint": row.capacity_hint}
+    audit(db, admin.id, "slot_update", f"slot:{row.id}", {"before": before, "after": after})
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(409, "儲位代碼已存在")
+    return {"id": row.id, **after}
+
+
+@app.get("/api/tool-rentals")
+def tool_rentals(start: Optional[date] = None, end: Optional[date] = None,
+                 status: Optional[str] = None, admin: User = Depends(current_admin),
+                 db: Session = Depends(get_db)):
+    query = select(ToolRental).options(joinedload(ToolRental.item), joinedload(ToolRental.user)).order_by(
+        ToolRental.borrowed_at.desc())
+    if start:
+        query = query.where(ToolRental.borrowed_at >= datetime.combine(start, time.min))
+    if end:
+        query = query.where(ToolRental.borrowed_at < datetime.combine(end + timedelta(days=1), time.min))
+    if status:
+        query = query.where(ToolRental.status == status)
+    return [tool_rental_json(row) for row in db.scalars(query)]
+
+
+@app.post("/api/tools/{item_id}/borrow")
+def borrow_tool(item_id: int, data: ToolBorrowIn, admin: User = Depends(current_admin),
+                db: Session = Depends(get_db)):
+    item = db.get(Item, item_id)
+    user = db.get(User, data.user_id)
+    if not item or item.category != "工具":
+        raise HTTPException(404, "找不到工具")
+    if not user or user.status != "active":
+        raise HTTPException(404, "找不到有效使用者")
+    if item.status != "在庫":
+        raise HTTPException(409, "此工具目前無法借出")
+    before = item_json(item, db)
+    now = now_local()
+    item.status, item.current_borrower = "借出", user.id
+    item.borrower = user
+    item.borrowed_at, item.expected_return_at, item.updated_at = now, data.expected_return_at, now
+    rental = ToolRental(item_id=item.id, user_id=user.id, borrowed_at=now,
+                        expected_return_at=data.expected_return_at, status="borrowed")
+    db.add(rental)
+    db.flush()
+    audit(db, admin.id, "tool_borrow", f"item:{item.id}",
+          {"before": before, "after": item_json(item, db), "rental_id": rental.id})
+    db.commit()
+    return {"ok": True, "item": item_json(item, db), "rental": tool_rental_json(rental)}
+
+
+@app.post("/api/tools/{item_id}/return")
+def return_tool(item_id: int, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    item = db.get(Item, item_id)
+    if not item or item.category != "工具":
+        raise HTTPException(404, "找不到工具")
+    rental = db.scalar(select(ToolRental).options(joinedload(ToolRental.item),
+        joinedload(ToolRental.user)).where(ToolRental.item_id == item.id,
+        ToolRental.status == "borrowed").order_by(ToolRental.borrowed_at.desc()))
+    if item.status != "借出" or not rental:
+        raise HTTPException(409, "此工具沒有借出中的紀錄")
+    before = item_json(item, db)
+    now = now_local()
+    item.status, item.current_borrower = "在庫", None
+    item.borrower = None
+    item.borrowed_at, item.expected_return_at, item.updated_at = None, None, now
+    rental.status, rental.returned_at, rental.updated_at = "returned", now, now
+    audit(db, admin.id, "tool_return", f"item:{item.id}",
+          {"before": before, "after": item_json(item, db), "rental_id": rental.id})
+    db.commit()
+    return {"ok": True, "item": item_json(item, db), "rental": tool_rental_json(rental)}
+
+
+@app.get("/api/qr/resolve/{value}")
+def resolve_qr(value: str, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+    slot = db.scalar(select(Slot).where(func.upper(Slot.code) == value.strip().upper()))
+    if slot:
+        return {"type": "slot", "id": slot.id, "code": slot.code}
+    item = db.scalar(select(Item).where(Item.category == "工具",
+        or_(Item.mpn == value, func.cast(Item.id, String) == value)))
+    if item:
+        return {"type": "tool", "id": item.id, "name": item.name, "status": item.status}
+    raise HTTPException(404, "無法辨識這個 QR code")
 
 
 @app.get("/api/materials")

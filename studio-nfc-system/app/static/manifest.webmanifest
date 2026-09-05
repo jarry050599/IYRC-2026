@@ -1,0 +1,9 @@
+{
+  "name": "工作室管理系統",
+  "short_name": "工作室庫存",
+  "start_url": "/admin",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#10b981",
+  "lang": "zh-Hant"
+}

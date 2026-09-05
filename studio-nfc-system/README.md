@@ -138,3 +138,18 @@ pytest -q
 ```
 
 核心測試涵蓋簽到 → 借用 → 阻擋簽退 → 歸還 → 簽退，以及未知卡片處理。
+
+## QR 庫存與儲位
+
+管理後台的「材料管理」已擴充為材料、消耗品與工具庫存。首次啟動新版服務時會建立 `items`、`slots`、`inventory`、`tool_rentals`，建立 A001–A150、B001–B150 共 300 個儲位，並將舊 `materials` 資料複製到新結構；舊表保留，因此 migration 不會刪除既有紀錄。
+
+儲位 QR 只存代碼（例如 `A045-03`），工具 QR 可存品項 ID 或 MPN。管理後台可用相機掃描；瀏覽器通常只允許 `localhost` 或 HTTPS 使用相機，因此從手機以區網 IP 開啟時請在 Raspberry Pi 前方配置 HTTPS reverse proxy。未支援 `BarcodeDetector` 的瀏覽器仍可手動輸入標籤內容。
+
+下載目前資料庫內全部儲位標籤：登入後呼叫 `GET /api/slots/labels.pdf`。也可離線產生預設 300 張 50 mm × 12 mm 標籤：
+
+```bash
+source .venv/bin/activate
+python services/generate_slot_labels.py --output data/slot-labels.pdf
+```
+
+每頁是一張標籤，QR 位於左側、儲位代碼位於右側。列印時請選 100% 原始尺寸，避免自動縮放。

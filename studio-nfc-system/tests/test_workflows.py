@@ -177,3 +177,72 @@ def test_material_checkout_idempotency_stock_return_audit_and_persistence():
                                     headers=restarted_headers).json()["quantity"] == 7
         assert restarted_client.get(f"/api/admin/materials/{returnable['id']}",
                                     headers=restarted_headers).json()["quantity"] == 10
+
+
+def test_qr_inventory_auto_slotting_low_stock_and_audit():
+    with TestClient(app) as client:
+        headers = auth(client)
+        created = client.post("/api/items", headers=headers, json={
+            "name": "精密電阻", "category": "材料", "subcategory": "電阻",
+            "manufacturer": "Maker Parts", "mpn": "R-10K-TEST",
+            "specs": {"resistance": "10kΩ", "tolerance": "1%", "power": "1/4W"},
+            "total_quantity": 8, "safe_stock_level": 5
+        })
+        assert created.status_code == 201
+        item = created.json()
+        assert len(item["slots"]) == 1
+
+        found = client.get("/api/items?keyword=10kΩ&subcategory=電阻", headers=headers)
+        assert any(row["id"] == item["id"] for row in found.json())
+        added = client.post("/api/inventory/in", headers=headers,
+                            json={"item_id": item["id"], "quantity": 2})
+        assert added.status_code == 200
+        assert added.json()["slot_code"] == item["slots"][0]["code"]
+        assert added.json()["item"]["total_quantity"] == 10
+
+        removed = client.post("/api/inventory/out", headers=headers,
+                              json={"item_id": item["id"], "quantity": 6})
+        assert removed.status_code == 200
+        assert removed.json()["item"]["low_stock"] is True
+        low = client.get("/api/slots/low-stock", headers=headers).json()
+        assert any(row["id"] == item["id"] for row in low)
+        slot = client.get(f"/api/slots/{item['slots'][0]['code']}", headers=headers).json()
+        assert any(row["item_id"] == item["id"] for row in slot["items"])
+        labels = client.get("/api/slots/labels.pdf", headers=headers)
+        assert labels.status_code == 200
+        assert labels.content.startswith(b"%PDF")
+
+        actions = {row["action"] for row in client.get("/api/admin/audit-logs", headers=headers).json()}
+        assert {"item_create", "inventory_in", "inventory_out"} <= actions
+
+
+def test_tool_qr_borrow_return_and_records():
+    with TestClient(app) as client:
+        headers = auth(client)
+        borrower = client.post("/api/admin/users", headers=headers, json={
+            "name": "工具借用者", "role": "member", "card_uid": "TOOLCARD01", "status": "active"
+        }).json()
+        slot_id = client.get("/api/slots?keyword=B150", headers=headers).json()[0]["id"]
+        created = client.post("/api/items", headers=headers, json={
+            "name": "數位電表", "category": "工具", "subcategory": "其他",
+            "mpn": "TOOL-DMM-TEST", "specs": {}, "total_quantity": 1,
+            "safe_stock_level": 0, "status": "在庫", "slot_id": slot_id
+        })
+        assert created.status_code == 201
+        tool = created.json()
+        resolved = client.get("/api/qr/resolve/TOOL-DMM-TEST", headers=headers).json()
+        assert resolved == {"type": "tool", "id": tool["id"], "name": "數位電表", "status": "在庫"}
+
+        borrowed = client.post(f"/api/tools/{tool['id']}/borrow", headers=headers,
+                               json={"user_id": borrower["id"]})
+        assert borrowed.status_code == 200
+        assert borrowed.json()["item"]["current_borrower_name"] == "工具借用者"
+        assert client.post(f"/api/tools/{tool['id']}/borrow", headers=headers,
+                           json={"user_id": borrower["id"]}).status_code == 409
+        returned = client.post(f"/api/tools/{tool['id']}/return", headers=headers)
+        assert returned.status_code == 200
+        assert returned.json()["item"]["status"] == "在庫"
+        records = client.get("/api/tool-rentals", headers=headers).json()
+        assert any(row["item_id"] == tool["id"] and row["status"] == "returned" for row in records)
+        actions = {row["action"] for row in client.get("/api/admin/audit-logs", headers=headers).json()}
+        assert {"tool_borrow", "tool_return"} <= actions
