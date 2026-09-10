@@ -1409,12 +1409,12 @@ html.no-motion .slides { transition: none; }
     <h1 class="l-en">Guarding the forest in normal times,<br>saving lives when disaster strikes.</h1>
 
     <p class="lede l-zh">
-      以 <strong>主控器</strong> 為核心的災害救援通訊系統。當災害摧毀行動網路，
+      以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。當災害摧毀行動網路，
       以長距離無線電、穿戴式生理感測與本地端 AI，把受困者的生命徵象與環境資料送回指揮中心 ——
       重新接起搜救人員與受困者之間的連結。一張網路，兩種模式。
     </p>
     <p class="lede l-en">
-      A disaster rescue communication system built with <strong>the controller</strong> as the core.
+      A disaster rescue communication system built with <strong>LoRa ESP32-S3</strong> as the core.
       When a disaster destroys mobile networks, long-range wireless, body sensors and on-device AI
       carry victims&rsquo; vital signs and environment data back to the command center —
       connecting rescuers and victims again. One network, two modes.
@@ -1437,10 +1437,10 @@ html.no-motion .slides { transition: none; }
 
     <div class="chips">
       <span class="chip" tabindex="0">
-        <b>the controller</b> <span class="l-zh">為核心主控</span><span class="l-en">at the core</span>
+        <b>LoRa ESP32-S3</b> <span class="l-zh">為核心主控</span><span class="l-en">at the core</span>
         <span class="tip" role="tooltip">
-          <span class="l-zh">兩種節點的本體都以 模組化零件構成，由 主控器 讀取感測器、封裝資料並排程發送。</span>
-          <span class="l-en">Both node types are built from modular parts, with the controller reading the sensors, packing the data and scheduling transmission.</span>
+          <span class="l-zh">兩種節點的本體都以 模組化零件構成，由 LoRa ESP32-S3 讀取感測器、封裝資料並排程發送。</span>
+          <span class="l-en">Both node types are built from modular parts, with LoRa ESP32-S3 reading the sensors, packing the data and scheduling transmission.</span>
         </span>
       </span>
       <span class="chip" tabindex="0">
@@ -1497,7 +1497,7 @@ html.no-motion .slides { transition: none; }
     </div>
 
     <p class="body-text reveal l-zh">
-      LinkGuard 是一套以 <strong>主控器</strong> 為核心的災害救援通訊系統。
+      LinkGuard 是一套以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。
       <strong>生存信標節點</strong>與<strong>環境感測節點</strong>協同運作，
       搭配一台地面機器人與兩架無人機（定翼與四旋翼）。
       當災害摧毀行動網路，本系統以長距離無線電、穿戴式生理感測與 AI，
@@ -1505,7 +1505,7 @@ html.no-motion .slides { transition: none; }
       一張網路，兩種模式：平時守護山林，災時搶救生命。
     </p>
     <p class="body-text reveal l-en">
-      LinkGuard is a disaster rescue communication system built with <strong>the controller</strong> as the
+      LinkGuard is a disaster rescue communication system built with <strong>LoRa ESP32-S3</strong> as the
       core. The <strong>Survival Beacon Node</strong> and the <strong>Sensor Node</strong> work together
       with one ground robot and two drones (fixed-wing and four-rotor). When a disaster destroys mobile
       networks, our system uses long-range wireless, body sensors, and AI to send victims&rsquo; vital
@@ -1596,10 +1596,10 @@ html.no-motion .slides { transition: none; }
       <h2 class="l-zh">兩種節點、三台載具，<br>共用同一套無線系統。</h2>
       <h2 class="l-en">Two node types, three vehicles,<br>one shared wireless system.</h2>
       <p class="sec-note l-zh">
-        節點本體以 模組化零件構成，主控器 為主控 —— 讀取感測器、封裝資料並排程發送。點擊任一單元展開完整規格。
+        節點本體以 模組化零件構成，LoRa ESP32-S3 為主控 —— 讀取感測器、封裝資料並排程發送。點擊任一單元展開完整規格。
       </p>
       <p class="sec-note l-en">
-        Body built with modular parts; the controller is the main controller — it reads sensors, packs the data,
+        Body built with modular parts; LoRa ESP32-S3 is the main controller — it reads sensors, packs the data,
         and schedules transmission. Click any unit to expand its full spec.
       </p>
     </div>
@@ -1619,7 +1619,7 @@ html.no-motion .slides { transition: none; }
               <path d="M25 47h4l1.5-4 3 8 2-4h4" stroke-width="1.1"/>
             </svg>
             <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">SBN</span><span class="tag">the controller</span><span class="tag">LoRa</span></span>
+              <span class="unit-meta"><span class="unit-code">SBN</span><span class="tag">LoRa ESP32-S3</span><span class="tag">LoRa</span></span>
               <span class="nm l-zh">生存信標節點</span>
               <span class="nm l-en">Survival Beacon Node</span>
               <span class="one l-zh">即時回傳受困者的心率與血氧。</span>
@@ -1630,16 +1630,16 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="unit-body" id="u-sbn"><div><div class="unit-inner">
           <p class="desc l-zh">
-            以 模組化零件構成本體，主控器 為主控 —— 讀取感測器、封裝資料並排程發送。
+            以 模組化零件構成本體，LoRa ESP32-S3 為主控 —— 讀取感測器、封裝資料並排程發送。
             心率／血氧感測器即時回傳受困者的生命徵象；外掛的小型 LoRa 無線模組提供長距離、低功耗的資料鏈路。
           </p>
           <p class="desc l-en">
-            Body built with modular parts; the controller is the main controller — it reads sensors, packs the
+            Body built with modular parts; LoRa ESP32-S3 is the main controller — it reads sensors, packs the
             data, and schedules transmission. Heart rate / SpO₂ sensors send victims&rsquo; vital signs
             in real time, and a small add-on LoRa module gives long-range, low-power data links.
           </p>
           <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">the controller</span></div>
+            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">LoRa ESP32-S3</span></div>
             <div class="spec"><span class="k"><span class="l-zh">生理感測</span><span class="l-en">Vital signs</span></span><span class="v"><span class="l-zh">心率 / 血氧</span><span class="l-en">Heart rate / SpO₂</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">無線</span><span class="l-en">Wireless</span></span><span class="v"><span class="l-zh">LoRa 外掛模組</span><span class="l-en">LoRa add-on module</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">本體</span><span class="l-en">Body</span></span><span class="v"><span class="l-zh">模組化零件</span><span class="l-en">modular parts</span></span></div>
@@ -1676,7 +1676,7 @@ html.no-motion .slides { transition: none; }
               <path d="M27 50v9M37 50v9" stroke-width="0.8"/>
             </svg>
             <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">SEN</span><span class="tag">the controller</span><span class="tag">LoRa</span></span>
+              <span class="unit-meta"><span class="unit-code">SEN</span><span class="tag">LoRa ESP32-S3</span><span class="tag">LoRa</span></span>
               <span class="nm l-zh">環境感測節點</span>
               <span class="nm l-en">Sensor Node</span>
               <span class="one l-zh">全天候監看二次災害的徵兆。</span>
@@ -1687,16 +1687,16 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="unit-body" id="u-sen"><div><div class="unit-inner">
           <p class="desc l-zh">
-            同樣以 模組化零件構成本體、主控器 為主控。土壤含水量／坡度／水位感測器全天候監看二次災害的徵兆，
+            同樣以 模組化零件構成本體、LoRa ESP32-S3 為主控。土壤含水量／坡度／水位感測器全天候監看二次災害的徵兆，
             並與生存信標共用同一套無線系統 —— 這是「平時守護山林」的那一半。
           </p>
           <p class="desc l-en">
-            Also built with modular parts and controlled by the controller. Soil moisture / slope / water level
+            Also built with modular parts and controlled by LoRa ESP32-S3. Soil moisture / slope / water level
             sensors watch for second disasters day and night, and it shares the same wireless system as
             the Survival Beacon — this is the &ldquo;guarding the forest&rdquo; half of the system.
           </p>
           <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">the controller</span></div>
+            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">LoRa ESP32-S3</span></div>
             <div class="spec"><span class="k"><span class="l-zh">環境感測</span><span class="l-en">Environment</span></span><span class="v"><span class="l-zh">土壤含水 / 坡度 / 水位</span><span class="l-en">Soil / slope / water level</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">無線</span><span class="l-en">Wireless</span></span><span class="v"><span class="l-zh">與信標同一套</span><span class="l-en">Same as the beacon</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">監看</span><span class="l-en">Monitoring</span></span><span class="v"><span class="l-zh">全天候 · 二次災害</span><span class="l-en">24/7 · second disasters</span></span></div>
@@ -1879,8 +1879,8 @@ html.no-motion .slides { transition: none; }
               <span class="ph-note l-en">Save the photo as <code>assets/ugv.jpg</code> and it appears automatically.</span>
             </div>
             <figcaption>
-              <span class="l-zh">地面機器人 · 主控器 主控與麥克納姆輪</span>
-              <span class="l-en">Ground Robot · the controller controller, mecanum wheels</span>
+              <span class="l-zh">地面機器人 · LoRa ESP32-S3 主控與麥克納姆輪</span>
+              <span class="l-en">Ground Robot · LoRa ESP32-S3 controller, mecanum wheels</span>
             </figcaption>
           </figure>
         </div></div></div>
@@ -2152,11 +2152,11 @@ html.no-motion .slides { transition: none; }
           <div class="layer l-zh">Sense &amp; Send</div>
           <div class="layer l-en">Step one</div>
           <p class="desc l-zh">
-            主控器 讀取受困者的生命徵象與環境資料；LoRa 承載這些資料長距離傳輸，
+            LoRa ESP32-S3 讀取受困者的生命徵象與環境資料；LoRa 承載這些資料長距離傳輸，
             穿透倒塌建築、跨越山區抵達指揮中心。
           </p>
           <p class="desc l-en">
-            the controller reads victims&rsquo; vital signs and environment data; LoRa carries it long-range,
+            LoRa ESP32-S3 reads victims&rsquo; vital signs and environment data; LoRa carries it long-range,
             through broken buildings and across mountains.
           </p>
         </button>
@@ -2544,13 +2544,13 @@ html.no-motion .slides { transition: none; }
           </summary>
           <div class="tl-content">
           <p class="desc l-zh">
-            無線核心採用 <strong>主控器＋LoRa 模組</strong>。主控器 負責讀取感測資料、
+            無線核心採用 <strong>LoRa ESP32-S3＋LoRa 模組</strong>。LoRa ESP32-S3 負責讀取感測資料、
             封裝短封包、更新 OLED 與處理本機控制；LoRa 模組則提供低功耗、長距離的災區通訊。
             模組化設計方便快速組裝、替換與維修，也讓團隊能把時間集中在多角色流程、
             封包設計與現場操作可靠度。
           </p>
           <p class="desc l-en">
-            We chose <strong>the controller + a LoRa module</strong>. the controller reads sensor data,
+            We chose <strong>LoRa ESP32-S3 + a LoRa module</strong>. LoRa ESP32-S3 reads sensor data,
             packages short packets, updates the OLED and handles local controls, while the LoRa
             module provides low-power, long-range disaster-area communication. The modular design
             is quick to assemble, replace and repair, allowing the team to focus on role-based
@@ -2878,14 +2878,14 @@ html.no-motion .slides { transition: none; }
         </button>
         <div class="acc-body" id="a-fw"><div><div class="acc-inner">
           <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
-            系統以 <strong>主控器＋LoRa 無線模組</strong>為核心，預設 L4 Profile：
-            <strong>SF9、125 kHz、Coding Rate 4/6</strong>。主控器 負責感測、資料封裝、
+            系統以 <strong>LoRa ESP32-S3＋LoRa 無線模組</strong>為核心，預設 L4 Profile：
+            <strong>SF9、125 kHz、Coding Rate 4/6</strong>。LoRa ESP32-S3 負責感測、資料封裝、
             顯示與任務排程，LoRa 模組負責長距離短封包通訊；三種程式角色分別對應
             受困者節點、搜救節點與 HQ 指揮鏈。
           </p>
           <p class="body-text l-en" style="margin-top:6px;font-size:15px">
-            The system is built around <strong>the controller + a LoRa radio module</strong>. Its default L4
-            profile uses <strong>SF9, 125 kHz bandwidth and coding rate 4/6</strong>. the controller handles
+            The system is built around <strong>LoRa ESP32-S3 + a LoRa radio module</strong>. Its default L4
+            profile uses <strong>SF9, 125 kHz bandwidth and coding rate 4/6</strong>. LoRa ESP32-S3 handles
             sensing, packet construction, display and task scheduling, while LoRa carries long-range
             short packets. Three program roles cover victim, rescue and HQ command-chain nodes.
           </p>
