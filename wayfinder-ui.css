@@ -1,0 +1,20 @@
+/* Wayfinder-inspired presentation layer for LinkGuard. No content or behavior changes. */
+.nav{background:rgba(2,6,9,.94);border-bottom-color:rgba(255,255,255,.1);box-shadow:none}
+.nav.stuck{background:rgba(2,6,9,.97);box-shadow:0 10px 32px rgba(0,0,0,.24)}
+.brand{color:#fff}.nav-links a{color:#9caab3;background:transparent}.nav-links a:hover{color:#fff;background:transparent}.nav-links a.active{color:#fff;background:transparent;box-shadow:inset 0 -2px #19bce5}
+.nav-toggle,.icon-btn{color:#fff;background:transparent;border-color:rgba(255,255,255,.18)}
+.lang{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}.lang button{color:#9caab3}.nav .btn-primary{color:#071118;background:#eaf8fc;border-color:#eaf8fc;box-shadow:none}
+.hero{min-height:100svh;background:#020609;color:#fff;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0 0 0 43%;opacity:.9;background-image:linear-gradient(90deg,#020609 0%,rgba(2,6,9,.72) 18%,rgba(2,6,9,.1) 58%),linear-gradient(180deg,rgba(2,6,9,.08),rgba(2,6,9,.55)),url("assets/optimized/system-06.webp");background-repeat:no-repeat;background-position:center;background-size:cover}
+.hero:after{background:linear-gradient(90deg,#020609 0%,rgba(2,6,9,.98) 37%,rgba(2,6,9,.56) 54%,rgba(2,6,9,.06) 79%),linear-gradient(180deg,transparent 65%,#020609 100%)}
+.hero .wrap{z-index:1}.hero .hero-orbit{display:none}.hero .eyebrow{color:#23c4e8;text-shadow:none}
+.hero h1,.hero h1.l-zh,.hero h1.l-en{font-size:clamp(58px,6.3vw,86px);font-weight:600;line-height:1.14;letter-spacing:.005em;color:#fff;text-shadow:0 3px 28px rgba(0,0,0,.24);width:max-content;max-width:100%;white-space:nowrap}
+.hero-line-primary,.hero-line-accent{color:#fff}.hero .lede{max-width:630px;color:#aab6bd}.hero .lede strong{color:#fff}
+.hero .btn{color:#d7e1e6;background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.18);box-shadow:none}.hero .btn:hover{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(25,188,229,.55)}.hero .btn-primary{color:#071118;background:#f2f8fa;border-color:#f2f8fa}.hero .chip{color:#9eabb3;background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.13);box-shadow:none}.hero .chip strong{color:#27c5e8}
+.sec-head h2,.sec-head h2.l-zh,.sec-head h2.l-en{font-size:clamp(38px,4.6vw,64px);font-weight:600;line-height:1.14;letter-spacing:.005em}
+h3,.card h3,.chart-card h3,.unit-title .nm,.unit-title h3,.step h3,.tl-body h3,.safety-head h3,.member h3,.modal h3,footer h3{font-size:initial}
+.unit-title .nm{font-size:18px}.chart-card h3{font-size:20px}.tl-body h3{font-size:22px}.step h3{font-size:19px}
+section{padding-block:clamp(96px,10vw,144px)}.sec-head .eyebrow{background:transparent;border:0;border-radius:0;padding:0}.sec-head .eyebrow:before{width:30px}
+.card,.unit,.chart-card,.place-card,.road-card,.member{box-shadow:none}.card:hover,.unit:hover,.place-card:hover,.road-card:hover,.member:hover{box-shadow:0 12px 34px rgba(11,23,38,.07)}
+@media(max-width:900px){.nav-links,html[data-device=mobile] .nav-links{background:rgba(2,6,9,.98);border-bottom-color:rgba(255,255,255,.1)}.nav-links a{color:#aab5bc}.nav-links a.active{color:#fff}.hero:before{inset:0;opacity:.42;background-position:62% center}.hero:after{background:linear-gradient(180deg,rgba(2,6,9,.5),#020609 78%)}}
+@media(max-width:700px){.hero{min-height:auto}.hero h1,.hero h1.l-zh,.hero h1.l-en{font-size:clamp(40px,12vw,58px);white-space:normal;line-height:1.16}.sec-head h2,.sec-head h2.l-zh,.sec-head h2.l-en{font-size:clamp(32px,9vw,48px)}}
