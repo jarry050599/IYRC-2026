@@ -2053,6 +2053,41 @@ footer{border-top:1px solid rgba(94,215,255,.14);background:linear-gradient(180d
   .wall-photo,.wall-feature,.wall-wide{grid-column:1;grid-row:span 2}
 }
 </style>
+<style id="linkguard-typography-system">
+/* Typography system — no layout, color, content or behavior changes */
+:root{
+  --font-zh:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --font-en:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --font-tech:"IBM Plex Sans","Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --sans:var(--font-en);
+  --serif:var(--font-zh);
+}
+html:lang(zh-Hant),html[data-lang="zh"]{font-family:var(--font-zh)}
+body{font-family:var(--font-en);font-weight:400;line-height:1.8;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.l-zh{font-family:var(--font-zh)}
+.l-en{font-family:var(--font-en)}
+h1,h2,h3,h4{font-family:var(--font-en);font-synthesis:none}
+h1 .l-zh,h2.l-zh,h3.l-zh,h4.l-zh{font-family:var(--font-zh)}
+.hero h1,.hero h1.l-zh{font-family:var(--font-zh);font-weight:700;line-height:1.08;letter-spacing:-.03em;text-shadow:0 0 24px rgba(86,151,255,.055)}
+.hero h1.l-en{font-family:var(--font-en);font-weight:700;letter-spacing:-.035em}
+.hero .eyebrow{font-family:var(--font-tech);font-weight:600;letter-spacing:.18em;text-shadow:0 0 18px rgba(86,151,255,.065)}
+.hero .lede,.body-text,.sec-note,.desc,.card p,.unit p,.tl-content p,.acc-inner p{font-family:var(--font-en);font-weight:400;line-height:1.8}
+.hero .lede strong,.body-text strong,.sec-note strong,.desc strong{font-weight:600}
+.sec-head h2,.sec-head h2.l-zh{font-family:var(--font-zh);font-weight:700;line-height:1.12;letter-spacing:-.025em}
+.sec-head h2.l-en{font-family:var(--font-en);font-weight:700;letter-spacing:-.035em}
+h3,.card h3,.unit-title .nm,.unit-title h3,.step h3,.tl-body h3,.acc-head,.safety-copy h3{font-family:var(--font-en);font-weight:600;letter-spacing:-.012em}
+h3.l-zh,.card h3 .l-zh,.unit-title .nm .l-zh,.step h3.l-zh,.tl-body h3.l-zh{font-family:var(--font-zh)}
+.nav-links a{font-family:var(--font-en);font-weight:500;letter-spacing:.005em}
+.nav-links a.active{font-weight:600}
+.eyebrow,.tag,.chip,.unit-note,.arch-label,.freq,.place-kicker,.wall-photo-no,.safety-status>span{font-family:var(--font-tech);font-weight:500}
+.btn{font-family:var(--font-en);font-weight:600}
+.fact .n,.bar-row .val,.data-value,.spec-value,.cost,.price,[data-count]{font-family:var(--font-en);font-weight:700;font-variant-numeric:tabular-nums lining-nums}
+#data .bar-row:last-child .val{font-family:var(--font-en);font-weight:800;letter-spacing:-.035em}
+table,th,td,dl,dt,dd{font-family:var(--font-en)}
+th,dt{font-weight:600;letter-spacing:.025em}
+td,dd{font-weight:400}
+.caption,figcaption,.unit-title .one,.fact .t{font-family:var(--font-en);font-weight:400}
+</style>
 </head>
 <body>
 
