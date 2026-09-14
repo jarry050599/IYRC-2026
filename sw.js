@@ -1,4 +1,4 @@
-const CACHE_NAME = "linkguard-site-v11";
+const CACHE_NAME = "linkguard-site-v12";
 const OFFLINE_ASSETS = [
   "./index.html",
   "./manifest.webmanifest",
