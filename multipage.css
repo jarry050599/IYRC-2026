@@ -1,0 +1,389 @@
+/* LinkGuard multi-page presentation layer.
+   Page routing is declared with body[data-page]; content, data and interactive components are unchanged. */
+
+:root {
+  --page-nav-height: 78px;
+  --page-edge: clamp(20px, 4vw, 64px);
+  --page-rule: rgba(11, 23, 38, .11);
+  --page-muted: #637587;
+  --page-ink: #0b1726;
+  --page-cyan: #19bce5;
+  --page-soft: #f5f8fa;
+}
+
+/* Real page composition: each document exposes only its assigned research chapters. */
+body[data-page="home"] section:not(#summary):not(#background),
+body[data-page="system"] section:not(#composition):not(#functionality),
+body[data-page="research"] section:not(#data):not(#story):not(#compare),
+body[data-page="field"] section:not(#field),
+body[data-page="technical"] section:not(#deepdive):not(#roadmap),
+body[data-page="team"] section:not(#team) {
+  display: none !important;
+}
+
+body[data-page]:not([data-page="home"]) .hero {
+  display: none !important;
+}
+
+html {
+  scroll-padding-top: calc(var(--page-nav-height) + 22px);
+}
+
+body[data-page] {
+  min-width: 320px;
+  overflow-x: clip;
+  background: #fff;
+}
+
+/* Navigation clarity across pages. */
+body[data-page] .nav {
+  min-height: var(--page-nav-height);
+}
+
+body[data-page] .nav-inner {
+  min-height: var(--page-nav-height);
+}
+
+body[data-page] .nav-links {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(25, 188, 229, .45) transparent;
+}
+
+body[data-page] .nav-links a {
+  position: relative;
+  white-space: nowrap;
+}
+
+body[data-page] .nav-links a::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: 7px;
+  left: 12px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--page-cyan);
+  opacity: 0;
+  transform: scaleX(.3);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+body[data-page] .nav-links a:hover::after,
+body[data-page] .nav-links a.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+body[data-page] .nav-links a.active {
+  box-shadow: none;
+}
+
+/* Internal pages open like focused research chapters, not sliced landing-page bands. */
+body[data-page]:not([data-page="home"]) section {
+  border-bottom: 1px solid var(--page-rule);
+}
+
+body[data-page="system"] #composition,
+body[data-page="research"] #data,
+body[data-page="field"] #field,
+body[data-page="technical"] #deepdive,
+body[data-page="team"] #team {
+  padding-top: clamp(140px, 14vw, 200px);
+  background:
+    radial-gradient(circle at 82% 0%, rgba(25, 188, 229, .10), transparent 31rem),
+    linear-gradient(180deg, #f8fbfc 0%, #fff 34%);
+}
+
+body[data-page] section {
+  position: relative;
+}
+
+body[data-page] section.alt {
+  background: #f6f9fb;
+}
+
+/* Stable section rhythm and readable widths. */
+body[data-page] section > .wrap {
+  width: min(100% - (var(--page-edge) * 2), 1240px);
+}
+
+body[data-page] .sec-head {
+  max-width: 880px;
+  margin-bottom: clamp(38px, 5vw, 68px);
+}
+
+body[data-page] .sec-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #0b8fb0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+body[data-page] .sec-head .eyebrow::before {
+  flex: 0 0 30px;
+}
+
+body[data-page] .sec-head h2,
+body[data-page] .sec-head h2.l-zh,
+body[data-page] .sec-head h2.l-en {
+  max-width: 16ch;
+  margin-top: 16px;
+  color: var(--page-ink);
+  text-wrap: balance;
+}
+
+body[data-page] .sec-head p {
+  max-width: 72ch;
+  color: var(--page-muted);
+  line-height: 1.82;
+}
+
+/* Consistent surfaces without flattening the different engineering modules. */
+body[data-page] .card,
+body[data-page] .unit,
+body[data-page] .chart-card,
+body[data-page] .place-card,
+body[data-page] .road-card,
+body[data-page] .member,
+body[data-page] .acc-item,
+body[data-page] .safety-block {
+  border-color: rgba(11, 23, 38, .11);
+  box-shadow: 0 1px 2px rgba(11, 23, 38, .025), 0 12px 34px rgba(11, 23, 38, .045);
+}
+
+body[data-page] .card:hover,
+body[data-page] .unit:hover,
+body[data-page] .chart-card:hover,
+body[data-page] .place-card:hover,
+body[data-page] .road-card:hover,
+body[data-page] .member:hover {
+  border-color: rgba(25, 188, 229, .5);
+  box-shadow: 0 18px 44px rgba(11, 23, 38, .08);
+}
+
+body[data-page] .card p,
+body[data-page] .unit p,
+body[data-page] .member p,
+body[data-page] .tl-body p {
+  line-height: 1.75;
+}
+
+/* Tables and engineering diagrams retain an intentionally readable minimum width. */
+body[data-page] .arch-wrap,
+body[data-page] .diagram-wrap,
+body[data-page] .table-wrap,
+body[data-page] .compare-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(25, 188, 229, .5) rgba(11, 23, 38, .06);
+}
+
+body[data-page] .arch-wrap::-webkit-scrollbar,
+body[data-page] .diagram-wrap::-webkit-scrollbar,
+body[data-page] .table-wrap::-webkit-scrollbar,
+body[data-page] .compare-wrap::-webkit-scrollbar {
+  height: 8px;
+}
+
+body[data-page] .arch-wrap::-webkit-scrollbar-thumb,
+body[data-page] .diagram-wrap::-webkit-scrollbar-thumb,
+body[data-page] .table-wrap::-webkit-scrollbar-thumb,
+body[data-page] .compare-wrap::-webkit-scrollbar-thumb {
+  background: rgba(25, 188, 229, .48);
+  border-radius: 999px;
+}
+
+body[data-page] table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+body[data-page] th {
+  color: #32475b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+body[data-page] td {
+  line-height: 1.65;
+}
+
+/* Field media receives a contained editorial treatment on its dedicated page. */
+body[data-page="field"] .gallery,
+body[data-page="field"] .photo-wall {
+  align-items: stretch;
+}
+
+body[data-page="field"] .photo-item,
+body[data-page="field"] .photo-wall button {
+  overflow: hidden;
+  border: 1px solid rgba(11, 23, 38, .10);
+  background: #eef3f5;
+}
+
+body[data-page="field"] .photo-item img,
+body[data-page="field"] .photo-wall img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body[data-page="field"] .video-player {
+  margin-top: clamp(48px, 6vw, 80px);
+  border: 1px solid rgba(11, 23, 38, .12);
+  box-shadow: 0 24px 64px rgba(11, 23, 38, .10);
+}
+
+/* Team is a deliberate final chapter, with consistent portraits and award/footer spacing. */
+body[data-page="team"] .team-grid {
+  align-items: stretch;
+}
+
+body[data-page="team"] .member {
+  height: 100%;
+}
+
+body[data-page] footer {
+  border-top: 1px solid rgba(255, 255, 255, .11);
+}
+
+body[data-page] footer .credits {
+  gap: clamp(28px, 4vw, 54px);
+}
+
+body[data-page] footer .credit-list {
+  line-height: 1.7;
+}
+
+/* Anchor targets remain visible below the sticky navigation. */
+body[data-page] section[id],
+body[data-page] [id="video"] {
+  scroll-margin-top: calc(var(--page-nav-height) + 22px);
+}
+
+@media (max-width: 1180px) {
+  body[data-page] .nav-links {
+    gap: 0;
+  }
+
+  body[data-page] .nav-links a {
+    padding-inline: 9px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --page-nav-height: 68px;
+    --page-edge: clamp(18px, 5vw, 40px);
+  }
+
+  body[data-page] .nav,
+  body[data-page] .nav-inner {
+    min-height: var(--page-nav-height);
+  }
+
+  body[data-page] .nav-links,
+  html[data-device="mobile"] body[data-page] .nav-links,
+  html[data-device="tablet"] body[data-page] .nav-links {
+    top: var(--page-nav-height);
+    max-height: calc(100svh - var(--page-nav-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 10px var(--page-edge) 18px;
+  }
+
+  body[data-page] .nav-links a {
+    min-height: 48px;
+    padding: 13px 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    font-size: 14px;
+  }
+
+  body[data-page] .nav-links a::after {
+    top: 12px;
+    right: auto;
+    bottom: 12px;
+    left: -10px;
+    width: 2px;
+    height: auto;
+    transform: scaleY(.3);
+  }
+
+  body[data-page] .nav-links a:hover::after,
+  body[data-page] .nav-links a.active::after {
+    transform: scaleY(1);
+  }
+
+  body[data-page="system"] #composition,
+  body[data-page="research"] #data,
+  body[data-page="field"] #field,
+  body[data-page="technical"] #deepdive,
+  body[data-page="team"] #team {
+    padding-top: clamp(112px, 18vw, 148px);
+  }
+
+  body[data-page] .sec-head {
+    margin-bottom: 38px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --page-edge: 18px;
+  }
+
+  body[data-page] section {
+    padding-block: 72px;
+  }
+
+  body[data-page] .sec-head h2,
+  body[data-page] .sec-head h2.l-zh,
+  body[data-page] .sec-head h2.l-en {
+    max-width: 100%;
+    font-size: clamp(32px, 9vw, 44px);
+    line-height: 1.16;
+  }
+
+  body[data-page] .sec-head p {
+    font-size: 15px;
+    line-height: 1.78;
+  }
+
+  body[data-page] .card,
+  body[data-page] .unit,
+  body[data-page] .chart-card,
+  body[data-page] .place-card,
+  body[data-page] .road-card,
+  body[data-page] .member {
+    border-radius: 16px;
+  }
+
+  body[data-page] .btn {
+    min-height: 46px;
+  }
+
+  body[data-page] footer .credits {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page] *,
+  body[data-page] *::before,
+  body[data-page] *::after {
+    scroll-behavior: auto !important;
+  }
+
+  body[data-page] .nav-links a::after {
+    transition: none;
+  }
+}
