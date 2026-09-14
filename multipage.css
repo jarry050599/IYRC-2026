@@ -12,9 +12,9 @@
 }
 
 /* Real page composition: each document exposes only its assigned research chapters. */
-body[data-page="home"] section:not(#summary):not(#background),
-body[data-page="system"] section:not(#composition):not(#functionality),
-body[data-page="research"] section:not(#data):not(#story):not(#compare),
+body[data-page="home"] section:not(#summary),
+body[data-page="system"] section:not(#composition):not(#functionality):not(#data),
+body[data-page="research"] section:not(#background):not(#story):not(#compare),
 body[data-page="field"] section:not(#field),
 body[data-page="technical"] section:not(#deepdive):not(#roadmap),
 body[data-page="team"] section:not(#team) {
@@ -84,7 +84,7 @@ body[data-page]:not([data-page="home"]) section {
 }
 
 body[data-page="system"] #composition,
-body[data-page="research"] #data,
+body[data-page="research"] #background,
 body[data-page="field"] #field,
 body[data-page="technical"] #deepdive,
 body[data-page="team"] #team {
@@ -324,7 +324,7 @@ body[data-page] [id="video"] {
   }
 
   body[data-page="system"] #composition,
-  body[data-page="research"] #data,
+  body[data-page="research"] #background,
   body[data-page="field"] #field,
   body[data-page="technical"] #deepdive,
   body[data-page="team"] #team {
