@@ -1963,7 +1963,7 @@ section{padding-block:var(--space-section)}
 .hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(5,11,20,.96) 0%,rgba(5,11,20,.78) 55%,rgba(5,11,20,.16) 100%)}
 .hero .wrap{display:grid;align-content:center;min-height:600px}
 .hero .eyebrow{font-size:clamp(18px,1.65vw,25px);font-weight:720;letter-spacing:.18em;color:var(--brand);text-shadow:0 0 30px rgba(94,215,255,.18);margin-bottom:clamp(32px,5vh,58px)}
-.hero h1{font-size:clamp(58px,7.1vw,104px);max-width:10ch;line-height:.98;letter-spacing:-.055em;text-wrap:balance}
+.hero h1{font-size:clamp(58px,7.1vw,104px);max-width:none;width:max-content;white-space:nowrap;line-height:.98;letter-spacing:-.055em}
 .hero .lede{max-width:720px;margin-top:clamp(28px,4vh,46px);font-size:clamp(17px,1.4vw,21px);line-height:1.9}
 .hero .cta-row{margin-top:38px;gap:12px}
 .hero .btn{min-height:52px;padding-inline:22px}
@@ -1989,9 +1989,9 @@ section{padding-block:var(--space-section)}
 .flow-step:hover,.flow-step.active{transform:translateY(-3px);box-shadow:0 18px 45px rgba(0,0,0,.24),0 0 28px rgba(94,215,255,.1)}
 #data{background:radial-gradient(circle at 74% 28%,rgba(94,215,255,.1),transparent 28%),linear-gradient(180deg,#071321,#050b14)}
 #data .chart-card{position:relative;overflow:hidden;min-height:420px;padding:clamp(26px,4vw,52px)}
-#data .chart-card:after{content:"1.96 km";position:absolute;right:clamp(24px,4vw,56px);top:clamp(68px,8vw,108px);font:800 clamp(48px,7vw,104px)/.9 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.075em;color:rgba(245,249,255,.96);text-shadow:0 0 35px rgba(94,215,255,.14);pointer-events:none}
-#data .chart-card:before{content:"REAL TEST";position:absolute;right:clamp(26px,4vw,58px);top:42px;padding:7px 10px;border:1px solid rgba(77,224,179,.28);border-radius:6px;color:var(--ok);font:700 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.17em}
-#data .bars{max-width:58%;margin-top:42px}
+#data .chart-card:after{content:none}
+#data .chart-card:before{content:none}
+#data .bars{max-width:none;margin-top:42px}#data .bar-row:last-child{padding:20px;border:1px solid rgba(94,215,255,.22);border-radius:12px;background:rgba(94,215,255,.045)}#data .bar-row:last-child .val{font-size:clamp(24px,3vw,42px);font-weight:800;letter-spacing:-.055em;color:var(--fg)}
 #data .table-scroll{box-shadow:var(--shadow-panel)}
 .timeline{position:relative;padding-left:42px}
 .timeline:before{left:11px;width:1px;background:linear-gradient(var(--brand),rgba(114,148,255,.5),rgba(94,215,255,.08));box-shadow:0 0 16px rgba(94,215,255,.22)}
@@ -2022,8 +2022,6 @@ footer{border-top:1px solid rgba(94,215,255,.14);background:linear-gradient(180d
   .hero{min-height:auto;padding-top:140px}
   .hero:after{background:linear-gradient(180deg,rgba(5,11,20,.86),rgba(5,11,20,.98))}
   .unit,.unit:nth-child(1),.unit:nth-child(2),.unit:nth-child(3),.unit:nth-child(n+4){grid-column:span 6;min-height:180px}
-  #data .chart-card:after{position:relative;display:block;right:auto;top:auto;margin:34px 0 22px;font-size:clamp(52px,12vw,88px)}
-  #data .chart-card:before{top:26px}
   #data .bars{max-width:none}
   .cost-grid:before,.deploy-grid:before{display:none}
 }
@@ -2033,7 +2031,7 @@ footer{border-top:1px solid rgba(94,215,255,.14);background:linear-gradient(180d
   .hero{padding-top:116px;padding-bottom:90px}
   .hero .wrap{min-height:0}
   .hero .eyebrow{font-size:15px;line-height:1.6;max-width:26ch;margin-bottom:30px}
-  .hero h1{font-size:clamp(46px,14vw,66px)}
+  .hero h1{font-size:clamp(46px,14vw,66px);width:auto;white-space:normal}
   .hero .lede{font-size:16px;line-height:1.78}
   .hero .cta-row{display:grid;grid-template-columns:1fr}
   .hero .btn{width:100%;justify-content:center;min-height:50px}
