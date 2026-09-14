@@ -21,18 +21,33 @@ def test_complete_attendance_and_rental_workflow():
     with TestClient(app) as client:
         headers = auth(client)
         created = client.post("/api/admin/users", headers=headers, json={
-            "name": "測試會員", "phone": "0912", "role": "member",
+            "name": "測試會員", "class_name": "資一甲", "student_id": "TEST001",
+            "grade": "一年級", "role": "member",
             "card_uid": "AA:BB:CC", "status": "active"
         })
         assert created.status_code == 200
-        tap = client.post("/api/nfc/tap", json={"card_uid": "AABBCC"})
-        assert tap.json()["action"] == "check_in"
-        rent = client.post("/api/rentals", json={"computer_id": "PC-01", "card_uid": "AABBCC"})
+        prepared_borrow = client.post("/api/rentals/prepare", json={"computer_id": "PC-01"})
+        assert prepared_borrow.status_code == 200
+        rent = client.post("/api/nfc/tap", json={"card_uid": "AABBCC"})
         assert rent.status_code == 200
+        assert rent.json()["action"] == "rental_success"
+        assert rent.json()["attendance"]["check_in_time"] is not None
+        assert rent.json()["computers"][0]["status"] == "in_use"
         blocked = client.post("/api/nfc/tap", json={"card_uid": "AABBCC"})
         assert blocked.json()["action"] == "return_required"
-        returned = client.patch("/api/rentals/return", json={"card_uid": "AABBCC"})
+        prepared = client.post("/api/rentals/return/prepare", json={"computer_id": "PC-01"})
+        assert prepared.status_code == 200
+        wrong_user = client.post("/api/admin/users", headers=headers, json={
+            "name": "其他會員", "class_name": "資二甲", "student_id": "TEST002",
+            "grade": "二年級", "role": "member", "card_uid": "WRONGCARD", "status": "active"
+        })
+        assert wrong_user.status_code == 200
+        wrong_card = client.post("/api/nfc/tap", json={"card_uid": "WRONGCARD"})
+        assert wrong_card.json()["action"] == "return_auth_error"
+        returned = client.post("/api/nfc/tap", json={"card_uid": "AABBCC"})
         assert returned.status_code == 200
+        assert returned.json()["action"] == "return_success"
+        assert returned.json()["computers"][0]["status"] == "available"
         checkout = client.post("/api/nfc/tap", json={"card_uid": "AABBCC"})
         assert checkout.json()["action"] == "check_out"
 
@@ -113,7 +128,8 @@ def test_material_checkout_idempotency_stock_return_audit_and_persistence():
     with TestClient(app) as client:
         headers = auth(client)
         user = client.post("/api/admin/users", headers=headers, json={
-            "name": "材料測試者", "role": "member", "card_uid": "MATCARD01", "status": "active"
+            "name": "材料測試者", "class_name": "資三甲", "student_id": "TEST003",
+            "grade": "三年級", "role": "member", "card_uid": "MATCARD01", "status": "active"
         })
         assert user.status_code == 200
         consumable = client.post("/api/admin/materials", headers=headers, json={
@@ -220,7 +236,8 @@ def test_tool_qr_borrow_return_and_records():
     with TestClient(app) as client:
         headers = auth(client)
         borrower = client.post("/api/admin/users", headers=headers, json={
-            "name": "工具借用者", "role": "member", "card_uid": "TOOLCARD01", "status": "active"
+            "name": "工具借用者", "class_name": "資一乙", "student_id": "TEST004",
+            "grade": "一年級", "role": "member", "card_uid": "TOOLCARD01", "status": "active"
         }).json()
         slot_id = client.get("/api/slots?keyword=B150", headers=headers).json()[0]["id"]
         created = client.post("/api/items", headers=headers, json={

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
   <meta name="theme-color" content="#f6f8fb">
   <title>工作室打卡站</title>
-  <link rel="stylesheet" href="/static/styles.css?v=resources-1">
+  <link rel="stylesheet" href="/static/styles.css?v=competition-groups-1">
 </head>
 <body class="kiosk-body">
   <main class="kiosk-shell">
@@ -14,7 +14,21 @@
       <div class="kiosk-time"><div><strong id="clockMain">--:--</strong><span id="clockSeconds">--</span></div><small id="clockDate">---- / -- / --</small></div>
     </header>
 
-    <section id="nfcStation" class="nfc-station waiting" aria-live="polite">
+    <div class="overview-grid">
+    <section class="competition-info" aria-label="比賽資訊">
+      <div class="competition-title"><span>COMPETITION</span><strong>比賽資訊</strong></div>
+      <div class="competition-events">
+        <dl><div><dt>比賽項目</dt><dd>桃園國際新創機器人節</dd></div><div><dt>日期</dt><dd>2026 / 11 / 07</dd></div><div><dt>倒數</dt><dd class="competition-countdown" data-start-date="2026-11-07" data-end-date="2026-11-07">計算中</dd></div><div><dt>參賽成員</dt><dd>葉柔昀、朱晢瑞、陳昱仁</dd></div></dl>
+        <dl><div><dt>比賽項目</dt><dd>台灣三星第七屆 Solve for Tomorrow 競賽</dd></div><div><dt>日期</dt><dd>2026 / 11 / 13</dd></div><div><dt>倒數</dt><dd class="competition-countdown" data-start-date="2026-11-13" data-end-date="2026-11-13">計算中</dd></div><div><dt>參賽成員</dt><dd>葉柔昀、朱晢瑞</dd></div></dl>
+        <dl><div><dt>比賽項目</dt><dd>2027年台灣國際科展</dd></div><div><dt>日期</dt><dd>2027 / 01 / 25–30</dd></div><div><dt>倒數</dt><dd class="competition-countdown" data-start-date="2027-01-25" data-end-date="2027-01-30">計算中</dd></div><div><dt>參賽成員</dt><dd>葉柔昀、朱晢瑞、陳昱仁</dd></div></dl>
+        <dl><div><dt>比賽項目</dt><dd>第57屆中區分區技能競賽</dd></div><div><dt>日期</dt><dd>2027 / 03 / 22–27</dd></div><div><dt>倒數</dt><dd class="competition-countdown" data-start-date="2027-03-22" data-end-date="2027-03-27">計算中</dd></div><div><dt>參賽成員</dt><dd>葉柔昀、朱晢瑞</dd></div></dl>
+      </div>
+    </section>
+    <aside class="team-card" aria-labelledby="teamTitle"><header><div><span>TEAM GROUPS</span><h2 id="teamTitle">分組名單</h2></div><small>共 3 位成員</small></header><section class="team-group"><div class="team-group-title"><strong>第 1 組</strong><span>3 人</span></div><ul><li><span class="team-avatar">葉</span><strong>葉柔昀</strong></li><li><span class="team-avatar">朱</span><strong>朱晢瑞</strong></li><li><span class="team-avatar">陳</span><strong>陳昱仁</strong></li></ul></section></aside>
+    </div>
+
+    <div class="dashboard-grid">
+    <section id="nfcStation" class="nfc-station waiting" role="status" aria-live="polite">
       <div class="nfc-visual">
         <span class="nfc-ripple ripple-one"></span><span class="nfc-ripple ripple-two"></span>
         <div class="nfc-disc">
@@ -34,9 +48,14 @@
     </section>
 
     <section class="computer-section">
-      <div class="computer-heading"><div><span class="resource-kicker">工作室資源</span><h2>電腦即時狀態</h2><p>設備狀態會自動更新</p></div><div class="computer-heading-actions"><span class="device-total"><b id="deviceCount">–</b> 台設備</span><button class="material-entry" onclick="openMaterialCenter()"><span class="material-entry-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4-8 4-8-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7v10l8 4 8-4V7M12 11v10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><span class="material-entry-copy"><strong>材料領用</strong><small>登記本次使用材料</small></span><svg class="material-entry-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      <div class="computer-heading">
+        <div class="computer-heading-copy"><h2>電腦即時狀態</h2><p><span class="device-total"><b id="deviceCount">–</b> 台設備</span><span class="live-update"><i></i>即時更新中</span></p></div>
+        <div class="computer-heading-actions"><button class="material-entry" onclick="openMaterialCenter()"><span class="material-entry-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4-8 4-8-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7v10l8 4 8-4V7M12 11v10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><span class="material-entry-copy"><strong>材料領用</strong><small>登記本次使用材料</small></span><svg class="material-entry-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
       <div id="computers" class="kiosk-pc-grid"><div class="kiosk-skeleton"></div><div class="kiosk-skeleton"></div><div class="kiosk-skeleton"></div><div class="kiosk-skeleton"></div></div>
+      <button class="material-entry mobile-material-entry" onclick="openMaterialCenter()"><span class="material-entry-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4-8 4-8-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7v10l8 4 8-4V7M12 11v10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><span class="material-entry-copy"><strong>材料領用</strong><small>登記本次使用材料</small></span><svg class="material-entry-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </section>
+    </div>
   </main>
   <div id="materialCenter" class="material-center hidden" role="dialog" aria-modal="true">
     <div class="material-center-panel">
@@ -52,6 +71,6 @@
     </div>
   </div>
   <div id="toast" class="toast hidden"><span class="toast-icon">✓</span><span id="toastText"></span></div>
-  <script src="/static/kiosk.js?v=resources-1"></script>
+  <script src="/static/kiosk.js?v=competition-info-3"></script>
 </body>
 </html>

@@ -28,7 +28,10 @@ from .security import TOKENS, default_admin_password, hash_password, new_token, 
 STATIC = Path(__file__).resolve().parent / "static"
 connections: set[WebSocket] = set()
 binding: dict[str, Any] = {"user_id": None, "admin_id": None, "expires": None}
+last_unregistered_card: dict[str, Any] = {"uid": None, "seen_at": None}
 material_mode: dict[str, Any] = {"expires": None}
+computer_return_mode: dict[str, Any] = {"computer_id": None, "expires": None}
+computer_borrow_mode: dict[str, Any] = {"computer_id": None, "expires": None}
 material_sessions: dict[str, tuple[int, datetime]] = {}
 last_auto_close: Optional[date] = None
 
@@ -41,6 +44,10 @@ class RentalIn(TapIn):
     computer_id: str
 
 
+class ComputerReturnPrepare(BaseModel):
+    computer_id: str
+
+
 class LoginIn(BaseModel):
     username: str
     password: str
@@ -49,7 +56,10 @@ class LoginIn(BaseModel):
 class UserIn(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     phone: Optional[str] = None
-    role: str
+    class_name: Optional[str] = Field(default=None, max_length=30)
+    student_id: Optional[str] = Field(default=None, max_length=30)
+    grade: Optional[str] = None
+    role: str = "member"
     card_uid: Optional[str] = None
     status: str = "active"
     password: Optional[str] = None
@@ -138,7 +148,9 @@ def dt(value: Optional[datetime]) -> Optional[str]:
 
 
 def user_json(user: User) -> dict:
-    return {"id": user.id, "name": user.name, "phone": user.phone, "role": user.role,
+    return {"id": user.id, "name": user.name, "phone": user.phone,
+            "class_name": user.class_name, "student_id": user.student_id, "grade": user.grade,
+            "role": user.role,
             "card_uid": user.card_uid, "status": user.status, "created_at": dt(user.created_at)}
 
 
@@ -236,12 +248,14 @@ def active_rental(db: Session, user_id: int):
 def computers_json(db: Session) -> list[dict]:
     result = []
     for pc in db.scalars(select(Computer).order_by(Computer.id)):
-        item = {"id": pc.id, "name": pc.name, "status": pc.status, "user_name": None, "borrowed_at": None}
+        item = {"id": pc.id, "name": pc.name, "status": pc.status, "user_id": None,
+                "user_name": None, "borrowed_at": None}
         if pc.status == "in_use":
             rental = db.scalar(select(RentalRecord).options(joinedload(RentalRecord.user)).where(
                 RentalRecord.computer_id == pc.id, RentalRecord.returned_at.is_(None)))
             if rental:
-                item.update(user_name=rental.user.name, borrowed_at=dt(rental.borrowed_at))
+                item.update(user_id=rental.user_id, user_name=rental.user.name,
+                            borrowed_at=dt(rental.borrowed_at))
         result.append(item)
     return result
 
@@ -274,6 +288,30 @@ def current_admin(authorization: Optional[str] = Header(default=None), db: Sessi
 def init_db():
     Base.metadata.create_all(engine)
     # create_all does not alter an existing SQLite table; keep deployed databases compatible.
+    user_columns = {column["name"] for column in inspect(engine).get_columns("users")}
+    with engine.begin() as connection:
+        if "class_name" not in user_columns:
+            connection.execute(text("ALTER TABLE users ADD COLUMN class_name VARCHAR(30)"))
+        if "student_id" not in user_columns:
+            connection.execute(text("ALTER TABLE users ADD COLUMN student_id VARCHAR(30)"))
+        if "grade" not in user_columns:
+            connection.execute(text("ALTER TABLE users ADD COLUMN grade VARCHAR(20)"))
+        connection.execute(text("""
+            UPDATE users SET
+                class_name = trim(substr(phone, 1, instr(phone, '／') - 1)),
+                student_id = trim(substr(phone, instr(phone, '／') + 1))
+            WHERE role != 'admin' AND phone IS NOT NULL AND instr(phone, '／') > 0
+              AND (class_name IS NULL OR student_id IS NULL)
+        """))
+        connection.execute(text("""
+            UPDATE users SET grade = CASE
+                WHEN class_name LIKE '%一%' THEN '一年級'
+                WHEN class_name LIKE '%二%' THEN '二年級'
+                WHEN class_name LIKE '%三%' THEN '三年級'
+            END
+            WHERE role != 'admin' AND grade IS NULL
+        """))
+        connection.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS uq_users_student_id ON users(student_id) WHERE student_id IS NOT NULL AND student_id != ''"))
     material_columns = {column["name"] for column in inspect(engine).get_columns("materials")}
     if "updated_at" not in material_columns:
         with engine.begin() as connection:
@@ -361,12 +399,18 @@ app.mount("/static", StaticFiles(directory=STATIC), name="static")
 
 @app.get("/", include_in_schema=False)
 def kiosk_page():
-    return FileResponse(STATIC / "kiosk.html")
+    return FileResponse(STATIC / "kiosk.html", headers={
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "Pragma": "no-cache",
+    })
 
 
 @app.get("/admin", include_in_schema=False)
 def admin_page():
-    return FileResponse(STATIC / "admin.html")
+    return FileResponse(STATIC / "admin.html", headers={
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "Pragma": "no-cache",
+    })
 
 
 @app.get("/manifest.webmanifest", include_in_schema=False)
@@ -774,7 +818,66 @@ async def nfc_tap(data: TapIn, db: Session = Depends(get_db)):
 
     user = db.scalar(select(User).where(User.card_uid == uid, User.status == "active"))
     if not user or user.role == "admin":
+        if not user:
+            last_unregistered_card.update(uid=uid, seen_at=now_local())
         result = {"ok": False, "action": "unknown", "message": "卡片未註冊，請洽管理者綁卡"}
+        await broadcast({"type": "nfc", **result})
+        return result
+
+    if (computer_return_mode["computer_id"] and computer_return_mode["expires"]
+            and computer_return_mode["expires"] > now_local()):
+        computer_id = computer_return_mode["computer_id"]
+        rental = db.scalar(select(RentalRecord).options(joinedload(RentalRecord.computer)).where(
+            RentalRecord.computer_id == computer_id, RentalRecord.returned_at.is_(None)))
+        if not rental:
+            computer_return_mode.update(computer_id=None, expires=None)
+            result = {"ok": False, "action": "return_auth_error", "message": "這台電腦已經歸還"}
+        elif rental.user_id != user.id:
+            result = {"ok": False, "action": "return_auth_error",
+                      "message": "此卡片不是這台電腦的借用人，請感應正確卡片"}
+        else:
+            computer_return_mode.update(computer_id=None, expires=None)
+            rental.returned_at = now_local()
+            rental.computer.status = "available"
+            db.commit()
+            result = {"ok": True, "action": "return_success",
+                      "message": f"已歸還 {rental.computer_id}，使用 {rental_json(rental)['duration_minutes']} 分鐘",
+                      "user": user_json(user), "rental": rental_json(rental),
+                      "computers": computers_json(db)}
+        await broadcast({"type": "nfc", **result})
+        return result
+
+    if (computer_borrow_mode["computer_id"] and computer_borrow_mode["expires"]
+            and computer_borrow_mode["expires"] > now_local()):
+        computer_id = computer_borrow_mode["computer_id"]
+        computer_borrow_mode.update(computer_id=None, expires=None)
+        pc = db.get(Computer, computer_id)
+        existing_rental = active_rental(db, user.id)
+        if existing_rental:
+            result = {"ok": False, "action": "rental_error",
+                      "message": f"你已借用 {existing_rental.computer_id}，請先歸還"}
+        elif not pc or pc.status != "available":
+            result = {"ok": False, "action": "rental_error", "message": "此電腦目前無法借用"}
+        else:
+            attendance = active_attendance(db, user.id)
+            if not attendance:
+                attendance = AttendanceRecord(user_id=user.id,
+                    type="staff_shift" if user.role == "staff" else "member_visit")
+                db.add(attendance)
+            rental = RentalRecord(computer_id=pc.id, user_id=user.id)
+            pc.status = "in_use"
+            db.add(rental)
+            try:
+                db.commit()
+            except IntegrityError:
+                db.rollback()
+                result = {"ok": False, "action": "rental_error", "message": "此電腦剛被其他使用者借用"}
+            else:
+                db.refresh(rental)
+                result = {"ok": True, "action": "rental_success", "message": f"已借用 {pc.id}",
+                          "user": user_json(user), "attendance": attendance_json(attendance),
+                          "rental": rental_json(rental), "material_token": issue_material_session(user.id),
+                          "computers": computers_json(db)}
         await broadcast({"type": "nfc", **result})
         return result
     attendance = active_attendance(db, user.id)
@@ -936,6 +1039,36 @@ async def borrow(data: RentalIn, db: Session = Depends(get_db)):
     return result
 
 
+@app.post("/api/rentals/prepare")
+def prepare_computer_borrow(data: ComputerReturnPrepare, db: Session = Depends(get_db)):
+    pc = db.get(Computer, data.computer_id)
+    if not pc or pc.status != "available":
+        raise HTTPException(409, "此電腦目前無法借用")
+    computer_return_mode.update(computer_id=None, expires=None)
+    computer_borrow_mode.update(computer_id=data.computer_id,
+                                expires=now_local() + timedelta(seconds=45))
+    return {"ok": True, "message": "請感應要借用電腦的 NFC 卡片", "computer_id": data.computer_id}
+
+
+@app.post("/api/rentals/return/prepare")
+def prepare_computer_return(data: ComputerReturnPrepare, db: Session = Depends(get_db)):
+    rental = db.scalar(select(RentalRecord).where(
+        RentalRecord.computer_id == data.computer_id, RentalRecord.returned_at.is_(None)))
+    if not rental:
+        raise HTTPException(409, "這台電腦目前沒有借用紀錄")
+    computer_borrow_mode.update(computer_id=None, expires=None)
+    computer_return_mode.update(computer_id=data.computer_id,
+                                expires=now_local() + timedelta(seconds=45))
+    return {"ok": True, "message": "請感應借用人的 NFC 卡片", "computer_id": data.computer_id}
+
+
+@app.post("/api/computers/action/cancel")
+def cancel_computer_action():
+    computer_borrow_mode.update(computer_id=None, expires=None)
+    computer_return_mode.update(computer_id=None, expires=None)
+    return {"ok": True}
+
+
 @app.patch("/api/rentals/return")
 async def return_computer(data: TapIn, db: Session = Depends(get_db)):
     user = db.scalar(select(User).where(User.card_uid == clean_uid(data.card_uid), User.status == "active"))
@@ -983,15 +1116,19 @@ def list_users(admin: User = Depends(current_admin), db: Session = Depends(get_d
 def create_user(data: UserIn, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
     if data.role not in {"member", "staff", "admin"}:
         raise HTTPException(422, "身分不正確")
+    if data.role != "admin" and (not data.class_name or not data.student_id or data.grade not in {"一年級", "二年級", "三年級"}):
+        raise HTTPException(422, "請完整填寫班級、學號與身分別")
     uid = clean_uid(data.card_uid) if data.card_uid else None
-    user = User(name=data.name, phone=data.phone, role=data.role, card_uid=uid, status=data.status,
+    user = User(name=data.name, phone=data.phone, class_name=data.class_name,
+                student_id=data.student_id, grade=data.grade, role=data.role,
+                card_uid=uid, status=data.status,
                 password_hash=hash_password(data.password) if data.password else None)
     db.add(user)
     try:
         db.flush()
     except Exception:
         db.rollback()
-        raise HTTPException(409, "卡片 UID 已存在")
+        raise HTTPException(409, "學號或卡片 UID 已存在")
     audit(db, admin.id, "create_user", f"user:{user.id}", user_json(user))
     db.commit()
     return user_json(user)
@@ -1004,8 +1141,11 @@ def update_user(user_id: int, data: UserIn, admin: User = Depends(current_admin)
         raise HTTPException(404, "找不到使用者")
     if data.role not in {"member", "staff", "admin"}:
         raise HTTPException(422, "身分不正確")
+    if data.role != "admin" and (not data.class_name or not data.student_id or data.grade not in {"一年級", "二年級", "三年級"}):
+        raise HTTPException(422, "請完整填寫班級、學號與身分別")
     before = user_json(user)
     user.name, user.phone, user.role, user.status = data.name, data.phone, data.role, data.status
+    user.class_name, user.student_id, user.grade = data.class_name, data.student_id, data.grade
     user.card_uid = clean_uid(data.card_uid) if data.card_uid else None
     if data.password:
         user.password_hash = hash_password(data.password)
@@ -1014,15 +1154,31 @@ def update_user(user_id: int, data: UserIn, admin: User = Depends(current_admin)
         db.commit()
     except Exception:
         db.rollback()
-        raise HTTPException(409, "卡片 UID 已存在")
+        raise HTTPException(409, "學號或卡片 UID 已存在")
     return user_json(user)
 
 
 @app.post("/api/admin/users/{user_id}/bind")
-def start_binding(user_id: int, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
+async def start_binding(user_id: int, admin: User = Depends(current_admin), db: Session = Depends(get_db)):
     user = db.get(User, user_id)
     if not user:
         raise HTTPException(404, "找不到使用者")
+    seen_at = last_unregistered_card["seen_at"]
+    if (last_unregistered_card["uid"] and seen_at
+            and now_local() - seen_at <= timedelta(seconds=10)):
+        uid = last_unregistered_card["uid"]
+        conflict = db.scalar(select(User).where(User.card_uid == uid, User.id != user_id))
+        if not conflict:
+            before = user_json(user)
+            user.card_uid = uid
+            last_unregistered_card.update(uid=None, seen_at=None)
+            audit(db, admin.id, "bind_card", f"user:{user.id}",
+                  {"before": before, "after": user_json(user)})
+            db.commit()
+            result = {"ok": True, "action": "card_bound", "message": f"已綁定至 {user.name}",
+                      "user": user_json(user)}
+            await broadcast({"type": "nfc", **result})
+            return result
     binding.update(user_id=user_id, admin_id=admin.id, expires=now_local() + timedelta(seconds=60))
     audit(db, admin.id, "start_card_binding", f"user:{user_id}", {"expires": binding["expires"]})
     db.commit()
