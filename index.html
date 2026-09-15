@@ -2887,6 +2887,19 @@ body[data-page] .hero > .wrap > * { animation: none; }
 }
 
 </style>
+<style id="linkguard-ui-audit-20260915">
+/* Visual QA corrections: readable labels, text contrast, and footer clearance. */
+body[data-page] {
+  --accent: #08778f;
+  --tech-accent: #08778f;
+}
+body[data-page] footer .foot { padding-inline-end: 64px; }
+body[data-page] .unit-title .tag { font-size: 11px; }
+body[data-page] .unit-title .unit-code { font-size: 12px; }
+@media (min-width: 1321px) {
+  body[data-page] .nav .nav-links a { font-size: 13px; }
+}
+</style>
 </head>
 <body data-page="home">
 
