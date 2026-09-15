@@ -7,10 +7,10 @@
 <link rel="apple-touch-icon" href="assets/linkguard-logo.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#314092">
-<title>系統組成 — LinkGuard</title>
+<title>部署方案 — LinkGuard</title>
 <meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://linkguard.tw/system.html">
+<link rel="canonical" href="https://linkguard.tw/deployment.html">
 
 <!-- Social sharing: LINE, Facebook, Instagram and other Open Graph clients -->
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="LinkGuard">
 <meta property="og:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
 <meta property="og:description" content="以 LoRa 自組通訊與指揮應用程式，建立災害現場的搜救通訊鏈路。">
-<meta property="og:url" content="https://linkguard.tw/system.html">
+<meta property="og:url" content="https://linkguard.tw/deployment.html">
 <meta property="og:image" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:secure_url" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -2887,6 +2887,496 @@ body[data-page] .hero > .wrap > * { animation: none; }
 }
 
 </style>
+<style id="linkguard-technical-ui">
+/* Technical page presentation only. Content, anchors and scripts are untouched. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;450;500;600;650;700&display=swap');
+
+body[data-page="technical"] {
+  --tech-ink: #111827;
+  --tech-body: #475569;
+  --tech-muted: #64748b;
+  --tech-line: #e5e7eb;
+  --tech-wash: #f8fafc;
+  --tech-accent: #07839d;
+  --tech-radius: 16px;
+  --tech-shadow: 0 2px 4px rgba(15, 23, 42, .025);
+  --font-zh: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-en: "Inter", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-tech: var(--font-en);
+  --mono: "JetBrains Mono", "Noto Sans TC", "SFMono-Regular", Consolas, monospace;
+  --sans: var(--font-en);
+  --serif: var(--font-zh);
+  --bg: #fff;
+  --bg-alt: #f8fafc;
+  --bg-card: #fff;
+  --fg: #111827;
+  --fg-mid: #475569;
+  --fg-dim: #64748b;
+  --brand: #19bce5;
+  --brand-soft: #edf9fc;
+  --accent: #07839d;
+  --accent-soft: #edf9fc;
+  --line: #e5e7eb;
+  --line-soft: #edf0f3;
+  --shadow-1: var(--tech-shadow);
+  --shadow-2: 0 6px 20px rgba(15, 23, 42, .045);
+  --page-nav-height: 76px;
+  margin: 0;
+  min-width: 0;
+  color: var(--tech-ink);
+  background: #fff;
+  font-family: var(--font-en);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body[data-page="technical"] .l-zh { font-family: var(--font-en); }
+body[data-page="technical"] :is(button, input, select, textarea) { font-family: var(--font-en); }
+body[data-page="technical"] :is(h1, h2, h3, h4) {
+  font-family: var(--font-en);
+  font-weight: 600;
+  color: var(--tech-ink);
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+}
+body[data-page="technical"] :is(p, li, .sec-note, .body-text) { font-weight: 400; }
+body[data-page="technical"] :is(strong, b) { font-weight: 600; }
+body[data-page="technical"] .body-text strong { color: var(--tech-ink); }
+body[data-page="technical"] :is(.wrap, section > .wrap) {
+  width: min(1240px, calc(100% - 96px));
+  max-width: 1240px;
+  min-width: 0;
+  margin-inline: auto;
+}
+body[data-page="technical"] :is(.acc, .acc-item, .acc-inner, .acc-inner > *, .fw-role, .road-card, .credit-group, .contact-row > *) { min-width: 0; }
+body[data-page="technical"] :is(a, button):focus-visible {
+  outline: 2px solid var(--tech-accent);
+  outline-offset: 4px;
+}
+
+/* Quiet white navigation, with the existing menu and active-state behaviour. */
+body[data-page="technical"] .nav,
+body[data-page="technical"] .nav.stuck {
+  min-height: 76px;
+  background: #fff;
+  border-bottom: 1px solid var(--tech-line);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+body[data-page="technical"] .nav-inner {
+  width: min(1360px, calc(100% - 64px));
+  max-width: 1360px;
+  min-height: 76px;
+  gap: 18px;
+  padding-block: 12px;
+}
+body[data-page="technical"] .nav.stuck .nav-inner { padding-block: 10px; }
+body[data-page="technical"] .brand {
+  flex-shrink: 0;
+  color: var(--tech-ink);
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .13em;
+}
+body[data-page="technical"] .brand b { color: var(--tech-accent); }
+body[data-page="technical"] .brand-logo {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #edf0f3;
+  border-radius: 9px;
+  box-shadow: none;
+}
+body[data-page="technical"] .nav-links {
+  min-width: 0;
+  flex-wrap: nowrap;
+  gap: 0;
+  background: #fff;
+}
+body[data-page="technical"] .nav-links a {
+  padding: 10px 8px;
+  color: #64748b;
+  background: transparent;
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+body[data-page="technical"] .nav-links a:hover { color: var(--tech-ink); background: #f8fafc; }
+body[data-page="technical"] .nav-links a.active { color: var(--tech-accent); font-weight: 600; background: transparent; box-shadow: none; }
+body[data-page="technical"] .nav-links a::after { background: var(--brand); height: 2px; bottom: 3px; }
+body[data-page="technical"] .nav-right { flex: 0 0 auto; gap: 10px; }
+body[data-page="technical"] .lang { padding: 3px; background: #f8fafc; border: 1px solid var(--tech-line); box-shadow: none; }
+body[data-page="technical"] .lang button { min-height: 32px; padding: 5px 10px; color: var(--tech-muted); font-size: 12px; font-weight: 500; box-shadow: none; }
+body[data-page="technical"] .lang button[aria-pressed="true"] { color: var(--tech-accent); background: #eaf7fb; box-shadow: none; }
+body[data-page="technical"] .btn {
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--tech-line);
+  color: var(--tech-ink);
+  background: #fff;
+  font-weight: 550;
+  box-shadow: none;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+body[data-page="technical"] .btn:hover { transform: translateY(-2px); border-color: #b7dfe8; background: #f8fafc; box-shadow: none; }
+body[data-page="technical"] :is(.nav .btn-primary, .modal .btn-primary) { color: #07303a; border-color: var(--brand); background: var(--brand); box-shadow: none; }
+body[data-page="technical"] :is(.nav .btn-primary, .modal .btn-primary):hover { color: #06232c; background: #41c7e7; border-color: #41c7e7; }
+body[data-page="technical"] .nav .btn { padding-inline: 15px; font-size: 12px; }
+body[data-page="technical"] .nav-toggle { width: 44px; height: 44px; color: var(--tech-ink); background: #fff; border: 1px solid var(--tech-line); border-radius: 10px; }
+
+/* The existing section header becomes a calm, spacious introduction. */
+body[data-page="technical"] #deepdive {
+  padding-block: 112px 120px;
+  background: #fff;
+  border-bottom: 0;
+}
+body[data-page="technical"] .sec-head {
+  display: block;
+  max-width: 820px;
+  margin: 0 0 64px;
+}
+body[data-page="technical"] .eyebrow,
+body[data-page="technical"] .sec-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  min-height: 0;
+  padding: 0;
+  color: var(--tech-accent);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+body[data-page="technical"] .eyebrow::before { width: 22px; flex-basis: 22px; height: 1px; background: #93d5e3; box-shadow: none; }
+body[data-page="technical"] .sec-head h2,
+body[data-page="technical"] .sec-head h2.l-zh,
+body[data-page="technical"] .sec-head h2.l-en {
+  width: auto;
+  max-width: 100%;
+  margin: 20px 0 0;
+  font-family: var(--font-en);
+  font-size: clamp(40px, 4.2vw, 60px);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -.025em;
+  color: var(--tech-ink);
+  text-wrap: balance;
+}
+body[data-page="technical"] .sec-head h2.l-zh { letter-spacing: .01em; line-height: 1.3; }
+body[data-page="technical"] .sec-head .sec-note {
+  max-width: 720px;
+  margin-top: 24px;
+  color: var(--tech-muted);
+  font-family: var(--font-en);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: .005em;
+}
+
+/* Accordion states and content remain controlled by the existing script. */
+body[data-page="technical"] .acc {
+  display: grid;
+  gap: 12px;
+  margin-top: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+body[data-page="technical"] .acc-item {
+  overflow: hidden;
+  border: 1px solid var(--tech-line);
+  border-radius: var(--tech-radius);
+  background: #fff;
+  box-shadow: var(--tech-shadow);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+body[data-page="technical"] .acc-item:last-child { border-bottom: 1px solid var(--tech-line); }
+body[data-page="technical"] .acc-item:hover { border-color: #cbdce1; }
+body[data-page="technical"] .acc-item.open { border-color: #c9e2e9; box-shadow: 0 4px 18px rgba(15, 23, 42, .035); }
+body[data-page="technical"] .acc-head,
+body[data-page="technical"] .safety-block .acc-head {
+  min-height: 82px;
+  padding: 24px 28px;
+  gap: 20px;
+  color: var(--tech-ink);
+  background: #fff;
+  border-radius: 0;
+  font-family: var(--font-en);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: .005em;
+  box-shadow: none;
+  transition: background-color 180ms ease;
+}
+body[data-page="technical"] .acc-head:hover { background: #fafcfd; }
+body[data-page="technical"] .acc-head .t { min-width: 0; font-size: 17px; font-weight: 600; overflow-wrap: anywhere; }
+body[data-page="technical"] .acc-head .chev { flex: 0 0 24px; width: 24px; height: 24px; padding: 3px; color: #7b8b9e; background: #f8fafc; border: 1px solid #edf0f3; border-radius: 50%; transition: transform 200ms ease, color 180ms ease; }
+body[data-page="technical"] .acc-item.open .acc-head .chev { color: var(--tech-accent); background: #eef9fb; }
+body[data-page="technical"] .acc-inner,
+body[data-page="technical"] .safety-block .acc-inner { padding: 0 28px 30px; color: var(--tech-body); }
+body[data-page="technical"] .acc-body > div { min-width: 0; }
+body[data-page="technical"] .acc-inner .body-text {
+  max-width: 920px;
+  margin: 4px 0 20px !important;
+  font-family: var(--font-en);
+  font-size: 15px !important;
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--tech-body);
+  overflow-wrap: anywhere;
+}
+body[data-page="technical"] .acc-inner .body-text:last-child { margin-bottom: 0 !important; }
+body[data-page="technical"] .acc-inner strong { color: var(--tech-ink); font-weight: 600; }
+
+/* Technical tables: precise alignment with contained horizontal scrolling. */
+body[data-page="technical"] .table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 24px 0;
+  border: 1px solid var(--tech-line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: none;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #b9cbd1 #f8fafc;
+}
+body[data-page="technical"] table { width: 100%; min-width: 640px; table-layout: auto; border-collapse: separate; border-spacing: 0; background: #fff; color: var(--tech-body); }
+body[data-page="technical"] :is(th, td) { padding: 18px 22px; border: 0; border-bottom: 1px solid #edf0f3; text-align: left; font-family: var(--font-en); font-size: 14px; font-weight: 400; line-height: 1.75; letter-spacing: 0; }
+body[data-page="technical"] thead th { color: var(--tech-muted); background: #f8fafc; font-size: 12px; font-weight: 550; letter-spacing: .035em; }
+body[data-page="technical"] tbody th { font-family: var(--mono); font-size: 13px; font-weight: 500; color: #334155; background: #fff; white-space: nowrap; }
+body[data-page="technical"] tbody td:last-child { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--tech-accent); white-space: nowrap; }
+body[data-page="technical"] tbody tr { background: #fff; }
+body[data-page="technical"] tbody tr:hover :is(th, td) { background: #fbfdfe; }
+body[data-page="technical"] tbody tr:last-child :is(th, td) { border-bottom: 0; }
+
+/* Firmware roles and flow keep their original reading order. */
+body[data-page="technical"] .fw-role-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 26px; }
+body[data-page="technical"] .fw-role { padding: 26px; border: 1px solid var(--tech-line); border-radius: 14px; background: #fcfdfe; box-shadow: none; }
+body[data-page="technical"] .fw-role-head { display: block; margin-bottom: 18px; }
+body[data-page="technical"] .fw-role-head h4 { margin: 0; font-family: var(--font-en); font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: 0; }
+body[data-page="technical"] .fw-file { display: inline-block; margin-top: 10px; padding: 4px 8px; border: 1px solid #e5eaf0; border-radius: 6px; background: #fff; color: var(--tech-muted); font: 400 12px/1.6 var(--mono); }
+body[data-page="technical"] .fw-role ul { margin: 0; padding-left: 18px; font-family: var(--font-en); font-size: 14px; line-height: 1.85; color: var(--tech-body); }
+body[data-page="technical"] .fw-role li + li { margin-top: 12px; }
+body[data-page="technical"] .fw-role li::marker { color: #a3b0bf; }
+body[data-page="technical"] .fw-flow-list { gap: 12px; margin-top: 28px; }
+body[data-page="technical"] .fw-flow { display: flex; flex-wrap: nowrap; gap: 10px; max-width: 100%; padding: 20px; overflow-x: auto; border: 1px solid #e8edf1; border-radius: 12px; background: #fff; scrollbar-width: thin; scrollbar-color: #b9cbd1 #f8fafc; }
+body[data-page="technical"] .fw-flow-label { flex: 0 0 96px; color: var(--tech-muted); font-family: var(--font-en); font-size: 12px; font-weight: 500; letter-spacing: 0; }
+body[data-page="technical"] .fw-step { flex: 0 0 auto; width: auto; padding: 9px 12px; color: #475569; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafcfd; font-family: var(--font-en); font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
+body[data-page="technical"] .fw-step.radio { color: var(--tech-accent); background: #edf9fc; border-color: #cbeaf2; font-weight: 600; }
+body[data-page="technical"] .fw-step.alert { color: #334155; background: #f5f7fa; border-color: #dce3eb; font-weight: 500; }
+body[data-page="technical"] .fw-arrow { font-family: var(--font-en); font-size: 16px; font-weight: 400; color: #a3b0bf; transform: none; }
+
+/* Packet strings remain unmodified and can scroll without clipping the page. */
+body[data-page="technical"] code { padding: 2px 6px; border: 1px solid #e5eaf0; border-radius: 5px; background: #f8fafc; color: #334155; font-family: var(--mono); font-size: .9em; font-weight: 400; overflow-wrap: anywhere; }
+body[data-page="technical"] pre.code {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 24px 0;
+  padding: 26px 28px;
+  overflow: auto;
+  border: 1px solid var(--tech-line);
+  border-radius: 12px;
+  color: #334155;
+  background: #f8fafc;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0;
+  font-variant-ligatures: none;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+  box-shadow: none;
+  scrollbar-width: thin;
+  scrollbar-color: #b9cbd1 #f8fafc;
+  overscroll-behavior-inline: contain;
+}
+body[data-page="technical"] .code .c { color: #708095; font-weight: 400; }
+body[data-page="technical"] .code .k { color: #1e5363; font-weight: 500; }
+body[data-page="technical"] #a-packet .specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 26px !important; border: 0; background: transparent; }
+body[data-page="technical"] #a-packet .spec { display: block; padding: 20px; border: 1px solid #e8edf1; border-radius: 12px; background: #fff; }
+body[data-page="technical"] #a-packet .spec .k { display: block; margin-bottom: 10px; color: var(--tech-muted); font-family: var(--font-en); font-size: 12px; font-weight: 500; line-height: 1.5; }
+body[data-page="technical"] #a-packet .spec .v { display: block; color: var(--tech-ink); font-family: var(--font-en); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.75; text-align: left; overflow-wrap: anywhere; }
+
+/* Safety is a separate chapter with a light editorial introduction. */
+body[data-page="technical"] .safety-block { margin-top: 120px; padding-top: 72px; border: 0; border-top: 1px solid var(--tech-line); border-radius: 0; background: #fff; box-shadow: none; }
+body[data-page="technical"] .safety-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; margin-bottom: 36px; }
+body[data-page="technical"] .safety-head h3 { margin: 18px 0 0; font-family: var(--font-en); font-size: clamp(28px, 2.8vw, 38px); font-weight: 600; line-height: 1.4; letter-spacing: -.015em; color: var(--tech-ink); }
+body[data-page="technical"] .safety-head h3.l-zh { letter-spacing: .01em; }
+body[data-page="technical"] .safety-head p { margin: 0; max-width: 580px; color: var(--tech-muted); font-family: var(--font-en); font-size: 15px; line-height: 1.85; }
+body[data-page="technical"] .safety-status { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+body[data-page="technical"] .safety-status > span { display: inline-flex; align-items: center; justify-content: center; min-height: 32px; padding: 6px 10px; border: 1px solid #e5eaf0; border-radius: 6px; background: #f8fafc; color: #64748b; font-family: var(--font-en); font-size: 10px; font-weight: 500; letter-spacing: .06em; line-height: 1.5; }
+body[data-page="technical"] .safety-block .acc { margin-top: 0; }
+body[data-page="technical"] .safety-num { width: 30px; height: 30px; border-radius: 8px; color: var(--tech-accent); background: #edf9fc; font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .02em; }
+body[data-page="technical"] .safety-block .acc-head .t { gap: 16px; }
+body[data-page="technical"] .safety-note { padding: 18px 20px; margin-top: 22px; border: 1px solid #e8edf1; border-left: 2px solid #addbe7; border-radius: 10px; background: #f8fafc; color: #64748b; font-family: var(--font-en); font-size: 13px; line-height: 1.85; }
+
+/* Deployment uses the existing three cards and preserves every estimate. */
+body[data-page="technical"] #roadmap { padding-block: 112px 120px; border-block: 1px solid #edf0f3; background: #f8fafc; }
+body[data-page="technical"] #roadmap .sec-head { max-width: 840px; margin-bottom: 48px; }
+body[data-page="technical"] #roadmap .sec-head h2 { font-size: clamp(32px, 3.4vw, 46px); }
+body[data-page="technical"] .road { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 0; align-items: stretch; }
+body[data-page="technical"] .road-card { padding: 30px; border: 1px solid var(--tech-line); border-radius: var(--tech-radius); background: #fff; box-shadow: var(--tech-shadow); transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+body[data-page="technical"] .road-card:hover { border-color: #b7dfe8; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15, 23, 42, .045); }
+body[data-page="technical"] .road-card .n { color: var(--tech-accent); font-family: var(--font-en); font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+body[data-page="technical"] .road-card h3 { margin: 20px 0 0; font-family: var(--font-en); font-size: 20px; font-weight: 600; line-height: 1.5; letter-spacing: -.015em; }
+body[data-page="technical"] .road-list { gap: 16px; margin-top: 24px; }
+body[data-page="technical"] .road-list li { grid-template-columns: 14px minmax(0, 1fr); gap: 10px; font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--tech-body); overflow-wrap: anywhere; }
+body[data-page="technical"] .road-list .b { padding-top: 2px; color: #91a6b6; font-family: var(--font-en); font-size: 13px; }
+body[data-page="technical"] .road-card:nth-child(2) .road-list li:nth-child(-n+2) > span:last-child { color: var(--tech-ink); font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Footer and existing contact dialog also stay light. */
+body[data-page="technical"] footer { padding-block: 76px 28px; color: var(--tech-body); background: #fff; border-top: 0; }
+body[data-page="technical"] footer .credits { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr); gap: 40px; padding-bottom: 40px; color: var(--tech-muted); border: 0; }
+body[data-page="technical"] .credit-label { margin-bottom: 22px; color: var(--tech-ink); font-family: var(--font-en); font-size: 12px; font-weight: 600; letter-spacing: .05em; }
+body[data-page="technical"] .credit-list { gap: 16px; }
+body[data-page="technical"] .credit-list li { grid-template-columns: 12px minmax(0, 1fr); gap: 10px; font-family: var(--font-en); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+body[data-page="technical"] .credit-list .b { color: #8da3b3; }
+body[data-page="technical"] .credit-list .r { color: #334155; font-weight: 500; }
+body[data-page="technical"] .credit-list [style*="white-space"] { white-space: normal !important; }
+body[data-page="technical"] .credit-note { color: #718096; font-family: var(--font-en); font-size: 12px; line-height: 1.8; }
+body[data-page="technical"] .foot { gap: 16px; padding-top: 24px; border-top-color: var(--tech-line); color: #64748b; font-family: var(--font-en); font-size: 11px; letter-spacing: .01em; }
+body[data-page="technical"] .foot .slogan { color: var(--tech-accent); }
+body[data-page="technical"] .modal { background: rgba(15, 23, 42, .32); backdrop-filter: none; }
+body[data-page="technical"] .modal-panel { width: min(700px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); padding: 30px; border: 1px solid var(--tech-line); border-radius: 18px; background: #fff; box-shadow: 0 16px 56px rgba(15, 23, 42, .14); overflow-y: auto; }
+body[data-page="technical"] .modal-head h3 { font-size: 20px; font-weight: 600; line-height: 1.6; }
+body[data-page="technical"] .modal-close { flex-shrink: 0; min-width: 40px; min-height: 40px; color: var(--tech-muted); background: #f8fafc; border: 1px solid var(--tech-line); border-radius: 8px; }
+body[data-page="technical"] .contact-row { padding-block: 18px; border-color: #edf0f3; background: #fff; box-shadow: none; font-size: 14px; }
+body[data-page="technical"] .contact-row .k { font-family: var(--font-en); font-size: 12px; color: var(--tech-muted); }
+body[data-page="technical"] .contact-row a:not(.btn) { color: var(--tech-accent); overflow-wrap: anywhere; }
+body[data-page="technical"] .to-top { color: #475569; background: #fff; border: 1px solid var(--tech-line); box-shadow: 0 2px 10px rgba(15, 23, 42, .06); }
+
+/* Existing navigation switches to its menu presentation before labels crowd. */
+@media (max-width: 1320px) {
+  body[data-page="technical"] .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 16px;
+    max-height: calc(100dvh - 76px);
+    padding: 18px 32px 24px;
+    overflow-y: auto;
+    background: #fff;
+    border-bottom: 1px solid var(--tech-line);
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .04);
+  }
+  body[data-page="technical"] .nav-links.open { display: grid; }
+  body[data-page="technical"] .nav-links a { min-height: 46px; padding: 12px; font-size: 14px; border: 0; }
+  body[data-page="technical"] .nav-links a::after { top: auto; bottom: 4px; left: 12px; right: 12px; height: 2px; width: auto; }
+  body[data-page="technical"] .nav-toggle { display: grid; place-items: center; }
+}
+@media (max-width: 1000px) {
+  body[data-page="technical"] :is(.wrap, section > .wrap) { width: calc(100% - 64px); }
+  body[data-page="technical"] .fw-role-grid { grid-template-columns: 1fr; }
+  body[data-page="technical"] .fw-role-head { display: flex; flex-wrap: wrap; gap: 10px; }
+  body[data-page="technical"] .fw-file { margin-top: 0; }
+  body[data-page="technical"] .safety-head { gap: 32px; }
+  body[data-page="technical"] .road { grid-template-columns: 1fr; }
+  body[data-page="technical"] footer .credits { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  body[data-page="technical"] { --page-nav-height: 68px; font-size: 15px; }
+  body[data-page="technical"] :is(.wrap, section > .wrap) { width: calc(100% - 40px); }
+  body[data-page="technical"] .nav,
+  body[data-page="technical"] .nav.stuck { min-height: 68px; }
+  body[data-page="technical"] .nav-inner,
+  body[data-page="technical"] .nav.stuck .nav-inner { width: calc(100% - 28px); min-height: 68px; gap: 8px; padding-block: 10px; }
+  body[data-page="technical"] .brand { gap: 7px; font-size: 10px; letter-spacing: .08em; }
+  body[data-page="technical"] .brand-logo { width: 32px; height: 32px; border-radius: 7px; }
+  body[data-page="technical"] .nav-right { gap: 6px; }
+  body[data-page="technical"] .lang { padding: 2px; }
+  body[data-page="technical"] .lang button { min-height: 32px; padding-inline: 8px; font-size: 11px; }
+  body[data-page="technical"] .nav .btn { width: 40px; min-width: 40px; height: 42px; min-height: 42px; padding-inline: 10px; }
+  body[data-page="technical"] .nav-toggle { width: 42px; height: 42px; }
+  body[data-page="technical"] .nav-links { top: 100%; max-height: calc(100dvh - 68px); padding: 12px 20px 20px; grid-template-columns: minmax(0, 1fr); }
+  body[data-page="technical"] .nav-links a { min-height: 46px; padding: 12px 8px; border-bottom: 1px solid #f0f3f6; }
+  body[data-page="technical"] .nav-links a::after { display: none; }
+  body[data-page="technical"] .nav-links a.active { background: #f3fafc; }
+  body[data-page="technical"] #deepdive { padding-block: 72px 80px; }
+  body[data-page="technical"] .sec-head { margin-bottom: 40px; }
+  body[data-page="technical"] .sec-head h2,
+  body[data-page="technical"] .sec-head h2.l-zh,
+  body[data-page="technical"] .sec-head h2.l-en { margin-top: 18px; font-size: clamp(34px, 9.5vw, 42px); line-height: 1.28; }
+  body[data-page="technical"] .sec-head h2.l-zh { line-height: 1.38; }
+  body[data-page="technical"] .sec-head .sec-note { margin-top: 20px; font-size: 14px; line-height: 1.9; }
+  body[data-page="technical"] .acc { gap: 10px; margin-top: 0; }
+  body[data-page="technical"] .acc-head,
+  body[data-page="technical"] .safety-block .acc-head { min-height: 76px; padding: 22px 20px; gap: 12px; }
+  body[data-page="technical"] .acc-head .t { font-size: 15px; line-height: 1.75; }
+  body[data-page="technical"] .acc-inner,
+  body[data-page="technical"] .safety-block .acc-inner { padding: 0 20px 24px; }
+  body[data-page="technical"] .acc-inner .body-text { font-size: 14px !important; line-height: 1.9; }
+  body[data-page="technical"] .fw-role { padding: 22px; }
+  body[data-page="technical"] .fw-role-head { display: block; }
+  body[data-page="technical"] .fw-role-head h4 { font-size: 16px; }
+  body[data-page="technical"] .fw-file { margin-top: 10px; }
+  body[data-page="technical"] .fw-flow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; justify-items: stretch; padding: 20px; overflow-x: auto; }
+  body[data-page="technical"] .fw-flow-label { min-width: 0; margin-bottom: 8px; font-size: 13px; }
+  body[data-page="technical"] .fw-step { width: 100%; min-width: 0; white-space: normal; padding-block: 11px; font-size: 13px; }
+  body[data-page="technical"] .fw-arrow { transform: rotate(90deg); justify-self: center; line-height: 1; }
+  body[data-page="technical"] pre.code { margin-block: 22px; padding: 20px; font-size: 13px; line-height: 1.9; }
+  body[data-page="technical"] :is(th, td) { padding: 15px 18px; }
+  body[data-page="technical"] #a-packet .specs { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  body[data-page="technical"] .safety-block { margin-top: 80px; padding-top: 56px; }
+  body[data-page="technical"] .safety-head { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-bottom: 30px; }
+  body[data-page="technical"] .safety-head h3 { font-size: 28px; line-height: 1.5; }
+  body[data-page="technical"] .safety-head p { font-size: 14px; }
+  body[data-page="technical"] .safety-status { gap: 6px; }
+  body[data-page="technical"] .safety-status > span { padding-inline: 8px; font-size: 9px; letter-spacing: .04em; }
+  body[data-page="technical"] .safety-block .acc-head .t { gap: 10px; align-items: flex-start; }
+  body[data-page="technical"] .safety-num { width: 26px; height: 26px; }
+  body[data-page="technical"] .safety-note { padding: 16px; font-size: 12px; }
+  body[data-page="technical"] #roadmap { padding-block: 72px 80px; }
+  body[data-page="technical"] #roadmap .sec-head h2 { font-size: 30px; line-height: 1.4; }
+  body[data-page="technical"] #roadmap .sec-head { margin-bottom: 36px; }
+  body[data-page="technical"] .road { gap: 16px; }
+  body[data-page="technical"] .road-card { padding: 26px; }
+  body[data-page="technical"] .road-card h3 { font-size: 19px; }
+  body[data-page="technical"] footer { padding-block: 64px 24px; }
+  body[data-page="technical"] footer .credits { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  body[data-page="technical"] .credit-label { margin-bottom: 16px; }
+  body[data-page="technical"] .credit-list li { font-size: 13px; }
+  body[data-page="technical"] .foot { align-items: flex-start; flex-direction: column; }
+  body[data-page="technical"] .modal-panel { padding: 24px 20px; }
+  body[data-page="technical"] .modal-head { align-items: flex-start; }
+  body[data-page="technical"] .modal-head h3 { font-size: 17px; }
+  body[data-page="technical"] .contact-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="technical"] *,
+  body[data-page="technical"] *::before,
+  body[data-page="technical"] *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+</style>
 <style id="linkguard-ui-audit-20260915">
 /* Visual QA corrections: readable labels, text contrast, and footer clearance. */
 body[data-page] {
@@ -2902,9 +3392,9 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
 </style>
 <script src="site-pages.js" defer></script>
 </head>
-<body data-page="system">
+<body data-page="technical">
 
-<a class="sr-only" href="#composition"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
+<a class="sr-only" href="#roadmap"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
@@ -2917,14 +3407,14 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
     <div class="nav-links" id="navLinks">
       <a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
       <a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a>
-      <a href="system.html" class="active" aria-current="page"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
+      <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
       <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
       <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
       <a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
-      <a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
+      <a href="deployment.html" class="active" aria-current="page"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
       <a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a>
     </div>
 
@@ -2944,449 +3434,73 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
   </div>
 </nav>
 
-<!-- ============ 03 COMPOSITION ============ -->
-<section id="composition">
+<!-- ============ 09 DEEP DIVE ============ -->
+
+
+<!-- ============ 10 ROADMAP ============ -->
+<section id="roadmap" class="alt">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow">03 — <span class="l-zh">系統組成</span><span class="l-en">Composition &amp; Structure</span></div>
-      <h2 class="l-zh">兩種節點、三台載具，<br>共用同一套無線系統。</h2>
-      <h2 class="l-en">Two node types, three vehicles,<br>one shared wireless system.</h2>
-      <p class="sec-note l-zh">
-        節點本體以 模組化零件構成，LoRa ESP32-S3 為主控 —— 讀取感測器、封裝資料並排程發送。點擊任一單元展開完整規格。
-      </p>
-      <p class="sec-note l-en">
-        Body built with modular parts; LoRa ESP32-S3 is the main controller — it reads sensors, packs the data,
-        and schedules transmission. Click any unit to expand its full spec.
-      </p>
+      <div class="eyebrow">10 — <span class="l-zh">部署方案</span><span class="l-en">Deployment Plan</span></div>
+      <h2 class="l-zh">從單隊到鄉鎮規模。</h2>
+      <h2 class="l-en">From one team to township scale.</h2>
+      <p class="sec-note l-zh">以下均為設計情境與成本試算，用於比較不同部署規模，不代表已完成相同規模的正式演練或採購。</p>
+      <p class="sec-note l-en">These design scenarios and cost estimates compare deployment scales; they do not claim a completed drill or purchase at the same scale.</p>
     </div>
 
-    <div class="cards" id="units">
-
-      <!-- SBN -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-sbn">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M22 18V12a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v6" stroke-width="1.1"/>
-              <rect x="14" y="18" width="36" height="38" rx="3" stroke-width="1.1"/>
-              <rect x="21" y="26" width="22" height="13" rx="1.5" stroke-width="0.8" stroke-dasharray="3 3"/>
-              <path d="M32 8V3" stroke-width="1.1"/>
-              <circle cx="32" cy="2.5" r="1.6" fill="currentColor" stroke="none"/>
-              <path d="M25 47h4l1.5-4 3 8 2-4h4" stroke-width="1.1"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">SBN</span><span class="tag">LoRa ESP32-S3</span><span class="tag">LoRa</span></span>
-              <span class="nm l-zh">生存信標節點</span>
-              <span class="nm l-en">Survival Beacon Node</span>
-              <span class="one l-zh">即時回傳受困者的心率與血氧。</span>
-              <span class="one l-en">Sends victims&rsquo; heart rate and SpO₂ in real time.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-sbn"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            以 模組化零件構成本體，LoRa ESP32-S3 為主控 —— 讀取感測器、封裝資料並排程發送。
-            心率／血氧感測器即時回傳受困者的生命徵象；外掛的小型 LoRa 無線模組提供長距離、低功耗的資料鏈路。
-          </p>
-          <p class="desc l-en">
-            Body built with modular parts; LoRa ESP32-S3 is the main controller — it reads sensors, packs the
-            data, and schedules transmission. Heart rate / SpO₂ sensors send victims&rsquo; vital signs
-            in real time, and a small add-on LoRa module gives long-range, low-power data links.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">LoRa ESP32-S3</span></div>
-            <div class="spec"><span class="k"><span class="l-zh">生理感測</span><span class="l-en">Vital signs</span></span><span class="v"><span class="l-zh">心率 / 血氧</span><span class="l-en">Heart rate / SpO₂</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">無線</span><span class="l-en">Wireless</span></span><span class="v"><span class="l-zh">LoRa 外掛模組</span><span class="l-en">LoRa add-on module</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">本體</span><span class="l-en">Body</span></span><span class="v"><span class="l-zh">模組化零件</span><span class="l-en">modular parts</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">電池續航</span><span class="l-en">Battery life</span></span><span class="v"><span class="l-zh">約 120 小時（一般回報）</span><span class="l-en">~120 h (normal duty)</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-01.webp" alt="生存信標節點 Survival Beacon Node" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/sbn.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/sbn.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">節點讀到 78 bpm，與手腕上的心率手環讀值一致</span>
-              <span class="l-en">The node reads 78 bpm — matching the wrist band on the same arm</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- SEN -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-sen">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M32 20v30" stroke-width="1.1"/>
-              <rect x="23" y="20" width="18" height="13" rx="2" stroke-width="1.1"/>
-              <path d="M32 20v-8" stroke-width="1.1"/>
-              <circle cx="32" cy="11" r="1.6" fill="currentColor" stroke="none"/>
-              <path d="M22 15q10-9 20 0" stroke-width="0.7" stroke-dasharray="2.5 2.5"/>
-              <path d="M8 50h48" stroke-width="1.1"/>
-              <path d="M8 55q8-3 16 0t16 0 16 0" stroke-width="0.7"/>
-              <path d="M27 50v9M37 50v9" stroke-width="0.8"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">SEN</span><span class="tag">LoRa ESP32-S3</span><span class="tag">LoRa</span></span>
-              <span class="nm l-zh">環境感測節點</span>
-              <span class="nm l-en">Sensor Node</span>
-              <span class="one l-zh">全天候監看二次災害的徵兆。</span>
-              <span class="one l-en">Watches for second disasters, day and night.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-sen"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            同樣以 模組化零件構成本體、LoRa ESP32-S3 為主控。土壤含水量／坡度／水位感測器全天候監看二次災害的徵兆，
-            並與生存信標共用同一套無線系統 —— 這是「平時守護山林」的那一半。
-          </p>
-          <p class="desc l-en">
-            Also built with modular parts and controlled by LoRa ESP32-S3. Soil moisture / slope / water level
-            sensors watch for second disasters day and night, and it shares the same wireless system as
-            the Survival Beacon — this is the &ldquo;guarding the forest&rdquo; half of the system.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">LoRa ESP32-S3</span></div>
-            <div class="spec"><span class="k"><span class="l-zh">環境感測</span><span class="l-en">Environment</span></span><span class="v"><span class="l-zh">土壤含水 / 坡度 / 水位</span><span class="l-en">Soil / slope / water level</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">無線</span><span class="l-en">Wireless</span></span><span class="v"><span class="l-zh">與信標同一套</span><span class="l-en">Same as the beacon</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">監看</span><span class="l-en">Monitoring</span></span><span class="v"><span class="l-zh">全天候 · 二次災害</span><span class="l-en">24/7 · second disasters</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">回報週期</span><span class="l-en">Report interval</span></span><span class="v"><span class="l-zh">每 5 分鐘（異常即報）</span><span class="l-en">Every 5 min (alert on threshold)</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-02.webp" alt="環境感測節點 Sensor Node" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/sensor-node.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/sensor-node.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">環境感測節點 · 野地部署</span>
-              <span class="l-en">Sensor Node · deployed in the field</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- CMD -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-cmd">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <rect x="6" y="20" width="52" height="34" rx="2" stroke-width="1.1"/>
-              <path d="M6 28h52" stroke-width="0.8"/>
-              <circle cx="11.5" cy="24" r="1.3" fill="currentColor" stroke="none"/>
-              <circle cx="16" cy="24" r="1.3" fill="currentColor" stroke="none" opacity="0.55"/>
-              <circle cx="20.5" cy="24" r="1.3" fill="currentColor" stroke="none" opacity="0.3"/>
-              <path d="M14 40h8l4-6 4 12 4-8 3 2h11" stroke-width="1.1"/>
-              <path d="M32 6v10M27 10h10M25 8l14 4" stroke-width="1"/>
-              <circle cx="32" cy="5" r="1.8" fill="currentColor" stroke="none"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">CMD</span><span class="tag">App</span><span class="tag">AI</span></span>
-              <span class="nm l-zh">指揮中心 · 平板／筆電</span>
-              <span class="nm l-en">Command Center · Tablet / Laptop</span>
-              <span class="one l-zh">資訊與決策的大腦，AI 完全在本地端運算。</span>
-              <span class="one l-en">The brain for information and decisions; AI runs fully on-device.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-cmd"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            資訊與決策的大腦，AI 於本地端運算、無需網際網路。ICS 五級角色權限、地圖點線面標記、離線同步；
-            即時儀表板顯示上線裝置、受困者統計與 SOS 警報。
-          </p>
-          <p class="desc l-en">
-            The brain for information and decisions; the AI runs locally, no internet needed.
-            ICS five-role permission levels, map marking (points, lines, areas) and offline sync.
-            A live dashboard shows online devices, victim statistics, and SOS alerts.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">平台</span><span class="l-en">Platform</span></span><span class="v"><span class="l-zh">平板 / 筆電</span><span class="l-en">Tablet / laptop</span></span></div>
-            <div class="spec"><span class="k">AI</span><span class="v"><span class="l-zh">本地端 · 離線</span><span class="l-en">On-device · offline</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">權限</span><span class="l-en">Roles</span></span><span class="v"><span class="l-zh">ICS 五級角色</span><span class="l-en">ICS five levels</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">地圖</span><span class="l-en">Map</span></span><span class="v"><span class="l-zh">點 / 線 / 面標記</span><span class="l-en">Points / lines / areas</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">同步</span><span class="l-en">Sync</span></span><span class="v"><span class="l-zh">離線佇列</span><span class="l-en">Offline queue</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-03.webp" alt="指揮中心 Command Center" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/cmd.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/cmd.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">指揮中心 · 雙螢幕戰情台與地圖</span>
-              <span class="l-en">Command Center · dual-screen situation display</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- RR -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-rr">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <rect x="18" y="10" width="28" height="44" rx="4" stroke-width="1.1"/>
-              <rect x="23" y="16" width="18" height="14" rx="1.5" stroke-width="0.8"/>
-              <path d="M32 27v-6M28 24h8" stroke-width="1"/>
-              <path d="M32 19l-2.5 5h5z" fill="currentColor" stroke="none"/>
-              <circle cx="26" cy="38" r="2" stroke-width="0.8"/>
-              <circle cx="32" cy="38" r="2" stroke-width="0.8"/>
-              <circle cx="38" cy="38" r="2" stroke-width="0.8"/>
-              <rect x="27" y="45" width="10" height="5" rx="1" stroke-width="0.8"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">RR</span><span class="tag">App</span><span class="tag">Field</span></span>
-              <span class="nm l-zh">搜救員手持端</span>
-              <span class="nm l-en">Rescuer Handheld · Rescue Radar</span>
-              <span class="one l-zh">把生命徵象與任務直接送到第一線手上。</span>
-              <span class="one l-en">Puts vital signs and mission orders into the rescuer&rsquo;s hand.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-rr"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            接收指揮中心下達的受困者生命徵象與任務指令；以信標訊號強度估算概略距離，
-            搜救員在地圖上標記受困者位置。
-          </p>
-          <p class="desc l-en">
-            Receives victims&rsquo; vital signs and mission orders from the command center. It estimates
-            rough distance by beacon signal strength, and rescuers mark victim positions on the map.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">平台</span><span class="l-en">Platform</span></span><span class="v"><span class="l-zh">手機 App</span><span class="l-en">Phone app</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">測距</span><span class="l-en">Ranging</span></span><span class="v"><span class="l-zh">信標訊號強度</span><span class="l-en">Beacon signal strength</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">地圖</span><span class="l-en">Map</span></span><span class="v"><span class="l-zh">受困者標記</span><span class="l-en">Victim marking</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">指令</span><span class="l-en">Orders</span></span><span class="v"><span class="l-zh">任務下達 / 回報</span><span class="l-en">Dispatch / report</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-04.webp" alt="搜救員手持端 Rescue Radar" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/rr.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/rr.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">手機 App 與手持無線終端</span>
-              <span class="l-en">Phone app paired with the handheld radio terminal</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- UGV -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-ugv">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <rect x="11" y="30" width="42" height="14" rx="3" stroke-width="1.1"/>
-              <circle cx="20" cy="49" r="6" stroke-width="1.1"/>
-              <circle cx="44" cy="49" r="6" stroke-width="1.1"/>
-              <path d="M20 55h24M20 43h24" stroke-width="0.8"/>
-              <rect x="26" y="19" width="12" height="11" rx="2" stroke-width="1.1"/>
-              <circle cx="32" cy="24.5" r="3" stroke-width="1"/>
-              <circle cx="32" cy="24.5" r="1" fill="currentColor" stroke="none"/>
-              <path d="M32 19v-6" stroke-width="1"/>
-              <circle cx="32" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">UGV</span><span class="tag">Ground</span></span>
-              <span class="nm l-zh">地面機器人</span>
-              <span class="nm l-en">Ground Robot</span>
-              <span class="one l-zh">先行進入危險區域，讓搜救人員承擔更少風險。</span>
-              <span class="one l-en">Goes into dangerous areas first, so rescuers take less risk.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-ugv"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            率先進入危險區域，自主行進並回傳影像與感測資料。
-            由機器人先行探查不穩定結構，讓搜救人員承擔更少風險。
-          </p>
-          <p class="desc l-en">
-            Goes into dangerous areas first; drives itself and sends back video / sensor data.
-            The robot checks unstable structures first, so rescuers take less risk.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">任務層級</span><span class="l-en">Search layer</span></span><span class="v"><span class="l-zh">地面確認</span><span class="l-en">Ground confirm</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">行進</span><span class="l-en">Navigation</span></span><span class="v"><span class="l-zh">自主導航</span><span class="l-en">Self-driving</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">回傳</span><span class="l-en">Downlink</span></span><span class="v"><span class="l-zh">影像 / 感測</span><span class="l-en">Video / sensor</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">續航 / 越野能力</span><span class="l-en">Endurance / terrain</span></span><span class="v"><span class="l-zh">約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">~40 min · flat / light rubble</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-05.webp" alt="地面機器人 Ground Robot" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/ugv.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/ugv.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">地面機器人 · LoRa ESP32-S3 主控與麥克納姆輪</span>
-              <span class="l-en">Ground Robot · LoRa ESP32-S3 controller, mecanum wheels</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- UAV : fixed-wing + four-rotor -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-uav">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M20 10l1.8 15-1.8 4-1.8-4z" stroke-width="1"/>
-              <path d="M21.2 16L38 20.6H21.2zM18.8 16L2 20.6h16.8z" stroke-width="1"/>
-              <circle cx="20" cy="12" r="1.3" fill="currentColor" stroke="none"/>
-              <rect x="34" y="40" width="11" height="11" rx="2.5" stroke-width="1"/>
-              <path d="M34 40l-7-7M45 40l7-7M34 51l-7 7M45 51l7 7" stroke-width="1"/>
-              <ellipse cx="27" cy="33" rx="6" ry="1.9" stroke-width="0.8"/>
-              <ellipse cx="52" cy="33" rx="6" ry="1.9" stroke-width="0.8"/>
-              <ellipse cx="27" cy="58" rx="6" ry="1.9" stroke-width="0.8"/>
-              <ellipse cx="52" cy="58" rx="6" ry="1.9" stroke-width="0.8"/>
-              <circle cx="39.5" cy="46" r="2.2" stroke-width="0.9"/>
-              <path d="M22 30q8 6 12 8" stroke-width="0.7" stroke-dasharray="2.5 2.5"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">UAV</span><span class="tag">Air</span><span class="tag">Wide</span><span class="tag">Close</span></span>
-              <span class="nm l-zh">空中載具 · 定翼＋四旋翼</span>
-              <span class="nm l-en">Aerial Vehicles · Fixed-Wing + Four-Rotor</span>
-              <span class="one l-zh">定翼先掃描大範圍，四旋翼再飛去近拍查證。</span>
-              <span class="one l-en">The fixed-wing scans wide; the four-rotor flies in to check close.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-uav"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            兩架無人機是一組互補的搭配，不是兩件各自為政的裝備。
-            <strong>定翼無人機</strong>滯空時間長、涵蓋範圍廣，負責快速掃描大範圍災區，
-            一旦發現目標就標記座標；<strong>四旋翼無人機</strong>接著飛抵該座標懸停近拍，
-            補足地面視野的死角。兩者加上地面機器人，構成「廣域 → 近距 → 地面」的三層搜索。
-          </p>
-          <p class="desc l-en">
-            The two drones are a complementary pair, not two separate pieces of kit.
-            The <strong>fixed-wing drone</strong> has long flight time and wide coverage, so it scans
-            large disaster areas fast and marks the position whenever it finds something; the
-            <strong>four-rotor drone</strong> then flies to that position, hovers, and films up close,
-            covering blind spots on the ground. Together with the ground robot they form the
-            &ldquo;wide → close → ground&rdquo; three-layer search.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">定翼 · 任務</span><span class="l-en">Fixed-wing · role</span></span><span class="v"><span class="l-zh">廣域掃描 · 標記座標</span><span class="l-en">Wide scan · mark position</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">四旋翼 · 任務</span><span class="l-en">Four-rotor · role</span></span><span class="v"><span class="l-zh">近距查證 · 懸停近拍</span><span class="l-en">Close check · hover &amp; film</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">協同</span><span class="l-en">Teaming</span></span><span class="v"><span class="l-zh">空地一體 · 三層搜索</span><span class="l-en">Air + ground · 3 layers</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">作業距離 / 飛行時間</span><span class="l-en">Operating distance / flight time</span></span><span class="v"><span class="l-zh">定翼 ~8 km / 40 分；四旋翼 ~1.5 km / 15 分</span><span class="l-en">Fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-06.webp" alt="四旋翼無人機 Four-Rotor Drone" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/qr-drone.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/qr-drone.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">四旋翼無人機 · 起飛前實拍</span>
-              <span class="l-en">Four-Rotor Drone · before take-off</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-    </div>
-
-    <div class="arch-wrap reveal" id="architecture">
-      <div class="arch-head">
-        <div>
-          <h3 class="l-zh">系統通訊架構總覽</h3>
-          <h3 class="l-en">System Communication Architecture</h3>
-          <p class="l-zh">從受困者訊號到指揮端，LinkGuard 依任務層級切分頻段，讓搜索、隊伍協作與 HQ 指揮鏈互不混淆。</p>
-          <p class="l-en">From the victim signal to command, LinkGuard separates search, team coordination and HQ traffic by mission layer.</p>
-        </div>
-        <button class="arch-sim" id="archSimulate" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v10"/><path d="M8 9l4 4 4-4"/><circle cx="12" cy="17" r="4"/></svg>
-          <span class="idle-label l-zh">展示 SOS 傳遞</span>
-          <span class="idle-label l-en">Simulate SOS</span>
-          <span class="running-label l-zh">訊號傳遞中…</span>
-          <span class="running-label l-en">Signal in transit…</span>
-        </button>
+    <div class="road">
+      <div class="road-card reveal">
+        <div class="n">01</div>
+        <h3 class="l-zh">單隊演練情境</h3>
+        <h3 class="l-en">Single-team scenario</h3>
+        <ul class="road-list l-zh">
+          <li><span class="b">→</span><span>4 名搜救員、10 個節點、1 個 HQ 指揮端</span></li>
+          <li><span class="b">→</span><span>規劃範圍 1 km²，任務時間 90 分鐘</span></li>
+          <li><span class="b">→</span><span>同時處理 1 個 Victim SOS 與 1 個搜救員 MAYDAY</span></li>
+        </ul>
+        <ul class="road-list l-en">
+          <li><span class="b">→</span><span>4 rescuers, 10 nodes and 1 HQ command endpoint</span></li>
+          <li><span class="b">→</span><span>1 km² planned area and a 90-minute mission</span></li>
+          <li><span class="b">→</span><span>One Victim SOS and one rescuer MAYDAY handled concurrently</span></li>
+        </ul>
       </div>
 
-      <div class="arch-scroll" aria-label="LinkGuard system architecture">
-        <div class="arch-flow">
-          <div class="arch-node" data-arch-node="0">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="12" r="6"/><path d="M13 42v-8c0-7 5-12 11-12s11 5 11 12v8M8 31l7-5m25 5-7-5"/><path d="M20 31h8M24 27v8" stroke="var(--alert)"/></svg>
-            <strong>Victim</strong>
-            <small><span class="l-zh">受困者節點</span><span class="l-en">Victim node</span></small>
-          </div>
-          <div class="arch-link search" data-arch-link="0">
-            <span class="arch-link-label">910.x / 911.x MHz</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="1">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="24" r="5"/><circle cx="24" cy="24" r="12"/><path d="M24 5v7m0 24v7M5 24h7m24 0h7M10.5 10.5l5 5m17 17 5 5m0-27-5 5m-17 17-5 5"/></svg>
-            <strong>Rescue Mesh</strong>
-            <small><span class="l-zh">搜救自組網</span><span class="l-en">Rescue mesh</span></small>
-          </div>
-          <div class="arch-link team-band" data-arch-link="1">
-            <span class="arch-link-label">913 MHz</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="2">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="13" r="6"/><path d="M14 42v-9c0-7 4-11 10-11s10 4 10 11v9"/><path d="M34 11c4 2 6 6 6 10m-6-2c2 1 3 3 3 5"/></svg>
-            <strong>Team Leader</strong>
-            <small><span class="l-zh">隊長節點</span><span class="l-en">Leader node</span></small>
-          </div>
-          <div class="arch-link hq" data-arch-link="2">
-            <span class="arch-link-label">433 MHz</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="3">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 41h34M11 41V18h26v23M17 18V9h14v9"/><path d="M18 26h4m4 0h4m-12 7h4m4 0h4"/></svg>
-            <strong>HQ</strong>
-            <small><span class="l-zh">指揮鏈節點</span><span class="l-en">Command-chain node</span></small>
-          </div>
-          <div class="arch-link ble" data-arch-link="3">
-            <span class="arch-link-label">BLE</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="4">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M18 11h12M21 38h6"/><path d="M18 29l5-5 4 3 5-7"/></svg>
-            <strong>Command App</strong>
-            <small><span class="l-zh">指揮應用程式</span><span class="l-en">Command application</span></small>
-          </div>
-        </div>
+      <div class="road-card reveal">
+        <div class="n">02</div>
+        <h3 class="l-zh">規模化與成本</h3>
+        <h3 class="l-en">Scaling &amp; cost</h3>
+        <ul class="road-list l-zh">
+          <li><span class="b">→</span><span>10 節點：約 NT$20,000</span></li>
+          <li><span class="b">→</span><span>40 節點：約 NT$80,000</span></li>
+          <li><span class="b">→</span><span>100 節點：約 NT$200,000；均以 SBN 基準 NT$2,000／節點估算，不含人力、載具、SEN 價差與備品</span></li>
+        </ul>
+        <ul class="road-list l-en">
+          <li><span class="b">→</span><span>10 nodes: approximately NT$20,000</span></li>
+          <li><span class="b">→</span><span>40 nodes: approximately NT$80,000</span></li>
+          <li><span class="b">→</span><span>100 nodes: approximately NT$200,000; calculated from the SBN baseline of NT$2,000 per node, excluding labour, vehicles, SEN cost differences and spares</span></li>
+        </ul>
       </div>
 
-      <div class="arch-ble-note">
-        <b>BLE</b>
-        <span class="l-zh">Rescue／HQ 節點可與鄰近 App 雙向同步狀態與指令。</span>
-        <span class="l-en">Rescue and HQ nodes can synchronise status and commands with a nearby app.</span>
-      </div>
-      <div class="arch-legend" aria-label="Communication frequency legend">
-        <span class="arch-key search"><i></i><span><b>910.x／911.x MHz</b> · <span class="l-zh">搜索通訊</span><span class="l-en">Search</span></span></span>
-        <span class="arch-key team-band"><i></i><span><b>913 MHz</b> · <span class="l-zh">隊伍命令</span><span class="l-en">Team commands</span></span></span>
-        <span class="arch-key hq"><i></i><span><b>433 MHz</b> · <span class="l-zh">HQ 指揮鏈</span><span class="l-en">HQ command chain</span></span></span>
-        <span class="arch-key ble"><i></i><span><b>BLE</b> · <span class="l-zh">App 與節點</span><span class="l-en">App and node</span></span></span>
+      <div class="road-card reveal">
+        <div class="n">03</div>
+        <h3 class="l-zh">鄉鎮級情境</h3>
+        <h3 class="l-en">Township-scale scenario</h3>
+        <ul class="road-list l-zh">
+          <li><span class="b">→</span><span>4 支搜救隊、40 個節點、2 個 HQ 端點</span></li>
+          <li><span class="b">→</span><span>規劃範圍 4 km²，節點平均間距約 300–500 m</span></li>
+          <li><span class="b">→</span><span>40 節點高負載預估抵達率 93.5%，P95 延遲 2.7 s</span></li>
+          <li><span class="b">→</span><span>保留 10% 備援節點，即另備 4 個節點</span></li>
+        </ul>
+        <ul class="road-list l-en">
+          <li><span class="b">→</span><span>4 rescue teams, 40 nodes and 2 HQ endpoints</span></li>
+          <li><span class="b">→</span><span>4 km² planned area with 300–500 m average node spacing</span></li>
+          <li><span class="b">→</span><span>40-node high-load estimate: 93.5% delivery and 2.7 s P95 latency</span></li>
+          <li><span class="b">→</span><span>10% node reserve, equivalent to 4 spare nodes</span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ============ 04 FUNCTIONALITY ============ -->
-
-
-<!-- ============ 05 DATA ============ -->
-
 
 <footer>
   <div class="wrap">

@@ -7,10 +7,10 @@
 <link rel="apple-touch-icon" href="assets/linkguard-logo.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#314092">
-<title>系統組成 — LinkGuard</title>
+<title>方案比較 — LinkGuard</title>
 <meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://linkguard.tw/system.html">
+<link rel="canonical" href="https://linkguard.tw/comparison.html">
 
 <!-- Social sharing: LINE, Facebook, Instagram and other Open Graph clients -->
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="LinkGuard">
 <meta property="og:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
 <meta property="og:description" content="以 LoRa 自組通訊與指揮應用程式，建立災害現場的搜救通訊鏈路。">
-<meta property="og:url" content="https://linkguard.tw/system.html">
+<meta property="og:url" content="https://linkguard.tw/comparison.html">
 <meta property="og:image" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:secure_url" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -2902,9 +2902,9 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
 </style>
 <script src="site-pages.js" defer></script>
 </head>
-<body data-page="system">
+<body data-page="research">
 
-<a class="sr-only" href="#composition"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
+<a class="sr-only" href="#compare"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
@@ -2917,11 +2917,11 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
     <div class="nav-links" id="navLinks">
       <a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
       <a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a>
-      <a href="system.html" class="active" aria-current="page"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
+      <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
       <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
-      <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
+      <a href="comparison.html" class="active" aria-current="page"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
       <a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
       <a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
@@ -2944,449 +2944,140 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
   </div>
 </nav>
 
-<!-- ============ 03 COMPOSITION ============ -->
-<section id="composition">
+<!-- ============ 02 BACKGROUND ============ -->
+
+
+<!-- ============ 06 STORY ============ -->
+
+
+<!-- ============ 07 COMPARE ============ -->
+<section id="compare">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow">03 — <span class="l-zh">系統組成</span><span class="l-en">Composition &amp; Structure</span></div>
-      <h2 class="l-zh">兩種節點、三台載具，<br>共用同一套無線系統。</h2>
-      <h2 class="l-en">Two node types, three vehicles,<br>one shared wireless system.</h2>
-      <p class="sec-note l-zh">
-        節點本體以 模組化零件構成，LoRa ESP32-S3 為主控 —— 讀取感測器、封裝資料並排程發送。點擊任一單元展開完整規格。
-      </p>
-      <p class="sec-note l-en">
-        Body built with modular parts; LoRa ESP32-S3 is the main controller — it reads sensors, packs the data,
-        and schedules transmission. Click any unit to expand its full spec.
-      </p>
+      <div class="eyebrow">07 — <span class="l-zh">方案比較</span><span class="l-en">Comparison</span></div>
+      <h2 class="l-zh">和既有方案<br>差在哪裡。</h2>
+      <h2 class="l-en">How this differs from<br>what already exists.</h2>
+      <p class="sec-note l-zh">從覆蓋範圍、基礎建設需求、容錯能力與成本比較各類方案。</p>
+      <p class="sec-note l-en">A comparison across coverage, infrastructure requirements, fault tolerance and cost.</p>
     </div>
 
-    <div class="cards" id="units">
-
-      <!-- SBN -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-sbn">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M22 18V12a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v6" stroke-width="1.1"/>
-              <rect x="14" y="18" width="36" height="38" rx="3" stroke-width="1.1"/>
-              <rect x="21" y="26" width="22" height="13" rx="1.5" stroke-width="0.8" stroke-dasharray="3 3"/>
-              <path d="M32 8V3" stroke-width="1.1"/>
-              <circle cx="32" cy="2.5" r="1.6" fill="currentColor" stroke="none"/>
-              <path d="M25 47h4l1.5-4 3 8 2-4h4" stroke-width="1.1"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">SBN</span><span class="tag">LoRa ESP32-S3</span><span class="tag">LoRa</span></span>
-              <span class="nm l-zh">生存信標節點</span>
-              <span class="nm l-en">Survival Beacon Node</span>
-              <span class="one l-zh">即時回傳受困者的心率與血氧。</span>
-              <span class="one l-en">Sends victims&rsquo; heart rate and SpO₂ in real time.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-sbn"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            以 模組化零件構成本體，LoRa ESP32-S3 為主控 —— 讀取感測器、封裝資料並排程發送。
-            心率／血氧感測器即時回傳受困者的生命徵象；外掛的小型 LoRa 無線模組提供長距離、低功耗的資料鏈路。
-          </p>
-          <p class="desc l-en">
-            Body built with modular parts; LoRa ESP32-S3 is the main controller — it reads sensors, packs the
-            data, and schedules transmission. Heart rate / SpO₂ sensors send victims&rsquo; vital signs
-            in real time, and a small add-on LoRa module gives long-range, low-power data links.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">LoRa ESP32-S3</span></div>
-            <div class="spec"><span class="k"><span class="l-zh">生理感測</span><span class="l-en">Vital signs</span></span><span class="v"><span class="l-zh">心率 / 血氧</span><span class="l-en">Heart rate / SpO₂</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">無線</span><span class="l-en">Wireless</span></span><span class="v"><span class="l-zh">LoRa 外掛模組</span><span class="l-en">LoRa add-on module</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">本體</span><span class="l-en">Body</span></span><span class="v"><span class="l-zh">模組化零件</span><span class="l-en">modular parts</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">電池續航</span><span class="l-en">Battery life</span></span><span class="v"><span class="l-zh">約 120 小時（一般回報）</span><span class="l-en">~120 h (normal duty)</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-01.webp" alt="生存信標節點 Survival Beacon Node" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/sbn.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/sbn.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">節點讀到 78 bpm，與手腕上的心率手環讀值一致</span>
-              <span class="l-en">The node reads 78 bpm — matching the wrist band on the same arm</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- SEN -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-sen">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M32 20v30" stroke-width="1.1"/>
-              <rect x="23" y="20" width="18" height="13" rx="2" stroke-width="1.1"/>
-              <path d="M32 20v-8" stroke-width="1.1"/>
-              <circle cx="32" cy="11" r="1.6" fill="currentColor" stroke="none"/>
-              <path d="M22 15q10-9 20 0" stroke-width="0.7" stroke-dasharray="2.5 2.5"/>
-              <path d="M8 50h48" stroke-width="1.1"/>
-              <path d="M8 55q8-3 16 0t16 0 16 0" stroke-width="0.7"/>
-              <path d="M27 50v9M37 50v9" stroke-width="0.8"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">SEN</span><span class="tag">LoRa ESP32-S3</span><span class="tag">LoRa</span></span>
-              <span class="nm l-zh">環境感測節點</span>
-              <span class="nm l-en">Sensor Node</span>
-              <span class="one l-zh">全天候監看二次災害的徵兆。</span>
-              <span class="one l-en">Watches for second disasters, day and night.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-sen"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            同樣以 模組化零件構成本體、LoRa ESP32-S3 為主控。土壤含水量／坡度／水位感測器全天候監看二次災害的徵兆，
-            並與生存信標共用同一套無線系統 —— 這是「平時守護山林」的那一半。
-          </p>
-          <p class="desc l-en">
-            Also built with modular parts and controlled by LoRa ESP32-S3. Soil moisture / slope / water level
-            sensors watch for second disasters day and night, and it shares the same wireless system as
-            the Survival Beacon — this is the &ldquo;guarding the forest&rdquo; half of the system.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">主控</span><span class="l-en">Controller</span></span><span class="v">LoRa ESP32-S3</span></div>
-            <div class="spec"><span class="k"><span class="l-zh">環境感測</span><span class="l-en">Environment</span></span><span class="v"><span class="l-zh">土壤含水 / 坡度 / 水位</span><span class="l-en">Soil / slope / water level</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">無線</span><span class="l-en">Wireless</span></span><span class="v"><span class="l-zh">與信標同一套</span><span class="l-en">Same as the beacon</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">監看</span><span class="l-en">Monitoring</span></span><span class="v"><span class="l-zh">全天候 · 二次災害</span><span class="l-en">24/7 · second disasters</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">回報週期</span><span class="l-en">Report interval</span></span><span class="v"><span class="l-zh">每 5 分鐘（異常即報）</span><span class="l-en">Every 5 min (alert on threshold)</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-02.webp" alt="環境感測節點 Sensor Node" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/sensor-node.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/sensor-node.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">環境感測節點 · 野地部署</span>
-              <span class="l-en">Sensor Node · deployed in the field</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- CMD -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-cmd">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <rect x="6" y="20" width="52" height="34" rx="2" stroke-width="1.1"/>
-              <path d="M6 28h52" stroke-width="0.8"/>
-              <circle cx="11.5" cy="24" r="1.3" fill="currentColor" stroke="none"/>
-              <circle cx="16" cy="24" r="1.3" fill="currentColor" stroke="none" opacity="0.55"/>
-              <circle cx="20.5" cy="24" r="1.3" fill="currentColor" stroke="none" opacity="0.3"/>
-              <path d="M14 40h8l4-6 4 12 4-8 3 2h11" stroke-width="1.1"/>
-              <path d="M32 6v10M27 10h10M25 8l14 4" stroke-width="1"/>
-              <circle cx="32" cy="5" r="1.8" fill="currentColor" stroke="none"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">CMD</span><span class="tag">App</span><span class="tag">AI</span></span>
-              <span class="nm l-zh">指揮中心 · 平板／筆電</span>
-              <span class="nm l-en">Command Center · Tablet / Laptop</span>
-              <span class="one l-zh">資訊與決策的大腦，AI 完全在本地端運算。</span>
-              <span class="one l-en">The brain for information and decisions; AI runs fully on-device.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-cmd"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            資訊與決策的大腦，AI 於本地端運算、無需網際網路。ICS 五級角色權限、地圖點線面標記、離線同步；
-            即時儀表板顯示上線裝置、受困者統計與 SOS 警報。
-          </p>
-          <p class="desc l-en">
-            The brain for information and decisions; the AI runs locally, no internet needed.
-            ICS five-role permission levels, map marking (points, lines, areas) and offline sync.
-            A live dashboard shows online devices, victim statistics, and SOS alerts.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">平台</span><span class="l-en">Platform</span></span><span class="v"><span class="l-zh">平板 / 筆電</span><span class="l-en">Tablet / laptop</span></span></div>
-            <div class="spec"><span class="k">AI</span><span class="v"><span class="l-zh">本地端 · 離線</span><span class="l-en">On-device · offline</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">權限</span><span class="l-en">Roles</span></span><span class="v"><span class="l-zh">ICS 五級角色</span><span class="l-en">ICS five levels</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">地圖</span><span class="l-en">Map</span></span><span class="v"><span class="l-zh">點 / 線 / 面標記</span><span class="l-en">Points / lines / areas</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">同步</span><span class="l-en">Sync</span></span><span class="v"><span class="l-zh">離線佇列</span><span class="l-en">Offline queue</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-03.webp" alt="指揮中心 Command Center" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/cmd.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/cmd.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">指揮中心 · 雙螢幕戰情台與地圖</span>
-              <span class="l-en">Command Center · dual-screen situation display</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- RR -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-rr">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <rect x="18" y="10" width="28" height="44" rx="4" stroke-width="1.1"/>
-              <rect x="23" y="16" width="18" height="14" rx="1.5" stroke-width="0.8"/>
-              <path d="M32 27v-6M28 24h8" stroke-width="1"/>
-              <path d="M32 19l-2.5 5h5z" fill="currentColor" stroke="none"/>
-              <circle cx="26" cy="38" r="2" stroke-width="0.8"/>
-              <circle cx="32" cy="38" r="2" stroke-width="0.8"/>
-              <circle cx="38" cy="38" r="2" stroke-width="0.8"/>
-              <rect x="27" y="45" width="10" height="5" rx="1" stroke-width="0.8"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">RR</span><span class="tag">App</span><span class="tag">Field</span></span>
-              <span class="nm l-zh">搜救員手持端</span>
-              <span class="nm l-en">Rescuer Handheld · Rescue Radar</span>
-              <span class="one l-zh">把生命徵象與任務直接送到第一線手上。</span>
-              <span class="one l-en">Puts vital signs and mission orders into the rescuer&rsquo;s hand.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-rr"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            接收指揮中心下達的受困者生命徵象與任務指令；以信標訊號強度估算概略距離，
-            搜救員在地圖上標記受困者位置。
-          </p>
-          <p class="desc l-en">
-            Receives victims&rsquo; vital signs and mission orders from the command center. It estimates
-            rough distance by beacon signal strength, and rescuers mark victim positions on the map.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">平台</span><span class="l-en">Platform</span></span><span class="v"><span class="l-zh">手機 App</span><span class="l-en">Phone app</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">測距</span><span class="l-en">Ranging</span></span><span class="v"><span class="l-zh">信標訊號強度</span><span class="l-en">Beacon signal strength</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">地圖</span><span class="l-en">Map</span></span><span class="v"><span class="l-zh">受困者標記</span><span class="l-en">Victim marking</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">指令</span><span class="l-en">Orders</span></span><span class="v"><span class="l-zh">任務下達 / 回報</span><span class="l-en">Dispatch / report</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-04.webp" alt="搜救員手持端 Rescue Radar" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/rr.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/rr.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">手機 App 與手持無線終端</span>
-              <span class="l-en">Phone app paired with the handheld radio terminal</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- UGV -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-ugv">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <rect x="11" y="30" width="42" height="14" rx="3" stroke-width="1.1"/>
-              <circle cx="20" cy="49" r="6" stroke-width="1.1"/>
-              <circle cx="44" cy="49" r="6" stroke-width="1.1"/>
-              <path d="M20 55h24M20 43h24" stroke-width="0.8"/>
-              <rect x="26" y="19" width="12" height="11" rx="2" stroke-width="1.1"/>
-              <circle cx="32" cy="24.5" r="3" stroke-width="1"/>
-              <circle cx="32" cy="24.5" r="1" fill="currentColor" stroke="none"/>
-              <path d="M32 19v-6" stroke-width="1"/>
-              <circle cx="32" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">UGV</span><span class="tag">Ground</span></span>
-              <span class="nm l-zh">地面機器人</span>
-              <span class="nm l-en">Ground Robot</span>
-              <span class="one l-zh">先行進入危險區域，讓搜救人員承擔更少風險。</span>
-              <span class="one l-en">Goes into dangerous areas first, so rescuers take less risk.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-ugv"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            率先進入危險區域，自主行進並回傳影像與感測資料。
-            由機器人先行探查不穩定結構，讓搜救人員承擔更少風險。
-          </p>
-          <p class="desc l-en">
-            Goes into dangerous areas first; drives itself and sends back video / sensor data.
-            The robot checks unstable structures first, so rescuers take less risk.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">任務層級</span><span class="l-en">Search layer</span></span><span class="v"><span class="l-zh">地面確認</span><span class="l-en">Ground confirm</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">行進</span><span class="l-en">Navigation</span></span><span class="v"><span class="l-zh">自主導航</span><span class="l-en">Self-driving</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">回傳</span><span class="l-en">Downlink</span></span><span class="v"><span class="l-zh">影像 / 感測</span><span class="l-en">Video / sensor</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">續航 / 越野能力</span><span class="l-en">Endurance / terrain</span></span><span class="v"><span class="l-zh">約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">~40 min · flat / light rubble</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-05.webp" alt="地面機器人 Ground Robot" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/ugv.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/ugv.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">地面機器人 · LoRa ESP32-S3 主控與麥克納姆輪</span>
-              <span class="l-en">Ground Robot · LoRa ESP32-S3 controller, mecanum wheels</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
-      <!-- UAV : fixed-wing + four-rotor -->
-      <article class="card reveal">
-        <button class="unit" aria-expanded="false" aria-controls="u-uav">
-          <span class="unit-head">
-            <svg class="unit-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M20 10l1.8 15-1.8 4-1.8-4z" stroke-width="1"/>
-              <path d="M21.2 16L38 20.6H21.2zM18.8 16L2 20.6h16.8z" stroke-width="1"/>
-              <circle cx="20" cy="12" r="1.3" fill="currentColor" stroke="none"/>
-              <rect x="34" y="40" width="11" height="11" rx="2.5" stroke-width="1"/>
-              <path d="M34 40l-7-7M45 40l7-7M34 51l-7 7M45 51l7 7" stroke-width="1"/>
-              <ellipse cx="27" cy="33" rx="6" ry="1.9" stroke-width="0.8"/>
-              <ellipse cx="52" cy="33" rx="6" ry="1.9" stroke-width="0.8"/>
-              <ellipse cx="27" cy="58" rx="6" ry="1.9" stroke-width="0.8"/>
-              <ellipse cx="52" cy="58" rx="6" ry="1.9" stroke-width="0.8"/>
-              <circle cx="39.5" cy="46" r="2.2" stroke-width="0.9"/>
-              <path d="M22 30q8 6 12 8" stroke-width="0.7" stroke-dasharray="2.5 2.5"/>
-            </svg>
-            <span class="unit-title">
-              <span class="unit-meta"><span class="unit-code">UAV</span><span class="tag">Air</span><span class="tag">Wide</span><span class="tag">Close</span></span>
-              <span class="nm l-zh">空中載具 · 定翼＋四旋翼</span>
-              <span class="nm l-en">Aerial Vehicles · Fixed-Wing + Four-Rotor</span>
-              <span class="one l-zh">定翼先掃描大範圍，四旋翼再飛去近拍查證。</span>
-              <span class="one l-en">The fixed-wing scans wide; the four-rotor flies in to check close.</span>
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
-        </button>
-        <div class="unit-body" id="u-uav"><div><div class="unit-inner">
-          <p class="desc l-zh">
-            兩架無人機是一組互補的搭配，不是兩件各自為政的裝備。
-            <strong>定翼無人機</strong>滯空時間長、涵蓋範圍廣，負責快速掃描大範圍災區，
-            一旦發現目標就標記座標；<strong>四旋翼無人機</strong>接著飛抵該座標懸停近拍，
-            補足地面視野的死角。兩者加上地面機器人，構成「廣域 → 近距 → 地面」的三層搜索。
-          </p>
-          <p class="desc l-en">
-            The two drones are a complementary pair, not two separate pieces of kit.
-            The <strong>fixed-wing drone</strong> has long flight time and wide coverage, so it scans
-            large disaster areas fast and marks the position whenever it finds something; the
-            <strong>four-rotor drone</strong> then flies to that position, hovers, and films up close,
-            covering blind spots on the ground. Together with the ground robot they form the
-            &ldquo;wide → close → ground&rdquo; three-layer search.
-          </p>
-          <div class="specs">
-            <div class="spec"><span class="k"><span class="l-zh">定翼 · 任務</span><span class="l-en">Fixed-wing · role</span></span><span class="v"><span class="l-zh">廣域掃描 · 標記座標</span><span class="l-en">Wide scan · mark position</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">四旋翼 · 任務</span><span class="l-en">Four-rotor · role</span></span><span class="v"><span class="l-zh">近距查證 · 懸停近拍</span><span class="l-en">Close check · hover &amp; film</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">協同</span><span class="l-en">Teaming</span></span><span class="v"><span class="l-zh">空地一體 · 三層搜索</span><span class="l-en">Air + ground · 3 layers</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">作業距離 / 飛行時間</span><span class="l-en">Operating distance / flight time</span></span><span class="v"><span class="l-zh">定翼 ~8 km / 40 分；四旋翼 ~1.5 km / 15 分</span><span class="l-en">Fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></span></div>
-          </div>
-          <figure class="shot" style="margin-bottom:0">
-            <img src="assets/optimized/system-06.webp" alt="四旋翼無人機 Four-Rotor Drone" loading="lazy"
-                 onerror="this.closest('.shot').classList.add('missing')">
-            <div class="ph">
-              <span class="ph-tag"><span class="l-zh">待放檔案</span><span class="l-en">File missing</span></span>
-              <span class="ph-note l-zh">把照片存成 <code>assets/qr-drone.jpg</code> 就會自動顯示。</span>
-              <span class="ph-note l-en">Save the photo as <code>assets/qr-drone.jpg</code> and it appears automatically.</span>
-            </div>
-            <figcaption>
-              <span class="l-zh">四旋翼無人機 · 起飛前實拍</span>
-              <span class="l-en">Four-Rotor Drone · before take-off</span>
-            </figcaption>
-          </figure>
-        </div></div></div>
-      </article>
-
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"><span class="l-zh">比較項目</span><span class="l-en">Criterion</span></th>
+            <th scope="col" class="hl">LinkGuard</th>
+            <th scope="col"><span class="l-zh">衛星通訊器</span><span class="l-en">Satellite messenger</span></th>
+            <th scope="col"><span class="l-zh">一般 LoRa Mesh 救災系統</span><span class="l-en">Generic LoRa mesh system</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="l-zh">覆蓋範圍</span><span class="l-en">Coverage</span></th>
+            <td class="hl">
+              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；四次實驗測得最大通訊距離為 1.96 公里。</span>
+              <span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; four tests measured a maximum range of 1.96 km.</span>
+            </td>
+            <td>
+              <span class="l-zh">近乎全球，但需要開闊天空視野，樹冠層與室內／廢墟下容易失效</span>
+              <span class="l-en">Near-global, but needs open sky; unreliable under tree canopy, indoors or under rubble</span>
+            </td>
+            <td>
+              <span class="l-zh">依節點密度而定，需要佈夠多中繼點才能連成面</span>
+              <span class="l-en">Depends on node density; needs enough relays to form continuous coverage</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">離線能力</span><span class="l-en">Offline</span></th>
+            <td class="hl">
+              <span class="mark yes">●</span>
+              <span class="l-zh">完全離線；AI 於指揮中心本地端運算，全程不需網際網路</span>
+              <span class="l-en">Fully offline; the AI runs on the command center device, no internet at any point</span>
+            </td>
+            <td>
+              <span class="mark no">○</span>
+              <span class="l-zh">需訂閱服務與衛星鏈路，多數機種仰賴雲端轉送訊息</span>
+              <span class="l-en">Needs a subscription and a satellite link; most devices relay messages through the cloud</span>
+            </td>
+            <td>
+              <span class="mark yes">●</span>
+              <span class="l-zh">通常可離線，但決策與資料整合多半仍需另接後端</span>
+              <span class="l-en">Usually offline-capable, but decision-making and data fusion often still need a backend</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">資料型態</span><span class="l-en">Data</span></th>
+            <td class="hl">
+              <span class="l-zh">生命徵象（心率／血氧）＋ 環境資料（含水／坡度／水位）＋ 載具影像，結構化進同一個儀表板</span>
+              <span class="l-en">Vital signs (HR / SpO₂) + environment data (soil / slope / water) + vehicle video, all structured into one dashboard</span>
+            </td>
+            <td>
+              <span class="l-zh">以簡訊、座標與 SOS 為主，無生理與環境感測</span>
+              <span class="l-en">Mostly text, coordinates and SOS; no physiological or environmental sensing</span>
+            </td>
+            <td>
+              <span class="l-zh">多半只傳位置與文字訊息</span>
+              <span class="l-en">Usually position and text messages only</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">部署難度</span><span class="l-en">Deployment</span></th>
+            <td class="hl">
+              <span class="l-zh">節點以 模組化零件組成，可快速複製與維修；載具需操作人員</span>
+              <span class="l-en">Nodes are built from modular parts, quick to replicate and repair; the vehicles need operators</span>
+            </td>
+            <td>
+              <span class="l-zh">開箱即用，個人裝置門檻最低</span>
+              <span class="l-en">Works out of the box; the lowest barrier as a personal device</span>
+            </td>
+            <td>
+              <span class="l-zh">需事先規劃節點佈點與中繼拓撲</span>
+              <span class="l-en">Requires planning node placement and relay topology in advance</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">成本</span><span class="l-en">Cost</span></th>
+            <td class="hl">
+              <span class="l-zh">SBN 單一節點物料成本約 NT$2,000，無月租費；其他模組依配置計價</span>
+              <span class="l-en">SBN bill of materials ~NT$2,000 per node, no subscription; other modules vary by configuration</span>
+            </td>
+            <td>
+              <span class="l-zh">裝置費約 NT$12,000 ＋ 月租約 NT$450–2,000</span>
+              <span class="l-en">Device ~NT$12,000 plus ~NT$450–2,000 / month</span>
+            </td>
+            <td>
+              <span class="l-zh">硬體成本低，但整體佈建成本隨節點數線性上升</span>
+              <span class="l-en">Cheap hardware, but total build-out cost scales linearly with node count</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="l-zh">主要限制</span><span class="l-en">Limitation</span></th>
+            <td class="hl">
+              <span class="l-zh">頻寬小，只能傳結構化短封包；影像須靠載具鏈路</span>
+              <span class="l-en">Very little bandwidth — short structured packets only; video depends on the vehicle link</span>
+            </td>
+            <td>
+              <span class="l-zh">無法感測受困者狀態，也無法整合現場資訊</span>
+              <span class="l-en">Cannot sense a victim&rsquo;s condition, and cannot integrate on-scene information</span>
+            </td>
+            <td>
+              <span class="l-zh">缺乏統一的指揮與決策層</span>
+              <span class="l-en">Lacks a unified command and decision layer</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="arch-wrap reveal" id="architecture">
-      <div class="arch-head">
-        <div>
-          <h3 class="l-zh">系統通訊架構總覽</h3>
-          <h3 class="l-en">System Communication Architecture</h3>
-          <p class="l-zh">從受困者訊號到指揮端，LinkGuard 依任務層級切分頻段，讓搜索、隊伍協作與 HQ 指揮鏈互不混淆。</p>
-          <p class="l-en">From the victim signal to command, LinkGuard separates search, team coordination and HQ traffic by mission layer.</p>
-        </div>
-        <button class="arch-sim" id="archSimulate" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v10"/><path d="M8 9l4 4 4-4"/><circle cx="12" cy="17" r="4"/></svg>
-          <span class="idle-label l-zh">展示 SOS 傳遞</span>
-          <span class="idle-label l-en">Simulate SOS</span>
-          <span class="running-label l-zh">訊號傳遞中…</span>
-          <span class="running-label l-en">Signal in transit…</span>
-        </button>
-      </div>
-
-      <div class="arch-scroll" aria-label="LinkGuard system architecture">
-        <div class="arch-flow">
-          <div class="arch-node" data-arch-node="0">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="12" r="6"/><path d="M13 42v-8c0-7 5-12 11-12s11 5 11 12v8M8 31l7-5m25 5-7-5"/><path d="M20 31h8M24 27v8" stroke="var(--alert)"/></svg>
-            <strong>Victim</strong>
-            <small><span class="l-zh">受困者節點</span><span class="l-en">Victim node</span></small>
-          </div>
-          <div class="arch-link search" data-arch-link="0">
-            <span class="arch-link-label">910.x / 911.x MHz</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="1">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="24" r="5"/><circle cx="24" cy="24" r="12"/><path d="M24 5v7m0 24v7M5 24h7m24 0h7M10.5 10.5l5 5m17 17 5 5m0-27-5 5m-17 17-5 5"/></svg>
-            <strong>Rescue Mesh</strong>
-            <small><span class="l-zh">搜救自組網</span><span class="l-en">Rescue mesh</span></small>
-          </div>
-          <div class="arch-link team-band" data-arch-link="1">
-            <span class="arch-link-label">913 MHz</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="2">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="13" r="6"/><path d="M14 42v-9c0-7 4-11 10-11s10 4 10 11v9"/><path d="M34 11c4 2 6 6 6 10m-6-2c2 1 3 3 3 5"/></svg>
-            <strong>Team Leader</strong>
-            <small><span class="l-zh">隊長節點</span><span class="l-en">Leader node</span></small>
-          </div>
-          <div class="arch-link hq" data-arch-link="2">
-            <span class="arch-link-label">433 MHz</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="3">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 41h34M11 41V18h26v23M17 18V9h14v9"/><path d="M18 26h4m4 0h4m-12 7h4m4 0h4"/></svg>
-            <strong>HQ</strong>
-            <small><span class="l-zh">指揮鏈節點</span><span class="l-en">Command-chain node</span></small>
-          </div>
-          <div class="arch-link ble" data-arch-link="3">
-            <span class="arch-link-label">BLE</span><i class="arch-packet"></i>
-          </div>
-          <div class="arch-node" data-arch-node="4">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M18 11h12M21 38h6"/><path d="M18 29l5-5 4 3 5-7"/></svg>
-            <strong>Command App</strong>
-            <small><span class="l-zh">指揮應用程式</span><span class="l-en">Command application</span></small>
-          </div>
-        </div>
-      </div>
-
-      <div class="arch-ble-note">
-        <b>BLE</b>
-        <span class="l-zh">Rescue／HQ 節點可與鄰近 App 雙向同步狀態與指令。</span>
-        <span class="l-en">Rescue and HQ nodes can synchronise status and commands with a nearby app.</span>
-      </div>
-      <div class="arch-legend" aria-label="Communication frequency legend">
-        <span class="arch-key search"><i></i><span><b>910.x／911.x MHz</b> · <span class="l-zh">搜索通訊</span><span class="l-en">Search</span></span></span>
-        <span class="arch-key team-band"><i></i><span><b>913 MHz</b> · <span class="l-zh">隊伍命令</span><span class="l-en">Team commands</span></span></span>
-        <span class="arch-key hq"><i></i><span><b>433 MHz</b> · <span class="l-zh">HQ 指揮鏈</span><span class="l-en">HQ command chain</span></span></span>
-        <span class="arch-key ble"><i></i><span><b>BLE</b> · <span class="l-zh">App 與節點</span><span class="l-en">App and node</span></span></span>
-      </div>
-    </div>
+    <p class="sec-note reveal l-zh" style="margin-top:18px">
+      註：本表中他方案的描述為通則性比較，未逐一對應特定商品型號。填入實際型號與報價後可信度更高。
+    </p>
+    <p class="sec-note reveal l-en" style="margin-top:18px">
+      Note: the other two columns describe categories in general terms, not specific products.
+      Naming actual models and quoting real prices would make this table stronger.
+    </p>
   </div>
 </section>
-
-<!-- ============ 04 FUNCTIONALITY ============ -->
-
-
-<!-- ============ 05 DATA ============ -->
-
 
 <footer>
   <div class="wrap">

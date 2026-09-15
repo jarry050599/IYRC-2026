@@ -7,10 +7,10 @@
 <link rel="apple-touch-icon" href="assets/linkguard-logo.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#314092">
-<title>LinkGuard｜LoRa 災害搜救通訊系統</title>
+<title>技術細節 — LinkGuard</title>
 <meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://alinkguard.com/">
+<link rel="canonical" href="https://linkguard.tw/technical.html">
 
 <!-- Social sharing: LINE, Facebook, Instagram and other Open Graph clients -->
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="LinkGuard">
 <meta property="og:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
 <meta property="og:description" content="以 LoRa 自組通訊與指揮應用程式，建立災害現場的搜救通訊鏈路。">
-<meta property="og:url" content="https://alinkguard.com/">
+<meta property="og:url" content="https://linkguard.tw/technical.html">
 <meta property="og:image" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:secure_url" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -3390,6 +3390,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
   body[data-page] .nav .nav-links a { font-size: 13px; }
 }
 </style>
+<script src="site-pages.js" defer></script>
 </head>
 <body data-page="technical">
 
@@ -3404,17 +3405,17 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
     </a>
 
     <div class="nav-links" id="navLinks">
-      <a href="index.html#summary"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
-      <a href="research.html#background"><span class="l-zh">背景</span><span class="l-en">Background</span></a>
-      <a href="system.html#composition"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
-      <a href="system.html#functionality"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
-      <a href="system.html#data"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
-      <a href="research.html#story"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
-      <a href="research.html#compare"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
-      <a href="field.html#field"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
-      <a href="#deepdive"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
-      <a href="#roadmap"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
-      <a href="team.html#team"><span class="l-zh">團隊</span><span class="l-en">Team</span></a>
+      <a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
+      <a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a>
+      <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
+      <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
+      <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
+      <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
+      <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
+      <a href="technical.html" class="active" aria-current="page"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
+      <a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
+      <a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a>
     </div>
 
     <div class="nav-right">
@@ -3815,69 +3816,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
 </section>
 
 <!-- ============ 10 ROADMAP ============ -->
-<section id="roadmap" class="alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">10 — <span class="l-zh">部署方案</span><span class="l-en">Deployment Plan</span></div>
-      <h2 class="l-zh">從單隊到鄉鎮規模。</h2>
-      <h2 class="l-en">From one team to township scale.</h2>
-      <p class="sec-note l-zh">以下均為設計情境與成本試算，用於比較不同部署規模，不代表已完成相同規模的正式演練或採購。</p>
-      <p class="sec-note l-en">These design scenarios and cost estimates compare deployment scales; they do not claim a completed drill or purchase at the same scale.</p>
-    </div>
 
-    <div class="road">
-      <div class="road-card reveal">
-        <div class="n">01</div>
-        <h3 class="l-zh">單隊演練情境</h3>
-        <h3 class="l-en">Single-team scenario</h3>
-        <ul class="road-list l-zh">
-          <li><span class="b">→</span><span>4 名搜救員、10 個節點、1 個 HQ 指揮端</span></li>
-          <li><span class="b">→</span><span>規劃範圍 1 km²，任務時間 90 分鐘</span></li>
-          <li><span class="b">→</span><span>同時處理 1 個 Victim SOS 與 1 個搜救員 MAYDAY</span></li>
-        </ul>
-        <ul class="road-list l-en">
-          <li><span class="b">→</span><span>4 rescuers, 10 nodes and 1 HQ command endpoint</span></li>
-          <li><span class="b">→</span><span>1 km² planned area and a 90-minute mission</span></li>
-          <li><span class="b">→</span><span>One Victim SOS and one rescuer MAYDAY handled concurrently</span></li>
-        </ul>
-      </div>
-
-      <div class="road-card reveal">
-        <div class="n">02</div>
-        <h3 class="l-zh">規模化與成本</h3>
-        <h3 class="l-en">Scaling &amp; cost</h3>
-        <ul class="road-list l-zh">
-          <li><span class="b">→</span><span>10 節點：約 NT$20,000</span></li>
-          <li><span class="b">→</span><span>40 節點：約 NT$80,000</span></li>
-          <li><span class="b">→</span><span>100 節點：約 NT$200,000；均以 SBN 基準 NT$2,000／節點估算，不含人力、載具、SEN 價差與備品</span></li>
-        </ul>
-        <ul class="road-list l-en">
-          <li><span class="b">→</span><span>10 nodes: approximately NT$20,000</span></li>
-          <li><span class="b">→</span><span>40 nodes: approximately NT$80,000</span></li>
-          <li><span class="b">→</span><span>100 nodes: approximately NT$200,000; calculated from the SBN baseline of NT$2,000 per node, excluding labour, vehicles, SEN cost differences and spares</span></li>
-        </ul>
-      </div>
-
-      <div class="road-card reveal">
-        <div class="n">03</div>
-        <h3 class="l-zh">鄉鎮級情境</h3>
-        <h3 class="l-en">Township-scale scenario</h3>
-        <ul class="road-list l-zh">
-          <li><span class="b">→</span><span>4 支搜救隊、40 個節點、2 個 HQ 端點</span></li>
-          <li><span class="b">→</span><span>規劃範圍 4 km²，節點平均間距約 300–500 m</span></li>
-          <li><span class="b">→</span><span>40 節點高負載預估抵達率 93.5%，P95 延遲 2.7 s</span></li>
-          <li><span class="b">→</span><span>保留 10% 備援節點，即另備 4 個節點</span></li>
-        </ul>
-        <ul class="road-list l-en">
-          <li><span class="b">→</span><span>4 rescue teams, 40 nodes and 2 HQ endpoints</span></li>
-          <li><span class="b">→</span><span>4 km² planned area with 300–500 m average node spacing</span></li>
-          <li><span class="b">→</span><span>40-node high-load estimate: 93.5% delivery and 2.7 s P95 latency</span></li>
-          <li><span class="b">→</span><span>10% node reserve, equivalent to 4 spare nodes</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">

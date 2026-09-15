@@ -7,10 +7,10 @@
 <link rel="apple-touch-icon" href="assets/linkguard-logo.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#314092">
-<title>LinkGuard｜LoRa 災害搜救通訊系統</title>
+<title>開發故事 — LinkGuard</title>
 <meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://alinkguard.com/">
+<link rel="canonical" href="https://linkguard.tw/research.html">
 
 <!-- Social sharing: LINE, Facebook, Instagram and other Open Graph clients -->
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="LinkGuard">
 <meta property="og:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
 <meta property="og:description" content="以 LoRa 自組通訊與指揮應用程式，建立災害現場的搜救通訊鏈路。">
-<meta property="og:url" content="https://alinkguard.com/">
+<meta property="og:url" content="https://linkguard.tw/research.html">
 <meta property="og:image" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:secure_url" content="https://alinkguard.com/assets/linkguard-logo.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -2900,10 +2900,11 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
   body[data-page] .nav .nav-links a { font-size: 13px; }
 }
 </style>
+<script src="site-pages.js" defer></script>
 </head>
 <body data-page="research">
 
-<a class="sr-only" href="#background"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
+<a class="sr-only" href="#story"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
@@ -2914,17 +2915,17 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
     </a>
 
     <div class="nav-links" id="navLinks">
-      <a href="index.html#summary"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
-      <a href="#background"><span class="l-zh">背景</span><span class="l-en">Background</span></a>
-      <a href="system.html#composition"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
-      <a href="system.html#functionality"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
-      <a href="system.html#data"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
-      <a href="#story"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
-      <a href="#compare"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
-      <a href="field.html#field"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
-      <a href="technical.html#deepdive"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
-      <a href="technical.html#roadmap"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
-      <a href="team.html#team"><span class="l-zh">團隊</span><span class="l-en">Team</span></a>
+      <a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a>
+      <a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a>
+      <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
+      <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
+      <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="research.html" class="active" aria-current="page"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
+      <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
+      <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
+      <a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a>
+      <a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a>
+      <a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a>
     </div>
 
     <div class="nav-right">
@@ -2944,77 +2945,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
 </nav>
 
 <!-- ============ 02 BACKGROUND ============ -->
-<section id="background" class="alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">02 — <span class="l-zh">背景</span><span class="l-en">Background</span></div>
-      <h2 class="l-zh">行動網路一旦中斷，<br>搜救就先斷了線。</h2>
-      <h2 class="l-en">When the mobile network goes down,<br>the rescue loses its line first.</h2>
-    </div>
 
-    <div class="split">
-      <div class="reveal">
-        <p class="body-text l-zh">
-          台灣<strong>地震</strong>、<strong>颱風</strong>與<strong>山難</strong>頻繁。
-          行動網路一旦中斷，搜救人員無法與受困者聯繫 —— 彼此之間也失去聯繫。
-        </p>
-        <p class="body-text l-en">
-          Taiwan has many <strong>earthquakes</strong>, <strong>typhoons</strong>, and
-          <strong>mountain accidents</strong>. When mobile networks go down, rescuers cannot talk to
-          victims — or to each other.
-        </p>
-
-        <blockquote class="quote">
-          <p class="l-zh">在黃金 72 小時裡，<strong>失聯</strong>與<strong>資訊整合</strong>是最大的兩個問題。</p>
-          <p class="l-en">Losing communication and putting information together are the biggest problems in the golden 72 hours.</p>
-          <div class="src">
-            <span class="l-zh">新竹縣消防員訪談</span><span class="l-en">Interview · Hsinchu County firefighters</span>
-          </div>
-        </blockquote>
-
-        <p class="body-text l-zh">
-          因此我們以 模組化平台設計一套<strong>無需網際網路</strong>即可運作、
-          同時蒐集受困者與環境資料的系統，讓搜救更快、更穩定。
-        </p>
-        <p class="body-text l-en">
-          So we used a modular platform to design a system that works with <strong>no internet</strong>,
-          collects both victim and environment data, and makes search and rescue faster and more stable.
-        </p>
-      </div>
-
-      <div class="facts reveal">
-        <div class="fact">
-          <div class="n"><span data-count="72">0</span><small>h</small></div>
-          <div class="t">
-            <span class="l-zh">災後黃金搜救時間 —— 失聯與資訊整合是最大瓶頸</span>
-            <span class="l-en">The golden window after a disaster — lost comms and scattered information are the bottleneck</span>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="n"><span data-count="6">0</span></div>
-          <div class="t">
-            <span class="l-zh">系統組成模組 —— 兩種節點、兩類載具、兩個指揮端</span>
-            <span class="l-en">Modules in the system — two node types, two vehicle classes, two command-side apps</span>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="n"><span data-count="2">0</span></div>
-          <div class="t">
-            <span class="l-zh">運作模式 —— 平時守護山林 · 災時搶救生命</span>
-            <span class="l-en">Modes — guarding the forest in normal times, saving lives in disaster</span>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="n"><span data-count="0">0</span></div>
-          <div class="t">
-            <span class="l-zh">網際網路需求 —— AI 於本地端運算，離線即可決策</span>
-            <span class="l-en">Internet required — the AI runs on-device, so decisions work offline</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ 06 STORY ============ -->
 <section id="story" class="alt">
@@ -3294,133 +3225,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
 </section>
 
 <!-- ============ 07 COMPARE ============ -->
-<section id="compare">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">07 — <span class="l-zh">方案比較</span><span class="l-en">Comparison</span></div>
-      <h2 class="l-zh">和既有方案<br>差在哪裡。</h2>
-      <h2 class="l-en">How this differs from<br>what already exists.</h2>
-      <p class="sec-note l-zh">從覆蓋範圍、基礎建設需求、容錯能力與成本比較各類方案。</p>
-      <p class="sec-note l-en">A comparison across coverage, infrastructure requirements, fault tolerance and cost.</p>
-    </div>
 
-    <div class="table-scroll reveal">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"><span class="l-zh">比較項目</span><span class="l-en">Criterion</span></th>
-            <th scope="col" class="hl">LinkGuard</th>
-            <th scope="col"><span class="l-zh">衛星通訊器</span><span class="l-en">Satellite messenger</span></th>
-            <th scope="col"><span class="l-zh">一般 LoRa Mesh 救災系統</span><span class="l-en">Generic LoRa mesh system</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span class="l-zh">覆蓋範圍</span><span class="l-en">Coverage</span></th>
-            <td class="hl">
-              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；四次實驗測得最大通訊距離為 1.96 公里。</span>
-              <span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; four tests measured a maximum range of 1.96 km.</span>
-            </td>
-            <td>
-              <span class="l-zh">近乎全球，但需要開闊天空視野，樹冠層與室內／廢墟下容易失效</span>
-              <span class="l-en">Near-global, but needs open sky; unreliable under tree canopy, indoors or under rubble</span>
-            </td>
-            <td>
-              <span class="l-zh">依節點密度而定，需要佈夠多中繼點才能連成面</span>
-              <span class="l-en">Depends on node density; needs enough relays to form continuous coverage</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">離線能力</span><span class="l-en">Offline</span></th>
-            <td class="hl">
-              <span class="mark yes">●</span>
-              <span class="l-zh">完全離線；AI 於指揮中心本地端運算，全程不需網際網路</span>
-              <span class="l-en">Fully offline; the AI runs on the command center device, no internet at any point</span>
-            </td>
-            <td>
-              <span class="mark no">○</span>
-              <span class="l-zh">需訂閱服務與衛星鏈路，多數機種仰賴雲端轉送訊息</span>
-              <span class="l-en">Needs a subscription and a satellite link; most devices relay messages through the cloud</span>
-            </td>
-            <td>
-              <span class="mark yes">●</span>
-              <span class="l-zh">通常可離線，但決策與資料整合多半仍需另接後端</span>
-              <span class="l-en">Usually offline-capable, but decision-making and data fusion often still need a backend</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">資料型態</span><span class="l-en">Data</span></th>
-            <td class="hl">
-              <span class="l-zh">生命徵象（心率／血氧）＋ 環境資料（含水／坡度／水位）＋ 載具影像，結構化進同一個儀表板</span>
-              <span class="l-en">Vital signs (HR / SpO₂) + environment data (soil / slope / water) + vehicle video, all structured into one dashboard</span>
-            </td>
-            <td>
-              <span class="l-zh">以簡訊、座標與 SOS 為主，無生理與環境感測</span>
-              <span class="l-en">Mostly text, coordinates and SOS; no physiological or environmental sensing</span>
-            </td>
-            <td>
-              <span class="l-zh">多半只傳位置與文字訊息</span>
-              <span class="l-en">Usually position and text messages only</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">部署難度</span><span class="l-en">Deployment</span></th>
-            <td class="hl">
-              <span class="l-zh">節點以 模組化零件組成，可快速複製與維修；載具需操作人員</span>
-              <span class="l-en">Nodes are built from modular parts, quick to replicate and repair; the vehicles need operators</span>
-            </td>
-            <td>
-              <span class="l-zh">開箱即用，個人裝置門檻最低</span>
-              <span class="l-en">Works out of the box; the lowest barrier as a personal device</span>
-            </td>
-            <td>
-              <span class="l-zh">需事先規劃節點佈點與中繼拓撲</span>
-              <span class="l-en">Requires planning node placement and relay topology in advance</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">成本</span><span class="l-en">Cost</span></th>
-            <td class="hl">
-              <span class="l-zh">SBN 單一節點物料成本約 NT$2,000，無月租費；其他模組依配置計價</span>
-              <span class="l-en">SBN bill of materials ~NT$2,000 per node, no subscription; other modules vary by configuration</span>
-            </td>
-            <td>
-              <span class="l-zh">裝置費約 NT$12,000 ＋ 月租約 NT$450–2,000</span>
-              <span class="l-en">Device ~NT$12,000 plus ~NT$450–2,000 / month</span>
-            </td>
-            <td>
-              <span class="l-zh">硬體成本低，但整體佈建成本隨節點數線性上升</span>
-              <span class="l-en">Cheap hardware, but total build-out cost scales linearly with node count</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">主要限制</span><span class="l-en">Limitation</span></th>
-            <td class="hl">
-              <span class="l-zh">頻寬小，只能傳結構化短封包；影像須靠載具鏈路</span>
-              <span class="l-en">Very little bandwidth — short structured packets only; video depends on the vehicle link</span>
-            </td>
-            <td>
-              <span class="l-zh">無法感測受困者狀態，也無法整合現場資訊</span>
-              <span class="l-en">Cannot sense a victim&rsquo;s condition, and cannot integrate on-scene information</span>
-            </td>
-            <td>
-              <span class="l-zh">缺乏統一的指揮與決策層</span>
-              <span class="l-en">Lacks a unified command and decision layer</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="sec-note reveal l-zh" style="margin-top:18px">
-      註：本表中他方案的描述為通則性比較，未逐一對應特定商品型號。填入實際型號與報價後可信度更高。
-    </p>
-    <p class="sec-note reveal l-en" style="margin-top:18px">
-      Note: the other two columns describe categories in general terms, not specific products.
-      Naming actual models and quoting real prices would make this table stronger.
-    </p>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">

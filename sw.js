@@ -1,6 +1,13 @@
-const CACHE_NAME = "linkguard-site-v20";
+const CACHE_NAME = "linkguard-site-v21";
 const OFFLINE_ASSETS = [
   "./index.html",
+  "./overview.html",
+  "./background.html",
+  "./functionality.html",
+  "./data.html",
+  "./comparison.html",
+  "./deployment.html",
+  "./site-pages.js",
   "./system.html",
   "./research.html",
   "./field.html",
