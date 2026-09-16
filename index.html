@@ -267,6 +267,11 @@ tr:has(.ph-inline),
   margin: 20px 0 0; max-width: 20ch;
 }
 .hero .lede { margin-top: 24px; max-width: 64ch; font-size: 17px; color: var(--fg-mid); }
+body[data-page="home"] .hero .hero-title { grid-column: 1; grid-row: 2; margin: 0; min-width: 0; }
+.hero .hero-sub { margin-top: 18px; max-width: 30ch; font-family: var(--font-zh, var(--serif)); font-size: clamp(22px, 2.6vw, 34px); font-weight: 600; line-height: 1.35; letter-spacing: .01em; color: var(--fg); }
+.hero .hero-sub .hero-line { display: inline-block; }
+.hero .hero-sub + .lede { margin-top: 18px; }
+@media (max-width: 700px) { .hero .hero-sub { font-size: clamp(19px, 5.6vw, 24px); } }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
 /* ---------- stat chips + tooltip ---------- */
@@ -2950,8 +2955,12 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
   <div class="wrap">
     <div class="eyebrow">LinkGuard · Disaster Search and Rescue System</div>
 
-    <h1 class="l-zh"><span class="hero-line hero-line-primary">平時守護山林，</span><br><span class="hero-line hero-line-accent">災時搶救生命。</span></h1>
-    <h1 class="l-en">Guarding the forest in normal times,<br>saving lives when disaster strikes.</h1>
+    <div class="hero-title">
+      <h1 class="l-zh"><span class="hero-line hero-line-primary">聯動守護</span><span class="hero-line hero-line-accent">——災害搜救系統</span></h1>
+      <h1 class="l-en">LinkGuard — Disaster Search<br>and Rescue System</h1>
+      <p class="hero-sub l-zh"><span class="hero-line hero-line-primary">平時守護山林，</span><span class="hero-line hero-line-accent">災時搶救生命。</span></p>
+      <p class="hero-sub l-en"><span class="hero-line hero-line-primary">Guarding the forest in normal times,</span> <span class="hero-line hero-line-accent">saving lives when disaster strikes.</span></p>
+    </div>
 
     <p class="lede l-zh">
       以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。當災害摧毀行動網路，
