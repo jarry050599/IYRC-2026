@@ -2132,7 +2132,7 @@ h4,.card h4,.modal h4{font-size:clamp(8px,.65vw,10px)}
 }
 </style>
 <link rel="stylesheet" href="wayfinder-ui.css?v=1">
-<link rel="stylesheet" href="multipage.css?v=1">
+<link rel="stylesheet" href="multipage.css?v=2">
 <style id="linkguard-site-polish-20260915">
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
@@ -2920,6 +2920,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a>
       <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
       <a href="comparison.html" class="active" aria-current="page"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
@@ -3076,6 +3077,146 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       Note: the other two columns describe categories in general terms, not specific products.
       Naming actual models and quoting real prices would make this table stronger.
     </p>
+
+    <div class="report-block" id="compare-usar">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><span class="l-zh">地震搜救模式 · LinkGuard-E</span><span class="l-en">Earthquake mode · LinkGuard-E</span></div>
+        <h2 class="l-zh">與現有搜救技術及商用 USAR 工具比較。</h2>
+        <h2 class="l-en">Against current rescue techniques and commercial USAR tools.</h2>
+        <p class="sec-note l-zh">以下兩張表取自第 66 屆全國科展作品說明書（表七、表八）：先從原理層面比較傳統無線電／LINE 與聲納、蛇管光學；再與市售都市搜救（USAR）裝備逐項對照。</p>
+        <p class="sec-note l-en">The two tables below come from our National Science Fair report (Tables 7 and 8): first a principle-level comparison with radio/LINE and acoustic or camera probes, then an item-by-item comparison with commercial urban search-and-rescue (USAR) equipment.</p>
+      </div>
+
+      <div class="table-scroll reveal">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><span class="l-zh">比較面向</span><span class="l-en">Criterion</span></th>
+              <th scope="col"><span class="l-zh">傳統無線電／LINE</span><span class="l-en">Radio / LINE messaging</span></th>
+              <th scope="col"><span class="l-zh">聲納／蛇管光學</span><span class="l-en">Acoustic / snake camera</span></th>
+              <th scope="col" class="hl">LinkGuard-E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="l-zh">通訊可用性</span><span class="l-en">Link availability</span></th>
+              <td><span class="l-zh">基地台中斷即失效</span><span class="l-en">Fails when cell towers go down</span></td>
+              <td><span class="l-zh">不涉及通訊</span><span class="l-en">No communication function</span></td>
+              <td class="hl"><span class="l-zh">LoRa 自組網</span><span class="l-en">Self-organised LoRa network</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">RC 結構穿透能力</span><span class="l-en">RC penetration</span></th>
+              <td><span class="l-zh">高頻訊號全阻</span><span class="l-en">High-frequency signals blocked</span></td>
+              <td><span class="l-zh">無法穿牆</span><span class="l-en">Cannot see through walls</span></td>
+              <td class="hl"><span class="l-zh">923 MHz 長波長繞射穿透</span><span class="l-en">923 MHz long-wavelength diffraction</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">受困者生理數據</span><span class="l-en">Victim vital signs</span></th>
+              <td><span class="mark no">✗</span> <span class="l-zh">無</span><span class="l-en">None</span></td>
+              <td><span class="mark no">✗</span> <span class="l-zh">無</span><span class="l-en">None</span></td>
+              <td class="hl"><span class="mark yes">✓</span> <span class="l-zh">即時心率回傳</span><span class="l-en">Live heart rate</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">檢傷排序依據</span><span class="l-en">Triage basis</span></th>
+              <td><span class="l-zh">到達現場後目視</span><span class="l-en">Visual, on arrival</span></td>
+              <td><span class="l-zh">到達現場後目視</span><span class="l-en">Visual, on arrival</span></td>
+              <td class="hl"><span class="l-zh">抵達前已依生理數據排序</span><span class="l-en">Ranked by vitals before arrival</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">指揮資訊整合</span><span class="l-en">Command integration</span></th>
+              <td><span class="l-zh">LINE＋無線電分散</span><span class="l-en">Scattered across LINE and radio</span></td>
+              <td><span class="l-zh">獨立設備無整合</span><span class="l-en">Stand-alone device</span></td>
+              <td class="hl"><span class="l-zh">ICS 分層單一平台</span><span class="l-en">Single ICS-layered platform</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">離線可用性</span><span class="l-en">Offline use</span></th>
+              <td><span class="l-zh">需網路</span><span class="l-en">Needs the internet</span></td>
+              <td><span class="l-zh">不適用</span><span class="l-en">Not applicable</span></td>
+              <td class="hl"><span class="l-zh">Offline First，本地暫存自動同步</span><span class="l-en">Offline-first with local cache and auto-sync</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll reveal" style="margin-top:28px">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><span class="l-zh">比較面向</span><span class="l-en">Criterion</span></th>
+              <th scope="col">Delsar LD3</th>
+              <th scope="col">SearchCam 3000</th>
+              <th scope="col">Lifeseeker</th>
+              <th scope="col" class="hl">LinkGuard-E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="l-zh">廠商／國別</span><span class="l-en">Vendor / country</span></th>
+              <td><span class="l-zh">Savox 集團（芬蘭）</span><span class="l-en">Savox Group (Finland)</span></td>
+              <td><span class="l-zh">Savox／Con-Space（芬蘭）</span><span class="l-en">Savox / Con-Space (Finland)</span></td>
+              <td><span class="l-zh">CENTUM（西班牙）</span><span class="l-en">CENTUM (Spain)</span></td>
+              <td class="hl"><span class="l-zh">本研究（台灣）</span><span class="l-en">This project (Taiwan)</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">物理原理</span><span class="l-en">Principle</span></th>
+              <td><span class="l-zh">地震波＋聲波被動聆聽</span><span class="l-en">Passive seismic and acoustic listening</span></td>
+              <td><span class="l-zh">240° 關節攝影機＋雙向語音</span><span class="l-en">240° articulating camera with two-way audio</span></td>
+              <td><span class="l-zh">空載偽基地台（2G–5G）</span><span class="l-en">Airborne pseudo base station (2G–5G)</span></td>
+              <td class="hl"><span class="l-zh">LoRa 923 MHz＋BLE 生理感測</span><span class="l-en">LoRa 923 MHz + BLE vital sensing</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">基礎建設依賴</span><span class="l-en">Infrastructure</span></th>
+              <td><span class="l-zh">無</span><span class="l-en">None</span></td>
+              <td><span class="l-zh">無</span><span class="l-en">None</span></td>
+              <td><span class="l-zh">需空載平台</span><span class="l-en">Needs an aircraft platform</span></td>
+              <td class="hl"><span class="l-zh">無</span><span class="l-en">None</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">受困者需具備</span><span class="l-en">Victim must</span></th>
+              <td><span class="l-zh">能敲擊或發聲</span><span class="l-en">Be able to tap or call out</span></td>
+              <td><span class="l-zh">位於攝影機可達之孔隙</span><span class="l-en">Be within reach of a camera void</span></td>
+              <td><span class="l-zh">持有開機手機</span><span class="l-en">Carry a powered-on phone</span></td>
+              <td class="hl"><span class="l-zh">配戴信標或智慧手錶</span><span class="l-en">Wear a beacon or smartwatch</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">即時生理數據</span><span class="l-en">Live vital signs</span></th>
+              <td><span class="mark no">✗</span></td>
+              <td><span class="mark no">✗</span></td>
+              <td><span class="mark no">✗</span></td>
+              <td class="hl"><span class="mark yes">✓</span> <span class="l-zh">心率（BLE HR Service）</span><span class="l-en">Heart rate (BLE HR Service)</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">ICS 指揮平台整合</span><span class="l-en">ICS command integration</span></th>
+              <td><span class="l-zh">獨立硬體</span><span class="l-en">Stand-alone hardware</span></td>
+              <td><span class="l-zh">獨立硬體</span><span class="l-en">Stand-alone hardware</span></td>
+              <td><span class="l-zh">部分 MMS 整合</span><span class="l-en">Partial MMS integration</span></td>
+              <td class="hl"><span class="l-zh">原生 ICS 五角色介面</span><span class="l-en">Native five-role ICS interface</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">適用場景</span><span class="l-en">Best suited to</span></th>
+              <td><span class="l-zh">瓦礫深層聆聽</span><span class="l-en">Deep-rubble listening</span></td>
+              <td><span class="l-zh">可探孔隙搜索</span><span class="l-en">Void searches</span></td>
+              <td><span class="l-zh">戶外大範圍山難</span><span class="l-en">Wide-area outdoor mountain SAR</span></td>
+              <td class="hl"><span class="l-zh">都市倒塌＋預先部署</span><span class="l-en">Urban collapse with pre-deployment</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="l-zh">商業售價量級</span><span class="l-en">Price class</span></th>
+              <td><span class="l-zh">約 US$25–40k（零售）</span><span class="l-en">≈US$25–40k (retail)</span></td>
+              <td><span class="l-zh">約 US$15–25k（零售）</span><span class="l-en">≈US$15–25k (retail)</span></td>
+              <td><span class="l-zh">高階國防／SAR 級</span><span class="l-en">High-end defence / SAR class</span></td>
+              <td class="hl"><span class="l-zh">BOM &lt; US$200（原型階段）</span><span class="l-en">BOM &lt; US$200 (prototype)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mini-note reveal l-zh">
+        資料來源：Delsar LD3 之物理原理、感測器配置與認證資訊取自 Savox 官網；SearchCam 3000 之關節活動範圍、ClearSearch 螢幕與雙向語音取自 Savox／Con-Space 官網；Lifeseeker 之機載平台、頻段涵蓋與 5 公尺定位精度取自 CENTUM 官網。GSSI LifeLocator TRx（UWB 雷達，偵測深度 12 m）已於 2026 年停售，僅作為 USAR UWB 雷達技術參考，未列入直接比較。「商業售價量級」為依公開資訊與業界經驗估算之區間，實際售價因配置、認證需求與地區而異；LinkGuard-E 為原型階段，所列為料件成本（BOM）估算值。
+      </p>
+      <p class="mini-note reveal l-en">
+        Sources: Delsar LD3 principle, sensor configuration and certification from the Savox website; SearchCam 3000 articulation range, ClearSearch display and two-way audio from Savox / Con-Space; Lifeseeker airborne platform, band coverage and 5 m positioning accuracy from CENTUM. The GSSI LifeLocator TRx (UWB radar, 12 m detection depth) was discontinued in 2026 and is kept only as a technology reference. Price classes are ranges estimated from public information and industry experience and vary with configuration, certification and region; the LinkGuard-E figure is a prototype-stage bill-of-materials estimate.
+      </p>
+    </div>
+
   </div>
 </section>
 

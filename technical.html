@@ -2132,7 +2132,7 @@ h4,.card h4,.modal h4{font-size:clamp(8px,.65vw,10px)}
 }
 </style>
 <link rel="stylesheet" href="wayfinder-ui.css?v=1">
-<link rel="stylesheet" href="multipage.css?v=1">
+<link rel="stylesheet" href="multipage.css?v=2">
 <style id="linkguard-site-polish-20260915">
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
@@ -3410,6 +3410,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a>
       <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
       <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
@@ -3708,6 +3709,113 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
             <div class="spec"><span class="k"><span class="l-zh">傳送／看門狗</span><span class="l-en">TX / watchdog</span></span><span class="v"><span class="l-zh">環境 5 分鐘；Watchdog 30 秒</span><span class="l-en">Env 5 min; watchdog 30 s</span></span></div>
             <div class="spec"><span class="k"><span class="l-zh">遺失率目標</span><span class="l-en">Loss target</span></span><span class="v"><span class="l-zh">開闊地 &lt; 5%；邊緣 &lt; 15%</span><span class="l-en">Open &lt; 5%; edge &lt; 15%</span></span></div>
           </div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false" aria-controls="a-quake-path">
+          <span class="t"><span class="l-zh">地震模式（LinkGuard-E）傳輸路徑與信標流程</span><span class="l-en">Earthquake mode (LinkGuard-E): data path and beacon logic</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body" id="a-quake-path"><div><div class="acc-inner">
+          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+            地震搜救模式由三段鏈路組成：<strong>智慧手錶 → ESP32 採集端</strong>（BLE 短距低功耗，讀取心率等生理數據）、
+            <strong>ESP32 採集端 → 指揮中心</strong>（923 MHz LoRa，繞射與穿透能力最佳，是主要的「破障傳輸」階段）、
+            <strong>指揮中心 → 搜救員手持終端</strong>（LoRa 廣播轉發，前線即時查看受困者心跳與狀態，作為救援排序依據）。
+          </p>
+          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+            Earthquake mode chains three links: <strong>smartwatch → ESP32 collector</strong> (short-range, low-power BLE carrying heart rate and other vitals),
+            <strong>ESP32 collector → command centre</strong> (923 MHz LoRa, the diffraction-capable "breakthrough" hop), and
+            <strong>command centre → rescuer handheld</strong> (LoRa rebroadcast so the front line sees each victim's heart rate and status for dispatch priority).
+          </p>
+          <div class="fw-role-grid">
+            <article class="fw-role">
+              <div class="fw-role-head"><h4><span class="l-zh">指揮與搜救協同模組</span><span class="l-en">Command &amp; rescue coordination</span></h4></div>
+              <ul class="fw-flow-list l-zh">
+                <li><strong>指揮決策層</strong>：戰情儀表板顯示在線裝置、傷患統計、SOS 警報與災區概況；指揮命令結構化派送並記錄對象與時間</li>
+                <li><strong>現場回報層</strong>：搜救員於廢墟外圍回傳 GPS；信標位置由手持終端依 LoRa RSSI 估算並手動標記；照片附時間與座標；安全管制記錄人員進出危險區</li>
+                <li><strong>資訊整合層</strong>：受困者總覽顯示 LoRa 節點生命徵象；分區地圖呈現等待、淨空、危險與限制區域；事件日誌保存 AI 決策、命令、警報與回報</li>
+                <li><strong>通訊備援層</strong>：文字、推播、緊急廣播、PTT 對講與 Whisper AI 語音轉錄，並接收中央氣象署 PWS 警報分級推送</li>
+              </ul>
+              <ul class="fw-flow-list l-en">
+                <li><strong>Decision layer</strong>: a situation dashboard with online devices, casualty counts, SOS alerts and scene overview; structured commands logged with recipient and time</li>
+                <li><strong>Field-report layer</strong>: rescuers outside the rubble send GPS; beacon positions are estimated from LoRa RSSI on the handheld and marked manually; photos carry time and coordinates; safety control logs entry to hazard zones</li>
+                <li><strong>Integration layer</strong>: a victim overview with LoRa vital signs; sector maps for waiting, cleared, hazardous and restricted areas; an event log of AI decisions, commands, alerts and reports</li>
+                <li><strong>Comms fallback layer</strong>: text, push, emergency broadcast, PTT voice and Whisper AI transcription, plus CWA public-warning (PWS) alerts pushed by severity</li>
+              </ul>
+            </article>
+            <article class="fw-role">
+              <div class="fw-role-head"><h4><span class="l-zh">智慧手錶生理感知</span><span class="l-en">Smartwatch sensing</span></h4></div>
+              <ul class="fw-flow-list l-zh">
+                <li>BYOD（自帶裝置）：利用受困者既有的智慧手錶，透過標準 BLE Heart Rate Service 取得心率，作為檢傷分類的優先權重數據</li>
+                <li>續航：Garmin vívosmart 5 一般模式約 7 天，72 小時搜救窗口內裕度充足；Apple Watch 等高耗電裝置約 18–36 小時</li>
+                <li>雙路徑切換：手錶連線正常時以 BLE 取得即時心率；手錶斷線或電量耗盡時自動切換至手動模式，由搜救員到達後目視補充檢傷資訊</li>
+                <li>未來規劃於信標背包整合獨立 PPG 感測模組，使生理監測不依賴受困者自有設備</li>
+              </ul>
+              <ul class="fw-flow-list l-en">
+                <li>BYOD: the victim's own smartwatch provides heart rate over the standard BLE Heart Rate Service as the priority input for triage</li>
+                <li>Battery: a Garmin vívosmart 5 lasts about 7 days in normal mode, ample for the 72-hour window; power-hungry watches such as Apple Watch last 18–36 hours</li>
+                <li>Dual path: live heart rate over BLE while the watch is connected; on disconnect or battery loss the system falls back to manual mode and rescuers add triage data on arrival</li>
+                <li>Planned: an independent PPG sensor in the beacon pack so monitoring no longer depends on the victim's device</li>
+              </ul>
+            </article>
+            <article class="fw-role">
+              <div class="fw-role-head"><h4><span class="l-zh">生存信標背包</span><span class="l-en">Rescue beacon pack</span></h4></div>
+              <ul class="fw-flow-list l-zh">
+                <li>整合於避難背包內的關鍵生存模組：平時低功耗休眠，災後由控制中心喚醒（LoRa 長前導碼）或偵測震動自動啟動</li>
+                <li>可透過藍牙獲取手錶數據，或利用內建終端進行被動式生命偵測</li>
+                <li>通訊：SX1262 LoRa 模組；高增益雙頻 923 MHz 天線</li>
+                <li>電源：10,000 mAh 鋰電池，休眠電流僅 0.1 mA，待機年限 1–2 年</li>
+                <li>3D 列印保護盒與防爆盒（ABS／ASA+／PETG／PLA 耗材）</li>
+              </ul>
+              <ul class="fw-flow-list l-en">
+                <li>A survival module built into an evacuation backpack: deep sleep in normal times, woken after a quake by the control centre (long LoRa preamble) or by vibration</li>
+                <li>Reads the watch over Bluetooth, or performs passive life detection with its built-in terminal</li>
+                <li>Radio: SX1262 LoRa module with a high-gain dual-band 923 MHz antenna</li>
+                <li>Power: 10,000 mAh lithium battery, 0.1 mA sleep current, 1–2 years of standby</li>
+                <li>3D-printed protective and blast-resistant enclosures (ABS / ASA+ / PETG / PLA)</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="fig-grid" style="margin-top:22px">
+            <figure><img src="assets/experiments/beacon-inside.jpg" alt="生存信標保護盒內部：LoRa 模組與鋰電池" loading="lazy"><figcaption><span class="l-zh">圖十二 · 保護盒內部</span><span class="l-en">Fig. 12 · Inside the enclosure</span></figcaption></figure>
+            <figure><img src="assets/experiments/beacon-box.jpg" alt="生存信標防爆盒上蓋" loading="lazy"><figcaption><span class="l-zh">圖十三 · 防爆盒上圖</span><span class="l-en">Fig. 13 · Blast-resistant box, top</span></figcaption></figure>
+            <figure><img src="assets/experiments/beacon-3d.jpg" alt="生存信標外殼 3D 列印模型" loading="lazy"><figcaption><span class="l-zh">圖十四 · 3D 列印圖</span><span class="l-en">Fig. 14 · 3D-printed enclosure model</span></figcaption></figure>
+          </div>
+
+          <div class="split" style="margin-top:26px;gap:32px;align-items:start">
+            <figure class="fig-single" style="margin-top:0">
+              <img src="assets/experiments/beacon-flow.png" alt="信標背包程式事件處理流程圖：地震發生 → 是否在震度達 3 級以上之地區 → 發出 LED 與螢幕提示 → 進入 CAD → 是否連接藍牙手錶 → 增加 bpm 標籤或進入手動模式 → 計算 RSSI 距離 → 心率是否小於 60 bpm 或 GPIO0 是否發送 SOS → 增加 SOS 標籤或標準呼叫模式" loading="lazy" style="max-height:560px;width:auto;margin-inline:auto">
+              <figcaption><span class="l-zh">圖十五 · 信標背包程式事件處理流程圖</span><span class="l-en">Fig. 15 · Beacon-pack event-handling flow</span></figcaption>
+            </figure>
+            <div>
+              <p class="body-text l-zh" style="font-size:15px">
+                <strong>判斷流程：</strong>地震發生後，信標先判斷是否位於震度達 3 級以上的地區，否則不作動；是則發出 LED 與螢幕提示並進入 CAD 模式。
+                若連接到藍牙手錶，封包加入 bpm 標籤並計算 RSSI 距離，心率低於 60 bpm 時自動加上 SOS 標籤；若未連接手錶則進入手動模式，
+                由腳位 GPIO0 決定是否發送 SOS，否則維持標準呼叫模式。
+              </p>
+              <p class="body-text l-en" style="font-size:15px">
+                <strong>Decision flow:</strong> after a quake the beacon first checks whether it is in an area with intensity 3 or above; if not it stays idle. Otherwise it lights the LED and screen and enters CAD mode.
+                With a Bluetooth watch connected it adds a bpm tag and computes RSSI distance, tagging SOS automatically when heart rate drops below 60 bpm; without a watch it enters manual mode, where GPIO0 decides whether to send SOS, otherwise it stays in standard call mode.
+              </p>
+              <p class="body-text l-zh" style="font-size:15px">
+                <strong>位置估算：</strong>受困者信標無法透過 GPS 回傳絕對座標。搜救員手持終端接收信標 LoRa 訊號後，依 RSSI 值估算距離，並於廢墟外圍多點量測後以三角定位法取得概略方位，再手動標記於地圖。
+                此方式精度受廢墟多路徑干擾影響，屬概略估算；未來可整合 UWB 模組（Decawave DW3000）提升室內定位精度。
+              </p>
+              <p class="body-text l-en" style="font-size:15px">
+                <strong>Localisation:</strong> a buried beacon cannot report GPS coordinates. The rescuer's handheld estimates distance from the beacon's LoRa RSSI, takes readings from several points around the rubble and triangulates a rough bearing, which is then marked on the map by hand.
+                Multipath in rubble limits accuracy, so this is an approximation; a UWB module (Decawave DW3000) is planned to improve indoor positioning.
+              </p>
+              <div class="fig-grid" style="margin-top:18px;grid-template-columns:repeat(3,minmax(0,1fr))">
+                <figure><img src="assets/experiments/app-cmd-dashboard.jpg" alt="指揮中心儀表板畫面" loading="lazy" style="aspect-ratio:16/10"><figcaption><span class="l-zh">圖一 · 指揮中心儀表板</span><span class="l-en">Fig. 1 · Command Center dashboard</span></figcaption></figure>
+                <figure><img src="assets/experiments/app-rr-home.jpg" alt="搜救員手持終端 Rescue Radar 首頁" loading="lazy" style="aspect-ratio:16/10;object-position:top"><figcaption><span class="l-zh">圖七 · Rescue Radar 首頁</span><span class="l-en">Fig. 7 · Rescue Radar home</span></figcaption></figure>
+                <figure><img src="assets/experiments/app-garmin.jpg" alt="智慧手錶 Garmin 連接畫面" loading="lazy" style="aspect-ratio:16/10"><figcaption><span class="l-zh">圖十一 · 智慧手錶連接（Garmin）</span><span class="l-en">Fig. 11 · Smartwatch link (Garmin)</span></figcaption></figure>
+              </div>
+            </div>
+          </div>
+          <p class="mini-note l-zh">介面於 Flutter／React 架構下實作，圖示為實機運作截圖。完整實驗數據與模擬結果見「實驗驗證」頁。</p>
+          <p class="mini-note l-en">The interface is implemented in Flutter / React; images are screenshots from the running system. Full experimental data and simulation results are on the Experiments page.</p>
         </div></div></div>
       </div>
 

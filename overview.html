@@ -2132,7 +2132,7 @@ h4,.card h4,.modal h4{font-size:clamp(8px,.65vw,10px)}
 }
 </style>
 <link rel="stylesheet" href="wayfinder-ui.css?v=1">
-<link rel="stylesheet" href="multipage.css?v=1">
+<link rel="stylesheet" href="multipage.css?v=2">
 <style id="linkguard-site-polish-20260915">
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
@@ -2920,6 +2920,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a>
       <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
       <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
@@ -2972,6 +2973,41 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       signs and environment data back to the command center — connecting rescuers and victims again.
       One network, two modes: guarding the forest in normal times, and saving lives when disaster strikes.
     </p>
+
+    <div class="report-block" id="quake-mode">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><span class="l-zh">災時模式 · LinkGuard-E 地震搜救系統</span><span class="l-en">Disaster mode · LinkGuard-E earthquake rescue</span></div>
+        <h2 class="l-zh">穿透倒塌的樓板，<br>把生命徵象送回指揮中心。</h2>
+        <h2 class="l-en">Through collapsed floors,<br>vital signs reach the command post.</h2>
+      </div>
+      <p class="body-text reveal l-zh">
+        台灣位於板塊交界，地震後建築倒塌易形成法拉第籠效應，造成受困者通訊中斷；現行搜救又因 LINE、無線電與多單位回報並用而資訊分散，影響黃金 72 小時內的決策效率。
+        LinkGuard-E 包含三項核心技術：（1）以 <strong>923 MHz LoRa</strong> 為主、BLE 為輔的複合組網，利用 33 cm 波長的繞射特性穿透 RC 結構網格；（2）<strong>智慧手錶生理感知</strong>，回傳心率資料；（3）<strong>整合式指揮平台</strong>，導入 ICS 分層權限、地圖標記與離線同步機制。
+        研究以鹽水等效模型驗證 LoRa 穿透能力，在 3.0% 鹽水濃度下仍可成功解碼，理論上約對應穿透 3 層 RC 樓板的衰減量；並透過蒙地卡羅模擬評估搜救效率，整體救援成功率由 82.83% 提升至 91.54%，其中紅燈傷患提升 25.85 個百分點。
+      </p>
+      <p class="body-text reveal l-en">
+        Taiwan sits on a plate boundary; after an earthquake, collapsed buildings act as Faraday cages that cut victims off, while rescue information is scattered across LINE, radio and multiple agencies, slowing decisions in the golden 72 hours.
+        LinkGuard-E combines three core technologies: (1) a hybrid network led by <strong>923 MHz LoRa</strong> with BLE, using the 33 cm wavelength to diffract through reinforced-concrete mesh; (2) <strong>smartwatch vital sensing</strong> that relays heart rate; and (3) an <strong>integrated command platform</strong> with ICS role permissions, map markers and offline sync.
+        A saline-equivalent model verified penetration — packets still decoded at 3.0% salinity, roughly the loss of three RC floors — and Monte Carlo simulation raised overall rescue success from 82.83% to 91.54%, with red-tag victims gaining 25.85 percentage points.
+      </p>
+      <div class="kpi-grid reveal">
+        <div class="kpi"><div class="k"><span class="l-zh">抗干擾距離</span><span class="l-en">Range under interference</span></div><div class="n">900<small>m</small></div><div class="t"><span class="l-zh">台鐵、高鐵、高壓電塔周邊實測</span><span class="l-en">Measured beside railways, HSR and power towers</span></div></div>
+        <div class="kpi"><div class="k"><span class="l-zh">穿透極限</span><span class="l-en">Penetration limit</span></div><div class="n">3.0<small>%</small></div><div class="t"><span class="l-zh">鹽水濃度下仍可解碼，約 63 dB 衰減</span><span class="l-en">Saline still decoded, about 63 dB of loss</span></div></div>
+        <div class="kpi"><div class="k"><span class="l-zh">救援成功率</span><span class="l-en">Rescue success</span></div><div class="n">91.54<small>%</small></div><div class="t"><span class="l-zh">1,000 次配對蒙地卡羅模擬（對照組 82.83%）</span><span class="l-en">1,000 paired Monte Carlo trials (control 82.83%)</span></div></div>
+        <div class="kpi"><div class="k"><span class="l-zh">紅燈傷患</span><span class="l-en">Red-tag victims</span></div><div class="n">+25.85<small>pp</small></div><div class="t"><span class="l-zh">生理數據優先派遣的效果</span><span class="l-en">The effect of vitals-based dispatch</span></div></div>
+      </div>
+      <div class="cta-row reveal" style="margin-top:28px">
+        <a class="btn btn-primary" href="experiments.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
+          <span class="l-zh">查看三項實驗與模擬</span><span class="l-en">See the three experiments</span>
+        </a>
+        <a class="btn" href="background.html#quake-context">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
+          <span class="l-zh">研究動機與目的</span><span class="l-en">Motivation and objectives</span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 

@@ -2132,7 +2132,7 @@ h4,.card h4,.modal h4{font-size:clamp(8px,.65vw,10px)}
 }
 </style>
 <link rel="stylesheet" href="wayfinder-ui.css?v=1">
-<link rel="stylesheet" href="multipage.css?v=1">
+<link rel="stylesheet" href="multipage.css?v=2">
 <style id="linkguard-site-polish-20260915">
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
@@ -2920,6 +2920,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a>
       <a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
       <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
@@ -3014,6 +3015,88 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
         </div>
       </div>
     </div>
+
+    <div class="report-block" id="quake-context">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><span class="l-zh">地震搜救模式 · 研究動機</span><span class="l-en">Earthquake mode · Motivation</span></div>
+        <h2 class="l-zh">倒塌的建築，<br>把受困者變成數位孤島。</h2>
+        <h2 class="l-en">A collapsed building turns<br>every victim into a digital island.</h2>
+        <p class="sec-note l-zh">「災時搶救生命」的那一半，是以地震為情境的 LinkGuard-E。以下整理第 66 屆全國科展作品說明書中的研究動機與目的。</p>
+        <p class="sec-note l-en">The "saving lives in disaster" half of the system is LinkGuard-E, designed for earthquakes. This block summarises the motivation and objectives from our National Science Fair report.</p>
+      </div>
+
+      <div class="exp-cards">
+        <div class="exp-card reveal">
+          <div class="k">01 · <span class="l-zh">地理宿命</span><span class="l-en">Geography</span></div>
+          <h3 class="l-zh">台灣位於板塊交界</h3>
+          <h3 class="l-en">Taiwan sits on a plate boundary</h3>
+          <p class="l-zh">回顧 1999 年集集大地震與 2016 年台南維冠大樓倒塌，造成大量傷亡的主因往往不是搖晃本身，而是建築倒塌後形成的封閉空間與通訊中斷，使受困者無法及時被發現。</p>
+          <p class="l-en">In the 1999 Chi-Chi earthquake and the 2016 Weiguan Building collapse in Tainan, most casualties came not from the shaking itself but from enclosed spaces and lost communication after collapse, which kept victims from being found in time.</p>
+        </div>
+        <div class="exp-card reveal">
+          <div class="k">02 · <span class="l-zh">法拉第籠</span><span class="l-en">Faraday cage</span></div>
+          <h3 class="l-zh">黃金 72 小時裡的通訊困境</h3>
+          <h3 class="l-en">The communication gap in the golden 72 hours</h3>
+          <p class="l-zh">受困者存活率隨時間呈指數下降。RC 建築倒塌後，密集鋼筋網格形成法拉第籠效應：金屬網格孔徑小於波長 1/10 時，4G／5G、Wi-Fi 等高頻訊號遭受極大衰減，受困者手機淪為「數位孤島」。</p>
+          <p class="l-en">Survival falls exponentially with time. After an RC building collapses, the dense rebar mesh behaves like a Faraday cage: once the aperture is below a tenth of the wavelength, 4G/5G and Wi-Fi are heavily attenuated and the victim's phone becomes a "digital island".</p>
+        </div>
+        <div class="exp-card reveal">
+          <div class="k">03 · <span class="l-zh">現有技術侷限</span><span class="l-en">Current tools</span></div>
+          <h3 class="l-zh">聽得到、看得到，卻傳不回來</h3>
+          <h3 class="l-en">They can hear and see, but cannot report</h3>
+          <p class="l-zh">聲納探測易受噪音干擾、光學蛇管視野有限且無法穿牆、搜救犬受限於體力與數量，且多缺乏即時傳輸受困者位置與生理數據的能力。</p>
+          <p class="l-en">Acoustic sensors suffer from noise, snake cameras have a narrow view and cannot see through walls, and search dogs are limited by stamina and numbers; few tools relay a victim's location and vital signs in real time.</p>
+        </div>
+        <div class="exp-card reveal">
+          <div class="k">04 · <span class="l-zh">資訊整合</span><span class="l-en">Information</span></div>
+          <h3 class="l-zh">多重狀況、多種回報管道</h3>
+          <h3 class="l-en">Many incidents, many reporting channels</h3>
+          <p class="l-zh">災害現場常同時面臨多重狀況，現行以 LINE、無線電與多單位回報並用，容易出現訊息遺漏、重複回報、順序混亂與跨單位難以同步，降低指揮中心的決策效率。</p>
+          <p class="l-en">Scenes present several situations at once, and reports arrive through LINE, radio and multiple agencies; messages get lost, duplicated or reordered and are hard to synchronise across units, slowing decisions at the command post.</p>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top:44px">
+        <div class="reveal">
+          <div class="eyebrow"><span class="l-zh">研究目的</span><span class="l-en">Objectives</span></div>
+          <ul class="road-list l-zh" style="margin-top:16px">
+            <li><span class="b">01</span><span><strong>開發具備穿透 RC 結構能力的 ISM 頻段 LoRa 通訊模組。</strong>採用 923 MHz（波長約 33 cm，約為鋼筋網格孔徑 15–20 cm 的 1.6–2 倍），藉長波長繞射穿透鋼筋孔隙；搭配 CSS 擴頻調變與高增益天線，目標在三層以上 RC 樓板或深層瓦礫堆中維持雙向通訊。</span></li>
+            <li><span class="b">02</span><span><strong>整合複合組網確保傳輸穩定。</strong>結合 LoRa 的長距離穿透與 BLE 的低功耗短距連接，建構去中心化的強韌通訊網絡。</span></li>
+            <li><span class="b">03</span><span><strong>整合穿戴式裝置進行生理監測。</strong>利用受困者配戴的智慧手錶直接讀取心率，回傳指揮中心以協助檢傷分類與救援優先順序。</span></li>
+            <li><span class="b">04</span><span><strong>建立整合性救援資訊指揮平台。</strong>整合回報、受困者位置、傷患狀態、人員配置、物資調度與事件紀錄，使資訊清楚、可追蹤、可同步。</span></li>
+          </ul>
+          <ul class="road-list l-en" style="margin-top:16px">
+            <li><span class="b">01</span><span><strong>Build an ISM-band LoRa module that penetrates reinforced concrete.</strong> 923 MHz has a ≈33 cm wavelength, 1.6–2× the 15–20 cm rebar aperture, so it diffracts through the mesh; with CSS modulation and a high-gain antenna the goal is two-way communication through three or more RC floors or deep rubble.</span></li>
+            <li><span class="b">02</span><span><strong>Combine networks for a stable link.</strong> Pair LoRa's long-range penetration with BLE's low-power short-range connection in a decentralised, resilient network.</span></li>
+            <li><span class="b">03</span><span><strong>Monitor vital signs with wearables.</strong> Read heart rate directly from the victim's smartwatch and relay it to the command post to support triage and dispatch priority.</span></li>
+            <li><span class="b">04</span><span><strong>Create an integrated rescue command platform.</strong> Bring reports, victim locations, patient status, staffing, supplies and event logs into one clear, traceable, synchronised view.</span></li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow"><span class="l-zh">文獻與案例</span><span class="l-en">Literature and cases</span></div>
+          <blockquote class="quote" style="margin-top:16px">
+            <p class="l-zh">我是拼數量，我不是拼那個。</p>
+            <p class="l-en">"I go for numbers, not for that."</p>
+            <div class="src"><span class="l-zh">受訪消防大隊長談現場「救援極大化」的決策邏輯</span><span class="l-en">A battalion chief on the "maximise rescues" logic used on scene</span></div>
+          </blockquote>
+          <p class="body-text l-zh" style="font-size:15px">
+            INSARAG（2020）指出現代 USAR 行動的核心挑戰在於多單位資訊整合；Hooshangi 與 Alesheikh（2018）的模擬研究確認，動態任務調度可顯著縮短搜救時間，前提是指揮端能掌握受困者狀態。
+            訪談揭示現場實際採用「救援極大化」而非依檢傷等級排序——在資訊匱乏時相當合理，卻可能使紅燈傷患因「救援困難」被系統性延後。LinkGuard-E 正是針對此缺口：以預先取得的生理資料，協助指揮者在不犧牲整體效率的前提下調整優先順序。
+          </p>
+          <p class="body-text l-en" style="font-size:15px">
+            INSARAG (2020) identifies multi-agency information integration as the core challenge of modern USAR; Hooshangi and Alesheikh (2018) showed by simulation that dynamic dispatch shortens search time, provided commanders know the victims' condition.
+            Our interviews revealed that crews maximise the number of rescues rather than sorting by triage level — sensible when information is scarce, but it can systematically postpone red-tag victims who are "hard to reach". LinkGuard-E targets this gap: vital signs obtained in advance let commanders adjust priority without sacrificing overall efficiency.
+          </p>
+          <p class="body-text l-zh" style="font-size:15px">
+            2022 年 9 月 18 日台東池上規模 6.8 地震中，花蓮玉里一棟三層樓建物倒伏並壓及隔壁超商，4 人受困，約 3 小時內陸續獲救。此案例顯示即使在成熟的搜救體系下，受困位置與生理狀態仍須仰賴搜救員逐層挖掘，受困者無法主動回報——這是以 LoRa 通訊配合智慧手錶生理監測、取代依賴基地台方案的核心動機。
+          </p>
+          <p class="body-text l-en" style="font-size:15px">
+            In the magnitude 6.8 Chishang earthquake of 18 September 2022, a three-storey building in Yuli, Hualien toppled onto a neighbouring convenience store, trapping four people who were rescued over about three hours. Even with a mature rescue system, their positions and condition had to be established by digging floor by floor; the victims could not report on their own. That is the core motivation for pairing LoRa with smartwatch vital-sign monitoring instead of depending on cell towers.
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 

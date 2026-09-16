@@ -2132,7 +2132,7 @@ h4,.card h4,.modal h4{font-size:clamp(8px,.65vw,10px)}
 }
 </style>
 <link rel="stylesheet" href="wayfinder-ui.css?v=1">
-<link rel="stylesheet" href="multipage.css?v=1">
+<link rel="stylesheet" href="multipage.css?v=2">
 <style id="linkguard-site-polish-20260915">
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
@@ -2920,6 +2920,7 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
       <a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a>
       <a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a>
       <a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a>
+      <a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a>
       <a href="research.html" class="active" aria-current="page"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a>
       <a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a>
       <a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a>
@@ -3170,6 +3171,96 @@ body[data-page] .unit-title .unit-code { font-size: 12px; }
             The same feedback reinforced an offline-first, layered communication design. Even when
             internet or phone links fail, LoRa nodes continue exchanging short packets, while the
             OLED, buzzer and vibration motor preserve immediate on-device alerts.
+          </p>
+          </div>
+        </details>
+      </div>
+
+            <div class="tl-item reveal" id="interview">
+        <div class="tl-when"><span class="l-zh">消防隊訪談紀錄</span><span class="l-en">FIRE-STATION INTERVIEW</span></div>
+        <details class="tl-body">
+          <summary>
+            <h3 class="l-zh">訪談怎麼做、聽到了什麼、改了什麼</h3>
+            <h3 class="l-en">How we interviewed, what we heard, what we changed</h3>
+          </summary>
+          <div class="tl-content">
+          <p class="desc l-zh">
+            為使系統設計貼近真實災害現場需求，團隊實地走訪消防分隊進行面對面深度訪談，受訪人員涵蓋指揮層級與第一線執勤人員，兼顧戰術指揮與現場操作兩個視角。
+          </p>
+          <p class="desc l-en">
+            To ground the design in real scene requirements, the team visited a fire station for in-depth face-to-face interviews covering both command-level officers and front-line crew, so tactical command and hands-on operation were both represented.
+          </p>
+          <div class="table-scroll" style="margin-top:18px">
+            <table class="compact">
+              <thead><tr><th scope="col"><span class="l-zh">項目</span><span class="l-en">Item</span></th><th scope="col"><span class="l-zh">內容</span><span class="l-en">Detail</span></th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><span class="l-zh">受訪單位</span><span class="l-en">Unit</span></th><td><span class="l-zh">新竹縣某消防分隊</span><span class="l-en">A fire station in Hsinchu County</span></td></tr>
+                <tr><th scope="row"><span class="l-zh">受訪人數</span><span class="l-en">Interviewees</span></th><td><span class="l-zh">4 位：大隊長、副大隊長、小隊長、分隊長各 1 位</span><span class="l-en">4: battalion chief, deputy chief, squad leader and station captain</span></td></tr>
+                <tr><th scope="row"><span class="l-zh">訪談日期</span><span class="l-en">Date</span></th><td><span class="l-zh">2026 年 5 月 9 日（民國 115 年）</span><span class="l-en">9 May 2026</span></td></tr>
+                <tr><th scope="row"><span class="l-zh">訪談方式</span><span class="l-en">Format</span></th><td><span class="l-zh">面對面半結構式訪談</span><span class="l-en">Semi-structured, face to face</span></td></tr>
+                <tr><th scope="row"><span class="l-zh">訪談時長</span><span class="l-en">Duration</span></th><td><span class="l-zh">約 2.5 小時</span><span class="l-en">About 2.5 hours</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <blockquote class="quote" style="margin-top:18px">
+            <p class="l-zh">災害現場的關鍵不在於功能多寡，而在於系統能否於高壓、通訊不穩與人員疲勞之環境中維持快速、直覺且可靠之操作。</p>
+            <p class="l-en">What matters on scene is not how many features a system has, but whether it stays fast, intuitive and reliable under pressure, unstable communications and fatigue.</p>
+            <div class="src"><span class="l-zh">受訪大隊長</span><span class="l-en">Battalion chief</span></div>
+          </blockquote>
+          <blockquote class="quote" style="margin-top:12px">
+            <p class="l-zh">現場通訊常依賴 LINE 與無線電交雜使用，訊息易遺漏或順序混亂；需要一套能整合語音、文字與位置的單一平台。</p>
+            <p class="l-en">On scene we juggle LINE and radio; messages get lost or arrive out of order. We need one platform that brings voice, text and location together.</p>
+            <div class="src"><span class="l-zh">受訪分隊長</span><span class="l-en">Station captain</span></div>
+          </blockquote>
+          <p class="desc l-zh">
+            指揮層級強調指令傳遞的層級清晰與可追蹤性、避免跨單位重複回報；現場執勤層級更重視單手操作、大按鈕與離線可用性，並認為過多功能反而增加操作負擔。
+            訪談資料以質性分析整理後，原本偏向「資料回報與通訊」的單一取向，修正為整合式搜救輔助平台：涵蓋地圖分區、ICS 指揮、子區域建立、權限管理、任務回報、SOS 警報、照片座標回傳、搜救狀態標記、AI 輔助、離線同步、安全管制與事件日誌，並新增多角色操作模式。
+          </p>
+          <p class="desc l-en">
+            Commanders stressed clear, traceable command hierarchy and avoiding duplicate cross-agency reports; front-line crew valued one-handed use, large buttons and offline availability, and warned that extra features add load.
+            After qualitative analysis, the original "report and communicate" focus grew into an integrated rescue-support platform: map zoning, ICS command, sub-areas, permissions, task reports, SOS alerts, geotagged photos, search-status markers, AI assistance, offline sync, safety control and an event log, plus role-specific operating modes.
+          </p>
+
+          <div class="split" style="margin-top:22px;gap:28px">
+            <div>
+              <div class="eyebrow"><span class="l-zh">表五 · 地圖點線面標記</span><span class="l-en">Table 5 · Point / line / area markers</span></div>
+              <div class="table-scroll" style="margin-top:12px">
+                <table class="compact">
+                  <thead><tr><th scope="col"><span class="l-zh">類型</span><span class="l-en">Type</span></th><th scope="col"><span class="l-zh">代表意義</span><span class="l-en">Meaning</span></th><th scope="col"><span class="l-zh">應用方式</span><span class="l-en">Use</span></th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row"><span class="l-zh">點</span><span class="l-en">Point</span></th><td><span class="l-zh">單一位置</span><span class="l-en">Single location</span></td><td><span class="l-zh">受困者位置、SOS、危險點</span><span class="l-en">Victim location, SOS, hazard</span></td></tr>
+                    <tr><th scope="row"><span class="l-zh">線</span><span class="l-en">Line</span></th><td><span class="l-zh">路線或邊界</span><span class="l-en">Route or boundary</span></td><td><span class="l-zh">道路封鎖、危險路線、撤離動線</span><span class="l-en">Road closure, hazardous route, evacuation path</span></td></tr>
+                    <tr><th scope="row"><span class="l-zh">面</span><span class="l-en">Area</span></th><td><span class="l-zh">區域範圍</span><span class="l-en">Region</span></td><td><span class="l-zh">倒塌區域、搜索分區、限制進入區</span><span class="l-en">Collapse zone, search sector, restricted area</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="mini-note l-zh">並支援子分區建立、搜救狀態標示、危險程度分類、照片座標綁定、臨時據點與搜救熱區顯示。</p>
+              <p class="mini-note l-en">Also supports sub-sectors, search-status marking, hazard levels, geotagged photos, temporary bases and search hot-spots.</p>
+            </div>
+            <div>
+              <div class="eyebrow"><span class="l-zh">表六 · ICS 五種角色介面</span><span class="l-en">Table 6 · Five ICS role interfaces</span></div>
+              <div class="table-scroll" style="margin-top:12px">
+                <table class="compact">
+                  <thead><tr><th scope="col"><span class="l-zh">角色</span><span class="l-en">Role</span></th><th scope="col"><span class="l-zh">功能定位</span><span class="l-en">Function</span></th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">UCC</th><td><span class="l-zh">統一指揮中心與跨區域協調</span><span class="l-en">Unified command centre and cross-area coordination</span></td></tr>
+                    <tr><th scope="row">SCC</th><td><span class="l-zh">現場指揮中心：分區管理、任務派遣與資源調度</span><span class="l-en">Scene command: sector management, tasking and resources</span></td></tr>
+                    <tr><th scope="row">TL</th><td><span class="l-zh">小隊長：管理所屬區域與彙整回報</span><span class="l-en">Team leader: manages a sector and consolidates reports</span></td></tr>
+                    <tr><th scope="row">TE</th><td><span class="l-zh">前線隊員：快速回報與 SOS</span><span class="l-en">Team member: quick reports and SOS</span></td></tr>
+                    <tr><th scope="row">EMT</th><td><span class="l-zh">醫療組：傷患分類與後送</span><span class="l-en">Medical: triage and evacuation</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="mini-note l-zh">依現場操作需求調整 ICS 標準架構，志工協調歸入 Logistics 不另列；並新增指揮權限管理、安全管制介面、已讀確認、語音翻譯與多照片回報。</p>
+              <p class="mini-note l-en">The standard ICS structure is adapted to scene practice (volunteer coordination sits under Logistics); command permissions, a safety-control view, read receipts, voice translation and multi-photo reports were added.</p>
+            </div>
+          </div>
+
+          <p class="desc l-zh" style="margin-top:22px">
+            <strong>十項高壓環境設計原則：</strong>Offline First 架構、本地暫存與自動同步、大按鈕與高對比介面、單手操作、緊急功能固定位置、二次確認、模組化設計、低電量模式、完整事件日誌，以及 Wi-Fi／LoRa／BLE 多層通訊備援。
+          </p>
+          <p class="desc l-en" style="margin-top:22px">
+            <strong>Ten design principles for high-pressure use:</strong> offline-first architecture, local caching with auto-sync, large high-contrast controls, one-handed operation, fixed emergency actions, confirmation for critical actions, modular design, low-battery mode, a complete event log, and layered Wi-Fi / LoRa / BLE fallback.
           </p>
           </div>
         </details>
