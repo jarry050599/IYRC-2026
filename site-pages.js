@@ -60,6 +60,8 @@
   "story": "research.html",
   "summary": "overview.html",
   "team": "team.html",
+  "awards": "awards.html",
+  "awardCarousel": "awards.html",
   "team-grid": "team.html",
   "top": "index.html",
   "u-cmd": "system.html",
