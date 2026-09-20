@@ -1,6 +1,12 @@
-/* Full-viewport memorial entrance. No popup card, media request or decorative simulation. */
+/* Existing 921 memorial dialog: archival typography and a continuous passage into the homepage. */
+html { scrollbar-gutter: stable; }
 html.memorial-open,
 html.memorial-open body { overflow: hidden; overscroll-behavior: none; }
+html.memorial-open body > :not(#memorialIntro):not(script) { opacity: 0; }
+html.memorial-open.memorial-revealing body > :not(#memorialIntro):not(script) {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
 body.archive-site .memorial-intro {
   --memorial-ink: #1a1a1a;
   --memorial-paper: #f4f1ea;
@@ -9,7 +15,7 @@ body.archive-site .memorial-intro {
   position: fixed;
   inset: 0;
   margin: 0;
-  width: 100%;
+  width: 100vw;
   max-width: none;
   height: 100vh;
   height: 100dvh;
@@ -24,82 +30,108 @@ body.archive-site .memorial-intro {
   scrollbar-width: thin;
   box-shadow: none;
   font-family: var(--sans);
+  isolation: isolate;
 }
 body.archive-site .memorial-intro:not([open]) { display: none; }
-body.archive-site .memorial-intro[open] { display: grid; grid-template-rows: auto minmax(min-content,1fr) auto; gap: 24px; animation: memorial-background 220ms ease-out both; }
+body.archive-site .memorial-intro[open] { display: grid; grid-template-rows: auto minmax(min-content,1fr) auto; gap: 16px; animation: memorial-background 200ms ease-out both; }
 body.archive-site .memorial-intro:focus { outline: none; }
-body.archive-site .memorial-intro::backdrop { background: #f4f1ea; animation: memorial-background 220ms ease-out both; }
-body.archive-site .memorial-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; z-index: 1; }
+body.archive-site .memorial-intro::backdrop { background: transparent; }
+/* Two quiet registration marks, without a decorative frame or invented geography. */
+body.archive-site .memorial-intro::before,
+body.archive-site .memorial-intro::after { content: ''; position: fixed; width: 14px; height: 14px; pointer-events: none; border-color: rgb(107 98 88 / 20%); border-style: solid; z-index: -1; }
+body.archive-site .memorial-intro::before { top: max(104px,env(safe-area-inset-top)); left: max(40px,env(safe-area-inset-left)); border-width: 1px 0 0 1px; }
+body.archive-site .memorial-intro::after { bottom: max(40px,env(safe-area-inset-bottom)); right: max(40px,env(safe-area-inset-right)); border-width: 0 1px 1px 0; }
+body.archive-site .memorial-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; position: sticky; top: 0; z-index: 2; background: var(--memorial-paper); }
 body.archive-site .memorial-language { display: flex; width: fit-content; }
 body.archive-site .memorial-intro .memorial-language button { min-width: 44px; min-height: 44px; }
-body.archive-site .memorial-close { display: grid; place-items: center; width: 48px; height: 48px; padding: 12px; border: 1px solid transparent; border-radius: 50%; color: var(--memorial-muted); background: transparent; cursor: pointer; transition: background 180ms ease-out,color 180ms ease-out; }
-body.archive-site .memorial-close svg { width: 22px; height: 22px; }
+body.archive-site .memorial-close { display: grid; place-items: center; width: 44px; height: 44px; padding: 12px; border: 1px solid transparent; border-radius: 6px; color: var(--memorial-muted); background: transparent; cursor: pointer; transition: background 180ms ease-out,color 180ms ease-out; }
+body.archive-site .memorial-close svg { width: 20px; height: 20px; }
 body.archive-site .memorial-close:hover { color: var(--memorial-ink); background: #e9e5dd; }
-body.archive-site .memorial-content { width: min(100%,560px); margin: auto; padding: 8px 0 24px; text-align: center; }
-body.archive-site .memorial-date { display: block; font: 400 16px/1.6 var(--mono); letter-spacing: .06em; }
-body.archive-site .memorial-index { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 8px 0 0; font: 400 12px/1.7 var(--mono); letter-spacing: .06em; color: var(--memorial-muted); }
-body.archive-site .memorial-index > :last-child { padding-left: 12px; border-left: 1px solid rgb(26 26 26 / 16%); }
-body.archive-site .memorial-number { margin: 16px 0 0; color: var(--memorial-red); font: 500 clamp(128px,15.5vw,208px)/.95 var(--sans); letter-spacing: -.06em; font-variant-numeric: lining-nums tabular-nums; }
-body.archive-site .memorial-title { margin: 16px 0 0; font: 500 30px/1.4 var(--sans); letter-spacing: .035em; }
-body.archive-site .memorial-remembrance { margin: 28px 0 0; font: 400 20px/1.9 var(--sans); letter-spacing: .025em; }
-body.archive-site .memorial-reflection { margin: 20px 0 0; font: 400 16px/1.9 var(--sans); letter-spacing: .02em; color: var(--memorial-muted); }
+body.archive-site .memorial-intro :is(button,a):focus-visible { outline: 2px solid var(--memorial-ink); outline-offset: 4px; }
+body.archive-site .memorial-content { width: min(100%,560px); margin: auto; padding: 0; text-align: center; }
+body.archive-site .memorial-date { display: block; font: 400 28px/1.4 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.015em; }
+body.archive-site .memorial-index { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin: 8px 0 0; font: 400 11px/1.7 var(--mono); letter-spacing: .07em; color: var(--memorial-muted); }
+body.archive-site .memorial-index > :last-child { padding-left: 12px; border-left: 1px solid rgb(26 26 26 / 14%); }
+body.archive-site .memorial-number { margin: 20px 0 0; color: var(--memorial-red); font: 450 clamp(144px,20vh,208px)/.94 var(--sans); letter-spacing: -.055em; font-variant-numeric: lining-nums tabular-nums; }
+body.archive-site .memorial-title { display: grid; justify-items: center; gap: 8px; margin: 20px 0 0; font: 500 24px/1.4 var(--sans); letter-spacing: .06em; }
+body.archive-site .memorial-title-zh { display: block; }
+body.archive-site .memorial-title-en { display: block; font: 400 14px/1.5 var(--sans); color: var(--memorial-muted); letter-spacing: .035em; }
+/* Body translations remain under the existing language switch; the archival title is bilingual. */
+body.archive-site .memorial-remembrance,
+body.archive-site .memorial-reflection { margin-inline: auto; max-width: 34ch; text-wrap: pretty; }
+body.archive-site .memorial-remembrance > span,
+body.archive-site .memorial-reflection > span { display: block; }
+body.archive-site .memorial-remembrance { margin-top: 28px; font: 400 20px/1.85 var(--sans); letter-spacing: .025em; }
+body.archive-site .memorial-reflection { margin-top: 16px; font: 400 16px/1.85 var(--sans); letter-spacing: .015em; color: var(--memorial-muted); }
 body.archive-site .memorial-actions { margin-top: 28px; }
-body.archive-site .memorial-enter { min-width: 184px; min-height: 48px; padding: 12px 24px; border: 1px solid var(--memorial-ink); border-radius: 6px; background: var(--memorial-ink); color: var(--memorial-paper); font: 500 15px/1.5 var(--sans); cursor: pointer; transition: background 180ms ease-out,border-color 180ms ease-out; }
-body.archive-site .memorial-enter:hover { background: #403b35; border-color: #403b35; }
-body.archive-site .memorial-signature { display: grid; justify-items: center; gap: 6px; padding-top: 16px; border-top: 1px solid rgb(26 26 26 / 10%); text-align: center; }
-body.archive-site .memorial-signature strong { font: 550 13px/1.5 var(--sans); letter-spacing: .12em; }
-body.archive-site .memorial-signature > span { color: var(--memorial-muted); font: 400 12px/1.5 var(--mono); letter-spacing: .05em; }
+body.archive-site .memorial-enter { min-width: 180px; min-height: 48px; padding: 12px 24px; border: 1px solid var(--memorial-ink); border-radius: 6px; background: var(--memorial-ink); color: #fff; font: 500 14px/1.5 var(--sans); cursor: pointer; transition: background 180ms ease-out,border-color 180ms ease-out; }
+body.archive-site .memorial-enter > span { display: block; }
+body.archive-site .memorial-enter:hover { background: #393530; border-color: #393530; }
+body.archive-site .memorial-signature { display: grid; justify-items: center; gap: 4px; width: fit-content; margin-inline: auto; padding-top: 12px; text-align: center; }
+body.archive-site .memorial-signature strong { font: 550 13px/1.5 var(--sans); letter-spacing: .14em; }
+body.archive-site .memorial-signature > span { color: var(--memorial-muted); font: 400 11px/1.5 var(--mono); letter-spacing: .07em; }
 
-/* Opacity only. The last stage finishes at 1.5 s; every control can be used immediately. */
+/* 1.55 s entrance. The date and archive index are separate stages; controls work immediately. */
 body.archive-site .memorial-stage { animation: memorial-reveal 400ms ease-out both; }
-body.archive-site .memorial-metadata { animation-delay: 120ms; }
-body.archive-site .memorial-number { animation-duration: 550ms; animation-delay: 280ms; }
-body.archive-site .memorial-title { animation-delay: 600ms; }
-body.archive-site .memorial-remembrance { animation-delay: 750ms; }
-body.archive-site .memorial-reflection { animation-delay: 900ms; }
-body.archive-site .memorial-actions { animation-duration: 300ms; animation-delay: 1100ms; }
-body.archive-site .memorial-signature { animation-duration: 300ms; animation-delay: 1200ms; }
+body.archive-site .memorial-date { animation-delay: 100ms; }
+body.archive-site .memorial-index { animation-delay: 240ms; }
+body.archive-site .memorial-number { animation-duration: 600ms; animation-delay: 400ms; }
+body.archive-site .memorial-title { animation-delay: 640ms; }
+body.archive-site .memorial-remembrance { animation-delay: 800ms; }
+body.archive-site .memorial-reflection { animation-delay: 960ms; }
+body.archive-site .memorial-signature { animation-duration: 350ms; animation-delay: 1080ms; }
+body.archive-site .memorial-actions { animation-duration: 300ms; animation-delay: 1250ms; }
 body.archive-site .memorial-intro.is-keyboard .memorial-stage { animation: none; opacity: 1; }
-body.archive-site .memorial-intro.is-leaving,
-body.archive-site .memorial-intro.is-leaving::backdrop { animation: memorial-exit 500ms ease-out forwards; }
+body.archive-site .memorial-intro.is-leaving { animation: memorial-exit 500ms ease-out forwards; }
 @keyframes memorial-background { from { opacity: 0; } to { opacity: 1; } }
 @keyframes memorial-reveal { from { opacity: 0; } to { opacity: 1; } }
 @keyframes memorial-exit { from { opacity: 1; } to { opacity: 0; } }
 
 @media (max-width: 600px) {
   body.archive-site .memorial-intro { padding: max(16px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left)); }
-  body.archive-site .memorial-intro[open] { gap: 20px; }
-  body.archive-site .memorial-content { max-width: 400px; padding: 4px 0 12px; }
-  body.archive-site .memorial-date { font-size: 14px; letter-spacing: .04em; }
-  body.archive-site .memorial-number { font-size: clamp(118px,36vw,160px); margin-top: 24px; }
-  body.archive-site .memorial-title { font-size: 26px; letter-spacing: .04em; margin-top: 12px; }
-  body.archive-site .memorial-remembrance { font-size: 19px; margin-top: 24px; line-height: 1.8; }
-  body.archive-site .memorial-reflection { font-size: 16px; margin-top: 20px; line-height: 1.85; }
+  body.archive-site .memorial-intro::before,
+  body.archive-site .memorial-intro::after { display: none; }
+  body.archive-site .memorial-content { max-width: 400px; }
+  body.archive-site .memorial-date { font-size: 24px; }
+  body.archive-site .memorial-number { font-size: clamp(120px,36vw,156px); margin-top: 20px; }
+  body.archive-site .memorial-title { font-size: 22px; gap: 6px; margin-top: 16px; }
+  body.archive-site .memorial-title-en { font-size: 13px; }
+  body.archive-site .memorial-remembrance { font-size: 18px; margin-top: 24px; }
+  body.archive-site .memorial-reflection { font-size: 16px; margin-top: 16px; line-height: 1.8; }
   body.archive-site .memorial-actions { margin-top: 24px; }
-  body.archive-site .memorial-enter { min-width: 200px; min-height: 48px; }
-  body.archive-site .memorial-signature { padding-top: 16px; }
+  body.archive-site .memorial-enter { min-width: 184px; }
 }
 @media (max-height: 740px) {
+  body.archive-site .memorial-intro { padding-block: max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-bottom)); }
   body.archive-site .memorial-intro[open] { gap: 12px; }
-  body.archive-site .memorial-content { padding-block: 0 8px; }
-  body.archive-site .memorial-number { font-size: clamp(100px,18vh,144px); margin-top: 16px; }
-  body.archive-site .memorial-title { font-size: 25px; margin-top: 8px; }
-  body.archive-site .memorial-remembrance { font-size: 18px; margin-top: 16px; line-height: 1.7; }
+  body.archive-site .memorial-date { font-size: 24px; }
+  body.archive-site .memorial-index { margin-top: 6px; }
+  body.archive-site .memorial-number { font-size: clamp(100px,17vh,128px); margin-top: 12px; }
+  body.archive-site .memorial-title { font-size: 22px; margin-top: 12px; gap: 6px; }
+  body.archive-site .memorial-title-en { font-size: 13px; }
+  body.archive-site .memorial-remembrance { font-size: 17px; margin-top: 16px; line-height: 1.7; }
   body.archive-site .memorial-reflection { margin-top: 12px; font-size: 15px; line-height: 1.75; }
   body.archive-site .memorial-actions { margin-top: 20px; }
-  body.archive-site .memorial-signature { padding-top: 12px; }
+  body.archive-site .memorial-enter { min-height: 44px; padding-block: 10px; }
+  body.archive-site .memorial-signature { padding-top: 4px; }
 }
 @media (max-height: 540px) {
-  body.archive-site .memorial-toolbar { position: sticky; top: 0; background: var(--memorial-paper); }
   body.archive-site .memorial-content { padding-top: 12px; }
-  body.archive-site .memorial-signature { margin-top: 16px; }
+  body.archive-site .memorial-signature { margin-top: 12px; }
+}
+@media (max-height: 620px) {
+  body.archive-site .memorial-intro[open] { gap: 8px; }
+  body.archive-site .memorial-number { font-size: 96px; margin-top: 8px; }
+  body.archive-site .memorial-title { margin-top: 8px; }
+  body.archive-site .memorial-remembrance { margin-top: 12px; }
+  body.archive-site .memorial-actions { margin-top: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   body.archive-site .memorial-intro,
   body.archive-site .memorial-intro::backdrop,
   body.archive-site .memorial-intro *,
-  body.archive-site .memorial-intro.is-leaving,
-  body.archive-site .memorial-intro.is-leaving::backdrop { animation: none !important; transition: none !important; opacity: 1; }
+  body.archive-site .memorial-intro.is-leaving { animation: none !important; transition: none !important; opacity: 1; }
+  html.memorial-revealing body > :not(#memorialIntro):not(script) { transition: none; }
 }
 @media (forced-colors: active) {
   body.archive-site .memorial-close,body.archive-site .memorial-enter { border: 1px solid ButtonText; }
@@ -107,4 +139,5 @@ body.archive-site .memorial-intro.is-leaving::backdrop { animation: memorial-exi
 @media print {
   body.archive-site .memorial-intro,body.archive-site .memorial-intro::backdrop { display: none !important; }
   html.memorial-open,html.memorial-open body { overflow: visible; }
+  html.memorial-open body > :not(#memorialIntro):not(script) { opacity: 1; }
 }

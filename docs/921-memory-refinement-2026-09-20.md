@@ -23,16 +23,16 @@ Refine the existing fourteen-page frontend and add a homepage-only digital memor
 The homepage loads `memorial-intro.css` and `memorial-intro.js`. A native modal `dialog` covers the viewport with the paper background. It presents the 1999 date, archive number, large 921, remembrance text and a quiet LinkGuard signature.
 
 - Year count is computed from the current local year minus 1999; Chinese and English wording update together.
-- Entrance uses opacity only and completes in 1,500 ms. Exit fades over 500 ms, with a 600 ms event fallback.
+- Entrance uses opacity only and completes in 1,550 ms. Exit crossfades into the homepage over 500 ms, with a 600 ms event fallback.
 - The close icon, Enter LinkGuard button and Escape all dismiss without navigation or reload.
-- The introduction appears on every homepage load, including refreshes and new tabs. Closing dismisses only the current view. The former `linkguard-921-intro` storage key is no longer read or written, so returning visitors also see the introduction.
+- The second-stage refinement restores first-visit behavior, following the latest request. The original `linkguard-921-intro` key stores `seen` on Enter, close or Escape. Refreshes and new tabs then skip the introduction. The original sessionStorage fallback is retained only when localStorage is unavailable; no second key is introduced.
 - Native modal background inertness, explicit focus containment, visible keyboard controls and focus restoration protect keyboard navigation. The dialog has a labelled title/description and `aria-modal="true"`.
 - The existing language handlers serve the introduction's segmented control; no duplicate language state is introduced.
 - Reduced motion removes entrance staging and closes immediately.
-- Mobile uses `100dvh`, safe-area padding, 44 px language controls, a 48 px close control, and a 48 px minimum entry button. Short landscape screens can scroll the dialog content.
-- The service-worker cache is updated to v31 and the introduction script is versioned `921-3`. Its install/fetch behavior is unchanged.
+- Mobile uses `100dvh`, safe-area padding, 44 px language/close controls and a 48 px entry button (44 px on short screens). Short landscape screens scroll within the dialog while the close control stays accessible.
+- The service-worker cache is updated to v33 and both introduction assets are versioned `921-4`. Its install/fetch behavior is unchanged.
 
-Reload the homepage to see the introduction again. No storage reset is required.
+To test a fresh visit, run `localStorage.removeItem('linkguard-921-intro')` and reload. If localStorage is blocked and the original session fallback is active, remove the same key from sessionStorage instead.
 
 ## Validation
 
@@ -63,3 +63,13 @@ The desktop column reversal was checked again in both languages at all five view
 ## Redundant introduction link
 
 Removed the Chinese/English “Explore today’s rescue technology” link, its arrow and underline at the user’s request. LinkGuard is already beside the memory narrative, so the internal jump is unnecessary. The `linkguard-now` target remains available; all other text, links and JavaScript are unchanged. Removed the unused homepage arrow overrides and updated the homepage stylesheet to `921-6` and service-worker cache to v32.
+
+## Second-stage memorial refinement
+
+Refined the existing native dialog only. The date, archive index, 921, bilingual title, remembrance text and signature have separate typographic levels. The title presents Chinese above smaller English supporting text, with explicit language attributes. The body remains under the original language switch with block-level translations. All memorial wording and meaning are preserved. Two faint registration marks provide an archival reference without new images or invented metadata.
+
+The existing script now executes immediately after the dialog markup, before homepage controls parse, preventing a homepage flash even when the script is delayed. Its initial language matches the existing `lg-lang` preference; the original page handlers still own language changes. Native modal inertness, focus containment and scroll locking remain active through the 500 ms crossfade. Stable scrollbar space avoids shifting the homepage, and reduced motion shows/closes immediately.
+
+Validation: all 56 checks passed in Chromium viewport emulation (1440×960, 820×1180, 390×844, 412×915, 320×568 and 844×390). Checks cover first visit, refresh, new tab, original reset key, blocked storage and session fallback, Enter, close, Escape, Tab/Shift+Tab, focus restoration, background focus/scroll protection, delayed script loading, unchanged URL/document, crossfade geometry, reduced motion, bilingual layout, language preference, mobile drawer, contact dialog and a legacy bookmark. No runtime/resource errors or automated accessibility violations were found. This is viewport emulation, not physical-device or Safari verification.
+
+A source comparison verifies that all original memorial words, homepage main/nav/footer markup and original inline scripts are unchanged. Other page files are unchanged, and the technical route loads without memorial assets. No additional overlay was created.
