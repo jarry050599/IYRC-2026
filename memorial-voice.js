@@ -11,14 +11,33 @@
         typeof synth.cancel !== 'function' || typeof synth.pause !== 'function' || typeof synth.resume !== 'function') {
       return { supported: false, stop: function () {}, destroy: function () {} };
     }
-    var voices = [], utterances = [], request = null;
+    var voices = [], utterances = [], request = null, selection = null, lastSelection = null;
     var generation = 0, part = 0, boundary = 0, state = 'idle';
     var owned = false, restartNeeded = false, destroyed = false, hasStarted = false, startTimer = null;
 
-    function notify(next) { if (state !== next) { state = next; onStateChange(next); } }
+    function notify(next) {
+      if (state !== next || selection !== lastSelection) {
+        state = next; lastSelection = selection; onStateChange(next, selection);
+      }
+    }
     function clearTimer() { global.clearTimeout(startTimer); startTimer = null; }
     function refreshVoices() {
       try { voices = Array.from(synth.getVoices() || []); } catch (_) { voices = []; }
+    }
+    function isKnownMale(voice) {
+      if (!voice) return false;
+      // Web Speech has no gender field. Use explicit labels/URI tokens or the
+      // documented Microsoft catalogue, only for voices actually enumerated.
+      var raw = (voice.name || '') + ' ' + (voice.voiceURI || '');
+      var identity = raw.replace(/[_-]/g, ' ');
+      if (/\bfemale\b|女[聲声性]/i.test(identity)) return false;
+      if (/\bmale\b|男[聲声性]/i.test(identity)) return true;
+      var locale = (voice.lang || '').toLowerCase().replace(/_/g, '-');
+      var microsoft = /\bmicrosoft\b/i.test(identity) || /\b(?:zh|en)-[a-z]{2}-[a-z]+Neural\b/i.test(raw);
+      if (!microsoft) return false;
+      if (/^zh(?:-|$)/.test(locale)) return /\b(?:zhiwei|kangkang|yunxi(?:Neural)?|yunjhe(?:Neural)?)\b/i.test(identity);
+      if (/^en(?:-|$)/.test(locale)) return /\b(?:david|mark|james|richard|george|ravi|sean|guy(?:Neural)?|ryan(?:Neural)?)\b/i.test(identity);
+      return false;
     }
     function voicePreference(voice) {
       // The API has no standard quality field. These are optional hints in voices
@@ -26,7 +45,8 @@
       var identity = (voice.name || '') + ' ' + (voice.voiceURI || '');
       var quality = /\b(premium|natural|neural)\b/i.test(identity) ? 3 :
         /\benhanced\b/i.test(identity) ? 2 : 0;
-      return quality * 100 + (voice.default ? 10 : 0) + (voice.localService ? 1 : 0);
+      return (isKnownMale(voice) ? 1000 : 0) + quality * 100 +
+        (voice.default ? 10 : 0) + (voice.localService ? 1 : 0);
     }
     function selectVoice(locale) {
       var exact = locale.toLowerCase(), base = exact.split('-')[0];
@@ -68,6 +88,7 @@
       if (part >= request.segments.length) { notify('ended'); return; }
       refreshVoices();
       var voice = selectVoice(request.lang), token = generation;
+      selection = { male: isKnownMale(voice) };
       restartNeeded = false;
       hasStarted = false;
       owned = true;
@@ -83,7 +104,7 @@
           utterance.lang = request.lang;
           if (voice) utterance.voice = voice; // A missing list/name uses the browser's locale default.
           // Stay close to the engine's natural pace instead of stretching syllables.
-          utterance.rate = 0.95;
+          utterance.rate = selection.male ? 0.93 : 0.95;
           utterance.pitch = 1;
           utterance.volume = 0.8;
           utterance.onstart = function () {
@@ -152,10 +173,10 @@
           if (synth.paused) startFromCheckpoint();
         } catch (_) { startFromCheckpoint(); }
       },
-      stop: function () { cancelQueue(); request = null; part = 0; boundary = 0; notify('idle'); },
+      stop: function () { cancelQueue(); request = null; selection = null; part = 0; boundary = 0; notify('idle'); },
       destroy: function () {
         if (destroyed) return;
-        destroyed = true; cancelQueue(); request = null;
+        destroyed = true; cancelQueue(); request = null; selection = null;
         if (synth.removeEventListener) synth.removeEventListener('voiceschanged', refreshVoices);
       }
     };
@@ -191,7 +212,8 @@
       paused: ['繼續', '繼續播放 921 紀念語音', '語音已暫停'],
       ended: ['重新播放', '重新播放 921 紀念語音', '語音播放完畢'],
       error: ['重試語音', '重新嘗試播放 921 紀念語音', '此裝置暫時無法播放語音，請重試。'],
-      replay: '重新播放', replayLabel: '重新播放 921 紀念語音'
+      replay: '重新播放', replayLabel: '重新播放 921 紀念語音',
+      malePlaying: '男聲旁白播放中', fallbackPlaying: '未找到男聲，正使用裝置音色播放'
     },
     en: {
       idle: ['LISTEN', 'Play 921 memorial voice', ''],
@@ -200,7 +222,8 @@
       paused: ['RESUME', 'Resume 921 memorial voice', 'Voice paused'],
       ended: ['REPLAY', 'Replay 921 memorial voice', 'Voice finished'],
       error: ['TRY AGAIN', 'Retry 921 memorial voice', 'Voice is unavailable on this device right now. Please try again.'],
-      replay: 'REPLAY', replayLabel: 'Replay 921 memorial voice'
+      replay: 'REPLAY', replayLabel: 'Replay 921 memorial voice',
+      malePlaying: 'Male narration playing', fallbackPlaying: 'Playing · Male voice not found'
     }
   };
 
@@ -210,14 +233,16 @@
     var toggle = controls.querySelector('[data-voice-toggle]');
     var replay = controls.querySelector('[data-voice-replay]');
     var caption = controls.querySelector('[data-voice-status]');
-    var language = options.language === 'en' ? 'en' : 'zh', state = 'idle', disposed = false;
-    function render(next) {
+    var language = options.language === 'en' ? 'en' : 'zh', state = 'idle', disposed = false, voiceSelection = null;
+    function render(next, selection) {
+      if (selection !== undefined) voiceSelection = selection;
       state = next;
       var copy = labels[language], current = copy[state];
       controls.setAttribute('data-state', state);
       toggle.querySelector('[data-voice-label]').textContent = current[0];
       toggle.setAttribute('aria-label', current[1]);
-      caption.textContent = current[2];
+      caption.textContent = state === 'playing' && voiceSelection
+        ? (voiceSelection.male ? copy.malePlaying : copy.fallbackPlaying) : current[2];
       replay.textContent = copy.replay;
       replay.setAttribute('aria-label', copy.replayLabel);
       if (state !== 'paused' && document.activeElement === replay) toggle.focus({ preventScroll: true });

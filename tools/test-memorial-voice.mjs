@@ -8,7 +8,7 @@ import vm from 'node:vm';
 
 const source = fs.readFileSync(new URL('../memorial-voice.js', import.meta.url), 'utf8');
 function setup(t, initialVoices = [], mode = 'native') {
-  const calls = [], states = [], timers = new Map(), listeners = new Map();
+  const calls = [], states = [], selections = [], timers = new Map(), listeners = new Map();
   let id = 0, voices = initialVoices, queue = [];
   const synth = {
     paused: false, speaking: false, pending: false,
@@ -30,11 +30,11 @@ function setup(t, initialVoices = [], mode = 'native') {
     clearTimeout(key) { timers.delete(key); }
   };
   vm.runInNewContext(source, {window: win});
-  const player = win.MemorialVoiceController.createSpeechPlayer(s => states.push(s));
+  const player = win.MemorialVoiceController.createSpeechPlayer((s, selection) => { states.push(s); selections.push(selection); });
   t.after(() => player.destroy());
   const spoken = () => calls.filter(c => c[0] === 'speak').map(c => c[1]);
   return {
-    player, synth, calls, states, listeners, timers, spoken,
+    player, synth, calls, states, selections, listeners, timers, spoken,
     voices(next) { voices = next; listeners.get('voiceschanged')?.(); },
     start(index = 0) { const utterance = spoken()[index]; synth.speaking = true; synth.pending = false; utterance.onstart?.(); return utterance; },
     get state() { return states.at(-1) || 'idle'; }
@@ -117,6 +117,67 @@ test('all short paragraphs use quiet parameters and are queued in order', t => {
   h.player.resume(); assert.equal(h.state, 'playing');
   assert.equal(h.spoken().length, 2, 'native resume must not queue duplicates');
   assert.equal(h.calls.filter(c => c[0] === 'resume').length, 1);
+});
+
+test('a known Taiwanese male voice wins over a higher-quality female in the same locale', t => {
+  const h = setup(t, [
+    {lang: 'zh-TW', name: 'Female narrator (Premium)', default: true},
+    {lang: 'zh-TW', name: 'Microsoft Zhiwei', localService: true},
+    {lang: 'zh-TW', name: 'Microsoft YunJhe Online (Natural)'}
+  ]);
+  h.player.play(message);
+  assert.equal(h.spoken()[0].voice.name, 'Microsoft YunJhe Online (Natural)');
+  assert.equal(h.spoken()[0].rate, 0.93);
+  assert.equal(h.spoken()[0].pitch, 1, 'do not lower a female voice to imitate a male voice');
+  assert.equal(h.selections.at(-1).male, true);
+});
+
+test('explicit male URI tokens are recognized without assuming an Apple voice name', t => {
+  const h = setup(t, [
+    {lang: 'zh-TW', name: 'Other', voiceURI: 'device.siri_female_zh-TW', default: true},
+    {lang: 'zh-TW', name: 'Installed voice', voiceURI: 'device.siri_male_zh-TW'}
+  ]);
+  h.player.play(message);
+  assert.equal(h.spoken()[0].voice.voiceURI, 'device.siri_male_zh-TW');
+  assert.equal(h.selections.at(-1).male, true);
+});
+
+test('female labels and unspecified voices never get reported as confirmed male', t => {
+  const h = setup(t, [{lang: 'zh-TW', name: 'Female narrator', voiceURI: 'device_female_voice'}]);
+  h.player.play(message);
+  assert.equal(h.selections.at(-1).male, false);
+  assert.equal(h.spoken()[0].rate, 0.95);
+  assert.equal(h.spoken()[0].pitch, 1);
+  h.voices([{lang: 'zh-TW', name: 'Unknown voice'}]); h.player.play(message);
+  assert.equal(h.selections.at(-1).male, false);
+  h.voices([]); h.player.play(message);
+  assert.equal(h.selections.at(-1).male, false);
+  assert.equal(h.spoken().at(-1).voice, null);
+});
+
+test('the male preference never substitutes the wrong language or region', t => {
+  const h = setup(t, [
+    {lang: 'en-US', name: 'Microsoft Guy Online (Natural)'},
+    {lang: 'zh-CN', name: 'Microsoft Yunxi Online (Natural)'},
+    {lang: 'zh-TW', name: 'Female narrator'}
+  ]);
+  h.player.play(message);
+  assert.equal(h.spoken()[0].voice.lang, 'zh-TW');
+  assert.equal(h.selections.at(-1).male, false);
+  h.player.play({lang: 'en-US', segments: ['Hello.']});
+  assert.equal(h.spoken().at(-1).voice.name, 'Microsoft Guy Online (Natural)');
+  assert.equal(h.selections.at(-1).male, true);
+  h.player.stop(); assert.equal(h.selections.at(-1), null);
+});
+
+test('an asynchronously installed male voice applies only to the next user request', t => {
+  const h = setup(t, []); h.player.play(message); h.start();
+  h.voices([{lang: 'zh-TW', name: 'Microsoft Zhiwei'}]);
+  assert.equal(h.spoken().length, 2);
+  assert.equal(h.selections.at(-1).male, false);
+  h.player.play(message);
+  assert.equal(h.spoken().at(-1).voice.name, 'Microsoft Zhiwei');
+  assert.equal(h.selections.at(-1).male, true);
 });
 
 test('mobile engines that cancel on pause resume from a real boundary', t => {
