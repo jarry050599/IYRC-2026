@@ -64,216 +64,204 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="system">
+<body class="reading-site" data-route="functionality" data-page="system">
 
 <a class="sr-only skip-link" href="#functionality"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group is-current"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html" class="active" aria-current="page"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group is-current"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a aria-current="page" class="active" href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 03 COMPOSITION ============ -->
 
 
 <!-- ============ 04 FUNCTIONALITY ============ -->
 <main id="main-content" tabindex="-1">
-<section id="functionality" class="alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">04 — <span class="l-zh">功能說明</span><span class="l-en">Functionality</span></div>
-      <h1 class="l-zh">感測、搜索、決策 ——<br>三步接起斷掉的那條線。</h1>
-      <h1 class="l-en">Sense, search, decide —<br>three steps to reconnect the line.</h1>
-      <p class="sec-note l-zh">滑鼠移到（或點擊）下方任一步驟，上方流程圖會高亮對應的資料路徑。</p>
-      <p class="sec-note l-en">Hover or click any step below and the diagram above highlights the matching data path.</p>
-    </div>
-
-    <div class="flow-wrap reveal">
-      <div class="diagram-scroll" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data">
-        <svg class="diagram" id="diagram" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 400" role="img"
-             aria-label="Data flow: sensor nodes send over LoRa to the command center, the three vehicles feed the same center, and the center dispatches missions to the rescuer handheld.">
-          <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M0 0L10 5L0 10z" fill="var(--line)"/>
-            </marker>
-          </defs>
-
-          <!-- SEGMENT 2 : vehicles -->
-          <g class="dg-seg" data-seg="2">
-            <path class="dg-link" d="M196 62 H228" marker-end="url(#arrow)"/>
-            <path class="dg-link" d="M386 62 H418" marker-end="url(#arrow)"/>
-            <path class="dg-link" id="p-seg2" d="M500 92 C500 130 500 140 500 176" marker-end="url(#arrow)"/>
-            <text class="dg-link-label l-zh" x="512" y="140">地面確認</text>
-            <text class="dg-link-label l-en" x="512" y="140">GROUND CONFIRM</text>
-            <circle class="dg-packet" r="4.5">
-              <animateMotion dur="2.6s" repeatCount="indefinite">
-                <mpath href="#p-seg2" xlink:href="#p-seg2"/>
-              </animateMotion>
-            </circle>
-          </g>
-
-          <g class="dg-node" data-node="fw">
-            <rect class="dg-box" x="36" y="38" width="160" height="48" rx="10"/>
-            <text class="dg-label l-zh" x="116" y="60" text-anchor="middle">定翼無人機</text>
-            <text class="dg-label l-en" x="116" y="60" text-anchor="middle">Fixed-Wing</text>
-            <text class="dg-sub" x="116" y="75" text-anchor="middle">WIDE SCAN</text>
-          </g>
-          <g class="dg-node" data-node="qr">
-            <rect class="dg-box" x="228" y="38" width="158" height="48" rx="10"/>
-            <text class="dg-label l-zh" x="307" y="60" text-anchor="middle">四旋翼無人機</text>
-            <text class="dg-label l-en" x="307" y="60" text-anchor="middle">Four-Rotor</text>
-            <text class="dg-sub" x="307" y="75" text-anchor="middle">CLOSE CHECK</text>
-          </g>
-          <g class="dg-node" data-node="ugv">
-            <rect class="dg-box" x="418" y="38" width="164" height="48" rx="10"/>
-            <text class="dg-label l-zh" x="500" y="60" text-anchor="middle">地面機器人</text>
-            <text class="dg-label l-en" x="500" y="60" text-anchor="middle">Ground Robot</text>
-            <text class="dg-sub" x="500" y="75" text-anchor="middle">CONFIRM</text>
-          </g>
-
-          <!-- SEGMENT 1 : nodes -> command -->
-          <g class="dg-seg" data-seg="1">
-            <path class="dg-link" id="p-seg1a" d="M200 214 C300 214 320 210 380 210" marker-end="url(#arrow)"/>
-            <path class="dg-link" id="p-seg1b" d="M200 300 C300 300 320 232 380 224" marker-end="url(#arrow)"/>
-            <text class="dg-link-label l-zh" x="290" y="196" text-anchor="middle">LoRa · 長距跨山</text>
-            <text class="dg-link-label l-en" x="290" y="196" text-anchor="middle">LoRa · LONG RANGE</text>
-            <circle class="dg-packet" r="4.5">
-              <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p-seg1a" xlink:href="#p-seg1a"/></animateMotion>
-            </circle>
-            <circle class="dg-packet" r="4.5">
-              <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite"><mpath href="#p-seg1b" xlink:href="#p-seg1b"/></animateMotion>
-            </circle>
-          </g>
-
-          <g class="dg-node" data-node="sbn">
-            <rect class="dg-box" x="36" y="190" width="164" height="48" rx="10"/>
-            <text class="dg-label l-zh" x="118" y="212" text-anchor="middle">生存信標節點</text>
-            <text class="dg-label l-en" x="118" y="212" text-anchor="middle">Beacon Node</text>
-            <text class="dg-sub" x="118" y="227" text-anchor="middle">HR / SpO₂</text>
-          </g>
-          <g class="dg-node" data-node="sen">
-            <rect class="dg-box" x="36" y="276" width="164" height="48" rx="10"/>
-            <text class="dg-label l-zh" x="118" y="298" text-anchor="middle">環境感測節點</text>
-            <text class="dg-label l-en" x="118" y="298" text-anchor="middle">Sensor Node</text>
-            <text class="dg-sub l-zh" x="118" y="313" text-anchor="middle">含水 / 坡度 / 水位</text>
-            <text class="dg-sub l-en" x="118" y="313" text-anchor="middle">SOIL / SLOPE / WATER</text>
-          </g>
-
-          <g class="dg-node" data-node="cmd">
-            <rect class="dg-box" x="380" y="176" width="240" height="72" rx="12"/>
-            <text class="dg-label l-zh" x="500" y="205" text-anchor="middle">指揮中心</text>
-            <text class="dg-label l-en" x="500" y="205" text-anchor="middle">Command Center</text>
-            <text class="dg-sub" x="500" y="222" text-anchor="middle">LOCAL AI · NO INTERNET</text>
-            <text class="dg-sub l-zh" x="500" y="238" text-anchor="middle">優先順序排序 · 儀表板</text>
-            <text class="dg-sub l-en" x="500" y="238" text-anchor="middle">PRIORITY RANKING · DASHBOARD</text>
-          </g>
-
-          <!-- SEGMENT 3 : command -> rescuer -->
-          <g class="dg-seg" data-seg="3">
-            <path class="dg-link" id="p-seg3" d="M620 212 H784" marker-end="url(#arrow)"/>
-            <text class="dg-link-label l-zh" x="636" y="198">任務下達 · 生命徵象</text>
-            <text class="dg-link-label l-en" x="636" y="198">MISSIONS · VITAL SIGNS</text>
-            <circle class="dg-packet" r="4.5">
-              <animateMotion dur="2s" repeatCount="indefinite"><mpath href="#p-seg3" xlink:href="#p-seg3"/></animateMotion>
-            </circle>
-          </g>
-          <g class="dg-node" data-node="rr">
-            <rect class="dg-box" x="784" y="186" width="180" height="52" rx="10"/>
-            <text class="dg-label l-zh" x="874" y="209" text-anchor="middle">搜救員手持端</text>
-            <text class="dg-label l-en" x="874" y="209" text-anchor="middle">Rescuer Handheld</text>
-            <text class="dg-sub" x="874" y="225" text-anchor="middle">RESCUE RADAR</text>
-          </g>
-
-          <g class="dg-node" data-node="victim">
-            <rect class="dg-box" x="784" y="290" width="180" height="52" rx="10" stroke-dasharray="4 4"/>
-            <text class="dg-label l-zh" x="874" y="313" text-anchor="middle">受困者</text>
-            <text class="dg-label l-en" x="874" y="313" text-anchor="middle">Victim</text>
-            <text class="dg-sub l-zh" x="874" y="329" text-anchor="middle">標記位置</text>
-            <text class="dg-sub l-en" x="874" y="329" text-anchor="middle">POSITION MARKED</text>
-          </g>
-          <path class="dg-link" d="M874 238 V290" marker-end="url(#arrow)"/>
-        </svg>
-      </div>
-
-      <div class="steps" id="steps">
-        <button class="step" data-step="1" aria-pressed="false">
-          <span class="n">01</span>
-          <h3 class="l-zh">感測與回傳</h3>
-          <h3 class="l-en">Sense &amp; Send</h3>
-          <div class="layer l-zh">Sense &amp; Send</div>
-          <div class="layer l-en">Step one</div>
-          <p class="desc l-zh">
+<section class="alt" id="functionality">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">04 — <span class="l-zh">功能說明</span><span class="l-en">Functionality</span></div>
+<h1 class="l-zh">感測、搜索、決策 ——<br/>三步接起斷掉的那條線。</h1>
+<h1 class="l-en">Sense, search, decide —<br/>three steps to reconnect the line.</h1>
+<p class="sec-note l-zh">滑鼠移到（或點擊）下方任一步驟，上方流程圖會高亮對應的資料路徑。</p>
+<p class="sec-note l-en">Hover or click any step below and the diagram above highlights the matching data path.</p>
+</div>
+<div aria-label="資料流 / Data flow" class="flow-story"><p class="reading-kicker">DATA → DECISION → RESPONSE</p><ol class="flow-story-steps"><li><button aria-pressed="false" data-flow-phase="sense" data-original-step="1" type="button"><span class="flow-order">01</span><strong>SENSE</strong><span><span class="l-zh">感測</span><span class="l-en">Sense</span></span></button></li><li><button aria-pressed="false" data-flow-phase="send" data-original-step="1" type="button"><span class="flow-order">02</span><strong>SEND</strong><span><span class="l-zh">回傳</span><span class="l-en">Send</span></span></button></li><li><button aria-pressed="false" data-flow-phase="search" data-original-step="2" type="button"><span class="flow-order">03</span><strong>SEARCH</strong><span><span class="l-zh">搜索</span><span class="l-en">Search</span></span></button></li><li><button aria-pressed="false" data-flow-phase="decide" data-original-step="3" type="button"><span class="flow-order">04</span><strong>DECIDE</strong><span><span class="l-zh">決策</span><span class="l-en">Decide</span></span></button></li><li><button aria-pressed="false" data-flow-phase="dispatch" data-original-step="3" type="button"><span class="flow-order">05</span><strong>DISPATCH</strong><span><span class="l-zh">派遣</span><span class="l-en">Dispatch</span></span></button></li></ol></div><div class="flow-wrap reveal">
+<div aria-label="可水平捲動的資料 / Scrollable data" class="diagram-scroll" role="region" tabindex="0">
+<svg aria-label="Data flow: sensor nodes send over LoRa to the command center, the three vehicles feed the same center, and the center dispatches missions to the rescuer handheld." class="diagram" id="diagram" role="img" viewbox="0 0 1000 400" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<marker id="arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M0 0L10 5L0 10z" fill="var(--line)"></path>
+</marker>
+</defs>
+<!-- SEGMENT 2 : vehicles -->
+<g class="dg-seg" data-seg="2">
+<path class="dg-link" d="M196 62 H228" marker-end="url(#arrow)"></path>
+<path class="dg-link" d="M386 62 H418" marker-end="url(#arrow)"></path>
+<path class="dg-link" d="M500 92 C500 130 500 140 500 176" id="p-seg2" marker-end="url(#arrow)"></path>
+<text class="dg-link-label l-zh" x="512" y="140">地面確認</text>
+<text class="dg-link-label l-en" x="512" y="140">GROUND CONFIRM</text>
+<circle class="dg-packet" r="4.5">
+<animatemotion dur="2.6s" repeatcount="indefinite">
+<mpath href="#p-seg2" xlink:href="#p-seg2"></mpath>
+</animatemotion>
+</circle>
+</g>
+<g class="dg-node" data-node="fw">
+<rect class="dg-box" height="48" rx="10" width="160" x="36" y="38"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="116" y="60">定翼無人機</text>
+<text class="dg-label l-en" text-anchor="middle" x="116" y="60">Fixed-Wing</text>
+<text class="dg-sub" text-anchor="middle" x="116" y="75">WIDE SCAN</text>
+</g>
+<g class="dg-node" data-node="qr">
+<rect class="dg-box" height="48" rx="10" width="158" x="228" y="38"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="307" y="60">四旋翼無人機</text>
+<text class="dg-label l-en" text-anchor="middle" x="307" y="60">Four-Rotor</text>
+<text class="dg-sub" text-anchor="middle" x="307" y="75">CLOSE CHECK</text>
+</g>
+<g class="dg-node" data-node="ugv">
+<rect class="dg-box" height="48" rx="10" width="164" x="418" y="38"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="500" y="60">地面機器人</text>
+<text class="dg-label l-en" text-anchor="middle" x="500" y="60">Ground Robot</text>
+<text class="dg-sub" text-anchor="middle" x="500" y="75">CONFIRM</text>
+</g>
+<!-- SEGMENT 1 : nodes -> command -->
+<g class="dg-seg" data-seg="1">
+<path class="dg-link" d="M200 214 C300 214 320 210 380 210" id="p-seg1a" marker-end="url(#arrow)"></path>
+<path class="dg-link" d="M200 300 C300 300 320 232 380 224" id="p-seg1b" marker-end="url(#arrow)"></path>
+<text class="dg-link-label l-zh" text-anchor="middle" x="290" y="196">LoRa · 長距跨山</text>
+<text class="dg-link-label l-en" text-anchor="middle" x="290" y="196">LoRa · LONG RANGE</text>
+<circle class="dg-packet" r="4.5">
+<animatemotion dur="2.4s" repeatcount="indefinite"><mpath href="#p-seg1a" xlink:href="#p-seg1a"></mpath></animatemotion>
+</circle>
+<circle class="dg-packet" r="4.5">
+<animatemotion begin="1.2s" dur="2.4s" repeatcount="indefinite"><mpath href="#p-seg1b" xlink:href="#p-seg1b"></mpath></animatemotion>
+</circle>
+</g>
+<g class="dg-node" data-node="sbn">
+<rect class="dg-box" height="48" rx="10" width="164" x="36" y="190"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="118" y="212">生存信標節點</text>
+<text class="dg-label l-en" text-anchor="middle" x="118" y="212">Beacon Node</text>
+<text class="dg-sub" text-anchor="middle" x="118" y="227">HR / SpO₂</text>
+</g>
+<g class="dg-node" data-node="sen">
+<rect class="dg-box" height="48" rx="10" width="164" x="36" y="276"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="118" y="298">環境感測節點</text>
+<text class="dg-label l-en" text-anchor="middle" x="118" y="298">Sensor Node</text>
+<text class="dg-sub l-zh" text-anchor="middle" x="118" y="313">含水 / 坡度 / 水位</text>
+<text class="dg-sub l-en" text-anchor="middle" x="118" y="313">SOIL / SLOPE / WATER</text>
+</g>
+<g class="dg-node" data-node="cmd">
+<rect class="dg-box" height="72" rx="12" width="240" x="380" y="176"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="500" y="205">指揮中心</text>
+<text class="dg-label l-en" text-anchor="middle" x="500" y="205">Command Center</text>
+<text class="dg-sub" text-anchor="middle" x="500" y="222">LOCAL AI · NO INTERNET</text>
+<text class="dg-sub l-zh" text-anchor="middle" x="500" y="238">優先順序排序 · 儀表板</text>
+<text class="dg-sub l-en" text-anchor="middle" x="500" y="238">PRIORITY RANKING · DASHBOARD</text>
+</g>
+<!-- SEGMENT 3 : command -> rescuer -->
+<g class="dg-seg" data-seg="3">
+<path class="dg-link" d="M620 212 H784" id="p-seg3" marker-end="url(#arrow)"></path>
+<text class="dg-link-label l-zh" x="636" y="198">任務下達 · 生命徵象</text>
+<text class="dg-link-label l-en" x="636" y="198">MISSIONS · VITAL SIGNS</text>
+<circle class="dg-packet" r="4.5">
+<animatemotion dur="2s" repeatcount="indefinite"><mpath href="#p-seg3" xlink:href="#p-seg3"></mpath></animatemotion>
+</circle>
+</g>
+<g class="dg-node" data-node="rr">
+<rect class="dg-box" height="52" rx="10" width="180" x="784" y="186"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="874" y="209">搜救員手持端</text>
+<text class="dg-label l-en" text-anchor="middle" x="874" y="209">Rescuer Handheld</text>
+<text class="dg-sub" text-anchor="middle" x="874" y="225">RESCUE RADAR</text>
+</g>
+<g class="dg-node" data-node="victim">
+<rect class="dg-box" height="52" rx="10" stroke-dasharray="4 4" width="180" x="784" y="290"></rect>
+<text class="dg-label l-zh" text-anchor="middle" x="874" y="313">受困者</text>
+<text class="dg-label l-en" text-anchor="middle" x="874" y="313">Victim</text>
+<text class="dg-sub l-zh" text-anchor="middle" x="874" y="329">標記位置</text>
+<text class="dg-sub l-en" text-anchor="middle" x="874" y="329">POSITION MARKED</text>
+</g>
+<path class="dg-link" d="M874 238 V290" marker-end="url(#arrow)"></path>
+</svg>
+</div>
+<div class="steps reading-steps" id="steps">
+<button aria-pressed="false" class="step" data-step="1">
+<span class="n">01</span>
+<h3 class="l-zh">感測與回傳</h3>
+<h3 class="l-en">Sense &amp; Send</h3>
+<div class="layer l-zh">Sense &amp; Send</div>
+<div class="layer l-en">Step one</div>
+<p class="desc l-zh">
             LoRa ESP32-S3 讀取受困者的生命徵象與環境資料；LoRa 承載這些資料長距離傳輸，
             穿透倒塌建築、跨越山區抵達指揮中心。
           </p>
-          <p class="desc l-en">
-            LoRa ESP32-S3 reads victims&rsquo; vital signs and environment data; LoRa carries it long-range,
+<p class="desc l-en">
+            LoRa ESP32-S3 reads victims’ vital signs and environment data; LoRa carries it long-range,
             through broken buildings and across mountains.
           </p>
-        </button>
-        <button class="step" data-step="2" aria-pressed="false">
-          <span class="n">02</span>
-          <h3 class="l-zh">搜索</h3>
-          <h3 class="l-en">Search</h3>
-          <div class="layer">Wide → Close → Ground</div>
-          <p class="desc l-zh">
+</button>
+<button aria-pressed="false" class="step" data-step="2">
+<span class="n">02</span>
+<h3 class="l-zh">搜索</h3>
+<h3 class="l-en">Search</h3>
+<div class="layer">Wide → Close → Ground</div>
+<p class="desc l-zh">
             定翼無人機廣域掃描、四旋翼無人機近距查證、地面機器人最終確認 ——
             形成「廣域 → 近距 → 地面」的三層搜索流程。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Fixed-wing drone scans wide, four-rotor drone checks close, ground robot confirms —
-            a &ldquo;wide → close → ground&rdquo; three-layer process.
+            a “wide → close → ground” three-layer process.
           </p>
-        </button>
-        <button class="step" data-step="3" aria-pressed="false">
-          <span class="n">03</span>
-          <h3 class="l-zh">決策與指揮</h3>
-          <h3 class="l-en">Decide &amp; Command</h3>
-          <div class="layer l-zh">Decide &amp; Command</div>
-          <div class="layer l-en">Step three</div>
-          <p class="desc l-zh">
+</button>
+<button aria-pressed="false" class="step" data-step="3">
+<span class="n">03</span>
+<h3 class="l-zh">決策與指揮</h3>
+<h3 class="l-en">Decide &amp; Command</h3>
+<div class="layer l-zh">Decide &amp; Command</div>
+<div class="layer l-en">Step three</div>
+<p class="desc l-zh">
             本地端 AI 排序救援優先順序；儀表板透過 Rescue Radar
             將任務推送給第一線搜救人員。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Local AI ranks rescue priority; the dashboard pushes missions to rescuers through Rescue Radar.
           </p>
-        </button>
-      </div>
-    </div>
-  </div>
+</button>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ============ 05 DATA ============ -->
-
-
 </main>
 <footer>
   <div class="wrap">

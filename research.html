@@ -64,73 +64,73 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="research">
+<body class="reading-site" data-route="research" data-page="research">
 
 <a class="sr-only skip-link" href="#story"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group is-current"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html" class="active" aria-current="page"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group is-current"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a aria-current="page" class="active" href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 02 BACKGROUND ============ -->
 
 
 <!-- ============ 06 STORY ============ -->
 <main id="main-content" tabindex="-1">
-<section id="story" class="alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">06 — <span class="l-zh">開發故事</span><span class="l-en">Development Story</span></div>
-      <h1 class="l-zh">從一個問題，<br>做到一套系統。</h1>
-      <h1 class="l-en">From one problem<br>to a whole system.</h1>
-      <p class="sec-note l-zh">迭代過程、走過的彎路，以及為什麼最後長成現在這樣。</p>
-      <p class="sec-note l-en">How the project actually evolved — the detours, the dead ends, and why we ended up here.</p>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-when"><span class="l-zh">源自尖石鄉與泰雅文化的啟發</span><span class="l-en">INSPIRED BY JIANSHI &amp; ATAYAL CULTURE</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">起點</h3>
-            <h3 class="l-en">Origin</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+<section class="alt" id="story">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">06 — <span class="l-zh">開發故事</span><span class="l-en">Development Story</span></div>
+<h1 class="l-zh">從一個問題，<br/>做到一套系統。</h1>
+<h1 class="l-en">From one problem<br/>to a whole system.</h1>
+<p class="sec-note l-zh">迭代過程、走過的彎路，以及為什麼最後長成現在這樣。</p>
+<p class="sec-note l-en">How the project actually evolved — the detours, the dead ends, and why we ended up here.</p>
+</div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="research-chapter-1" href="#research-chapter-1"><span class="toc-index">01</span><span class="l-zh">起點</span><span class="l-en">Origin</span></a><a data-reading-target="research-chapter-2" href="#research-chapter-2"><span class="toc-index">02</span><span class="l-zh">選型</span><span class="l-en">Trade-off</span></a><a data-reading-target="research-chapter-3" href="#research-chapter-3"><span class="toc-index">03</span><span class="l-zh">選型理由</span><span class="l-en">Component choices</span></a><a data-reading-target="research-chapter-4" href="#research-chapter-4"><span class="toc-index">04</span><span class="l-zh">從訪談到重構</span><span class="l-en">From interview to redesign</span></a><a data-reading-target="research-chapter-5" href="#research-chapter-5"><span class="toc-index">05</span><span class="l-zh">訪談怎麼做、聽到了什麼、改了什麼</span><span class="l-en">How we interviewed, what we heard, what we changed</span></a><a data-reading-target="research-chapter-6" href="#research-chapter-6"><span class="toc-index">06</span><span class="l-zh">卡關</span><span class="l-en">Bottleneck</span></a><a data-reading-target="research-chapter-7" href="#research-chapter-7"><span class="toc-index">07</span><span class="l-zh">現在</span><span class="l-en">Today</span></a></div></details></nav>
+<div class="timeline">
+<div class="tl-item reveal">
+<div class="tl-when"><span class="l-zh">源自尖石鄉與泰雅文化的啟發</span><span class="l-en">INSPIRED BY JIANSHI &amp; ATAYAL CULTURE</span></div>
+<details class="tl-body" id="research-chapter-1">
+<summary>
+<h3 class="l-zh">起點</h3>
+<h3 class="l-en">Origin</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             團隊中有兩位成員在新竹縣尖石鄉長大，並在當地就讀小學。從小生活在陡峭山勢、
             深邃溪谷與豐富的泰雅文化之中，讓他們與這片土地建立了深厚的連結。然而，這片美麗的山林
             同時也容易受到地震、颱風、土石流與通訊中斷的威脅。受到家鄉及當地真實防災需求的啟發，
             我們以尖石鄉為原型設計搜救情境模型，期盼 LinkGuard 能守護這裡的人們，以及他們所珍愛的山林。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Two of our team members grew up in Jianshi Township, Hsinchu County, and attended elementary school there.
             Surrounded by steep mountains, deep valleys, and the rich Atayal culture, they developed a deep connection
             with the local environment from an early age. However, this beautiful landscape is also vulnerable to
@@ -138,342 +138,331 @@
             disaster challenges, we designed our rescue scenario model based on Jianshi Township, hoping that LinkGuard
             can help protect both the people and the mountains they cherish.
           </p>
-          <div class="place-profile">
-            <article class="place-card">
-              <div class="place-kicker"><span class="l-zh">場域輪廓</span><span class="l-en">Landscape</span></div>
-              <h4 class="l-zh">527.6 km² 的山林鄉鎮</h4>
-              <h4 class="l-en">A 527.6 km² mountain township</h4>
-              <p class="l-zh">尖石位於新竹縣東南方，海拔約 200–3,000 公尺。山勢、溪谷與分散聚落，使災時通訊與抵達現場都更困難。</p>
-              <p class="l-en">Jianshi lies in southeastern Hsinchu County, rising from roughly 200 to 3,000 metres. Mountains, valleys and dispersed settlements make disaster communication and access difficult.</p>
-            </article>
-            <article class="place-card">
-              <div class="place-kicker"><span class="l-zh">前山／後山</span><span class="l-en">Two regions</span></div>
-              <h4 class="l-zh">兩個流域，兩種救援條件</h4>
-              <h4 class="l-en">Two watersheds, two rescue contexts</h4>
-              <p class="l-zh">前山屬頭前溪流域，交通與人口較集中；後山屬大漢溪流域，山勢更高、森林更密，包含司馬庫斯、鎮西堡等部落。</p>
-              <p class="l-en">The front mountains follow the Touqian River and have better access; the remote Dahan River side is higher and more forested, including Smangus and Cinsbu.</p>
-            </article>
-            <article class="place-card">
-              <div class="place-kicker"><span class="l-zh">文化核心</span><span class="l-en">Cultural heart</span></div>
-              <h4 class="l-zh">泰雅族與山林共生</h4>
-              <h4 class="l-en">Atayal life with the mountains</h4>
-              <p class="l-zh">織布、狩獵、農耕、河川漁撈與祖靈信仰延續至今；司馬庫斯、鎮西堡、那羅與馬里光各自保存並發展部落文化。</p>
-              <p class="l-en">Weaving, hunting, farming, river fishing and ancestral traditions continue today across communities including Smangus, Cinsbu, Naluo and Mrqwang.</p>
-            </article>
-            <article class="place-card">
-              <div class="place-kicker"><span class="l-zh">災害風險</span><span class="l-en">Hazards</span></div>
-              <h4 class="l-zh">豪雨會放大地形阻隔</h4>
-              <h4 class="l-en">Heavy rain amplifies isolation</h4>
-              <p class="l-zh">尖石是頭前溪與大漢溪部分水系的源區。颱風豪雨可能引發坍方、土石流與通訊中斷，正是 LinkGuard 要處理的情境。</p>
-              <p class="l-en">Headwaters of the Touqian and Dahan systems cross Jianshi. Typhoons can trigger landslides, debris flows and network outages—the conditions LinkGuard is designed for.</p>
-            </article>
-            <article class="place-card">
-              <div class="place-kicker"><span class="l-zh">代表場景</span><span class="l-en">Landmarks</span></div>
-              <h4 class="l-zh">從溪谷到高山巨木</h4>
-              <h4 class="l-en">From river valleys to giant trees</h4>
-              <p class="l-zh">司馬庫斯、鎮西堡神木群、秀巒溫泉與青蛙石天空步道，呈現尖石從前山溪谷到後山高海拔森林的多樣地貌。</p>
-              <p class="l-en">Smangus, the Cinsbu giant-tree forest, Xiuluan hot springs and Frog Rock show the terrain’s range from front-country valleys to remote high forests.</p>
-            </article>
-            <article class="place-card">
-              <div class="place-kicker"><span class="l-zh">設計回應</span><span class="l-en">Design response</span></div>
-              <h4 class="l-zh">不依賴網路的在地韌性</h4>
-              <h4 class="l-en">Resilience without the internet</h4>
-              <p class="l-zh">LinkGuard 以 LoRa、自組節點與本地端 AI，在基地台失效時維持生命徵象、環境資料與搜救指令的流動。</p>
-              <p class="l-en">LinkGuard combines LoRa, self-forming nodes and on-device AI to keep vital signs, environmental data and rescue commands moving when cellular service fails.</p>
-            </article>
-          </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-when"><span class="l-zh">為什麼最後選 LoRa</span><span class="l-en">WHY LORA</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">選型</h3>
-            <h3 class="l-en">Trade-off</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+<div class="place-profile">
+<article class="place-card">
+<div class="place-kicker"><span class="l-zh">場域輪廓</span><span class="l-en">Landscape</span></div>
+<h4 class="l-zh">527.6 km² 的山林鄉鎮</h4>
+<h4 class="l-en">A 527.6 km² mountain township</h4>
+<p class="l-zh">尖石位於新竹縣東南方，海拔約 200–3,000 公尺。山勢、溪谷與分散聚落，使災時通訊與抵達現場都更困難。</p>
+<p class="l-en">Jianshi lies in southeastern Hsinchu County, rising from roughly 200 to 3,000 metres. Mountains, valleys and dispersed settlements make disaster communication and access difficult.</p>
+</article>
+<article class="place-card">
+<div class="place-kicker"><span class="l-zh">前山／後山</span><span class="l-en">Two regions</span></div>
+<h4 class="l-zh">兩個流域，兩種救援條件</h4>
+<h4 class="l-en">Two watersheds, two rescue contexts</h4>
+<p class="l-zh">前山屬頭前溪流域，交通與人口較集中；後山屬大漢溪流域，山勢更高、森林更密，包含司馬庫斯、鎮西堡等部落。</p>
+<p class="l-en">The front mountains follow the Touqian River and have better access; the remote Dahan River side is higher and more forested, including Smangus and Cinsbu.</p>
+</article>
+<article class="place-card">
+<div class="place-kicker"><span class="l-zh">文化核心</span><span class="l-en">Cultural heart</span></div>
+<h4 class="l-zh">泰雅族與山林共生</h4>
+<h4 class="l-en">Atayal life with the mountains</h4>
+<p class="l-zh">織布、狩獵、農耕、河川漁撈與祖靈信仰延續至今；司馬庫斯、鎮西堡、那羅與馬里光各自保存並發展部落文化。</p>
+<p class="l-en">Weaving, hunting, farming, river fishing and ancestral traditions continue today across communities including Smangus, Cinsbu, Naluo and Mrqwang.</p>
+</article>
+<article class="place-card">
+<div class="place-kicker"><span class="l-zh">災害風險</span><span class="l-en">Hazards</span></div>
+<h4 class="l-zh">豪雨會放大地形阻隔</h4>
+<h4 class="l-en">Heavy rain amplifies isolation</h4>
+<p class="l-zh">尖石是頭前溪與大漢溪部分水系的源區。颱風豪雨可能引發坍方、土石流與通訊中斷，正是 LinkGuard 要處理的情境。</p>
+<p class="l-en">Headwaters of the Touqian and Dahan systems cross Jianshi. Typhoons can trigger landslides, debris flows and network outages—the conditions LinkGuard is designed for.</p>
+</article>
+<article class="place-card">
+<div class="place-kicker"><span class="l-zh">代表場景</span><span class="l-en">Landmarks</span></div>
+<h4 class="l-zh">從溪谷到高山巨木</h4>
+<h4 class="l-en">From river valleys to giant trees</h4>
+<p class="l-zh">司馬庫斯、鎮西堡神木群、秀巒溫泉與青蛙石天空步道，呈現尖石從前山溪谷到後山高海拔森林的多樣地貌。</p>
+<p class="l-en">Smangus, the Cinsbu giant-tree forest, Xiuluan hot springs and Frog Rock show the terrain’s range from front-country valleys to remote high forests.</p>
+</article>
+<article class="place-card">
+<div class="place-kicker"><span class="l-zh">設計回應</span><span class="l-en">Design response</span></div>
+<h4 class="l-zh">不依賴網路的在地韌性</h4>
+<h4 class="l-en">Resilience without the internet</h4>
+<p class="l-zh">LinkGuard 以 LoRa、自組節點與本地端 AI，在基地台失效時維持生命徵象、環境資料與搜救指令的流動。</p>
+<p class="l-en">LinkGuard combines LoRa, self-forming nodes and on-device AI to keep vital signs, environmental data and rescue commands moving when cellular service fails.</p>
+</article>
+</div>
+</div>
+</details>
+</div>
+<div class="tl-item reveal">
+<div class="tl-when"><span class="l-zh">為什麼最後選 LoRa</span><span class="l-en">WHY LORA</span></div>
+<details class="tl-body" id="research-chapter-2">
+<summary>
+<h3 class="l-zh">選型</h3>
+<h3 class="l-en">Trade-off</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             災區的共同前提是「沒有基礎建設可用」。這一條就先排除了依賴基地台的行動網路，
             以及需要架設 AP 的 Wi-Fi。剩下的候選裡，LoRa 的取捨最符合需求：
             傳輸距離長、功耗低、免執照頻段、單顆模組成本低 ——
             代價是頻寬極小，只能傳結構化的短封包，不能傳影像。
             這也決定了整套系統的分工：<strong>影像交給載具，生命徵象交給 LoRa</strong>。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             A disaster area shares one premise: no infrastructure to rely on. That alone rules out
             mobile networks, which need base stations, and Wi-Fi, which needs an access point.
-            Among what is left, LoRa&rsquo;s trade-offs fit best: long range, low power, licence-free band,
+            Among what is left, LoRa’s trade-offs fit best: long range, low power, licence-free band,
             low per-module cost — at the price of very little bandwidth, enough only for short
             structured packets, never video. That decided the division of labour for the whole system:
             <strong>video goes to the vehicles, vital signs go over LoRa</strong>.
           </p>
-          <div class="table-scroll l-zh" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:18px">
-            <table>
-              <thead>
-                <tr><th>方案</th><th>評估結果</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">衛星通訊器<br><span class="sec-note">如 Garmin inReach 類產品</span></th>
-                  <td>裝置約 NT$12,000 起，另需約 NT$450–2,000 月租費；而且需要開闊的天空視野，在尖石鄉的山谷與林蔭下訊號可能不穩定。</td>
-                </tr>
-                <tr>
-                  <th scope="row">Wi-Fi／藍牙 Mesh</th>
-                  <td>實測或規格上的有效距離僅約 120 公尺，不足以覆蓋約 4 公里範圍的山區搜救任務。</td>
-                </tr>
-                <tr>
-                  <th scope="row">星狀拓撲<br><span class="sec-note">單一中心節點</span></th>
-                  <td>只要指揮中心節點故障，整個網路就會癱瘓，形成單一故障點，缺乏任務所需的容錯能力。</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="hl">LinkGuard<br><span class="sec-note">自組 LoRa Mesh</span></th>
-                  <td class="hl">沒有單一故障點；四次實驗測得最大通訊距離為 1.96 公里；不需月租費，也不依賴開闊的天空視野。</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-scroll l-en" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:18px">
-            <table>
-              <thead>
-                <tr><th>Option</th><th>Evaluation</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Satellite messenger<br><span class="sec-note">e.g. Garmin inReach-type products</span></th>
-                  <td>Devices start at approximately NT$12,000, plus a monthly fee of about NT$450–2,000. They also need a clear view of the sky, so reception may be unreliable in Jianshi Township&rsquo;s valleys and beneath dense tree cover.</td>
-                </tr>
-                <tr>
-                  <th scope="row">Wi-Fi / Bluetooth mesh</th>
-                  <td>Its tested or specified effective range is only about 120 metres, too short for a mountain rescue operation spanning roughly 4 kilometres.</td>
-                </tr>
-                <tr>
-                  <th scope="row">Star topology<br><span class="sec-note">single central node</span></th>
-                  <td>If the command-centre node fails, the entire network goes down. This single point of failure does not provide the fault tolerance required for rescue operations.</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="hl">LinkGuard<br><span class="sec-note">self-built LoRa mesh</span></th>
-                  <td class="hl">No single point of failure; a maximum communication distance of 1.96 kilometres measured across four tests; no subscription fee; and no need for a clear view of the sky.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-when"><span class="l-zh">核心元件如何選定</span><span class="l-en">CHOOSING THE CORE COMPONENTS</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">選型理由</h3>
-            <h3 class="l-en">Component choices</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll l-zh" role="region" style="margin-top:18px" tabindex="0">
+<table>
+<thead>
+<tr><th>方案</th><th>評估結果</th></tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">衛星通訊器<br/><span class="sec-note">如 Garmin inReach 類產品</span></th>
+<td>裝置約 NT$12,000 起，另需約 NT$450–2,000 月租費；而且需要開闊的天空視野，在尖石鄉的山谷與林蔭下訊號可能不穩定。</td>
+</tr>
+<tr>
+<th scope="row">Wi-Fi／藍牙 Mesh</th>
+<td>實測或規格上的有效距離僅約 120 公尺，不足以覆蓋約 4 公里範圍的山區搜救任務。</td>
+</tr>
+<tr>
+<th scope="row">星狀拓撲<br/><span class="sec-note">單一中心節點</span></th>
+<td>只要指揮中心節點故障，整個網路就會癱瘓，形成單一故障點，缺乏任務所需的容錯能力。</td>
+</tr>
+<tr>
+<th class="hl" scope="row">LinkGuard<br/><span class="sec-note">自組 LoRa Mesh</span></th>
+<td class="hl">沒有單一故障點；四次實驗測得最大通訊距離為 1.96 公里；不需月租費，也不依賴開闊的天空視野。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll l-en" role="region" style="margin-top:18px" tabindex="0">
+<table>
+<thead>
+<tr><th>Option</th><th>Evaluation</th></tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Satellite messenger<br/><span class="sec-note">e.g. Garmin inReach-type products</span></th>
+<td>Devices start at approximately NT$12,000, plus a monthly fee of about NT$450–2,000. They also need a clear view of the sky, so reception may be unreliable in Jianshi Township’s valleys and beneath dense tree cover.</td>
+</tr>
+<tr>
+<th scope="row">Wi-Fi / Bluetooth mesh</th>
+<td>Its tested or specified effective range is only about 120 metres, too short for a mountain rescue operation spanning roughly 4 kilometres.</td>
+</tr>
+<tr>
+<th scope="row">Star topology<br/><span class="sec-note">single central node</span></th>
+<td>If the command-centre node fails, the entire network goes down. This single point of failure does not provide the fault tolerance required for rescue operations.</td>
+</tr>
+<tr>
+<th class="hl" scope="row">LinkGuard<br/><span class="sec-note">self-built LoRa mesh</span></th>
+<td class="hl">No single point of failure; a maximum communication distance of 1.96 kilometres measured across four tests; no subscription fee; and no need for a clear view of the sky.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details>
+</div>
+<div class="tl-item reveal">
+<div class="tl-when"><span class="l-zh">核心元件如何選定</span><span class="l-en">CHOOSING THE CORE COMPONENTS</span></div>
+<details class="tl-body" id="research-chapter-3">
+<summary>
+<h3 class="l-zh">選型理由</h3>
+<h3 class="l-en">Component choices</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             無線核心採用 <strong>LoRa ESP32-S3＋LoRa 模組</strong>。LoRa ESP32-S3 負責讀取感測資料、
             封裝短封包、更新 OLED 與處理本機控制；LoRa 模組則提供低功耗、長距離的災區通訊。
             模組化設計方便快速組裝、替換與維修，也讓團隊能把時間集中在多角色流程、
             封包設計與現場操作可靠度。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             We chose <strong>LoRa ESP32-S3 + a LoRa module</strong>. LoRa ESP32-S3 reads sensor data,
             packages short packets, updates the OLED and handles local controls, while the LoRa
             module provides low-power, long-range disaster-area communication. The modular design
             is quick to assemble, replace and repair, allowing the team to focus on role-based
             workflows, packet design and operational reliability.
           </p>
-          <p class="desc l-zh">
+<p class="desc l-zh">
             心率資料優先採用支援標準 BLE Heart Rate Service 的穿戴裝置，而不是把自製感測器
             當成唯一來源。這能減少額外接線與配戴負擔；若 Garmin 裝置未連線，Victim 韌體仍會
             切換至測試心率模式，使通訊、介面與警示流程可以持續運作及展示。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Heart-rate input prioritises wearables that support the standard BLE Heart Rate Service
             instead of depending on a custom sensor as the only source. This reduces wiring and
             wearing complexity. If the Garmin device is unavailable, Victim firmware falls back to
             a test heart-rate mode so communication, UI and alert workflows remain operational.
           </p>
-          </div>
-        </details>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-when"><span class="l-zh">第一線回饋改變了設計</span><span class="l-en">FIELD FEEDBACK CHANGED THE DESIGN</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">從訪談到重構</h3>
-            <h3 class="l-en">From interview to redesign</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+</div>
+</details>
+</div>
+<div class="tl-item reveal">
+<div class="tl-when"><span class="l-zh">第一線回饋改變了設計</span><span class="l-en">FIELD FEEDBACK CHANGED THE DESIGN</span></div>
+<details class="tl-body" id="research-chapter-4">
+<summary>
+<h3 class="l-zh">從訪談到重構</h3>
+<h3 class="l-en">From interview to redesign</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             消防人員訪談讓團隊重新檢視「功能越多越好」的原始想法。災害現場同時面臨通訊不穩、
             高壓決策、人員疲勞與戴手套操作，因此介面改以<strong>大按鈕、單手操作、緊急功能固定位置</strong>
             為原則，並依任務角色拆分 HQ 與 Field App，避免所有資訊擠在同一個畫面。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Firefighter interviews made us reconsider the original assumption that more features
             always make a better tool. Disaster scenes combine unstable communications, high-pressure
             decisions, fatigue and gloved operation. We therefore centred the interface on
             <strong>large controls, one-handed use and fixed emergency actions</strong>, while separating
             HQ and Field App views by operational role.
           </p>
-          <p class="desc l-zh">
+<p class="desc l-zh">
             這份回饋也強化了 Offline First 與分層通訊的方向：即使網際網路或手機鏈路中斷，
             LoRa 節點仍能持續收發短封包，OLED、蜂鳴器與震動馬達則保留最直接的現場提醒。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             The same feedback reinforced an offline-first, layered communication design. Even when
             internet or phone links fail, LoRa nodes continue exchanging short packets, while the
             OLED, buzzer and vibration motor preserve immediate on-device alerts.
           </p>
-          </div>
-        </details>
-      </div>
-
-            <div class="tl-item reveal" id="interview">
-        <div class="tl-when"><span class="l-zh">消防隊訪談紀錄</span><span class="l-en">FIRE-STATION INTERVIEW</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">訪談怎麼做、聽到了什麼、改了什麼</h3>
-            <h3 class="l-en">How we interviewed, what we heard, what we changed</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+</div>
+</details>
+</div>
+<div class="tl-item reveal" id="interview">
+<div class="tl-when"><span class="l-zh">消防隊訪談紀錄</span><span class="l-en">FIRE-STATION INTERVIEW</span></div>
+<details class="tl-body" id="research-chapter-5">
+<summary>
+<h3 class="l-zh">訪談怎麼做、聽到了什麼、改了什麼</h3>
+<h3 class="l-en">How we interviewed, what we heard, what we changed</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             為使系統設計貼近真實災害現場需求，團隊實地走訪消防分隊進行面對面深度訪談，受訪人員涵蓋指揮層級與第一線執勤人員，兼顧戰術指揮與現場操作兩個視角。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             To ground the design in real scene requirements, the team visited a fire station for in-depth face-to-face interviews covering both command-level officers and front-line crew, so tactical command and hands-on operation were both represented.
           </p>
-          <div class="table-scroll" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:18px">
-            <table class="compact">
-              <thead><tr><th scope="col"><span class="l-zh">項目</span><span class="l-en">Item</span></th><th scope="col"><span class="l-zh">內容</span><span class="l-en">Detail</span></th></tr></thead>
-              <tbody>
-                <tr><th scope="row"><span class="l-zh">受訪單位</span><span class="l-en">Unit</span></th><td><span class="l-zh">新竹縣某消防分隊</span><span class="l-en">A fire station in Hsinchu County</span></td></tr>
-                <tr><th scope="row"><span class="l-zh">受訪人數</span><span class="l-en">Interviewees</span></th><td><span class="l-zh">4 位：大隊長、副大隊長、小隊長、分隊長各 1 位</span><span class="l-en">4: battalion chief, deputy chief, squad leader and station captain</span></td></tr>
-                <tr><th scope="row"><span class="l-zh">訪談日期</span><span class="l-en">Date</span></th><td><span class="l-zh">2026 年 5 月 9 日（民國 115 年）</span><span class="l-en">9 May 2026</span></td></tr>
-                <tr><th scope="row"><span class="l-zh">訪談方式</span><span class="l-en">Format</span></th><td><span class="l-zh">面對面半結構式訪談</span><span class="l-en">Semi-structured, face to face</span></td></tr>
-                <tr><th scope="row"><span class="l-zh">訪談時長</span><span class="l-en">Duration</span></th><td><span class="l-zh">約 2.5 小時</span><span class="l-en">About 2.5 hours</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <blockquote class="quote" style="margin-top:18px">
-            <p class="l-zh">災害現場的關鍵不在於功能多寡，而在於系統能否於高壓、通訊不穩與人員疲勞之環境中維持快速、直覺且可靠之操作。</p>
-            <p class="l-en">What matters on scene is not how many features a system has, but whether it stays fast, intuitive and reliable under pressure, unstable communications and fatigue.</p>
-            <div class="src"><span class="l-zh">受訪大隊長</span><span class="l-en">Battalion chief</span></div>
-          </blockquote>
-          <blockquote class="quote" style="margin-top:12px">
-            <p class="l-zh">現場通訊常依賴 LINE 與無線電交雜使用，訊息易遺漏或順序混亂；需要一套能整合語音、文字與位置的單一平台。</p>
-            <p class="l-en">On scene we juggle LINE and radio; messages get lost or arrive out of order. We need one platform that brings voice, text and location together.</p>
-            <div class="src"><span class="l-zh">受訪分隊長</span><span class="l-en">Station captain</span></div>
-          </blockquote>
-          <p class="desc l-zh">
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll" role="region" style="margin-top:18px" tabindex="0">
+<table class="compact">
+<thead><tr><th scope="col"><span class="l-zh">項目</span><span class="l-en">Item</span></th><th scope="col"><span class="l-zh">內容</span><span class="l-en">Detail</span></th></tr></thead>
+<tbody>
+<tr><th scope="row"><span class="l-zh">受訪單位</span><span class="l-en">Unit</span></th><td><span class="l-zh">新竹縣某消防分隊</span><span class="l-en">A fire station in Hsinchu County</span></td></tr>
+<tr><th scope="row"><span class="l-zh">受訪人數</span><span class="l-en">Interviewees</span></th><td><span class="l-zh">4 位：大隊長、副大隊長、小隊長、分隊長各 1 位</span><span class="l-en">4: battalion chief, deputy chief, squad leader and station captain</span></td></tr>
+<tr><th scope="row"><span class="l-zh">訪談日期</span><span class="l-en">Date</span></th><td><span class="l-zh">2026 年 5 月 9 日（民國 115 年）</span><span class="l-en">9 May 2026</span></td></tr>
+<tr><th scope="row"><span class="l-zh">訪談方式</span><span class="l-en">Format</span></th><td><span class="l-zh">面對面半結構式訪談</span><span class="l-en">Semi-structured, face to face</span></td></tr>
+<tr><th scope="row"><span class="l-zh">訪談時長</span><span class="l-en">Duration</span></th><td><span class="l-zh">約 2.5 小時</span><span class="l-en">About 2.5 hours</span></td></tr>
+</tbody>
+</table>
+</div>
+<blockquote class="quote" style="margin-top:18px">
+<p class="l-zh">災害現場的關鍵不在於功能多寡，而在於系統能否於高壓、通訊不穩與人員疲勞之環境中維持快速、直覺且可靠之操作。</p>
+<p class="l-en">What matters on scene is not how many features a system has, but whether it stays fast, intuitive and reliable under pressure, unstable communications and fatigue.</p>
+<div class="src"><span class="l-zh">受訪大隊長</span><span class="l-en">Battalion chief</span></div>
+</blockquote>
+<blockquote class="quote" style="margin-top:12px">
+<p class="l-zh">現場通訊常依賴 LINE 與無線電交雜使用，訊息易遺漏或順序混亂；需要一套能整合語音、文字與位置的單一平台。</p>
+<p class="l-en">On scene we juggle LINE and radio; messages get lost or arrive out of order. We need one platform that brings voice, text and location together.</p>
+<div class="src"><span class="l-zh">受訪分隊長</span><span class="l-en">Station captain</span></div>
+</blockquote>
+<p class="desc l-zh">
             指揮層級強調指令傳遞的層級清晰與可追蹤性、避免跨單位重複回報；現場執勤層級更重視單手操作、大按鈕與離線可用性，並認為過多功能反而增加操作負擔。
             訪談資料以質性分析整理後，原本偏向「資料回報與通訊」的單一取向，修正為整合式搜救輔助平台：涵蓋地圖分區、ICS 指揮、子區域建立、權限管理、任務回報、SOS 警報、照片座標回傳、搜救狀態標記、AI 輔助、離線同步、安全管制與事件日誌，並新增多角色操作模式。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Commanders stressed clear, traceable command hierarchy and avoiding duplicate cross-agency reports; front-line crew valued one-handed use, large buttons and offline availability, and warned that extra features add load.
             After qualitative analysis, the original "report and communicate" focus grew into an integrated rescue-support platform: map zoning, ICS command, sub-areas, permissions, task reports, SOS alerts, geotagged photos, search-status markers, AI assistance, offline sync, safety control and an event log, plus role-specific operating modes.
           </p>
-
-          <div class="split" style="margin-top:22px;gap:28px">
-            <div>
-              <div class="eyebrow"><span class="l-zh">表五 · 地圖點線面標記</span><span class="l-en">Table 5 · Point / line / area markers</span></div>
-              <div class="table-scroll" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:12px">
-                <table class="compact">
-                  <thead><tr><th scope="col"><span class="l-zh">類型</span><span class="l-en">Type</span></th><th scope="col"><span class="l-zh">代表意義</span><span class="l-en">Meaning</span></th><th scope="col"><span class="l-zh">應用方式</span><span class="l-en">Use</span></th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row"><span class="l-zh">點</span><span class="l-en">Point</span></th><td><span class="l-zh">單一位置</span><span class="l-en">Single location</span></td><td><span class="l-zh">受困者位置、SOS、危險點</span><span class="l-en">Victim location, SOS, hazard</span></td></tr>
-                    <tr><th scope="row"><span class="l-zh">線</span><span class="l-en">Line</span></th><td><span class="l-zh">路線或邊界</span><span class="l-en">Route or boundary</span></td><td><span class="l-zh">道路封鎖、危險路線、撤離動線</span><span class="l-en">Road closure, hazardous route, evacuation path</span></td></tr>
-                    <tr><th scope="row"><span class="l-zh">面</span><span class="l-en">Area</span></th><td><span class="l-zh">區域範圍</span><span class="l-en">Region</span></td><td><span class="l-zh">倒塌區域、搜索分區、限制進入區</span><span class="l-en">Collapse zone, search sector, restricted area</span></td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="mini-note l-zh">並支援子分區建立、搜救狀態標示、危險程度分類、照片座標綁定、臨時據點與搜救熱區顯示。</p>
-              <p class="mini-note l-en">Also supports sub-sectors, search-status marking, hazard levels, geotagged photos, temporary bases and search hot-spots.</p>
-            </div>
-            <div>
-              <div class="eyebrow"><span class="l-zh">表六 · ICS 五種角色介面</span><span class="l-en">Table 6 · Five ICS role interfaces</span></div>
-              <div class="table-scroll" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:12px">
-                <table class="compact">
-                  <thead><tr><th scope="col"><span class="l-zh">角色</span><span class="l-en">Role</span></th><th scope="col"><span class="l-zh">功能定位</span><span class="l-en">Function</span></th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row">UCC</th><td><span class="l-zh">統一指揮中心與跨區域協調</span><span class="l-en">Unified command centre and cross-area coordination</span></td></tr>
-                    <tr><th scope="row">SCC</th><td><span class="l-zh">現場指揮中心：分區管理、任務派遣與資源調度</span><span class="l-en">Scene command: sector management, tasking and resources</span></td></tr>
-                    <tr><th scope="row">TL</th><td><span class="l-zh">小隊長：管理所屬區域與彙整回報</span><span class="l-en">Team leader: manages a sector and consolidates reports</span></td></tr>
-                    <tr><th scope="row">TE</th><td><span class="l-zh">前線隊員：快速回報與 SOS</span><span class="l-en">Team member: quick reports and SOS</span></td></tr>
-                    <tr><th scope="row">EMT</th><td><span class="l-zh">醫療組：傷患分類與後送</span><span class="l-en">Medical: triage and evacuation</span></td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="mini-note l-zh">依現場操作需求調整 ICS 標準架構，志工協調歸入 Logistics 不另列；並新增指揮權限管理、安全管制介面、已讀確認、語音翻譯與多照片回報。</p>
-              <p class="mini-note l-en">The standard ICS structure is adapted to scene practice (volunteer coordination sits under Logistics); command permissions, a safety-control view, read receipts, voice translation and multi-photo reports were added.</p>
-            </div>
-          </div>
-
-          <p class="desc l-zh" style="margin-top:22px">
-            <strong>十項高壓環境設計原則：</strong>Offline First 架構、本地暫存與自動同步、大按鈕與高對比介面、單手操作、緊急功能固定位置、二次確認、模組化設計、低電量模式、完整事件日誌，以及 Wi-Fi／LoRa／BLE 多層通訊備援。
+<div class="split" style="margin-top:22px;gap:28px">
+<div>
+<div class="eyebrow"><span class="l-zh">表五 · 地圖點線面標記</span><span class="l-en">Table 5 · Point / line / area markers</span></div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll" role="region" style="margin-top:12px" tabindex="0">
+<table class="compact">
+<thead><tr><th scope="col"><span class="l-zh">類型</span><span class="l-en">Type</span></th><th scope="col"><span class="l-zh">代表意義</span><span class="l-en">Meaning</span></th><th scope="col"><span class="l-zh">應用方式</span><span class="l-en">Use</span></th></tr></thead>
+<tbody>
+<tr><th scope="row"><span class="l-zh">點</span><span class="l-en">Point</span></th><td><span class="l-zh">單一位置</span><span class="l-en">Single location</span></td><td><span class="l-zh">受困者位置、SOS、危險點</span><span class="l-en">Victim location, SOS, hazard</span></td></tr>
+<tr><th scope="row"><span class="l-zh">線</span><span class="l-en">Line</span></th><td><span class="l-zh">路線或邊界</span><span class="l-en">Route or boundary</span></td><td><span class="l-zh">道路封鎖、危險路線、撤離動線</span><span class="l-en">Road closure, hazardous route, evacuation path</span></td></tr>
+<tr><th scope="row"><span class="l-zh">面</span><span class="l-en">Area</span></th><td><span class="l-zh">區域範圍</span><span class="l-en">Region</span></td><td><span class="l-zh">倒塌區域、搜索分區、限制進入區</span><span class="l-en">Collapse zone, search sector, restricted area</span></td></tr>
+</tbody>
+</table>
+</div>
+<p class="mini-note l-zh">並支援子分區建立、搜救狀態標示、危險程度分類、照片座標綁定、臨時據點與搜救熱區顯示。</p>
+<p class="mini-note l-en">Also supports sub-sectors, search-status marking, hazard levels, geotagged photos, temporary bases and search hot-spots.</p>
+</div>
+<div>
+<div class="eyebrow"><span class="l-zh">表六 · ICS 五種角色介面</span><span class="l-en">Table 6 · Five ICS role interfaces</span></div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll" role="region" style="margin-top:12px" tabindex="0">
+<table class="compact">
+<thead><tr><th scope="col"><span class="l-zh">角色</span><span class="l-en">Role</span></th><th scope="col"><span class="l-zh">功能定位</span><span class="l-en">Function</span></th></tr></thead>
+<tbody>
+<tr><th scope="row">UCC</th><td><span class="l-zh">統一指揮中心與跨區域協調</span><span class="l-en">Unified command centre and cross-area coordination</span></td></tr>
+<tr><th scope="row">SCC</th><td><span class="l-zh">現場指揮中心：分區管理、任務派遣與資源調度</span><span class="l-en">Scene command: sector management, tasking and resources</span></td></tr>
+<tr><th scope="row">TL</th><td><span class="l-zh">小隊長：管理所屬區域與彙整回報</span><span class="l-en">Team leader: manages a sector and consolidates reports</span></td></tr>
+<tr><th scope="row">TE</th><td><span class="l-zh">前線隊員：快速回報與 SOS</span><span class="l-en">Team member: quick reports and SOS</span></td></tr>
+<tr><th scope="row">EMT</th><td><span class="l-zh">醫療組：傷患分類與後送</span><span class="l-en">Medical: triage and evacuation</span></td></tr>
+</tbody>
+</table>
+</div>
+<p class="mini-note l-zh">依現場操作需求調整 ICS 標準架構，志工協調歸入 Logistics 不另列；並新增指揮權限管理、安全管制介面、已讀確認、語音翻譯與多照片回報。</p>
+<p class="mini-note l-en">The standard ICS structure is adapted to scene practice (volunteer coordination sits under Logistics); command permissions, a safety-control view, read receipts, voice translation and multi-photo reports were added.</p>
+</div>
+</div>
+<p class="desc l-zh" style="margin-top:22px">
+<strong>十項高壓環境設計原則：</strong>Offline First 架構、本地暫存與自動同步、大按鈕與高對比介面、單手操作、緊急功能固定位置、二次確認、模組化設計、低電量模式、完整事件日誌，以及 Wi-Fi／LoRa／BLE 多層通訊備援。
           </p>
-          <p class="desc l-en" style="margin-top:22px">
-            <strong>Ten design principles for high-pressure use:</strong> offline-first architecture, local caching with auto-sync, large high-contrast controls, one-handed operation, fixed emergency actions, confirmation for critical actions, modular design, low-battery mode, a complete event log, and layered Wi-Fi / LoRa / BLE fallback.
+<p class="desc l-en" style="margin-top:22px">
+<strong>Ten design principles for high-pressure use:</strong> offline-first architecture, local caching with auto-sync, large high-contrast controls, one-handed operation, fixed emergency actions, confirmation for critical actions, modular design, low-battery mode, a complete event log, and layered Wi-Fi / LoRa / BLE fallback.
           </p>
-          </div>
-        </details>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-when"><span class="l-zh">遇到的技術瓶頸與解法</span><span class="l-en">WHAT BROKE, AND HOW WE FIXED IT</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">卡關</h3>
-            <h3 class="l-en">Bottleneck</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+</div>
+</details>
+</div>
+<div class="tl-item reveal">
+<div class="tl-when"><span class="l-zh">遇到的技術瓶頸與解法</span><span class="l-en">WHAT BROKE, AND HOW WE FIXED IT</span></div>
+<details class="tl-body" id="research-chapter-6">
+<summary>
+<h3 class="l-zh">卡關</h3>
+<h3 class="l-en">Bottleneck</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             多節點共用頻道時容易發生封包碰撞，因此我們導入 LoRa 頻道活動偵測、
             Binary Exponential Backoff 與 18 個搜尋頻道分流；封包 ID 去重則避免相同訊息被重複套用。
             在省電方面，系統以非阻塞排程、無線電休眠及 RSSI 動態功率調整兼顧回報速度與續航。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             Multiple nodes sharing one channel caused packet collisions, so we implemented LoRa
             channel activity detection, binary exponential backoff and traffic distribution across 18 search
             channels. Packet-ID deduplication prevents repeated processing, while non-blocking
             scheduling, radio sleep and RSSI-based power control balance responsiveness and endurance.
           </p>
-          </div>
-        </details>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-when"><span class="l-zh">目前的狀態</span><span class="l-en">WHERE THE SYSTEM STANDS NOW</span></div>
-        <details class="tl-body">
-          <summary>
-            <h3 class="l-zh">現在</h3>
-            <h3 class="l-en">Today</h3>
-          </summary>
-          <div class="tl-content">
-          <p class="desc l-zh">
+</div>
+</details>
+</div>
+<div class="tl-item reveal">
+<div class="tl-when"><span class="l-zh">目前的狀態</span><span class="l-en">WHERE THE SYSTEM STANDS NOW</span></div>
+<details class="tl-body" id="research-chapter-7">
+<summary>
+<h3 class="l-zh">現在</h3>
+<h3 class="l-en">Today</h3>
+</summary>
+<div class="tl-content">
+<p class="desc l-zh">
             LinkGuard 系統已完成整合與實機驗證。Victim、Rescue 與 HQ 三種節點韌體、
             LoRa 多頻通訊、BLE Gateway、SOS／MAYDAY、隊伍命令、OLED 介面、封包去重、
             頻道退避及省電模式皆已完成，並整合為可操作的災害搜救通訊系統。
           </p>
-          <p class="desc l-en">
+<p class="desc l-en">
             LinkGuard is fully integrated and verified on hardware. The Victim, Rescue and HQ
             firmware roles, multi-frequency LoRa communication, BLE gateway, SOS / MAYDAY,
             team commands, OLED interface, packet deduplication, channel backoff and power modes
             are complete as one operational disaster-rescue communication system.
           </p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </div>
+</div>
+</details>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ============ 07 COMPARE ============ -->
-
-
 </main>
 <footer>
   <div class="wrap">

@@ -64,41 +64,42 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="system">
+<body class="reading-site" data-route="data" data-page="system">
 
 <a class="sr-only skip-link" href="#data"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group is-current"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html" class="active" aria-current="page"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group is-current"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a aria-current="page" class="active" href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 03 COMPOSITION ============ -->
 
@@ -109,187 +110,178 @@
 <!-- ============ 05 DATA ============ -->
 <main id="main-content" tabindex="-1">
 <section id="data">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">05 — <span class="l-zh">數據與效能</span><span class="l-en">Data &amp; Performance</span></div>
-      <h1 class="l-zh">把「可以用」變成<br>可以量的數字。</h1>
-      <h1 class="l-en">Turning &ldquo;it works&rdquo;<br>into numbers you can check.</h1>
-      <p class="sec-note l-zh">四次通訊實驗測得 LoRa 最大通訊距離為 1.96 公里。</p>
-      <p class="sec-note l-en">Four communication tests measured a maximum LoRa range of 1.96 km.</p>
-    </div>
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">05 — <span class="l-zh">數據與效能</span><span class="l-en">Data &amp; Performance</span></div>
+<h1 class="l-zh">把「可以用」變成<br/>可以量的數字。</h1>
+<h1 class="l-en">Turning “it works”<br/>into numbers you can check.</h1>
+<p class="sec-note l-zh">四次通訊實驗測得 LoRa 最大通訊距離為 1.96 公里。</p>
+<p class="sec-note l-en">Four communication tests measured a maximum LoRa range of 1.96 km.</p>
+</div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="research-dashboard" href="#research-dashboard"><span class="toc-index">01</span><span class="l-zh">研究儀表板</span><span class="l-en">Research dashboard</span></a><a data-reading-target="data-specifications" href="#data-specifications"><span class="toc-index">02</span><span class="l-zh">完整規格</span><span class="l-en">Specifications</span></a><a data-reading-target="data-power" href="#data-power"><span class="toc-index">03</span><span class="l-zh">成本與電力</span><span class="l-en">Cost &amp; power</span></a><a data-reading-target="data-scenarios" href="#data-scenarios"><span class="toc-index">04</span><span class="l-zh">效能情境</span><span class="l-en">Scenarios</span></a></div></details></nav><div class="dashboard-basis"><p class="sec-note l-zh">LoRa 距離為四次通訊實驗的實測結果；其餘為依目前排程、封包大小與耗電條件計算的設計估算。</p><p class="sec-note l-en">LoRa ranges are measured results from four communication tests. Other figures are design estimates calculated from current scheduling, packet-size and power assumptions.</p></div><div class="research-dashboard" id="research-dashboard"><div class="dashboard-primary"><div class="large-metric"><span class="evidence-label" data-evidence="measured"><span class="l-zh">實測</span><span class="l-en">MEASURED</span></span><div class="metric-number">1.96<small>km</small></div><h3><span class="l-zh">LoRa 通訊距離</span><span class="l-en">LoRa link distance</span></h3><div class="metric-context"><span class="l-zh">四次實測：1.59／1.73／1.85／1.96 km</span><span class="l-en">Four tests: 1.59 / 1.73 / 1.85 / 1.96 km</span></div></div><div class="chart-grid">
+<div class="chart-card reveal">
+<h3><span class="l-zh">LoRa 可通訊距離</span><span class="l-en">LoRa link distance</span></h3>
+<div class="unit-note">BY TEST · <span class="l-zh">單位：公尺 (m)</span><span class="l-en">unit: meters (m)</span></div>
+<div class="bars" data-chart="range"></div>
+</div>
+</div></div><div class="dashboard-estimates"><div class="large-metric"><span class="evidence-label" data-evidence="design"><span class="l-zh">設計估算</span><span class="l-en">DESIGN ESTIMATE</span></span><div class="metric-number">120<small>h</small></div><h3><span class="l-zh">生存信標節點電池續航</span><span class="l-en">Beacon battery life</span></h3><div class="metric-context"><span class="l-zh">一般回報；低頻 240 h／高頻 48 h</span><span class="l-en">Normal; low-rate 240 h / high-rate 48 h</span></div></div><div class="large-metric"><span class="evidence-label" data-evidence="capacity"><span class="l-zh">容量估算</span><span class="l-en">CAPACITY ESTIMATE</span></span><div class="metric-number">40 / 55<small></small></div><h3><span class="l-zh">同時追蹤節點</span><span class="l-en">Tracked nodes</span></h3><div class="metric-context"><span class="l-zh">穩定 / 尖峰</span><span class="l-en">Stable / peak</span></div></div><div class="large-metric"><span class="evidence-label" data-evidence="design"><span class="l-zh">設計估算</span><span class="l-en">DESIGN ESTIMATE</span></span><div class="metric-number">40<small>min</small></div><h3><span class="l-zh">地面車續航</span><span class="l-en">UGV endurance</span></h3><div class="metric-context"><span class="l-zh">平坦／輕度碎石</span><span class="l-en">Flat / light rubble</span></div></div><div class="large-metric"><span class="evidence-label" data-evidence="design"><span class="l-zh">設計估算</span><span class="l-en">DESIGN ESTIMATE</span></span><div class="metric-number">8<small>km</small></div><h3><span class="l-zh">定翼無人機</span><span class="l-en">Fixed-Wing UAV</span></h3><div class="metric-context"><span class="l-zh">40 分鐘</span><span class="l-en">40 minutes</span></div></div><div class="large-metric"><span class="evidence-label" data-evidence="design"><span class="l-zh">設計估算</span><span class="l-en">DESIGN ESTIMATE</span></span><div class="metric-number">1.5<small>km</small></div><h3><span class="l-zh">四旋翼無人機</span><span class="l-en">Four-Rotor UAV</span></h3><div class="metric-context"><span class="l-zh">15 分鐘</span><span class="l-en">15 minutes</span></div></div></div></div>
 
-    <div class="chart-grid">
-      <div class="chart-card reveal">
-        <h3><span class="l-zh">LoRa 可通訊距離</span><span class="l-en">LoRa link distance</span></h3>
-        <div class="unit-note">BY TEST · <span class="l-zh">單位：公尺 (m)</span><span class="l-en">unit: meters (m)</span></div>
-        <div class="bars" data-chart="range"></div>
-      </div>
-    </div>
-
-    <div class="sec-head reveal" style="margin-top:48px">
-      <div class="eyebrow"><span class="l-zh">系統規格一覽</span><span class="l-en">System specs</span></div>
-      <h2 class="l-zh">關鍵數字，一次看完。</h2>
-      <h2 class="l-en">The key numbers, in one place.</h2>
-      <p class="sec-note l-zh">LoRa 距離為四次通訊實驗的實測結果；其餘為依目前排程、封包大小與耗電條件計算的設計估算。</p>
-      <p class="sec-note l-en">LoRa ranges are measured results from four communication tests. Other figures are design estimates calculated from current scheduling, packet-size and power assumptions.</p>
-    </div>
-
-    <div class="table-scroll reveal" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:24px">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"><span class="l-zh">項目</span><span class="l-en">Item</span></th>
-            <th scope="col"><span class="l-zh">規格／實測</span><span class="l-en">Spec / measured</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span class="l-zh">LoRa 通訊距離</span><span class="l-en">LoRa link distance</span></th>
-            <td><span class="l-zh">四次實測：1.59／1.73／1.85／1.96 km；最大 1.96 km</span><span class="l-en">Four tests: 1.59 / 1.73 / 1.85 / 1.96 km; maximum 1.96 km</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">生存信標節點電池續航</span><span class="l-en">Beacon battery life</span></th>
-            <td><span class="l-zh">設計估算：一般約 120 h／低頻 240 h／高頻 48 h</span><span class="l-en">Design estimate: normal ~120 h / low-rate 240 h / high-rate 48 h</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">環境感測節點回報週期</span><span class="l-en">Env. report interval</span></th>
-            <td><span class="l-zh">設計值：每 5 分鐘；超過閾值立即回報</span><span class="l-en">Design value: every 5 min; immediate on threshold</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">指揮中心同時追蹤節點數</span><span class="l-en">Nodes tracked at once</span></th>
-            <td><span class="l-zh">容量估算：穩定 40 · 尖峰 55</span><span class="l-en">Capacity estimate: stable 40 · peak 55</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">地面車續航與越野</span><span class="l-en">UGV endurance / terrain</span></th>
-            <td><span class="l-zh">設計估算：約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">Design estimate: ~40 min · flat / light rubble</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">無人機作業距離與飛行時間</span><span class="l-en">UAV operating distance / flight time</span></th>
-            <td><span class="l-zh">設計估算：定翼約 8 km／40 分；四旋翼約 1.5 km／15 分</span><span class="l-en">Design estimate: fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">封包傳送頻率、大小及遺失率</span><span class="l-en">Packet rate, size, loss</span></th>
-            <td><span class="l-zh">封包設計約 30–150 bytes；遺失率估算：開闊地 &lt; 5%、邊緣 &lt; 15%</span><span class="l-en">Packet design ~30–150 bytes; estimated loss: open &lt; 5%, edge &lt; 15%</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">SBN 單一節點物料成本（BOM）</span><span class="l-en">BOM per SBN node</span></th>
-            <td><span class="l-zh">設計估算：約 NT$2,000，無月租；其他模組成本見下表</span><span class="l-en">Design estimate: ~NT$2,000, no subscription; see the table below for other modules</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sec-head reveal" style="margin-top:48px">
-      <div class="eyebrow"><span class="l-zh">成本與電力</span><span class="l-en">Cost &amp; Power</span></div>
-      <h2 class="l-zh">模組成本與續航。</h2>
-      <h2 class="l-en">Module cost and endurance.</h2>
-      <p class="sec-note l-zh">單套成本與續航時間均為依目前硬體配置整理的估算值。</p>
-      <p class="sec-note l-en">Per-unit costs and endurance figures are estimates based on the current hardware configuration.</p>
-    </div>
-
-    <div class="table-scroll reveal" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:24px">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"><span class="l-zh">模組</span><span class="l-en">Module</span></th>
-            <th scope="col"><span class="l-zh">單套成本（估）</span><span class="l-en">Est. unit cost</span></th>
-            <th scope="col"><span class="l-zh">續航時間</span><span class="l-en">Endurance</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span class="l-zh">SBN 生存信標節點</span><span class="l-en">SBN survival beacon node</span></th>
-            <td>US$62</td>
-            <td><span class="l-zh">一般 120 h／低頻 240 h／高頻 SOS 48 h</span><span class="l-en">Normal 120 h / low-rate 240 h / high-rate SOS 48 h</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">SEN 環境感測節點</span><span class="l-en">SEN environmental sensor node</span></th>
-            <td>US$83</td>
-            <td><span class="l-zh">約 50 天（2×18650、每 5 分鐘回報）；含 2 W 太陽能可長期駐點</span><span class="l-en">~50 days (2×18650, reporting every 5 min); 2 W solar supports long-term deployment</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">CMD 指揮中心</span><span class="l-en">CMD command centre</span></th>
-            <td><span class="l-zh">HQ LoRa 節點 US$59＋平板／筆電沿用現有裝備（新購約 US$370）</span><span class="l-en">HQ LoRa node US$59 + existing tablet/laptop (about US$370 if purchased new)</span></td>
-            <td><span class="l-zh">HQ 節點 60–90 h（持續接收）；平板 8–10 h</span><span class="l-en">HQ node 60–90 h (continuous receive); tablet 8–10 h</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">RR 搜救員手持端</span><span class="l-en">RR rescuer handheld</span></th>
-            <td><span class="l-zh">手持終端 US$60＋手機沿用個人裝備</span><span class="l-en">Handheld terminal US$60 + rescuer's existing phone</span></td>
-            <td><span class="l-zh">終端約 70 h（每 3 秒回報）；手機 App 10–14 h</span><span class="l-en">Terminal ~70 h (3-second reporting); phone app 10–14 h</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">UGV 地面機器人</span><span class="l-en">UGV ground robot</span></th>
-            <td>US$185</td>
-            <td><span class="l-zh">40 分鐘（平坦／輕度碎石，2S 3,000 mAh，平均 4.5 A）</span><span class="l-en">40 min (flat/light rubble, 2S 3,000 mAh, 4.5 A average)</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">UAV 空中載具</span><span class="l-en">UAV aerial vehicles</span></th>
-            <td><span class="l-zh">四旋翼 US$400／定翼 US$555</span><span class="l-en">Quadcopter US$400 / fixed-wing US$555</span></td>
-            <td><span class="l-zh">四旋翼 15 分鐘・1.5 km；定翼 40 分鐘・8 km</span><span class="l-en">Quadcopter 15 min · 1.5 km; fixed-wing 40 min · 8 km</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sec-head reveal" style="margin-top:48px">
-      <div class="eyebrow"><span class="l-zh">效能情境</span><span class="l-en">Performance Scenarios</span></div>
-      <h2 class="l-zh">壓力、斷線與成本。</h2>
-      <h2 class="l-en">Load, link loss and cost.</h2>
-      <p class="sec-note l-zh">以下依現有系統參數估算不同負載下的預期行為與規模差異。</p>
-      <p class="sec-note l-en">The following estimates use the current system parameters to compare expected behaviour under different loads.</p>
-    </div>
-
-    <div class="table-scroll reveal" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:24px">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"><span class="l-zh">評估項目</span><span class="l-en">Evaluation</span></th>
-            <th scope="col"><span class="l-zh">條件</span><span class="l-en">Condition</span></th>
-            <th scope="col"><span class="l-zh">預估結果</span><span class="l-en">Estimated result</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span class="l-zh">10 節點負載</span><span class="l-en">10-node load</span></th>
-            <td><span class="l-zh">一般回報＋隨機 1 個 SOS</span><span class="l-en">Normal reports + one random SOS</span></td>
-            <td><span class="l-zh">封包抵達率 98.6% · P95 延遲 1.2 s</span><span class="l-en">98.6% delivery · 1.2 s P95 latency</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">25 節點負載</span><span class="l-en">25-node load</span></th>
-            <td><span class="l-zh">一般回報＋同時 2 個 SOS</span><span class="l-en">Normal reports + two concurrent SOS</span></td>
-            <td><span class="l-zh">封包抵達率 96.8% · P95 延遲 1.8 s</span><span class="l-en">96.8% delivery · 1.8 s P95 latency</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">40 節點負載</span><span class="l-en">40-node load</span></th>
-            <td><span class="l-zh">一般回報＋同時 4 個 SOS</span><span class="l-en">Normal reports + four concurrent SOS</span></td>
-            <td><span class="l-zh">封包抵達率 93.5% · P95 延遲 2.7 s</span><span class="l-en">93.5% delivery · 2.7 s P95 latency</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">BLE 斷線</span><span class="l-en">BLE link loss</span></th>
-            <td><span class="l-zh">手機離開範圍 30 s 後返回</span><span class="l-en">Phone leaves range for 30 s and returns</span></td>
-            <td><span class="l-zh">LoRa 持續運作 · 預估 5–15 s 重新連線並同步狀態</span><span class="l-en">LoRa remains active · estimated 5–15 s reconnect and state sync</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">節點遺失</span><span class="l-en">Node loss</span></th>
-            <td><span class="l-zh">單一中繼節點停止回報</span><span class="l-en">One relay node stops reporting</span></td>
-            <td><span class="l-zh">30 s 標記逾時 · 其他節點繼續通訊</span><span class="l-en">Marked timed-out after 30 s · other nodes continue</span></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">HQ App 斷線</span><span class="l-en">HQ App link loss</span></th>
-            <td><span class="l-zh">BLE 暫停 60 s</span><span class="l-en">BLE unavailable for 60 s</span></td>
-            <td><span class="l-zh">HQ LoRa 鏈維持接收 · App 重連後同步最新狀態</span><span class="l-en">HQ LoRa continues receiving · latest state syncs after reconnection</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="safety-note reveal">
-      <span class="l-zh">估算基準：L4 Profile、30–150 byte 封包、既有角色回報週期與 18 個搜尋頻道；各負載情境以 10 分鐘任務窗口計算。</span>
-      <span class="l-en">Estimate baseline: L4 profile, 30–150 byte packets, current role-report intervals and 18 search channels, calculated over a 10-minute mission window for each load case.</span>
-    </div>
-
-  </div>
+<div class="sec-head reveal" id="data-specifications" style="margin-top:48px">
+<div class="eyebrow"><span class="l-zh">系統規格一覽</span><span class="l-en">System specs</span></div>
+<h2 class="l-zh">關鍵數字，一次看完。</h2>
+<h2 class="l-en">The key numbers, in one place.</h2>
+<p class="sec-note l-zh">LoRa 距離為四次通訊實驗的實測結果；其餘為依目前排程、封包大小與耗電條件計算的設計估算。</p>
+<p class="sec-note l-en">LoRa ranges are measured results from four communication tests. Other figures are design estimates calculated from current scheduling, packet-size and power assumptions.</p>
+</div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll reveal" role="region" style="margin-top:24px" tabindex="0">
+<table>
+<thead>
+<tr>
+<th scope="col"><span class="l-zh">項目</span><span class="l-en">Item</span></th>
+<th scope="col"><span class="l-zh">規格／實測</span><span class="l-en">Spec / measured</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><span class="l-zh">LoRa 通訊距離</span><span class="l-en">LoRa link distance</span></th>
+<td><span class="l-zh">四次實測：1.59／1.73／1.85／1.96 km；最大 1.96 km</span><span class="l-en">Four tests: 1.59 / 1.73 / 1.85 / 1.96 km; maximum 1.96 km</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">生存信標節點電池續航</span><span class="l-en">Beacon battery life</span></th>
+<td><span class="l-zh">設計估算：一般約 120 h／低頻 240 h／高頻 48 h</span><span class="l-en">Design estimate: normal ~120 h / low-rate 240 h / high-rate 48 h</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">環境感測節點回報週期</span><span class="l-en">Env. report interval</span></th>
+<td><span class="l-zh">設計值：每 5 分鐘；超過閾值立即回報</span><span class="l-en">Design value: every 5 min; immediate on threshold</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">指揮中心同時追蹤節點數</span><span class="l-en">Nodes tracked at once</span></th>
+<td><span class="l-zh">容量估算：穩定 40 · 尖峰 55</span><span class="l-en">Capacity estimate: stable 40 · peak 55</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">地面車續航與越野</span><span class="l-en">UGV endurance / terrain</span></th>
+<td><span class="l-zh">設計估算：約 40 分鐘 · 平坦／輕度碎石</span><span class="l-en">Design estimate: ~40 min · flat / light rubble</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">無人機作業距離與飛行時間</span><span class="l-en">UAV operating distance / flight time</span></th>
+<td><span class="l-zh">設計估算：定翼約 8 km／40 分；四旋翼約 1.5 km／15 分</span><span class="l-en">Design estimate: fixed-wing ~8 km / 40 min; quad ~1.5 km / 15 min</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">封包傳送頻率、大小及遺失率</span><span class="l-en">Packet rate, size, loss</span></th>
+<td><span class="l-zh">封包設計約 30–150 bytes；遺失率估算：開闊地 &lt; 5%、邊緣 &lt; 15%</span><span class="l-en">Packet design ~30–150 bytes; estimated loss: open &lt; 5%, edge &lt; 15%</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">SBN 單一節點物料成本（BOM）</span><span class="l-en">BOM per SBN node</span></th>
+<td><span class="l-zh">設計估算：約 NT$2,000，無月租；其他模組成本見下表</span><span class="l-en">Design estimate: ~NT$2,000, no subscription; see the table below for other modules</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sec-head reveal" id="data-power" style="margin-top:48px">
+<div class="eyebrow"><span class="l-zh">成本與電力</span><span class="l-en">Cost &amp; Power</span></div>
+<h2 class="l-zh">模組成本與續航。</h2>
+<h2 class="l-en">Module cost and endurance.</h2>
+<p class="sec-note l-zh">單套成本與續航時間均為依目前硬體配置整理的估算值。</p>
+<p class="sec-note l-en">Per-unit costs and endurance figures are estimates based on the current hardware configuration.</p>
+</div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll reveal" role="region" style="margin-top:24px" tabindex="0">
+<table>
+<thead>
+<tr>
+<th scope="col"><span class="l-zh">模組</span><span class="l-en">Module</span></th>
+<th scope="col"><span class="l-zh">單套成本（估）</span><span class="l-en">Est. unit cost</span></th>
+<th scope="col"><span class="l-zh">續航時間</span><span class="l-en">Endurance</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><span class="l-zh">SBN 生存信標節點</span><span class="l-en">SBN survival beacon node</span></th>
+<td>US$62</td>
+<td><span class="l-zh">一般 120 h／低頻 240 h／高頻 SOS 48 h</span><span class="l-en">Normal 120 h / low-rate 240 h / high-rate SOS 48 h</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">SEN 環境感測節點</span><span class="l-en">SEN environmental sensor node</span></th>
+<td>US$83</td>
+<td><span class="l-zh">約 50 天（2×18650、每 5 分鐘回報）；含 2 W 太陽能可長期駐點</span><span class="l-en">~50 days (2×18650, reporting every 5 min); 2 W solar supports long-term deployment</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">CMD 指揮中心</span><span class="l-en">CMD command centre</span></th>
+<td><span class="l-zh">HQ LoRa 節點 US$59＋平板／筆電沿用現有裝備（新購約 US$370）</span><span class="l-en">HQ LoRa node US$59 + existing tablet/laptop (about US$370 if purchased new)</span></td>
+<td><span class="l-zh">HQ 節點 60–90 h（持續接收）；平板 8–10 h</span><span class="l-en">HQ node 60–90 h (continuous receive); tablet 8–10 h</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">RR 搜救員手持端</span><span class="l-en">RR rescuer handheld</span></th>
+<td><span class="l-zh">手持終端 US$60＋手機沿用個人裝備</span><span class="l-en">Handheld terminal US$60 + rescuer's existing phone</span></td>
+<td><span class="l-zh">終端約 70 h（每 3 秒回報）；手機 App 10–14 h</span><span class="l-en">Terminal ~70 h (3-second reporting); phone app 10–14 h</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">UGV 地面機器人</span><span class="l-en">UGV ground robot</span></th>
+<td>US$185</td>
+<td><span class="l-zh">40 分鐘（平坦／輕度碎石，2S 3,000 mAh，平均 4.5 A）</span><span class="l-en">40 min (flat/light rubble, 2S 3,000 mAh, 4.5 A average)</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">UAV 空中載具</span><span class="l-en">UAV aerial vehicles</span></th>
+<td><span class="l-zh">四旋翼 US$400／定翼 US$555</span><span class="l-en">Quadcopter US$400 / fixed-wing US$555</span></td>
+<td><span class="l-zh">四旋翼 15 分鐘・1.5 km；定翼 40 分鐘・8 km</span><span class="l-en">Quadcopter 15 min · 1.5 km; fixed-wing 40 min · 8 km</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sec-head reveal" id="data-scenarios" style="margin-top:48px">
+<div class="eyebrow"><span class="l-zh">效能情境</span><span class="l-en">Performance Scenarios</span></div>
+<h2 class="l-zh">壓力、斷線與成本。</h2>
+<h2 class="l-en">Load, link loss and cost.</h2>
+<p class="sec-note l-zh">以下依現有系統參數估算不同負載下的預期行為與規模差異。</p>
+<p class="sec-note l-en">The following estimates use the current system parameters to compare expected behaviour under different loads.</p>
+</div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll reveal" role="region" style="margin-top:24px" tabindex="0">
+<table>
+<thead>
+<tr>
+<th scope="col"><span class="l-zh">評估項目</span><span class="l-en">Evaluation</span></th>
+<th scope="col"><span class="l-zh">條件</span><span class="l-en">Condition</span></th>
+<th scope="col"><span class="l-zh">預估結果</span><span class="l-en">Estimated result</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><span class="l-zh">10 節點負載</span><span class="l-en">10-node load</span></th>
+<td><span class="l-zh">一般回報＋隨機 1 個 SOS</span><span class="l-en">Normal reports + one random SOS</span></td>
+<td><span class="l-zh">封包抵達率 98.6% · P95 延遲 1.2 s</span><span class="l-en">98.6% delivery · 1.2 s P95 latency</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">25 節點負載</span><span class="l-en">25-node load</span></th>
+<td><span class="l-zh">一般回報＋同時 2 個 SOS</span><span class="l-en">Normal reports + two concurrent SOS</span></td>
+<td><span class="l-zh">封包抵達率 96.8% · P95 延遲 1.8 s</span><span class="l-en">96.8% delivery · 1.8 s P95 latency</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">40 節點負載</span><span class="l-en">40-node load</span></th>
+<td><span class="l-zh">一般回報＋同時 4 個 SOS</span><span class="l-en">Normal reports + four concurrent SOS</span></td>
+<td><span class="l-zh">封包抵達率 93.5% · P95 延遲 2.7 s</span><span class="l-en">93.5% delivery · 2.7 s P95 latency</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">BLE 斷線</span><span class="l-en">BLE link loss</span></th>
+<td><span class="l-zh">手機離開範圍 30 s 後返回</span><span class="l-en">Phone leaves range for 30 s and returns</span></td>
+<td><span class="l-zh">LoRa 持續運作 · 預估 5–15 s 重新連線並同步狀態</span><span class="l-en">LoRa remains active · estimated 5–15 s reconnect and state sync</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">節點遺失</span><span class="l-en">Node loss</span></th>
+<td><span class="l-zh">單一中繼節點停止回報</span><span class="l-en">One relay node stops reporting</span></td>
+<td><span class="l-zh">30 s 標記逾時 · 其他節點繼續通訊</span><span class="l-en">Marked timed-out after 30 s · other nodes continue</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">HQ App 斷線</span><span class="l-en">HQ App link loss</span></th>
+<td><span class="l-zh">BLE 暫停 60 s</span><span class="l-en">BLE unavailable for 60 s</span></td>
+<td><span class="l-zh">HQ LoRa 鏈維持接收 · App 重連後同步最新狀態</span><span class="l-en">HQ LoRa continues receiving · latest state syncs after reconnection</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="safety-note reveal">
+<span class="l-zh">估算基準：L4 Profile、30–150 byte 封包、既有角色回報週期與 18 個搜尋頻道；各負載情境以 10 分鐘任務窗口計算。</span>
+<span class="l-en">Estimate baseline: L4 profile, 30–150 byte packets, current role-report intervals and 18 search channels, calculated over a 10-minute mission window for each load case.</span>
+</div>
+</div>
 </section>
-
 </main>
 <footer>
   <div class="wrap">

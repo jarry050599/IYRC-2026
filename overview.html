@@ -64,41 +64,42 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="home">
+<body class="reading-site" data-route="overview" data-page="home">
 
 <a class="sr-only skip-link" href="#summary"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group is-current"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html" class="active" aria-current="page"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group is-current"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a aria-current="page" class="active" href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ HERO ============ -->
 
@@ -106,14 +107,13 @@
 <!-- ============ 01 SUMMARY ============ -->
 <main id="main-content" tabindex="-1">
 <section id="summary">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">01 — <span class="l-zh">概要</span><span class="l-en">Summary</span></div>
-      <h1 class="l-zh">一張網路，兩種模式。</h1>
-      <h1 class="l-en">One network, two modes.</h1>
-    </div>
-
-    <p class="body-text reveal l-zh">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">01 — <span class="l-zh">概要</span><span class="l-en">Summary</span></div>
+<h1 class="l-zh">一張網路，兩種模式。</h1>
+<h1 class="l-en">One network, two modes.</h1>
+</div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="summary" href="#summary"><span class="toc-index">01</span><span class="l-zh">系統概要</span><span class="l-en">System summary</span></a><a data-reading-target="quake-mode" href="#quake-mode"><span class="toc-index">02</span><span class="l-zh">地震搜救模式</span><span class="l-en">Earthquake mode</span></a></div></details></nav>
+<p class="body-text reveal l-zh">
       LinkGuard 是一套以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。
       <strong>生存信標節點</strong>與<strong>環境感測節點</strong>協同運作，
       搭配一台地面機器人與兩架無人機（定翼與四旋翼）。
@@ -121,52 +121,49 @@
       將受困者的生命徵象與環境資料回傳指揮中心 —— 重新接起搜救人員與受困者。
       一張網路，兩種模式：平時守護山林，災時搶救生命。
     </p>
-    <p class="body-text reveal l-en">
+<p class="body-text reveal l-en">
       LinkGuard is a disaster rescue communication system built with <strong>LoRa ESP32-S3</strong> as the
       core. The <strong>Survival Beacon Node</strong> and the <strong>Sensor Node</strong> work together
       with one ground robot and two drones (fixed-wing and four-rotor). When a disaster destroys mobile
-      networks, our system uses long-range wireless, body sensors, and AI to send victims&rsquo; vital
+      networks, our system uses long-range wireless, body sensors, and AI to send victims’ vital
       signs and environment data back to the command center — connecting rescuers and victims again.
       One network, two modes: guarding the forest in normal times, and saving lives when disaster strikes.
     </p>
-
-    <div class="report-block" id="quake-mode">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="l-zh">災時模式 · LinkGuard-E 地震搜救系統</span><span class="l-en">Disaster mode · LinkGuard-E earthquake rescue</span></div>
-        <h2 class="l-zh">穿透倒塌的樓板，<br>把生命徵象送回指揮中心。</h2>
-        <h2 class="l-en">Through collapsed floors,<br>vital signs reach the command post.</h2>
-      </div>
-      <p class="body-text reveal l-zh">
+<div class="report-block" id="quake-mode">
+<div class="sec-head reveal">
+<div class="eyebrow"><span class="l-zh">災時模式 · LinkGuard-E 地震搜救系統</span><span class="l-en">Disaster mode · LinkGuard-E earthquake rescue</span></div>
+<h2 class="l-zh">穿透倒塌的樓板，<br/>把生命徵象送回指揮中心。</h2>
+<h2 class="l-en">Through collapsed floors,<br/>vital signs reach the command post.</h2>
+</div>
+<p class="body-text reveal l-zh">
         台灣位於板塊交界，地震後建築倒塌易形成法拉第籠效應，造成受困者通訊中斷；現行搜救又因 LINE、無線電與多單位回報並用而資訊分散，影響黃金 72 小時內的決策效率。
         LinkGuard-E 包含三項核心技術：（1）以 <strong>923 MHz LoRa</strong> 為主、BLE 為輔的複合組網，利用 33 cm 波長的繞射特性穿透 RC 結構網格；（2）<strong>智慧手錶生理感知</strong>，回傳心率資料；（3）<strong>整合式指揮平台</strong>，導入 ICS 分層權限、地圖標記與離線同步機制。
         研究以鹽水等效模型驗證 LoRa 穿透能力，在 3.0% 鹽水濃度下仍可成功解碼，理論上約對應穿透 3 層 RC 樓板的衰減量；並透過蒙地卡羅模擬評估搜救效率，整體救援成功率由 82.83% 提升至 91.54%，其中紅燈傷患提升 25.85 個百分點。
       </p>
-      <p class="body-text reveal l-en">
+<p class="body-text reveal l-en">
         Taiwan sits on a plate boundary; after an earthquake, collapsed buildings act as Faraday cages that cut victims off, while rescue information is scattered across LINE, radio and multiple agencies, slowing decisions in the golden 72 hours.
         LinkGuard-E combines three core technologies: (1) a hybrid network led by <strong>923 MHz LoRa</strong> with BLE, using the 33 cm wavelength to diffract through reinforced-concrete mesh; (2) <strong>smartwatch vital sensing</strong> that relays heart rate; and (3) an <strong>integrated command platform</strong> with ICS role permissions, map markers and offline sync.
         A saline-equivalent model verified penetration — packets still decoded at 3.0% salinity, roughly the loss of three RC floors — and Monte Carlo simulation raised overall rescue success from 82.83% to 91.54%, with red-tag victims gaining 25.85 percentage points.
       </p>
-      <div class="kpi-grid reveal">
-        <div class="kpi"><div class="k"><span class="l-zh">抗干擾距離</span><span class="l-en">Range under interference</span></div><div class="n">900<small>m</small></div><div class="t"><span class="l-zh">台鐵、高鐵、高壓電塔周邊實測</span><span class="l-en">Measured beside railways, HSR and power towers</span></div></div>
-        <div class="kpi"><div class="k"><span class="l-zh">穿透極限</span><span class="l-en">Penetration limit</span></div><div class="n">3.0<small>%</small></div><div class="t"><span class="l-zh">鹽水濃度下仍可解碼，約 63 dB 衰減</span><span class="l-en">Saline still decoded, about 63 dB of loss</span></div></div>
-        <div class="kpi"><div class="k"><span class="l-zh">救援成功率</span><span class="l-en">Rescue success</span></div><div class="n">91.54<small>%</small></div><div class="t"><span class="l-zh">1,000 次配對蒙地卡羅模擬（對照組 82.83%）</span><span class="l-en">1,000 paired Monte Carlo trials (control 82.83%)</span></div></div>
-        <div class="kpi"><div class="k"><span class="l-zh">紅燈傷患</span><span class="l-en">Red-tag victims</span></div><div class="n">+25.85<small>pp</small></div><div class="t"><span class="l-zh">生理數據優先派遣的效果</span><span class="l-en">The effect of vitals-based dispatch</span></div></div>
-      </div>
-      <div class="cta-row reveal" style="margin-top:28px">
-        <a class="btn btn-primary" href="experiments.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
-          <span class="l-zh">查看三項實驗與模擬</span><span class="l-en">See the three experiments</span>
-        </a>
-        <a class="btn" href="background.html#quake-context">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
-          <span class="l-zh">研究動機與目的</span><span class="l-en">Motivation and objectives</span>
-        </a>
-      </div>
-    </div>
-
-  </div>
+<div class="kpi-grid reveal">
+<div class="kpi"><span class="evidence-label" data-evidence="measured"><span class="l-zh">實測</span><span class="l-en">MEASURED</span></span><div class="k"><span class="l-zh">抗干擾距離</span><span class="l-en">Range under interference</span></div><div class="n">900<small>m</small></div><div class="t"><span class="l-zh">台鐵、高鐵、高壓電塔周邊實測</span><span class="l-en">Measured beside railways, HSR and power towers</span></div></div>
+<div class="kpi"><span class="evidence-label" data-evidence="lab"><span class="l-zh">模型實測</span><span class="l-en">MEASURED · LAB MODEL</span></span><div class="k"><span class="l-zh">穿透極限</span><span class="l-en">Penetration limit</span></div><div class="n">3.0<small>%</small></div><div class="t"><span class="l-zh">鹽水濃度下仍可解碼，約 63 dB 衰減</span><span class="l-en">Saline still decoded, about 63 dB of loss</span></div></div>
+<div class="kpi"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="k"><span class="l-zh">救援成功率</span><span class="l-en">Rescue success</span></div><div class="n">91.54<small>%</small></div><div class="t"><span class="l-zh">1,000 次配對蒙地卡羅模擬（對照組 82.83%）</span><span class="l-en">1,000 paired Monte Carlo trials (control 82.83%)</span></div></div>
+<div class="kpi"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="k"><span class="l-zh">紅燈傷患</span><span class="l-en">Red-tag victims</span></div><div class="n">+25.85<small>pp</small></div><div class="t"><span class="l-zh">生理數據優先派遣的效果</span><span class="l-en">The effect of vitals-based dispatch</span></div></div>
+</div>
+<div class="cta-row reveal" style="margin-top:28px">
+<a class="btn btn-primary" href="experiments.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"></path></svg>
+<span class="l-zh">查看三項實驗與模擬</span><span class="l-en">See the three experiments</span>
+</a>
+<a class="btn" href="background.html#quake-context">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"></path></svg>
+<span class="l-zh">研究動機與目的</span><span class="l-en">Motivation and objectives</span>
+</a>
+</div>
+</div>
+</div>
 </section>
-
 </main>
 <footer>
   <div class="wrap">

@@ -64,41 +64,42 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="research">
+<body class="reading-site" data-route="comparison" data-page="research">
 
 <a class="sr-only skip-link" href="#compare"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group is-current"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html" class="active" aria-current="page"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group is-current"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a aria-current="page" class="active" href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 02 BACKGROUND ============ -->
 
@@ -109,273 +110,266 @@
 <!-- ============ 07 COMPARE ============ -->
 <main id="main-content" tabindex="-1">
 <section id="compare">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">07 — <span class="l-zh">方案比較</span><span class="l-en">Comparison</span></div>
-      <h1 class="l-zh">和既有方案<br>差在哪裡。</h1>
-      <h1 class="l-en">How this differs from<br>what already exists.</h1>
-      <p class="sec-note l-zh">從覆蓋範圍、基礎建設需求、容錯能力與成本比較各類方案。</p>
-      <p class="sec-note l-en">A comparison across coverage, infrastructure requirements, fault tolerance and cost.</p>
-    </div>
-
-    <div class="table-scroll reveal" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"><span class="l-zh">比較項目</span><span class="l-en">Criterion</span></th>
-            <th scope="col" class="hl">LinkGuard</th>
-            <th scope="col"><span class="l-zh">衛星通訊器</span><span class="l-en">Satellite messenger</span></th>
-            <th scope="col"><span class="l-zh">一般 LoRa Mesh 救災系統</span><span class="l-en">Generic LoRa mesh system</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span class="l-zh">覆蓋範圍</span><span class="l-en">Coverage</span></th>
-            <td class="hl">
-              <span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；四次實驗測得最大通訊距離為 1.96 公里。</span>
-              <span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; four tests measured a maximum range of 1.96 km.</span>
-            </td>
-            <td>
-              <span class="l-zh">近乎全球，但需要開闊天空視野，樹冠層與室內／廢墟下容易失效</span>
-              <span class="l-en">Near-global, but needs open sky; unreliable under tree canopy, indoors or under rubble</span>
-            </td>
-            <td>
-              <span class="l-zh">依節點密度而定，需要佈夠多中繼點才能連成面</span>
-              <span class="l-en">Depends on node density; needs enough relays to form continuous coverage</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">離線能力</span><span class="l-en">Offline</span></th>
-            <td class="hl">
-              <span class="mark yes">●</span>
-              <span class="l-zh">完全離線；AI 於指揮中心本地端運算，全程不需網際網路</span>
-              <span class="l-en">Fully offline; the AI runs on the command center device, no internet at any point</span>
-            </td>
-            <td>
-              <span class="mark no">○</span>
-              <span class="l-zh">需訂閱服務與衛星鏈路，多數機種仰賴雲端轉送訊息</span>
-              <span class="l-en">Needs a subscription and a satellite link; most devices relay messages through the cloud</span>
-            </td>
-            <td>
-              <span class="mark yes">●</span>
-              <span class="l-zh">通常可離線，但決策與資料整合多半仍需另接後端</span>
-              <span class="l-en">Usually offline-capable, but decision-making and data fusion often still need a backend</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">資料型態</span><span class="l-en">Data</span></th>
-            <td class="hl">
-              <span class="l-zh">生命徵象（心率／血氧）＋ 環境資料（含水／坡度／水位）＋ 載具影像，結構化進同一個儀表板</span>
-              <span class="l-en">Vital signs (HR / SpO₂) + environment data (soil / slope / water) + vehicle video, all structured into one dashboard</span>
-            </td>
-            <td>
-              <span class="l-zh">以簡訊、座標與 SOS 為主，無生理與環境感測</span>
-              <span class="l-en">Mostly text, coordinates and SOS; no physiological or environmental sensing</span>
-            </td>
-            <td>
-              <span class="l-zh">多半只傳位置與文字訊息</span>
-              <span class="l-en">Usually position and text messages only</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">部署難度</span><span class="l-en">Deployment</span></th>
-            <td class="hl">
-              <span class="l-zh">節點以 模組化零件組成，可快速複製與維修；載具需操作人員</span>
-              <span class="l-en">Nodes are built from modular parts, quick to replicate and repair; the vehicles need operators</span>
-            </td>
-            <td>
-              <span class="l-zh">開箱即用，個人裝置門檻最低</span>
-              <span class="l-en">Works out of the box; the lowest barrier as a personal device</span>
-            </td>
-            <td>
-              <span class="l-zh">需事先規劃節點佈點與中繼拓撲</span>
-              <span class="l-en">Requires planning node placement and relay topology in advance</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">成本</span><span class="l-en">Cost</span></th>
-            <td class="hl">
-              <span class="l-zh">SBN 單一節點物料成本約 NT$2,000，無月租費；其他模組依配置計價</span>
-              <span class="l-en">SBN bill of materials ~NT$2,000 per node, no subscription; other modules vary by configuration</span>
-            </td>
-            <td>
-              <span class="l-zh">裝置費約 NT$12,000 ＋ 月租約 NT$450–2,000</span>
-              <span class="l-en">Device ~NT$12,000 plus ~NT$450–2,000 / month</span>
-            </td>
-            <td>
-              <span class="l-zh">硬體成本低，但整體佈建成本隨節點數線性上升</span>
-              <span class="l-en">Cheap hardware, but total build-out cost scales linearly with node count</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="l-zh">主要限制</span><span class="l-en">Limitation</span></th>
-            <td class="hl">
-              <span class="l-zh">頻寬小，只能傳結構化短封包；影像須靠載具鏈路</span>
-              <span class="l-en">Very little bandwidth — short structured packets only; video depends on the vehicle link</span>
-            </td>
-            <td>
-              <span class="l-zh">無法感測受困者狀態，也無法整合現場資訊</span>
-              <span class="l-en">Cannot sense a victim&rsquo;s condition, and cannot integrate on-scene information</span>
-            </td>
-            <td>
-              <span class="l-zh">缺乏統一的指揮與決策層</span>
-              <span class="l-en">Lacks a unified command and decision layer</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="sec-note reveal l-zh" style="margin-top:18px">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">07 — <span class="l-zh">方案比較</span><span class="l-en">Comparison</span></div>
+<h1 class="l-zh">和既有方案<br/>差在哪裡。</h1>
+<h1 class="l-en">How this differs from<br/>what already exists.</h1>
+<p class="sec-note l-zh">從覆蓋範圍、基礎建設需求、容錯能力與成本比較各類方案。</p>
+<p class="sec-note l-en">A comparison across coverage, infrastructure requirements, fault tolerance and cost.</p>
+</div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="comparison-table-1" href="#comparison-table-1"><span class="toc-index">01</span><span class="l-zh">通訊方案</span><span class="l-en">Communication</span></a><a data-reading-target="comparison-table-2" href="#comparison-table-2"><span class="toc-index">02</span><span class="l-zh">搜救技術</span><span class="l-en">Search techniques</span></a><a data-reading-target="comparison-table-3" href="#comparison-table-3"><span class="toc-index">03</span><span class="l-zh">USAR 工具</span><span class="l-en">USAR tools</span></a></div></details></nav>
+<h3 class="comparison-caption"><span class="l-zh">通訊方案</span><span class="l-en">Communication approaches</span></h3><div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll reveal comparison-table" id="comparison-table-1" role="region" tabindex="0">
+<table>
+<thead>
+<tr>
+<th scope="col"><span class="l-zh">比較項目</span><span class="l-en">Criterion</span></th>
+<th class="hl" scope="col">LinkGuard</th>
+<th scope="col"><span class="l-zh">衛星通訊器</span><span class="l-en">Satellite messenger</span></th>
+<th scope="col"><span class="l-zh">一般 LoRa Mesh 救災系統</span><span class="l-en">Generic LoRa mesh system</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><span class="l-zh">覆蓋範圍</span><span class="l-en">Coverage</span></th>
+<td class="hl">
+<span class="l-zh">節點對指揮中心的長距鏈路，加上空中／地面載具擴大搜索面；四次實驗測得最大通訊距離為 1.96 公里。</span>
+<span class="l-en">Long-range node-to-centre links, extended by air and ground vehicles; four tests measured a maximum range of 1.96 km.</span>
+</td>
+<td>
+<span class="l-zh">近乎全球，但需要開闊天空視野，樹冠層與室內／廢墟下容易失效</span>
+<span class="l-en">Near-global, but needs open sky; unreliable under tree canopy, indoors or under rubble</span>
+</td>
+<td>
+<span class="l-zh">依節點密度而定，需要佈夠多中繼點才能連成面</span>
+<span class="l-en">Depends on node density; needs enough relays to form continuous coverage</span>
+</td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">離線能力</span><span class="l-en">Offline</span></th>
+<td class="hl">
+<span class="mark yes">●</span>
+<span class="l-zh">完全離線；AI 於指揮中心本地端運算，全程不需網際網路</span>
+<span class="l-en">Fully offline; the AI runs on the command center device, no internet at any point</span>
+</td>
+<td>
+<span class="mark no">○</span>
+<span class="l-zh">需訂閱服務與衛星鏈路，多數機種仰賴雲端轉送訊息</span>
+<span class="l-en">Needs a subscription and a satellite link; most devices relay messages through the cloud</span>
+</td>
+<td>
+<span class="mark yes">●</span>
+<span class="l-zh">通常可離線，但決策與資料整合多半仍需另接後端</span>
+<span class="l-en">Usually offline-capable, but decision-making and data fusion often still need a backend</span>
+</td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">資料型態</span><span class="l-en">Data</span></th>
+<td class="hl">
+<span class="l-zh">生命徵象（心率／血氧）＋ 環境資料（含水／坡度／水位）＋ 載具影像，結構化進同一個儀表板</span>
+<span class="l-en">Vital signs (HR / SpO₂) + environment data (soil / slope / water) + vehicle video, all structured into one dashboard</span>
+</td>
+<td>
+<span class="l-zh">以簡訊、座標與 SOS 為主，無生理與環境感測</span>
+<span class="l-en">Mostly text, coordinates and SOS; no physiological or environmental sensing</span>
+</td>
+<td>
+<span class="l-zh">多半只傳位置與文字訊息</span>
+<span class="l-en">Usually position and text messages only</span>
+</td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">部署難度</span><span class="l-en">Deployment</span></th>
+<td class="hl">
+<span class="l-zh">節點以 模組化零件組成，可快速複製與維修；載具需操作人員</span>
+<span class="l-en">Nodes are built from modular parts, quick to replicate and repair; the vehicles need operators</span>
+</td>
+<td>
+<span class="l-zh">開箱即用，個人裝置門檻最低</span>
+<span class="l-en">Works out of the box; the lowest barrier as a personal device</span>
+</td>
+<td>
+<span class="l-zh">需事先規劃節點佈點與中繼拓撲</span>
+<span class="l-en">Requires planning node placement and relay topology in advance</span>
+</td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">成本</span><span class="l-en">Cost</span></th>
+<td class="hl">
+<span class="l-zh">SBN 單一節點物料成本約 NT$2,000，無月租費；其他模組依配置計價</span>
+<span class="l-en">SBN bill of materials ~NT$2,000 per node, no subscription; other modules vary by configuration</span>
+</td>
+<td>
+<span class="l-zh">裝置費約 NT$12,000 ＋ 月租約 NT$450–2,000</span>
+<span class="l-en">Device ~NT$12,000 plus ~NT$450–2,000 / month</span>
+</td>
+<td>
+<span class="l-zh">硬體成本低，但整體佈建成本隨節點數線性上升</span>
+<span class="l-en">Cheap hardware, but total build-out cost scales linearly with node count</span>
+</td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">主要限制</span><span class="l-en">Limitation</span></th>
+<td class="hl">
+<span class="l-zh">頻寬小，只能傳結構化短封包；影像須靠載具鏈路</span>
+<span class="l-en">Very little bandwidth — short structured packets only; video depends on the vehicle link</span>
+</td>
+<td>
+<span class="l-zh">無法感測受困者狀態，也無法整合現場資訊</span>
+<span class="l-en">Cannot sense a victim’s condition, and cannot integrate on-scene information</span>
+</td>
+<td>
+<span class="l-zh">缺乏統一的指揮與決策層</span>
+<span class="l-en">Lacks a unified command and decision layer</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sec-note reveal l-zh" style="margin-top:18px">
       註：本表中他方案的描述為通則性比較，未逐一對應特定商品型號。填入實際型號與報價後可信度更高。
     </p>
-    <p class="sec-note reveal l-en" style="margin-top:18px">
+<p class="sec-note reveal l-en" style="margin-top:18px">
       Note: the other two columns describe categories in general terms, not specific products.
       Naming actual models and quoting real prices would make this table stronger.
     </p>
-
-    <div class="report-block" id="compare-usar">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="l-zh">地震搜救模式 · LinkGuard-E</span><span class="l-en">Earthquake mode · LinkGuard-E</span></div>
-        <h2 class="l-zh">與現有搜救技術及商用 USAR 工具比較。</h2>
-        <h2 class="l-en">Against current rescue techniques and commercial USAR tools.</h2>
-        <p class="sec-note l-zh">以下兩張表取自第 66 屆全國科展作品說明書（表七、表八）：先從原理層面比較傳統無線電／LINE 與聲納、蛇管光學；再與市售都市搜救（USAR）裝備逐項對照。</p>
-        <p class="sec-note l-en">The two tables below come from our National Science Fair report (Tables 7 and 8): first a principle-level comparison with radio/LINE and acoustic or camera probes, then an item-by-item comparison with commercial urban search-and-rescue (USAR) equipment.</p>
-      </div>
-
-      <div class="table-scroll reveal" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col"><span class="l-zh">比較面向</span><span class="l-en">Criterion</span></th>
-              <th scope="col"><span class="l-zh">傳統無線電／LINE</span><span class="l-en">Radio / LINE messaging</span></th>
-              <th scope="col"><span class="l-zh">聲納／蛇管光學</span><span class="l-en">Acoustic / snake camera</span></th>
-              <th scope="col" class="hl">LinkGuard-E</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><span class="l-zh">通訊可用性</span><span class="l-en">Link availability</span></th>
-              <td><span class="l-zh">基地台中斷即失效</span><span class="l-en">Fails when cell towers go down</span></td>
-              <td><span class="l-zh">不涉及通訊</span><span class="l-en">No communication function</span></td>
-              <td class="hl"><span class="l-zh">LoRa 自組網</span><span class="l-en">Self-organised LoRa network</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">RC 結構穿透能力</span><span class="l-en">RC penetration</span></th>
-              <td><span class="l-zh">高頻訊號全阻</span><span class="l-en">High-frequency signals blocked</span></td>
-              <td><span class="l-zh">無法穿牆</span><span class="l-en">Cannot see through walls</span></td>
-              <td class="hl"><span class="l-zh">923 MHz 長波長繞射穿透</span><span class="l-en">923 MHz long-wavelength diffraction</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">受困者生理數據</span><span class="l-en">Victim vital signs</span></th>
-              <td><span class="mark no">✗</span> <span class="l-zh">無</span><span class="l-en">None</span></td>
-              <td><span class="mark no">✗</span> <span class="l-zh">無</span><span class="l-en">None</span></td>
-              <td class="hl"><span class="mark yes">✓</span> <span class="l-zh">即時心率回傳</span><span class="l-en">Live heart rate</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">檢傷排序依據</span><span class="l-en">Triage basis</span></th>
-              <td><span class="l-zh">到達現場後目視</span><span class="l-en">Visual, on arrival</span></td>
-              <td><span class="l-zh">到達現場後目視</span><span class="l-en">Visual, on arrival</span></td>
-              <td class="hl"><span class="l-zh">抵達前已依生理數據排序</span><span class="l-en">Ranked by vitals before arrival</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">指揮資訊整合</span><span class="l-en">Command integration</span></th>
-              <td><span class="l-zh">LINE＋無線電分散</span><span class="l-en">Scattered across LINE and radio</span></td>
-              <td><span class="l-zh">獨立設備無整合</span><span class="l-en">Stand-alone device</span></td>
-              <td class="hl"><span class="l-zh">ICS 分層單一平台</span><span class="l-en">Single ICS-layered platform</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">離線可用性</span><span class="l-en">Offline use</span></th>
-              <td><span class="l-zh">需網路</span><span class="l-en">Needs the internet</span></td>
-              <td><span class="l-zh">不適用</span><span class="l-en">Not applicable</span></td>
-              <td class="hl"><span class="l-zh">Offline First，本地暫存自動同步</span><span class="l-en">Offline-first with local cache and auto-sync</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="table-scroll reveal" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:28px">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col"><span class="l-zh">比較面向</span><span class="l-en">Criterion</span></th>
-              <th scope="col">Delsar LD3</th>
-              <th scope="col">SearchCam 3000</th>
-              <th scope="col">Lifeseeker</th>
-              <th scope="col" class="hl">LinkGuard-E</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><span class="l-zh">廠商／國別</span><span class="l-en">Vendor / country</span></th>
-              <td><span class="l-zh">Savox 集團（芬蘭）</span><span class="l-en">Savox Group (Finland)</span></td>
-              <td><span class="l-zh">Savox／Con-Space（芬蘭）</span><span class="l-en">Savox / Con-Space (Finland)</span></td>
-              <td><span class="l-zh">CENTUM（西班牙）</span><span class="l-en">CENTUM (Spain)</span></td>
-              <td class="hl"><span class="l-zh">本研究（台灣）</span><span class="l-en">This project (Taiwan)</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">物理原理</span><span class="l-en">Principle</span></th>
-              <td><span class="l-zh">地震波＋聲波被動聆聽</span><span class="l-en">Passive seismic and acoustic listening</span></td>
-              <td><span class="l-zh">240° 關節攝影機＋雙向語音</span><span class="l-en">240° articulating camera with two-way audio</span></td>
-              <td><span class="l-zh">空載偽基地台（2G–5G）</span><span class="l-en">Airborne pseudo base station (2G–5G)</span></td>
-              <td class="hl"><span class="l-zh">LoRa 923 MHz＋BLE 生理感測</span><span class="l-en">LoRa 923 MHz + BLE vital sensing</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">基礎建設依賴</span><span class="l-en">Infrastructure</span></th>
-              <td><span class="l-zh">無</span><span class="l-en">None</span></td>
-              <td><span class="l-zh">無</span><span class="l-en">None</span></td>
-              <td><span class="l-zh">需空載平台</span><span class="l-en">Needs an aircraft platform</span></td>
-              <td class="hl"><span class="l-zh">無</span><span class="l-en">None</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">受困者需具備</span><span class="l-en">Victim must</span></th>
-              <td><span class="l-zh">能敲擊或發聲</span><span class="l-en">Be able to tap or call out</span></td>
-              <td><span class="l-zh">位於攝影機可達之孔隙</span><span class="l-en">Be within reach of a camera void</span></td>
-              <td><span class="l-zh">持有開機手機</span><span class="l-en">Carry a powered-on phone</span></td>
-              <td class="hl"><span class="l-zh">配戴信標或智慧手錶</span><span class="l-en">Wear a beacon or smartwatch</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">即時生理數據</span><span class="l-en">Live vital signs</span></th>
-              <td><span class="mark no">✗</span></td>
-              <td><span class="mark no">✗</span></td>
-              <td><span class="mark no">✗</span></td>
-              <td class="hl"><span class="mark yes">✓</span> <span class="l-zh">心率（BLE HR Service）</span><span class="l-en">Heart rate (BLE HR Service)</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">ICS 指揮平台整合</span><span class="l-en">ICS command integration</span></th>
-              <td><span class="l-zh">獨立硬體</span><span class="l-en">Stand-alone hardware</span></td>
-              <td><span class="l-zh">獨立硬體</span><span class="l-en">Stand-alone hardware</span></td>
-              <td><span class="l-zh">部分 MMS 整合</span><span class="l-en">Partial MMS integration</span></td>
-              <td class="hl"><span class="l-zh">原生 ICS 五角色介面</span><span class="l-en">Native five-role ICS interface</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">適用場景</span><span class="l-en">Best suited to</span></th>
-              <td><span class="l-zh">瓦礫深層聆聽</span><span class="l-en">Deep-rubble listening</span></td>
-              <td><span class="l-zh">可探孔隙搜索</span><span class="l-en">Void searches</span></td>
-              <td><span class="l-zh">戶外大範圍山難</span><span class="l-en">Wide-area outdoor mountain SAR</span></td>
-              <td class="hl"><span class="l-zh">都市倒塌＋預先部署</span><span class="l-en">Urban collapse with pre-deployment</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="l-zh">商業售價量級</span><span class="l-en">Price class</span></th>
-              <td><span class="l-zh">約 US$25–40k（零售）</span><span class="l-en">≈US$25–40k (retail)</span></td>
-              <td><span class="l-zh">約 US$15–25k（零售）</span><span class="l-en">≈US$15–25k (retail)</span></td>
-              <td><span class="l-zh">高階國防／SAR 級</span><span class="l-en">High-end defence / SAR class</span></td>
-              <td class="hl"><span class="l-zh">BOM &lt; US$200（原型階段）</span><span class="l-en">BOM &lt; US$200 (prototype)</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="mini-note reveal l-zh">
+<div class="report-block" id="compare-usar">
+<div class="sec-head reveal">
+<div class="eyebrow"><span class="l-zh">地震搜救模式 · LinkGuard-E</span><span class="l-en">Earthquake mode · LinkGuard-E</span></div>
+<h2 class="l-zh">與現有搜救技術及商用 USAR 工具比較。</h2>
+<h2 class="l-en">Against current rescue techniques and commercial USAR tools.</h2>
+<p class="sec-note l-zh">以下兩張表取自第 66 屆全國科展作品說明書（表七、表八）：先從原理層面比較傳統無線電／LINE 與聲納、蛇管光學；再與市售都市搜救（USAR）裝備逐項對照。</p>
+<p class="sec-note l-en">The two tables below come from our National Science Fair report (Tables 7 and 8): first a principle-level comparison with radio/LINE and acoustic or camera probes, then an item-by-item comparison with commercial urban search-and-rescue (USAR) equipment.</p>
+</div>
+<h3 class="comparison-caption"><span class="l-zh">搜救技術</span><span class="l-en">Search techniques</span></h3><div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll reveal comparison-table" id="comparison-table-2" role="region" tabindex="0">
+<table>
+<thead>
+<tr>
+<th scope="col"><span class="l-zh">比較面向</span><span class="l-en">Criterion</span></th>
+<th scope="col"><span class="l-zh">傳統無線電／LINE</span><span class="l-en">Radio / LINE messaging</span></th>
+<th scope="col"><span class="l-zh">聲納／蛇管光學</span><span class="l-en">Acoustic / snake camera</span></th>
+<th class="hl" scope="col">LinkGuard-E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><span class="l-zh">通訊可用性</span><span class="l-en">Link availability</span></th>
+<td><span class="l-zh">基地台中斷即失效</span><span class="l-en">Fails when cell towers go down</span></td>
+<td><span class="l-zh">不涉及通訊</span><span class="l-en">No communication function</span></td>
+<td class="hl"><span class="l-zh">LoRa 自組網</span><span class="l-en">Self-organised LoRa network</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">RC 結構穿透能力</span><span class="l-en">RC penetration</span></th>
+<td><span class="l-zh">高頻訊號全阻</span><span class="l-en">High-frequency signals blocked</span></td>
+<td><span class="l-zh">無法穿牆</span><span class="l-en">Cannot see through walls</span></td>
+<td class="hl"><span class="l-zh">923 MHz 長波長繞射穿透</span><span class="l-en">923 MHz long-wavelength diffraction</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">受困者生理數據</span><span class="l-en">Victim vital signs</span></th>
+<td><span class="mark no">✗</span> <span class="l-zh">無</span><span class="l-en">None</span></td>
+<td><span class="mark no">✗</span> <span class="l-zh">無</span><span class="l-en">None</span></td>
+<td class="hl"><span class="mark yes">✓</span> <span class="l-zh">即時心率回傳</span><span class="l-en">Live heart rate</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">檢傷排序依據</span><span class="l-en">Triage basis</span></th>
+<td><span class="l-zh">到達現場後目視</span><span class="l-en">Visual, on arrival</span></td>
+<td><span class="l-zh">到達現場後目視</span><span class="l-en">Visual, on arrival</span></td>
+<td class="hl"><span class="l-zh">抵達前已依生理數據排序</span><span class="l-en">Ranked by vitals before arrival</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">指揮資訊整合</span><span class="l-en">Command integration</span></th>
+<td><span class="l-zh">LINE＋無線電分散</span><span class="l-en">Scattered across LINE and radio</span></td>
+<td><span class="l-zh">獨立設備無整合</span><span class="l-en">Stand-alone device</span></td>
+<td class="hl"><span class="l-zh">ICS 分層單一平台</span><span class="l-en">Single ICS-layered platform</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">離線可用性</span><span class="l-en">Offline use</span></th>
+<td><span class="l-zh">需網路</span><span class="l-en">Needs the internet</span></td>
+<td><span class="l-zh">不適用</span><span class="l-en">Not applicable</span></td>
+<td class="hl"><span class="l-zh">Offline First，本地暫存自動同步</span><span class="l-en">Offline-first with local cache and auto-sync</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="comparison-caption"><span class="l-zh">商用 USAR 工具</span><span class="l-en">Commercial USAR tools</span></h3><div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll reveal comparison-table" id="comparison-table-3" role="region" style="margin-top:28px" tabindex="0">
+<table>
+<thead>
+<tr>
+<th scope="col"><span class="l-zh">比較面向</span><span class="l-en">Criterion</span></th>
+<th scope="col">Delsar LD3</th>
+<th scope="col">SearchCam 3000</th>
+<th scope="col">Lifeseeker</th>
+<th class="hl" scope="col">LinkGuard-E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><span class="l-zh">廠商／國別</span><span class="l-en">Vendor / country</span></th>
+<td><span class="l-zh">Savox 集團（芬蘭）</span><span class="l-en">Savox Group (Finland)</span></td>
+<td><span class="l-zh">Savox／Con-Space（芬蘭）</span><span class="l-en">Savox / Con-Space (Finland)</span></td>
+<td><span class="l-zh">CENTUM（西班牙）</span><span class="l-en">CENTUM (Spain)</span></td>
+<td class="hl"><span class="l-zh">本研究（台灣）</span><span class="l-en">This project (Taiwan)</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">物理原理</span><span class="l-en">Principle</span></th>
+<td><span class="l-zh">地震波＋聲波被動聆聽</span><span class="l-en">Passive seismic and acoustic listening</span></td>
+<td><span class="l-zh">240° 關節攝影機＋雙向語音</span><span class="l-en">240° articulating camera with two-way audio</span></td>
+<td><span class="l-zh">空載偽基地台（2G–5G）</span><span class="l-en">Airborne pseudo base station (2G–5G)</span></td>
+<td class="hl"><span class="l-zh">LoRa 923 MHz＋BLE 生理感測</span><span class="l-en">LoRa 923 MHz + BLE vital sensing</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">基礎建設依賴</span><span class="l-en">Infrastructure</span></th>
+<td><span class="l-zh">無</span><span class="l-en">None</span></td>
+<td><span class="l-zh">無</span><span class="l-en">None</span></td>
+<td><span class="l-zh">需空載平台</span><span class="l-en">Needs an aircraft platform</span></td>
+<td class="hl"><span class="l-zh">無</span><span class="l-en">None</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">受困者需具備</span><span class="l-en">Victim must</span></th>
+<td><span class="l-zh">能敲擊或發聲</span><span class="l-en">Be able to tap or call out</span></td>
+<td><span class="l-zh">位於攝影機可達之孔隙</span><span class="l-en">Be within reach of a camera void</span></td>
+<td><span class="l-zh">持有開機手機</span><span class="l-en">Carry a powered-on phone</span></td>
+<td class="hl"><span class="l-zh">配戴信標或智慧手錶</span><span class="l-en">Wear a beacon or smartwatch</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">即時生理數據</span><span class="l-en">Live vital signs</span></th>
+<td><span class="mark no">✗</span></td>
+<td><span class="mark no">✗</span></td>
+<td><span class="mark no">✗</span></td>
+<td class="hl"><span class="mark yes">✓</span> <span class="l-zh">心率（BLE HR Service）</span><span class="l-en">Heart rate (BLE HR Service)</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">ICS 指揮平台整合</span><span class="l-en">ICS command integration</span></th>
+<td><span class="l-zh">獨立硬體</span><span class="l-en">Stand-alone hardware</span></td>
+<td><span class="l-zh">獨立硬體</span><span class="l-en">Stand-alone hardware</span></td>
+<td><span class="l-zh">部分 MMS 整合</span><span class="l-en">Partial MMS integration</span></td>
+<td class="hl"><span class="l-zh">原生 ICS 五角色介面</span><span class="l-en">Native five-role ICS interface</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">適用場景</span><span class="l-en">Best suited to</span></th>
+<td><span class="l-zh">瓦礫深層聆聽</span><span class="l-en">Deep-rubble listening</span></td>
+<td><span class="l-zh">可探孔隙搜索</span><span class="l-en">Void searches</span></td>
+<td><span class="l-zh">戶外大範圍山難</span><span class="l-en">Wide-area outdoor mountain SAR</span></td>
+<td class="hl"><span class="l-zh">都市倒塌＋預先部署</span><span class="l-en">Urban collapse with pre-deployment</span></td>
+</tr>
+<tr>
+<th scope="row"><span class="l-zh">商業售價量級</span><span class="l-en">Price class</span></th>
+<td><span class="l-zh">約 US$25–40k（零售）</span><span class="l-en">≈US$25–40k (retail)</span></td>
+<td><span class="l-zh">約 US$15–25k（零售）</span><span class="l-en">≈US$15–25k (retail)</span></td>
+<td><span class="l-zh">高階國防／SAR 級</span><span class="l-en">High-end defence / SAR class</span></td>
+<td class="hl"><span class="l-zh">BOM &lt; US$200（原型階段）</span><span class="l-en">BOM &lt; US$200 (prototype)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="mini-note reveal l-zh">
         資料來源：Delsar LD3 之物理原理、感測器配置與認證資訊取自 Savox 官網；SearchCam 3000 之關節活動範圍、ClearSearch 螢幕與雙向語音取自 Savox／Con-Space 官網；Lifeseeker 之機載平台、頻段涵蓋與 5 公尺定位精度取自 CENTUM 官網。GSSI LifeLocator TRx（UWB 雷達，偵測深度 12 m）已於 2026 年停售，僅作為 USAR UWB 雷達技術參考，未列入直接比較。「商業售價量級」為依公開資訊與業界經驗估算之區間，實際售價因配置、認證需求與地區而異；LinkGuard-E 為原型階段，所列為料件成本（BOM）估算值。
       </p>
-      <p class="mini-note reveal l-en">
+<p class="mini-note reveal l-en">
         Sources: Delsar LD3 principle, sensor configuration and certification from the Savox website; SearchCam 3000 articulation range, ClearSearch display and two-way audio from Savox / Con-Space; Lifeseeker airborne platform, band coverage and 5 m positioning accuracy from CENTUM. The GSSI LifeLocator TRx (UWB radar, 12 m detection depth) was discontinued in 2026 and is kept only as a technology reference. Price classes are ranges estimated from public information and industry experience and vary with configuration, certification and region; the LinkGuard-E figure is a prototype-stage bill-of-materials estimate.
       </p>
-    </div>
-
-  </div>
+</div>
+</div>
 </section>
-
 </main>
 <footer>
   <div class="wrap">

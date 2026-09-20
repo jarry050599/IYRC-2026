@@ -64,195 +64,185 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="awards">
+<body class="reading-site" data-route="awards" data-page="awards">
 
 <a class="sr-only skip-link" href="#awards"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group is-current"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html" class="active" aria-current="page"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group is-current"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a aria-current="page" class="active" href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 12 AWARDS ============ -->
 <main id="main-content" tabindex="-1">
 <section id="awards">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">12 — <span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></div>
-      <h1 class="l-zh">從校內科展到國際舞台。</h1>
-      <h1 class="l-en">From the school science fair to the international stage.</h1>
-      <p class="sec-note l-zh">記錄 LinkGuard 團隊的參賽歷程、研究成果與得獎時刻。</p>
-      <p class="sec-note l-en">The LinkGuard team's competitions, research achievements, and award moments.</p>
-    </div>
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">12 — <span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></div>
+<h1 class="l-zh">從校內科展到國際舞台。</h1>
+<h1 class="l-en">From the school science fair to the international stage.</h1>
+<p class="sec-note l-zh">記錄 LinkGuard 團隊的參賽歷程、研究成果與得獎時刻。</p>
+<p class="sec-note l-en">The LinkGuard team's competitions, research achievements, and award moments.</p>
+</div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="award-timeline" href="#award-timeline"><span class="toc-index">01</span><span class="l-zh">參賽歷程</span><span class="l-en">Research milestones</span></a><a data-reading-target="certificate-gallery" href="#certificate-gallery"><span class="toc-index">02</span><span class="l-zh">獎狀影像</span><span class="l-en">Certificates</span></a><a data-reading-target="awardCarousel" href="#awardCarousel"><span class="toc-index">03</span><span class="l-zh">得獎現場</span><span class="l-en">On stage</span></a></div></details></nav>
+<div class="award-grid award-timeline" id="award-timeline">
 
-    <div class="award-grid">
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/iyrc-2026.jpg" alt="IYRC 2026 獎狀" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">iyrc-2026.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta">2026 · <span class="l-zh">韓國大田</span><span class="l-en">Daejeon, Korea</span></div>
-          <h3 class="l-zh">國際青少年機器人競賽 2026（IYRC）</h3>
-          <h3 class="l-en">International Youth Robot Competition 2026 (IYRC)</h3>
-          <p class="l-zh">第 13 屆 IYRC KOREA · Creative Design 組</p>
-          <p class="l-en">13th IYRC KOREA · Creative Design category</p>
-          <div class="award-result award-top"><span class="l-zh">Grand Prize（冠軍）</span><span class="l-en">Grand Prize (Champion)</span></div>
-        </div>
-      </article>
 
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/national-science-fair-66.jpg" alt="第 66 屆全國中小學科學展覽會獎狀" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">national-science-fair-66.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta">2026 · <span class="l-zh">工程學科（一）· 高級中等學校組</span><span class="l-en">Engineering I · Senior high division</span></div>
-          <h3 class="l-zh">第 66 屆全國中小學科學展覽會</h3>
-          <h3 class="l-en">66th National Primary and High School Science Fair</h3>
-          <p class="l-zh">作品「聯動守護—地震搜救系統」</p>
-          <p class="l-en">Project: LinkGuard-E earthquake rescue system</p>
-          <div class="award-result award-top"><span class="l-zh">第三名 · 崇友創新研究獎</span><span class="l-en">3rd Place · Chung Yo Innovation Research Award</span></div>
-        </div>
-      </article>
 
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/regional-science-fair-2.jpg" alt="分區科展（第二區）獎狀" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">regional-science-fair-2.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta"><span class="l-zh">分區科展</span><span class="l-en">Regional science fair</span></div>
-          <h3 class="l-zh">分區科展（第二區）</h3>
-          <h3 class="l-en">Regional Science Fair (District 2)</h3>
-          <p class="l-zh">晉級全國科展之分區選拔</p>
-          <p class="l-en">Regional round qualifying for the national fair</p>
-          <div class="award-result"><span class="l-zh">特優</span><span class="l-en">Outstanding</span></div>
-        </div>
-      </article>
 
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/macronix-science-award.jpg" alt="旺宏科學獎獎狀" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">macronix-science-award.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta"><span class="l-zh">全國性科學獎</span><span class="l-en">National science award</span></div>
-          <h3 class="l-zh">旺宏科學獎</h3>
-          <h3 class="l-en">Macronix Science Award</h3>
-          <p class="l-zh">旺宏教育基金會主辦之高中生科學研究競賽</p>
-          <p class="l-en">High-school science research competition by the Macronix Education Foundation</p>
-          <div class="award-result"><span class="l-zh">佳作</span><span class="l-en">Honorable Mention</span></div>
-        </div>
-      </article>
 
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/electronic-design-contest.jpg" alt="全國電子創意設計競賽獎狀" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">electronic-design-contest.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta"><span class="l-zh">全國性設計競賽</span><span class="l-en">National design contest</span></div>
-          <h3 class="l-zh">全國電子創意設計競賽</h3>
-          <h3 class="l-en">National Electronic Design Creativity Contest</h3>
-          <p class="l-zh">以 LoRa 節點與指揮應用程式的整合設計參賽</p>
-          <p class="l-en">Entered with the integrated LoRa node and command-app design</p>
-          <div class="award-result"><span class="l-zh">佳作</span><span class="l-en">Honorable Mention</span></div>
-        </div>
-      </article>
 
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/research-paper-contest.jpg" alt="全國小論文寫作競賽獎狀" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">research-paper-contest.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta"><span class="l-zh">全國性寫作競賽</span><span class="l-en">National writing contest</span></div>
-          <h3 class="l-zh">全國小論文寫作競賽</h3>
-          <h3 class="l-en">National Student Research Paper Contest</h3>
-          <p class="l-zh">以研究成果撰寫之小論文參賽</p>
-          <p class="l-en">Entered with a short research paper on the project</p>
-          <div class="award-result"><span class="l-zh">甲等</span><span class="l-en">Grade A</span></div>
-        </div>
-      </article>
 
-      <article class="award-card reveal">
-        <div class="award-slot">
-          <img src="assets/awards/certificates/samsung-solve-for-tomorrow.jpg" alt="三星 Solve for Tomorrow 證書" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()">
-          <div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">samsung-solve-for-tomorrow.jpg</span></div>
-        </div>
-        <div class="award-body">
-          <div class="award-meta"><span class="l-zh">企業社會創新競賽</span><span class="l-en">Corporate social-innovation competition</span></div>
-          <h3 class="l-zh">三星 Solve for Tomorrow</h3>
-          <h3 class="l-en">Samsung Solve for Tomorrow</h3>
-          <p class="l-zh">以科技解決社會問題為主題的提案競賽</p>
-          <p class="l-en">A proposal competition on solving social problems with technology</p>
-          <div class="award-result"><span class="l-zh">入複賽</span><span class="l-en">Advanced to 2nd round</span></div>
-        </div>
-      </article>
-    </div>
+<article class="award-card reveal">
 
-    <div class="sec-head reveal" style="margin-top:64px">
-      <div class="eyebrow"><span class="l-zh">得獎現場</span><span class="l-en">On stage</span></div>
-      <h2 class="l-zh exp-h2">照片輪播。</h2>
-      <h2 class="l-en exp-h2">Photo reel.</h2>
-      <p class="sec-note l-zh">自動輪播；將滑鼠移到照片上會暫停，也可用左右按鈕或拖曳切換。</p>
-      <p class="sec-note l-en">Plays automatically; hover to pause, or use the arrows or drag to move.</p>
-    </div>
+<div class="award-body">
+<div class="award-meta"><span class="l-zh">分區科展</span><span class="l-en">Regional science fair</span></div>
+<h3 class="l-zh">分區科展（第二區）</h3>
+<h3 class="l-en">Regional Science Fair (District 2)</h3>
+<p class="l-zh">晉級全國科展之分區選拔</p>
+<p class="l-en">Regional round qualifying for the national fair</p>
+<div class="award-result"><span class="l-zh">特優</span><span class="l-en">Outstanding</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/regional-science-fair-2.jpg">
 
-    <div class="award-carousel reveal" id="awardCarousel" aria-roledescription="carousel" aria-label="得獎現場照片輪播">
-      <div class="carousel-viewport" id="awardViewport">
-        <div class="carousel-track" id="awardTrack">
-          <figure class="carousel-slide"><img src="assets/awards/photos/iyrc-2026-01.jpg" alt="IYRC 2026 Creative Design Grand Prize 頒獎舞台，台灣隊持國旗與獎狀合影" loading="lazy" decoding="async"><figcaption><span class="l-zh">IYRC 2026 · Creative Design Grand Prize 頒獎</span><span class="l-en">IYRC 2026 · Creative Design Grand Prize ceremony</span></figcaption></figure>
-          <figure class="carousel-slide"><img src="assets/awards/photos/iyrc-2026-02.jpg" alt="LinkGuard Development Team 於 IYRC 2026 持隊旗與獎盃合影" loading="lazy" decoding="async"><figcaption><span class="l-zh">LinkGuard 開發團隊與隊旗、獎盃</span><span class="l-en">LinkGuard Development Team with banner and trophies</span></figcaption></figure>
-          <figure class="carousel-slide"><img src="assets/awards/photos/iyrc-2026-03.jpg" alt="IYRC 2026 四座獎盃與獎狀" loading="lazy" decoding="async"><figcaption><span class="l-zh">四座 IYRC KOREA 獎盃與國際青少年機器人協會獎狀</span><span class="l-en">Four IYRC KOREA trophies and IYRA certificates</span></figcaption></figure>
-          <figure class="carousel-slide"><img src="assets/awards/photos/iyrc-2026-04.jpg" alt="IYRC 2026 台灣代表隊於大會背板前合影" loading="lazy" decoding="async"><figcaption><span class="l-zh">2026 第 13 屆 IYRC KOREA 台灣代表隊合影</span><span class="l-en">Taiwan delegation at the 13th IYRC KOREA 2026</span></figcaption></figure>
-          <figure class="carousel-slide"><img src="assets/photo-wall-webp/linkguard-field-03.webp" alt="LinkGuard 團隊開發成果合照" loading="lazy" decoding="async"><figcaption><span class="l-zh">LinkGuard 團隊開發成果合照</span><span class="l-en">Team photo with the finished system</span></figcaption></figure>
-          <figure class="carousel-slide"><img src="assets/photo-wall-webp/linkguard-field-01.webp" alt="LinkGuard 團隊進行系統展示" loading="lazy" decoding="async"><figcaption><span class="l-zh">系統展示</span><span class="l-en">System demonstration</span></figcaption></figure>
-          <figure class="carousel-slide"><img src="assets/photo-wall-webp/linkguard-field-05.webp" alt="LinkGuard 團隊參訪與交流合照" loading="lazy" decoding="async"><figcaption><span class="l-zh">參訪與交流合照</span><span class="l-en">Visit and exchange</span></figcaption></figure>
-        </div>
-      </div>
-      <div class="carousel-bar">
-        <span class="carousel-count" id="awardCount" aria-live="polite">1 / 7</span>
-        <div class="carousel-dots" id="awardDots" role="tablist" aria-label="切換照片"></div>
-        <div class="carousel-nav">
-          <button class="icon-btn" id="awardPrev" type="button" aria-label="上一張照片"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-          <button class="icon-btn" id="awardPlay" type="button" aria-label="暫停自動輪播" aria-pressed="true"><svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-          <button class="icon-btn" id="awardNext" type="button" aria-label="下一張照片"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">regional-science-fair-2.jpg</span></div>
+</div></details></article><article class="award-card reveal">
+
+<div class="award-body">
+<div class="award-meta">2026 · <span class="l-zh">工程學科（一）· 高級中等學校組</span><span class="l-en">Engineering I · Senior high division</span></div>
+<h3 class="l-zh">第 66 屆全國中小學科學展覽會</h3>
+<h3 class="l-en">66th National Primary and High School Science Fair</h3>
+<p class="l-zh">作品「聯動守護—地震搜救系統」</p>
+<p class="l-en">Project: LinkGuard-E earthquake rescue system</p>
+<div class="award-result award-top"><span class="l-zh">第三名 · 崇友創新研究獎</span><span class="l-en">3rd Place · Chung Yo Innovation Research Award</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/national-science-fair-66.jpg">
+
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">national-science-fair-66.jpg</span></div>
+</div></details></article><article class="award-card reveal">
+
+<div class="award-body">
+<div class="award-meta"><span class="l-zh">全國性科學獎</span><span class="l-en">National science award</span></div>
+<h3 class="l-zh">旺宏科學獎</h3>
+<h3 class="l-en">Macronix Science Award</h3>
+<p class="l-zh">旺宏教育基金會主辦之高中生科學研究競賽</p>
+<p class="l-en">High-school science research competition by the Macronix Education Foundation</p>
+<div class="award-result"><span class="l-zh">佳作</span><span class="l-en">Honorable Mention</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/macronix-science-award.jpg">
+
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">macronix-science-award.jpg</span></div>
+</div></details></article><article class="award-card reveal">
+
+<div class="award-body">
+<div class="award-meta">2026 · <span class="l-zh">韓國大田</span><span class="l-en">Daejeon, Korea</span></div>
+<h3 class="l-zh">國際青少年機器人競賽 2026（IYRC）</h3>
+<h3 class="l-en">International Youth Robot Competition 2026 (IYRC)</h3>
+<p class="l-zh">第 13 屆 IYRC KOREA · Creative Design 組</p>
+<p class="l-en">13th IYRC KOREA · Creative Design category</p>
+<div class="award-result award-top"><span class="l-zh">Grand Prize（冠軍）</span><span class="l-en">Grand Prize (Champion)</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/iyrc-2026.jpg">
+
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">iyrc-2026.jpg</span></div>
+</div></details></article><article class="award-card reveal">
+
+<div class="award-body">
+<div class="award-meta"><span class="l-zh">全國性設計競賽</span><span class="l-en">National design contest</span></div>
+<h3 class="l-zh">全國電子創意設計競賽</h3>
+<h3 class="l-en">National Electronic Design Creativity Contest</h3>
+<p class="l-zh">以 LoRa 節點與指揮應用程式的整合設計參賽</p>
+<p class="l-en">Entered with the integrated LoRa node and command-app design</p>
+<div class="award-result"><span class="l-zh">佳作</span><span class="l-en">Honorable Mention</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/electronic-design-contest.jpg">
+
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">electronic-design-contest.jpg</span></div>
+</div></details></article><article class="award-card reveal">
+
+<div class="award-body">
+<div class="award-meta"><span class="l-zh">全國性寫作競賽</span><span class="l-en">National writing contest</span></div>
+<h3 class="l-zh">全國小論文寫作競賽</h3>
+<h3 class="l-en">National Student Research Paper Contest</h3>
+<p class="l-zh">以研究成果撰寫之小論文參賽</p>
+<p class="l-en">Entered with a short research paper on the project</p>
+<div class="award-result"><span class="l-zh">甲等</span><span class="l-en">Grade A</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/research-paper-contest.jpg">
+
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">research-paper-contest.jpg</span></div>
+</div></details></article><article class="award-card reveal">
+
+<div class="award-body">
+<div class="award-meta"><span class="l-zh">企業社會創新競賽</span><span class="l-en">Corporate social-innovation competition</span></div>
+<h3 class="l-zh">三星 Solve for Tomorrow</h3>
+<h3 class="l-en">Samsung Solve for Tomorrow</h3>
+<p class="l-zh">以科技解決社會問題為主題的提案競賽</p>
+<p class="l-en">A proposal competition on solving social problems with technology</p>
+<div class="award-result"><span class="l-zh">入複賽</span><span class="l-en">Advanced to 2nd round</span></div>
+</div>
+<details class="certificate-record"><summary><span class="l-zh">獎狀</span><span class="l-en">Certificate</span><span aria-hidden="true">＋</span></summary><div class="award-slot empty" data-certificate-src="assets/awards/certificates/samsung-solve-for-tomorrow.jpg">
+
+<div class="award-slot-ph"><span class="award-slot-tag"><span class="l-zh">獎狀待放</span><span class="l-en">Certificate slot</span></span><span class="award-slot-file">samsung-solve-for-tomorrow.jpg</span></div>
+</div></details></article></div><div class="certificate-gallery" id="certificate-gallery"><p class="reading-kicker">CERTIFICATE GALLERY</p><figure><a href="assets/awards/photos/iyrc-2026-03.jpg" rel="noopener" target="_blank"><img alt="四座 IYRC KOREA 獎盃與國際青少年機器人協會獎狀" height="1200" loading="lazy" src="assets/awards/photos/iyrc-2026-03.jpg" width="1600"/></a><figcaption><span class="l-zh">四座 IYRC KOREA 獎盃與國際青少年機器人協會獎狀</span><span class="l-en">Four IYRC KOREA trophies and IYRA certificates</span></figcaption></figure></div>
+<div class="sec-head reveal" style="margin-top:64px">
+<div class="eyebrow"><span class="l-zh">得獎現場</span><span class="l-en">On stage</span></div>
+<h2 class="l-zh exp-h2">照片輪播。</h2>
+<h2 class="l-en exp-h2">Photo reel.</h2>
+<p class="sec-note l-zh">自動輪播；將滑鼠移到照片上會暫停，也可用左右按鈕或拖曳切換。</p>
+<p class="sec-note l-en">Plays automatically; hover to pause, or use the arrows or drag to move.</p>
+</div>
+<div aria-label="得獎現場照片輪播" aria-roledescription="carousel" class="award-carousel reveal" id="awardCarousel">
+<div class="carousel-viewport" id="awardViewport">
+<div class="carousel-track" id="awardTrack">
+<figure class="carousel-slide"><img alt="IYRC 2026 Creative Design Grand Prize 頒獎舞台，台灣隊持國旗與獎狀合影" decoding="async" loading="lazy" src="assets/awards/photos/iyrc-2026-01.jpg"/><figcaption><span class="l-zh">IYRC 2026 · Creative Design Grand Prize 頒獎</span><span class="l-en">IYRC 2026 · Creative Design Grand Prize ceremony</span></figcaption></figure>
+<figure class="carousel-slide"><img alt="LinkGuard Development Team 於 IYRC 2026 持隊旗與獎盃合影" decoding="async" loading="lazy" src="assets/awards/photos/iyrc-2026-02.jpg"/><figcaption><span class="l-zh">LinkGuard 開發團隊與隊旗、獎盃</span><span class="l-en">LinkGuard Development Team with banner and trophies</span></figcaption></figure>
+<figure class="carousel-slide"><img alt="IYRC 2026 四座獎盃與獎狀" decoding="async" loading="lazy" src="assets/awards/photos/iyrc-2026-03.jpg"/><figcaption><span class="l-zh">四座 IYRC KOREA 獎盃與國際青少年機器人協會獎狀</span><span class="l-en">Four IYRC KOREA trophies and IYRA certificates</span></figcaption></figure>
+<figure class="carousel-slide"><img alt="IYRC 2026 台灣代表隊於大會背板前合影" decoding="async" loading="lazy" src="assets/awards/photos/iyrc-2026-04.jpg"/><figcaption><span class="l-zh">2026 第 13 屆 IYRC KOREA 台灣代表隊合影</span><span class="l-en">Taiwan delegation at the 13th IYRC KOREA 2026</span></figcaption></figure>
+<figure class="carousel-slide"><img alt="LinkGuard 團隊開發成果合照" decoding="async" loading="lazy" src="assets/photo-wall-webp/linkguard-field-03.webp"/><figcaption><span class="l-zh">LinkGuard 團隊開發成果合照</span><span class="l-en">Team photo with the finished system</span></figcaption></figure>
+<figure class="carousel-slide"><img alt="LinkGuard 團隊進行系統展示" decoding="async" loading="lazy" src="assets/photo-wall-webp/linkguard-field-01.webp"/><figcaption><span class="l-zh">系統展示</span><span class="l-en">System demonstration</span></figcaption></figure>
+<figure class="carousel-slide"><img alt="LinkGuard 團隊參訪與交流合照" decoding="async" loading="lazy" src="assets/photo-wall-webp/linkguard-field-05.webp"/><figcaption><span class="l-zh">參訪與交流合照</span><span class="l-en">Visit and exchange</span></figcaption></figure>
+</div>
+</div>
+<div class="carousel-bar">
+<span aria-live="polite" class="carousel-count" id="awardCount">1 / 7</span>
+<div aria-label="切換照片" class="carousel-dots" id="awardDots" role="tablist"></div>
+<div class="carousel-nav">
+<button aria-label="上一張照片" class="icon-btn" id="awardPrev" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button aria-label="暫停自動輪播" aria-pressed="true" class="icon-btn" id="awardPlay" type="button"><svg aria-hidden="true" class="ic-pause" fill="currentColor" viewbox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"></path></svg><svg aria-hidden="true" class="ic-play" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<button aria-label="下一張照片" class="icon-btn" id="awardNext" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-
 </main>
 <footer>
   <div class="wrap">

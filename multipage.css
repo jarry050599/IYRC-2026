@@ -12,7 +12,7 @@
 }
 
 /* Real page composition: each document exposes only its assigned research chapters. */
-body[data-page="home"] section:not(#summary),
+body[data-page="home"] section:not(#summary):not(.reading-section),
 body[data-page="system"] section:not(#composition):not(#functionality):not(#data),
 body[data-page="research"] section:not(#background):not(#story):not(#compare),
 body[data-page="field"] section:not(#field),

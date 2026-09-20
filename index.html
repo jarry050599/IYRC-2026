@@ -64,143 +64,136 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="home">
+<body class="reading-site" data-route="index" data-page="home">
 
 <a class="sr-only skip-link" href="#top"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ HERO ============ -->
 <main id="main-content" tabindex="-1">
 <header class="hero" id="top">
-  <div class="wrap">
-    <div class="eyebrow">LinkGuard · Disaster Search and Rescue System</div>
+<div class="wrap"><div class="hero-copy"><div class="eyebrow">LinkGuard · Disaster Search and Rescue System</div><div class="hero-title">
+<h1 class="l-zh"><span class="hero-line hero-line-primary">聯動守護</span><span class="hero-line hero-line-accent">災害搜救系統</span></h1>
+<h1 class="l-en">LinkGuard — Disaster Search<br/>and Rescue System</h1>
+<p class="hero-sub l-zh">平時守護山林，災時搶救生命。</p>
+<p class="hero-sub l-en">Guarding the forest in normal times, saving lives when disaster strikes.</p>
+</div><div class="cta-row">
+<a class="btn btn-primary" data-play-video="" href="field.html#video">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+<span class="l-zh">觀看介紹影片</span><span class="l-en">Watch the video</span>
+</a>
+<a class="btn" href="functionality.html#functionality">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 5v14m0 0l-6-6m6 6l6-6"></path></svg>
+<span class="l-zh">系統如何運作</span><span class="l-en">How it works</span>
+</a>
+<a class="btn" href="experiments.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 19h16M6 16l4-6 3 4 5-8"></path></svg>
+<span class="l-zh">實驗數據與模擬</span><span class="l-en">Experiments &amp; simulation</span>
+</a>
+<button class="btn" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"></path></svg>
+<span class="l-zh">聯絡團隊 / 下載提案書</span><span class="l-en">Contact us / Proposal</span>
+</button>
+</div></div>
 
-    <div class="hero-title">
-      <h1 class="l-zh"><span class="hero-line hero-line-primary">聯動守護</span><span class="hero-line hero-line-accent">災害搜救系統</span></h1>
-      <h1 class="l-en">LinkGuard — Disaster Search<br>and Rescue System</h1>
-      <p class="hero-sub l-zh">平時守護山林，災時搶救生命。</p>
-      <p class="hero-sub l-en">Guarding the forest in normal times, saving lives when disaster strikes.</p>
-    </div>
 
-    <p class="lede l-zh">
+
+
+
+
+
+
+<div class="hero-system"><p class="reading-kicker">SENSE · CONNECT · RESPOND</p><div class="hero-system-top"><span><span class="l-zh">生命徵象</span><span class="l-en">Vital signs</span></span><span><span class="l-zh">環境感測</span><span class="l-en">Environment</span></span></div><div class="hero-radio"><span>LoRa ESP32-S3</span><strong><span class="l-zh">離線通訊</span><span class="l-en">Offline communication</span></strong></div><div class="hero-command"><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><span><span class="l-zh">本地端 AI · Rescue Radar</span><span class="l-en">On-device AI · Rescue Radar</span></span></div><div class="hero-response"><span class="l-zh">空中搜索</span><span class="l-en">Aerial search</span><span aria-hidden="true">·</span><span class="l-zh">地面確認</span><span class="l-en">Ground confirmation</span></div></div></div>
+</header>
+<!-- ============ 01 SUMMARY ============ -->
+<section class="reading-section" id="home-problem"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">01 / PROBLEM → SOLUTION</p><h2><span class="l-zh">行動網路一旦中斷，搜救就先斷了線。</span><span class="l-en">When the mobile network goes down, the rescue loses its line first.</span></h2></div><div class="home-intro-copy"><p class="lede l-zh">
       以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。當災害摧毀行動網路，
       以長距離無線電、穿戴式生理感測與本地端 AI，把受困者的生命徵象與環境資料送回指揮中心 ——
       重新接起搜救人員與受困者之間的連結。一張網路，兩種模式。
-    </p>
-    <p class="lede l-en">
+    </p><p class="lede l-en">
       A disaster rescue communication system built with <strong>LoRa ESP32-S3</strong> as the core.
       When a disaster destroys mobile networks, long-range wireless, body sensors and on-device AI
-      carry victims&rsquo; vital signs and environment data back to the command center —
+      carry victims’ vital signs and environment data back to the command center —
       connecting rescuers and victims again. One network, two modes.
-    </p>
-
-    <div class="cta-row">
-      <a class="btn btn-primary" href="field.html#video" data-play-video>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        <span class="l-zh">觀看介紹影片</span><span class="l-en">Watch the video</span>
-      </a>
-      <a class="btn" href="functionality.html#functionality">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>
-        <span class="l-zh">系統如何運作</span><span class="l-en">How it works</span>
-      </a>
-      <a class="btn" href="experiments.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 16l4-6 3 4 5-8"/></svg>
-        <span class="l-zh">實驗數據與模擬</span><span class="l-en">Experiments &amp; simulation</span>
-      </a>
-      <button class="btn" data-modal-open="contactModal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"/></svg>
-        <span class="l-zh">聯絡團隊 / 下載提案書</span><span class="l-en">Contact us / Proposal</span>
-      </button>
-    </div>
-
-    <figure class="hero-media"><img src="assets/optimized/system-06.webp" alt="LinkGuard 搜索載具" width="1200" height="900" fetchpriority="high"></figure>
-    <div class="chips">
-      <span class="chip" tabindex="0">
-        <b>LoRa ESP32-S3</b> <span class="l-zh">為核心主控</span><span class="l-en">at the core</span>
-        <span class="tip" role="tooltip">
-          <span class="l-zh">兩種節點的本體都以 模組化零件構成，由 LoRa ESP32-S3 讀取感測器、封裝資料並排程發送。</span>
-          <span class="l-en">Both node types are built from modular parts, with LoRa ESP32-S3 reading the sensors, packing the data and scheduling transmission.</span>
-        </span>
-      </span>
-      <span class="chip" tabindex="0">
-        <b>2</b> <span class="l-zh">種感測節點</span><span class="l-en">sensor node types</span>
-        <span class="tip" role="tooltip">
-          <span class="l-zh">生存信標節點回傳受困者的心率與血氧；環境感測節點監看土壤含水量、坡度與水位，預警二次災害。</span>
-          <span class="l-en">The Survival Beacon Node reports heart rate and SpO₂; the Sensor Node watches soil moisture, slope and water level to warn of second disasters.</span>
-        </span>
-      </span>
-      <span class="chip" tabindex="0">
-        <b>3</b> <span class="l-zh">台搜索載具</span><span class="l-en">search vehicles</span>
-        <span class="tip" role="tooltip">
-          <span class="l-zh">定翼無人機廣域掃描、四旋翼無人機近距查證、地面機器人進入危險區域做最終確認。</span>
-          <span class="l-en">The fixed-wing drone scans wide, the four-rotor drone checks close, and the ground robot enters dangerous areas to confirm.</span>
-        </span>
-      </span>
-      <span class="chip" tabindex="0">
-        <b>0</b> <span class="l-zh">網際網路需求</span><span class="l-en">internet required</span>
-        <span class="tip" role="tooltip">
-          <span class="l-zh">AI 在指揮中心的裝置上本地運算，全系統離線即可完成感測、搜索與決策。</span>
-          <span class="l-en">The AI runs locally on the command center device — sensing, searching and deciding all work fully offline.</span>
-        </span>
-      </span>
-    </div>
-
-    <dl class="entry">
-      <div class="entry-row"><dt>No.</dt><dd>—</dd></div>
-      <div class="entry-row">
-        <dt>Project</dt>
-        <dd><span class="l-zh">LinkGuard — 災害搜救系統</span><span class="l-en">LinkGuard — Disaster Search and Rescue System</span></dd>
-      </div>
-      <div class="entry-row">
-        <dt>Team Name</dt>
-        <dd>LinkGuard</dd>
-      </div>
-      <div class="entry-row">
-        <dt>Members</dt>
-        <dd>
-          <span class="l-zh">葉柔昀、朱晢瑞、潘彥熏、朱映潼</span>
-          <span class="l-en">YEH, JOU-YUN · CHU, JE-JUI · PAN, YAN-SYUN · CHU, YING-TONG</span>
-        </dd>
-      </div>
-    </dl>
-  </div>
-</header>
-
-<!-- ============ 01 SUMMARY ============ -->
-
-
-</main>
+    </p><a class="chapter-link" href="background.html"><span><span class="l-zh">研究背景</span><span class="l-en">Research background</span></span><span class="chapter-link-note"></span><span aria-hidden="true">↗</span></a></div></div></section><section class="reading-section" id="home-workflow"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">02 / HOW IT WORKS</p><h2><span class="l-zh">感測、搜索、決策。</span><span class="l-en">Sense. Search. Decide.</span></h2></div><div class="system-overview compact-flow"><p class="reading-kicker">SYSTEM OVERVIEW</p><ol class="system-flow"><li><span class="flow-order">01</span><strong><span class="l-zh">受困者</span><span class="l-en">Victim</span></strong><small><span class="l-zh">生理訊號</span><span class="l-en">Vital signs</span></small></li><li><span class="flow-order">02</span><strong><span class="l-zh">感測節點</span><span class="l-en">Sensor node</span></strong><small><span class="l-zh">LoRa ESP32-S3</span><span class="l-en">LoRa ESP32-S3</span></small></li><li><span class="flow-order">03</span><strong><span class="l-zh">LoRa</span><span class="l-en">LoRa</span></strong><small><span class="l-zh">長距離無線電</span><span class="l-en">Long-range radio</span></small></li><li><span class="flow-order">04</span><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><small><span class="l-zh">本地端 AI</span><span class="l-en">On-device AI</span></small></li><li><span class="flow-order">05</span><strong><span class="l-zh">搜救隊</span><span class="l-en">Rescue team</span></strong><small><span class="l-zh">Rescue Radar</span><span class="l-en">Rescue Radar</span></small></li></ol></div><a class="chapter-link" href="functionality.html"><span><span class="l-zh">感測、搜索、決策 —— 三步接起斷掉的那條線。</span><span class="l-en">Sense, search, decide — three steps to reconnect the line.</span></span><span class="chapter-link-note"></span><span aria-hidden="true">↗</span></a></div></section><section class="reading-section" id="home-evidence"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">03 / EVIDENCE</p><h2><span class="l-zh">從通訊測試，到搜救效率模擬。</span><span class="l-en">From link tests to rescue simulations.</span></h2></div><div class="evidence-metrics"><div class="large-metric"><span class="evidence-label" data-evidence="measured"><span class="l-zh">實測</span><span class="l-en">MEASURED</span></span><div class="metric-number">900<small>m</small></div><h3><span class="l-zh">抗干擾距離</span><span class="l-en">Range under interference</span></h3><div class="metric-context"><span class="l-zh">台鐵、高鐵、高壓電塔周邊實測</span><span class="l-en">Measured beside railways, HSR and power towers</span></div><a class="reading-link" href="experiments.html#exp1"><span class="l-zh">查看依據</span><span class="l-en">View evidence</span> <span aria-hidden="true">↗</span></a></div><div class="large-metric"><span class="evidence-label" data-evidence="measured"><span class="l-zh">實測</span><span class="l-en">MEASURED</span></span><div class="metric-number">1.96<small>km</small></div><h3><span class="l-zh">LoRa 通訊距離</span><span class="l-en">LoRa link distance</span></h3><div class="metric-context"><span class="l-zh">四次實測最大通訊距離</span><span class="l-en">Maximum across four communication tests</span></div><a class="reading-link" href="data.html"><span class="l-zh">查看依據</span><span class="l-en">View evidence</span> <span aria-hidden="true">↗</span></a></div><div class="large-metric"><span class="evidence-label" data-evidence="lab"><span class="l-zh">模型實測</span><span class="l-en">MEASURED · LAB MODEL</span></span><div class="metric-number">3.0<small>%</small></div><h3><span class="l-zh">鹽水濃度下仍可解碼</span><span class="l-en">Salinity with packets still decoded</span></h3><div class="metric-context"><span class="l-zh">15 cm 水層 · 約 63 dB 衰減</span><span class="l-en">15 cm of water · about 63 dB loss</span></div><a class="reading-link" href="experiments.html#exp2"><span class="l-zh">查看依據</span><span class="l-en">View evidence</span> <span aria-hidden="true">↗</span></a></div><div class="large-metric"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="metric-number">91.54<small>%</small></div><h3><span class="l-zh">整體救援成功率</span><span class="l-en">Overall rescue success</span></h3><div class="metric-context"><span class="l-zh">1,000 次配對蒙地卡羅試驗</span><span class="l-en">1,000 paired Monte Carlo trials</span></div><a class="reading-link" href="experiments.html#exp3"><span class="l-zh">查看依據</span><span class="l-en">View evidence</span> <span aria-hidden="true">↗</span></a></div><div class="large-metric"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="metric-number">+25.85<small>pp</small></div><h3><span class="l-zh">紅燈傷患救援成功率提升</span><span class="l-en">Red-tag rescue success gain</span></h3><div class="metric-context"><span class="l-zh">對照組 47.53% → LinkGuard-E 73.39%</span><span class="l-en">Control 47.53% → LinkGuard-E 73.39%</span></div><a class="reading-link" href="experiments.html#exp3"><span class="l-zh">查看依據</span><span class="l-en">View evidence</span> <span aria-hidden="true">↗</span></a></div></div><div class="evidence-caveat"><span class="evidence-label" data-evidence="estimate"><span class="l-zh">推估</span><span class="l-en">ESTIMATED</span></span><p><span class="l-zh">等效樓層約 2.9 層，為概念性上界；模擬救援成功率不能直接套用到真實災害現場。</span><span class="l-en">The ≈2.9 equivalent floors are a conceptual upper bound; simulated rescue success cannot be applied directly to a real disaster.</span></p></div></div></section><section class="reading-section" id="home-system"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">04 / SYSTEM</p><h2><span class="l-zh">兩種節點、三台載具。</span><span class="l-en">Two node types. Three vehicles.</span></h2></div><div class="chips">
+<span class="chip" tabindex="0">
+<b>LoRa ESP32-S3</b> <span class="l-zh">為核心主控</span><span class="l-en">at the core</span>
+<span class="tip" role="tooltip">
+<span class="l-zh">兩種節點的本體都以 模組化零件構成，由 LoRa ESP32-S3 讀取感測器、封裝資料並排程發送。</span>
+<span class="l-en">Both node types are built from modular parts, with LoRa ESP32-S3 reading the sensors, packing the data and scheduling transmission.</span>
+</span>
+</span>
+<span class="chip" tabindex="0">
+<b>2</b> <span class="l-zh">種感測節點</span><span class="l-en">sensor node types</span>
+<span class="tip" role="tooltip">
+<span class="l-zh">生存信標節點回傳受困者的心率與血氧；環境感測節點監看土壤含水量、坡度與水位，預警二次災害。</span>
+<span class="l-en">The Survival Beacon Node reports heart rate and SpO₂; the Sensor Node watches soil moisture, slope and water level to warn of second disasters.</span>
+</span>
+</span>
+<span class="chip" tabindex="0">
+<b>3</b> <span class="l-zh">台搜索載具</span><span class="l-en">search vehicles</span>
+<span class="tip" role="tooltip">
+<span class="l-zh">定翼無人機廣域掃描、四旋翼無人機近距查證、地面機器人進入危險區域做最終確認。</span>
+<span class="l-en">The fixed-wing drone scans wide, the four-rotor drone checks close, and the ground robot enters dangerous areas to confirm.</span>
+</span>
+</span>
+<span class="chip" tabindex="0">
+<b>0</b> <span class="l-zh">網際網路需求</span><span class="l-en">internet required</span>
+<span class="tip" role="tooltip">
+<span class="l-zh">AI 在指揮中心的裝置上本地運算，全系統離線即可完成感測、搜索與決策。</span>
+<span class="l-en">The AI runs locally on the command center device — sensing, searching and deciding all work fully offline.</span>
+</span>
+</span>
+</div><div class="system-home-gallery"><figure class="system-home-photo"><img alt="生存信標節點" height="900" loading="lazy" src="assets/optimized/system-01.webp" width="1200"/><figcaption><span class="l-zh">生存信標節點</span><span class="l-en">Survival Beacon Node</span></figcaption></figure><figure class="system-home-photo"><img alt="地面機器人" height="900" loading="lazy" src="assets/optimized/system-05.webp" width="1200"/><figcaption><span class="l-zh">地面機器人</span><span class="l-en">Ground Robot</span></figcaption></figure><figure class="system-home-photo"><img alt="LinkGuard 搜索載具" height="674" loading="lazy" src="assets/optimized/system-06.webp" width="1200"/><figcaption><span class="l-zh">四旋翼無人機</span><span class="l-en">Four-Rotor Drone</span></figcaption></figure></div><a class="chapter-link" href="system.html"><span><span class="l-zh">系統組成與完整規格</span><span class="l-en">System composition and specifications</span></span><span class="chapter-link-note"></span><span aria-hidden="true">↗</span></a></div></section><section class="reading-section" id="home-team"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">05 / RESEARCH TEAM &amp; AWARDS</p><h2><span class="l-zh">LinkGuard</span><span class="l-en">LinkGuard</span></h2></div><dl class="entry">
+<div class="entry-row"><dt>No.</dt><dd>—</dd></div>
+<div class="entry-row">
+<dt>Project</dt>
+<dd><span class="l-zh">LinkGuard — 災害搜救系統</span><span class="l-en">LinkGuard — Disaster Search and Rescue System</span></dd>
+</div>
+<div class="entry-row">
+<dt>Team Name</dt>
+<dd>LinkGuard</dd>
+</div>
+<div class="entry-row">
+<dt>Members</dt>
+<dd>
+<span class="l-zh">葉柔昀、朱晢瑞、潘彥熏、朱映潼</span>
+<span class="l-en">YEH, JOU-YUN · CHU, JE-JUI · PAN, YAN-SYUN · CHU, YING-TONG</span>
+</dd>
+</div>
+</dl><div class="home-chapters"><a class="chapter-link" href="team.html"><span><span class="l-zh">團隊</span><span class="l-en">Team</span></span><span class="chapter-link-note"></span><span aria-hidden="true">↗</span></a><a class="chapter-link" href="awards.html"><span><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></span><span class="chapter-link-note"><span class="l-zh">IYRC 2026 · Grand Prize（冠軍）</span><span class="l-en">IYRC 2026 · Grand Prize (Champion)</span></span><span aria-hidden="true">↗</span></a></div></div></section></main>
 <footer>
   <div class="wrap">
 

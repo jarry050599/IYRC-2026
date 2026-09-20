@@ -64,156 +64,149 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="team">
+<body class="reading-site" data-route="team" data-page="team">
 
 <a class="sr-only skip-link" href="#team"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group is-current"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html" class="active" aria-current="page"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group is-current"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a aria-current="page" class="active" href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 11 TEAM ============ -->
 <main id="main-content" tabindex="-1">
 <section id="team">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">11 — <span class="l-zh">團隊</span><span class="l-en">Team</span></div>
-      <h1>LinkGuard</h1>
-      <p class="sec-note l-zh">點擊成員展開分工與自述。</p>
-      <p class="sec-note l-en">Click a member to expand their role and introduction.</p>
-    </div>
+<div class="wrap">
+<div class="sec-head reveal"><p class="reading-kicker">RESEARCH TEAM</p>
+<div class="eyebrow">11 — <span class="l-zh">團隊</span><span class="l-en">Team</span></div>
+<h1>LinkGuard</h1>
+<p class="sec-note l-zh">點擊成員展開分工與自述。</p>
+<p class="sec-note l-en">Click a member to expand their role and introduction.</p>
+</div>
+<div class="team" id="team-grid">
+<article class="member reveal"><span class="avatar"><img alt="葉柔昀" src="assets/team-yeh-jou-yun.jpg"/></span>
+<button aria-controls="m-1" aria-expanded="false" class="member-toggle">
+<span class="member-head">
 
-    <div class="team" id="team-grid">
+<span class="nm l-zh">葉柔昀</span>
+<span class="nm l-en">YEH, JOU-YUN</span>
+<span class="rl"><span class="l-zh">隊長</span><span class="l-en">Team Lead</span></span>
+<span class="edu l-zh">國立新竹高級工業職業學校<br/>資訊科二年級</span>
+<span class="edu l-en">National Hsinchu Industrial Vocational High School<br/>Computer Science · Year 2</span>
+</span>
+</button>
+<div class="member-responsibilities"><p class="bio l-zh">負責系統測試、電路設計、實驗設計，並統籌文件紀錄與軟體除錯。</p><p class="bio l-en">Responsible for system testing, circuit design and experiment design; also coordinates documentation and software debugging.</p></div><div class="member-body" id="m-1"><div><div class="member-inner">
 
-      <article class="member reveal">
-        <button class="member-toggle" aria-expanded="false" aria-controls="m-1">
-          <span class="member-head">
-            <span class="avatar"><img src="assets/team-yeh-jou-yun.jpg" alt="葉柔昀"></span>
-            <span class="nm l-zh">葉柔昀</span>
-            <span class="nm l-en">YEH, JOU-YUN</span>
-            <span class="rl"><span class="l-zh">隊長</span><span class="l-en">Team Lead</span></span>
-            <span class="edu l-zh">國立新竹高級工業職業學校<br>資訊科二年級</span>
-            <span class="edu l-en">National Hsinchu Industrial Vocational High School<br>Computer Science · Year 2</span>
-          </span>
-        </button>
-        <div class="member-body" id="m-1"><div><div class="member-inner">
-          <p class="bio l-zh">負責系統測試、電路設計、實驗設計，並統籌文件紀錄與軟體除錯。</p>
-          <p class="bio l-en">Responsible for system testing, circuit design and experiment design; also coordinates documentation and software debugging.</p>
-          <p class="bio member-quote l-zh">「身為隊長，我想確保每個環節都真的禁得起考驗，而不只是看起來完成。」</p>
-          <p class="bio member-quote l-en">&ldquo;As team leader, I want to make sure every part can truly withstand scrutiny, rather than merely look complete.&rdquo;</p>
-          <div class="socials">
-            <a class="social" href="https://www.instagram.com/yry._.410/" target="_blank" rel="noopener noreferrer" aria-label="葉柔昀 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
-            <a class="social" href="#" data-copy-email="jouyun@alinkguard.com" aria-label="複製葉柔昀的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
-          </div>
-        </div></div></div>
-      </article>
 
-      <article class="member reveal">
-        <button class="member-toggle" aria-expanded="false" aria-controls="m-2">
-          <span class="member-head">
-            <span class="avatar"><img src="assets/team-zhu-je-jui.jpg" alt="朱晢瑞"></span>
-            <span class="nm l-zh">朱晢瑞</span>
-            <span class="nm l-en">CHU, JE-JUI</span>
-            <span class="rl"><span class="l-zh">硬體工程師</span><span class="l-en">Hardware Engineer</span></span>
-            <span class="edu l-zh">國立新竹高級工業職業學校<br>資訊科二年級</span>
-            <span class="edu l-en">National Hsinchu Industrial Vocational High School<br>Computer Science · Year 2</span>
-          </span>
-        </button>
-        <div class="member-body" id="m-2"><div><div class="member-inner">
-          <p class="bio l-zh">負責無人機、地面車輛與 LoRa 通訊模組之開發整合。</p>
-          <p class="bio l-en">Develops and integrates the drones, the ground vehicle, and the LoRa communication module.</p>
-          <p class="bio member-quote l-zh">「看著家鄉的山，我想做出真正能在颱風、地震時幫上忙的無人機。」</p>
-          <p class="bio member-quote l-en">&ldquo;Looking at the mountains of my hometown, I wanted to build a drone that could truly help during typhoons and earthquakes.&rdquo;</p>
-          <div class="socials">
-            <a class="social" href="https://www.instagram.com/jarry050599/" target="_blank" rel="noopener noreferrer" aria-label="朱晢瑞 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
-            <a class="social" href="#" data-copy-email="alphalink@alinkguard.com" aria-label="複製朱晢瑞的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
-          </div>
-        </div></div></div>
-      </article>
+<p class="bio member-quote l-zh">「身為隊長，我想確保每個環節都真的禁得起考驗，而不只是看起來完成。」</p>
+<p class="bio member-quote l-en">“As team leader, I want to make sure every part can truly withstand scrutiny, rather than merely look complete.”</p>
+<div class="socials">
+<a aria-label="葉柔昀 Instagram" class="social" href="https://www.instagram.com/yry._.410/" rel="noopener noreferrer" target="_blank"><img alt="" aria-hidden="true" src="assets/instagram-icon.png"/></a>
+<a aria-label="複製葉柔昀的電子郵件" class="social" data-copy-email="jouyun@alinkguard.com" href="#"><img alt="" aria-hidden="true" src="assets/email-icon.png"/></a>
+</div>
+</div></div></div>
+</article>
+<article class="member reveal"><span class="avatar"><img alt="朱晢瑞" src="assets/team-zhu-je-jui.jpg"/></span>
+<button aria-controls="m-2" aria-expanded="false" class="member-toggle">
+<span class="member-head">
 
-      <article class="member reveal">
-        <button class="member-toggle" aria-expanded="false" aria-controls="m-3">
-          <span class="member-head">
-            <span class="avatar"><img src="assets/team-pan-yan-syun.jpg" alt="潘彥熏"></span>
-            <span class="nm l-zh">潘彥熏</span>
-            <span class="nm l-en">PAN, YAN-SYUN</span>
-            <span class="rl"><span class="l-zh">軟體工程師</span><span class="l-en">Software Engineer</span></span>
-            <span class="edu l-zh">新竹市立數位實驗高級中等學校<br>二年級</span>
-            <span class="edu l-en">Hsinchu Municipal Digital Experimental High School<br>Year 2</span>
-          </span>
-        </button>
-        <div class="member-body" id="m-3"><div><div class="member-inner">
-          <p class="bio l-zh">負責指揮中心與手持終端 App 之開發與製作。</p>
-          <p class="bio l-en">Builds the command center and the handheld terminal apps.</p>
-          <p class="bio member-quote l-zh">「我想寫出救難人員在慌亂中，也能一眼看懂的操作介面。」</p>
-          <p class="bio member-quote l-en">&ldquo;I want to build an interface that rescue workers can understand at a glance, even amid the confusion of an emergency.&rdquo;</p>
-          <div class="socials">
-            <a class="social" href="https://www.instagram.com/autumncats.mtf/" target="_blank" rel="noopener noreferrer" aria-label="潘彥熏 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
-            <a class="social" href="#" data-copy-email="lagrange@alinkguard.com" aria-label="複製潘彥熏的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
-          </div>
-        </div></div></div>
-      </article>
+<span class="nm l-zh">朱晢瑞</span>
+<span class="nm l-en">CHU, JE-JUI</span>
+<span class="rl"><span class="l-zh">硬體工程師</span><span class="l-en">Hardware Engineer</span></span>
+<span class="edu l-zh">國立新竹高級工業職業學校<br/>資訊科二年級</span>
+<span class="edu l-en">National Hsinchu Industrial Vocational High School<br/>Computer Science · Year 2</span>
+</span>
+</button>
+<div class="member-responsibilities"><p class="bio l-zh">負責無人機、地面車輛與 LoRa 通訊模組之開發整合。</p><p class="bio l-en">Develops and integrates the drones, the ground vehicle, and the LoRa communication module.</p></div><div class="member-body" id="m-2"><div><div class="member-inner">
 
-      <article class="member reveal">
-        <button class="member-toggle" aria-expanded="false" aria-controls="m-4">
-          <span class="member-head">
-            <span class="avatar"><img src="assets/team-chu-ying-tong.jpg" alt="朱映潼"></span>
-            <span class="nm l-zh">朱映潼</span>
-            <span class="nm l-en">CHU, YING-TONG</span>
-            <span class="rl"><span class="l-zh">模型設計師</span><span class="l-en">Model &amp; Design</span></span>
-            <span class="edu l-zh">新竹縣立自強國民中學<br>二年級</span>
-            <span class="edu l-en">Hsinchu County Ziqiang Junior High School<br>Year 2</span>
-          </span>
-        </button>
-        <div class="member-body" id="m-4"><div><div class="member-inner">
-          <p class="bio l-zh">負責山體地形模型、機器外型與團隊 Logo 之設計製作。</p>
-          <p class="bio l-en">Designs and builds the terrain model, the enclosures of the machines, and the team logo.</p>
-          <p class="bio member-quote l-zh">「尖石的泰雅文化養育了我，我想把這份感情，做進機器的每一個外型裡。」</p>
-          <p class="bio member-quote l-en">&ldquo;Jianshi&rsquo;s Atayal culture shaped who I am, and I want that connection to live in every form I design for our machines.&rdquo;</p>
-          <div class="socials">
-            <a class="social" href="https://www.instagram.com/101_meow_101/" target="_blank" rel="noopener noreferrer" aria-label="朱映潼 Instagram"><img src="assets/instagram-icon.png" alt="" aria-hidden="true"></a>
-            <a class="social" href="#" data-copy-email="1009sara1009@gmail.com" aria-label="複製朱映潼的電子郵件"><img src="assets/email-icon.png" alt="" aria-hidden="true"></a>
-          </div>
-        </div></div></div>
-      </article>
 
-    </div>
+<p class="bio member-quote l-zh">「看著家鄉的山，我想做出真正能在颱風、地震時幫上忙的無人機。」</p>
+<p class="bio member-quote l-en">“Looking at the mountains of my hometown, I wanted to build a drone that could truly help during typhoons and earthquakes.”</p>
+<div class="socials">
+<a aria-label="朱晢瑞 Instagram" class="social" href="https://www.instagram.com/jarry050599/" rel="noopener noreferrer" target="_blank"><img alt="" aria-hidden="true" src="assets/instagram-icon.png"/></a>
+<a aria-label="複製朱晢瑞的電子郵件" class="social" data-copy-email="alphalink@alinkguard.com" href="#"><img alt="" aria-hidden="true" src="assets/email-icon.png"/></a>
+</div>
+</div></div></div>
+</article>
+<article class="member reveal"><span class="avatar"><img alt="潘彥熏" src="assets/team-pan-yan-syun.jpg"/></span>
+<button aria-controls="m-3" aria-expanded="false" class="member-toggle">
+<span class="member-head">
 
-    <div class="advisors reveal">
-      <div class="label"><span class="l-zh">指導老師</span><span class="l-en">Advising Teachers</span></div>
-      <div class="names">李采珊　·　王勝毓　·　張詠竣</div>
-    </div>
-  </div>
+<span class="nm l-zh">潘彥熏</span>
+<span class="nm l-en">PAN, YAN-SYUN</span>
+<span class="rl"><span class="l-zh">軟體工程師</span><span class="l-en">Software Engineer</span></span>
+<span class="edu l-zh">新竹市立數位實驗高級中等學校<br/>二年級</span>
+<span class="edu l-en">Hsinchu Municipal Digital Experimental High School<br/>Year 2</span>
+</span>
+</button>
+<div class="member-responsibilities"><p class="bio l-zh">負責指揮中心與手持終端 App 之開發與製作。</p><p class="bio l-en">Builds the command center and the handheld terminal apps.</p></div><div class="member-body" id="m-3"><div><div class="member-inner">
+
+
+<p class="bio member-quote l-zh">「我想寫出救難人員在慌亂中，也能一眼看懂的操作介面。」</p>
+<p class="bio member-quote l-en">“I want to build an interface that rescue workers can understand at a glance, even amid the confusion of an emergency.”</p>
+<div class="socials">
+<a aria-label="潘彥熏 Instagram" class="social" href="https://www.instagram.com/autumncats.mtf/" rel="noopener noreferrer" target="_blank"><img alt="" aria-hidden="true" src="assets/instagram-icon.png"/></a>
+<a aria-label="複製潘彥熏的電子郵件" class="social" data-copy-email="lagrange@alinkguard.com" href="#"><img alt="" aria-hidden="true" src="assets/email-icon.png"/></a>
+</div>
+</div></div></div>
+</article>
+<article class="member reveal"><span class="avatar"><img alt="朱映潼" src="assets/team-chu-ying-tong.jpg"/></span>
+<button aria-controls="m-4" aria-expanded="false" class="member-toggle">
+<span class="member-head">
+
+<span class="nm l-zh">朱映潼</span>
+<span class="nm l-en">CHU, YING-TONG</span>
+<span class="rl"><span class="l-zh">模型設計師</span><span class="l-en">Model &amp; Design</span></span>
+<span class="edu l-zh">新竹縣立自強國民中學<br/>二年級</span>
+<span class="edu l-en">Hsinchu County Ziqiang Junior High School<br/>Year 2</span>
+</span>
+</button>
+<div class="member-responsibilities"><p class="bio l-zh">負責山體地形模型、機器外型與團隊 Logo 之設計製作。</p><p class="bio l-en">Designs and builds the terrain model, the enclosures of the machines, and the team logo.</p></div><div class="member-body" id="m-4"><div><div class="member-inner">
+
+
+<p class="bio member-quote l-zh">「尖石的泰雅文化養育了我，我想把這份感情，做進機器的每一個外型裡。」</p>
+<p class="bio member-quote l-en">“Jianshi’s Atayal culture shaped who I am, and I want that connection to live in every form I design for our machines.”</p>
+<div class="socials">
+<a aria-label="朱映潼 Instagram" class="social" href="https://www.instagram.com/101_meow_101/" rel="noopener noreferrer" target="_blank"><img alt="" aria-hidden="true" src="assets/instagram-icon.png"/></a>
+<a aria-label="複製朱映潼的電子郵件" class="social" data-copy-email="1009sara1009@gmail.com" href="#"><img alt="" aria-hidden="true" src="assets/email-icon.png"/></a>
+</div>
+</div></div></div>
+</article>
+</div>
+<div class="advisors reveal">
+<div class="label"><span class="l-zh">指導老師</span><span class="l-en">Advising Teachers</span></div>
+<div class="names">李采珊　·　王勝毓　·　張詠竣</div>
+</div>
+</div>
 </section>
-
 </main>
 <footer>
   <div class="wrap">

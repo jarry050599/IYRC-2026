@@ -65,296 +65,290 @@
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="site-technical.css">
 <link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="reading-experience.css">
 <script src="ui-accessibility.js" defer></script>
+<script src="reading-experience.js" defer></script>
 </head>
-<body data-page="technical">
+<body class="reading-site" data-route="technical" data-page="technical">
 
 <a class="sr-only skip-link" href="#deepdive"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 
 <!-- ============ NAV ============ -->
-<nav class="nav" id="nav" aria-label="主要導覽 / Main navigation">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html#top">
-      <img class="brand-logo" src="assets/linkguard-logo.jpg" alt="LinkGuard logo">
-      <span>LINK<b>GUARD</b></span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
-<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
-<details class="nav-group is-current"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="nav-group-links"><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a href="technical.html" class="active" aria-current="page"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language / 語言">
-        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button class="btn btn-primary btn-sm" data-modal-open="contactModal" aria-label="下載簡報 / Download deck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </div>
+<nav aria-label="主要導覽 / Main navigation" class="nav" id="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="index.html#top">
+<img alt="LinkGuard logo" class="brand-logo" src="assets/linkguard-logo.jpg"/>
+<span>LINK<b>GUARD</b></span>
+</a>
+<div class="nav-links" id="navLinks">
+<details class="nav-group"><summary><span class="l-zh">系統介紹</span><span class="l-en">The system</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">SYSTEM</div><a href="overview.html"><span class="l-zh">概要</span><span class="l-en">Summary</span></a><a href="background.html"><span class="l-zh">背景</span><span class="l-en">Background</span></a><a href="system.html"><span class="l-zh">系統組成</span><span class="l-en">Composition</span></a><a href="functionality.html"><span class="l-zh">功能</span><span class="l-en">Functionality</span></a></div></details>
+<details class="nav-group"><summary><span class="l-zh">研究驗證</span><span class="l-en">Research</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">RESEARCH</div><a href="data.html"><span class="l-zh">實測數據</span><span class="l-en">Data</span></a><a href="experiments.html"><span class="l-zh">實驗驗證</span><span class="l-en">Experiments</span></a><a href="research.html"><span class="l-zh">開發故事</span><span class="l-en">Story</span></a><a href="comparison.html"><span class="l-zh">方案比較</span><span class="l-en">Comparison</span></a></div></details>
+<details class="nav-group is-current"><summary><span class="l-zh">探索 LinkGuard</span><span class="l-en">Explore</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></summary><div class="nav-group-links"><div class="nav-group-heading">EXPLORE</div><a href="field.html"><span class="l-zh">現場紀錄</span><span class="l-en">Field</span></a><a aria-current="page" class="active" href="technical.html"><span class="l-zh">技術細節</span><span class="l-en">Deep Dive</span></a><a href="deployment.html"><span class="l-zh">部署方案</span><span class="l-en">Deployment</span></a><a href="team.html"><span class="l-zh">團隊</span><span class="l-en">Team</span></a><a href="awards.html"><span class="l-zh">得獎紀錄</span><span class="l-en">Awards</span></a></div></details>
+</div>
+<div class="nav-right">
+<div aria-label="Language / 語言" class="lang" role="group">
+<button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
+<button aria-pressed="false" data-set-lang="en" type="button">EN</button>
+</div>
+<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+</button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
 </nav>
+<button aria-label="關閉導覽 / Close navigation" class="nav-scrim" tabindex="-1" type="button"></button>
 
 <!-- ============ 09 DEEP DIVE ============ -->
 <main id="main-content" tabindex="-1">
 <section id="deepdive">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">09 — <span class="l-zh">技術細節</span><span class="l-en">Technical Deep Dive</span></div>
-      <h1 class="l-zh">想看細節的，<br>從這裡往下。</h1>
-      <h1 class="l-en">For readers who want<br>to go deeper.</h1>
-      <p class="sec-note l-zh">韌體架構與封包格式收在摺疊區，不打斷一般訪客的閱讀節奏。</p>
-      <p class="sec-note l-en">Firmware architecture and packet format — folded away so they don&rsquo;t interrupt the main reading flow.</p>
-    </div>
+<div class="wrap document-layout">
+<div class="sec-head reveal">
+<div class="eyebrow">09 — <span class="l-zh">技術細節</span><span class="l-en">Technical Deep Dive</span></div>
+<h1 class="l-zh">想看細節的，<br/>從這裡往下。</h1>
+<h1 class="l-en">For readers who want<br/>to go deeper.</h1>
+<p class="sec-note l-zh">韌體架構與封包格式收在摺疊區，不打斷一般訪客的閱讀節奏。</p>
+<p class="sec-note l-en">Firmware architecture and packet format — folded away so they don’t interrupt the main reading flow.</p>
+</div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="a-fw" href="#a-fw"><span class="toc-index">01</span><span class="l-zh">韌體架構</span><span class="l-en">Firmware</span></a><a data-reading-target="a-firmware-flow" href="#a-firmware-flow"><span class="toc-index">02</span><span class="l-zh">運作流程</span><span class="l-en">Workflow</span></a><a data-reading-target="a-schedule" href="#a-schedule"><span class="toc-index">03</span><span class="l-zh">排程與省電</span><span class="l-en">Scheduling &amp; power</span></a><a data-reading-target="a-radio" href="#a-radio"><span class="toc-index">04</span><span class="l-zh">頻道與可靠性</span><span class="l-en">Radio &amp; reliability</span></a><a data-reading-target="a-packet" href="#a-packet"><span class="toc-index">05</span><span class="l-zh">封包格式</span><span class="l-en">Packet format</span></a><a data-reading-target="a-quake-path" href="#a-quake-path"><span class="toc-index">06</span><span class="l-zh">地震模式</span><span class="l-en">Earthquake mode</span></a><a data-reading-target="safety" href="#safety"><span class="toc-index">07</span><span class="l-zh">安全與部署</span><span class="l-en">Safety &amp; deployment</span></a></div></details></nav>
 
-    <div class="acc reveal" id="acc">
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-fw">
-          <span class="t"><span class="l-zh">韌體架構</span><span class="l-en">Firmware architecture</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-fw"><div><div class="acc-inner">
-          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+
+<div class="document-body"><div class="acc reveal" id="acc">
+<div class="acc-item open">
+<button aria-controls="a-fw" aria-expanded="true" class="acc-head">
+<span class="t"><span class="l-zh">韌體架構</span><span class="l-en">Firmware architecture</span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="a-fw"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">
             系統以 <strong>LoRa ESP32-S3＋LoRa 無線模組</strong>為核心，預設 L4 Profile：
             <strong>SF9、125 kHz、Coding Rate 4/6</strong>。LoRa ESP32-S3 負責感測、資料封裝、
             顯示與任務排程，LoRa 模組負責長距離短封包通訊；三種程式角色分別對應
             受困者節點、搜救節點與 HQ 指揮鏈。
           </p>
-          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">
             The system is built around <strong>LoRa ESP32-S3 + a LoRa radio module</strong>. Its default L4
             profile uses <strong>SF9, 125 kHz bandwidth and coding rate 4/6</strong>. LoRa ESP32-S3 handles
             sensing, packet construction, display and task scheduling, while LoRa carries long-range
             short packets. Three program roles cover victim, rescue and HQ command-chain nodes.
           </p>
-          <div class="table-scroll l-zh" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:18px">
-            <table>
-              <thead><tr><th>韌體</th><th>用途</th><th>工作頻率</th></tr></thead>
-              <tbody>
-                <tr><th>victim.ino</th><td>受困者心跳、心率與 SOS</td><td>910.1 MHz</td></tr>
-                <tr><th>rescue.ino</th><td>搜救節點、BLE Gateway 與隊員命令</td><td>910.x／911.x、913 MHz</td></tr>
-                <tr><th>hq.ino</th><td>HQ 指揮鏈節點</td><td>433 MHz</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-scroll l-en" tabindex="0" role="region" aria-label="可水平捲動的資料 / Scrollable data" style="margin-top:18px">
-            <table>
-              <thead><tr><th>Firmware</th><th>Role</th><th>Frequency</th></tr></thead>
-              <tbody>
-                <tr><th>victim.ino</th><td>Victim heartbeat, heart rate and SOS</td><td>910.1 MHz</td></tr>
-                <tr><th>rescue.ino</th><td>Rescue node, BLE gateway and team commands</td><td>910.x / 911.x, 913 MHz</td></tr>
-                <tr><th>hq.ino</th><td>HQ command-chain node</td><td>433 MHz</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div></div></div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-firmware-flow">
-          <span class="t"><span class="l-zh">韌體運作流程</span><span class="l-en">Firmware workflow</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-firmware-flow"><div><div class="acc-inner">
-          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll l-zh" role="region" style="margin-top:18px" tabindex="0">
+<table>
+<thead><tr><th>韌體</th><th>用途</th><th>工作頻率</th></tr></thead>
+<tbody>
+<tr><th>victim.ino</th><td>受困者心跳、心率與 SOS</td><td>910.1 MHz</td></tr>
+<tr><th>rescue.ino</th><td>搜救節點、BLE Gateway 與隊員命令</td><td>910.x／911.x、913 MHz</td></tr>
+<tr><th>hq.ino</th><td>HQ 指揮鏈節點</td><td>433 MHz</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-label="可水平捲動的資料 / Scrollable data" class="table-scroll l-en" role="region" style="margin-top:18px" tabindex="0">
+<table>
+<thead><tr><th>Firmware</th><th>Role</th><th>Frequency</th></tr></thead>
+<tbody>
+<tr><th>victim.ino</th><td>Victim heartbeat, heart rate and SOS</td><td>910.1 MHz</td></tr>
+<tr><th>rescue.ino</th><td>Rescue node, BLE gateway and team commands</td><td>910.x / 911.x, 913 MHz</td></tr>
+<tr><th>hq.ino</th><td>HQ command-chain node</td><td>433 MHz</td></tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="a-firmware-flow" aria-expanded="false" class="acc-head">
+<span class="t"><span class="l-zh">韌體運作流程</span><span class="l-en">Firmware workflow</span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="a-firmware-flow"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">
             三種韌體各自處理 LoRa、BLE 與本機警示，讓指揮命令、受困者狀態及緊急求救能在不同角色間傳遞。
           </p>
-          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">
             Three firmware roles coordinate LoRa, BLE and local alerts to carry commands, victim status and emergency calls.
           </p>
-
-          <div class="fw-role-grid l-zh">
-            <article class="fw-role">
-              <div class="fw-role-head"><h4>HQ 指揮中心端</h4><span class="fw-file">hq.ino</span></div>
-              <ul>
-                <li>初始化 OLED、電池、LoRa 與 BLE，等待 Mac／iPad HQ App 連線。</li>
-                <li>將 App 的指揮命令轉為 CMD 封包，透過 433 MHz 廣播。</li>
-                <li>收到其他節點的 CMD 後解析內容，透過 BLE Notify 回傳 App。</li>
-                <li>定期回報電量、LoRa 檔位、命令數量與節點狀態。</li>
-              </ul>
-            </article>
-            <article class="fw-role">
-              <div class="fw-role-head"><h4>搜救／隊長端</h4><span class="fw-file">rescue.ino</span></div>
-              <ul>
-                <li>由 iPhone Field App 設定人員、配對碼、頻率、模式與功率。</li>
-                <li>長按 PRG 3 秒切換本機 SOS；啟動後每 10 秒廣播 MAYDAY。</li>
-                <li>接收 ACK／SOS 後更新電量、心率、RSSI、SNR 與估算距離。</li>
-                <li>收到 SOS 或 CMD 時啟動 OLED、蜂鳴器與震動提醒，並同步至 App。</li>
-              </ul>
-            </article>
-            <article class="fw-role">
-              <div class="fw-role-head"><h4>受困者端</h4><span class="fw-file">victim.ino</span></div>
-              <ul>
-                <li>透過 BLE 與手機同步 SOS、心率、電量、模式及配對狀態。</li>
-                <li>可連接 Garmin 心率裝置；未連線時使用測試心率模式。</li>
-                <li>短按 PRG 切換 SOS，長按 2 秒切換心率模式。</li>
-                <li>一般狀態定期送出 ACK；SOS 時切換頻率並提高發送頻率。</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="fw-role-grid l-en">
-            <article class="fw-role">
-              <div class="fw-role-head"><h4>HQ node</h4><span class="fw-file">hq.ino</span></div>
-              <ul>
-                <li>Initializes OLED, battery, LoRa and BLE, then awaits the Mac/iPad HQ App.</li>
-                <li>Converts app commands into CMD packets and broadcasts them over 433 MHz.</li>
-                <li>Relays received CMD packets and periodic node status to the app via BLE Notify.</li>
-              </ul>
-            </article>
-            <article class="fw-role">
-              <div class="fw-role-head"><h4>Rescue / leader node</h4><span class="fw-file">rescue.ino</span></div>
-              <ul>
-                <li>The iPhone Field App configures identity, pairing, frequency, mode and power.</li>
-                <li>A three-second PRG hold toggles local SOS and sends MAYDAY every 10 seconds.</li>
-                <li>ACK, SOS and CMD packets update status, activate alerts and sync to the app.</li>
-              </ul>
-            </article>
-            <article class="fw-role">
-              <div class="fw-role-head"><h4>Victim node</h4><span class="fw-file">victim.ino</span></div>
-              <ul>
-                <li>BLE synchronizes SOS, heart rate, battery, mode and pairing with a phone.</li>
-                <li>Uses Garmin heart rate when available, otherwise a test heart-rate mode.</li>
-                <li>Sends regular ACK packets, or faster SOS packets after SOS is activated.</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="fw-flow-list l-zh" aria-label="韌體資料流程">
-            <div class="fw-flow">
-              <span class="fw-flow-label">指揮命令</span>
-              <span class="fw-step">HQ App</span><span class="fw-arrow">→</span>
-              <span class="fw-step">BLE</span><span class="fw-arrow">→</span>
-              <span class="fw-step radio">433 MHz CMD</span><span class="fw-arrow">→</span>
-              <span class="fw-step">搜救節點</span><span class="fw-arrow">→</span>
-              <span class="fw-step alert">聲音／震動</span><span class="fw-arrow">→</span>
-              <span class="fw-step">iPhone App</span>
-            </div>
-            <div class="fw-flow">
-              <span class="fw-flow-label">受困者 SOS</span>
-              <span class="fw-step">Victim</span><span class="fw-arrow">→</span>
-              <span class="fw-step radio">SOS LoRa</span><span class="fw-arrow">→</span>
-              <span class="fw-step">搜救節點</span><span class="fw-arrow">→</span>
-              <span class="fw-step">OLED 資訊</span><span class="fw-arrow">→</span>
-              <span class="fw-step alert">聲音／震動</span><span class="fw-arrow">→</span>
-              <span class="fw-step">iPhone App</span>
-            </div>
-            <div class="fw-flow">
-              <span class="fw-flow-label">搜救員求救</span>
-              <span class="fw-step">長按 PRG 3 秒</span><span class="fw-arrow">→</span>
-              <span class="fw-step alert">本機 SOS</span><span class="fw-arrow">→</span>
-              <span class="fw-step radio">每 10 秒 MAYDAY</span><span class="fw-arrow">→</span>
-              <span class="fw-step">其他節點</span>
-            </div>
-          </div>
-
-          <div class="fw-flow-list l-en" aria-label="Firmware data flows">
-            <div class="fw-flow">
-              <span class="fw-flow-label">Command</span>
-              <span class="fw-step">HQ App</span><span class="fw-arrow">→</span>
-              <span class="fw-step">BLE</span><span class="fw-arrow">→</span>
-              <span class="fw-step radio">433 MHz CMD</span><span class="fw-arrow">→</span>
-              <span class="fw-step">Rescue node</span><span class="fw-arrow">→</span>
-              <span class="fw-step alert">Alert</span><span class="fw-arrow">→</span>
-              <span class="fw-step">iPhone App</span>
-            </div>
-            <div class="fw-flow">
-              <span class="fw-flow-label">Victim SOS</span>
-              <span class="fw-step">Victim</span><span class="fw-arrow">→</span>
-              <span class="fw-step radio">SOS LoRa</span><span class="fw-arrow">→</span>
-              <span class="fw-step">Rescue node</span><span class="fw-arrow">→</span>
-              <span class="fw-step alert">OLED / alert</span><span class="fw-arrow">→</span>
-              <span class="fw-step">iPhone App</span>
-            </div>
-            <div class="fw-flow">
-              <span class="fw-flow-label">MAYDAY</span>
-              <span class="fw-step">Hold PRG 3 sec</span><span class="fw-arrow">→</span>
-              <span class="fw-step alert">Local SOS</span><span class="fw-arrow">→</span>
-              <span class="fw-step radio">MAYDAY / 10 sec</span><span class="fw-arrow">→</span>
-              <span class="fw-step">Other nodes</span>
-            </div>
-          </div>
-        </div></div></div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-schedule">
-          <span class="t"><span class="l-zh">排程與省電</span><span class="l-en">Scheduling &amp; power</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-schedule"><div><div class="acc-inner">
-          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+<div class="fw-role-grid l-zh">
+<article class="fw-role">
+<div class="fw-role-head"><h4>HQ 指揮中心端</h4><span class="fw-file">hq.ino</span></div>
+<ul>
+<li>初始化 OLED、電池、LoRa 與 BLE，等待 Mac／iPad HQ App 連線。</li>
+<li>將 App 的指揮命令轉為 CMD 封包，透過 433 MHz 廣播。</li>
+<li>收到其他節點的 CMD 後解析內容，透過 BLE Notify 回傳 App。</li>
+<li>定期回報電量、LoRa 檔位、命令數量與節點狀態。</li>
+</ul>
+</article>
+<article class="fw-role">
+<div class="fw-role-head"><h4>搜救／隊長端</h4><span class="fw-file">rescue.ino</span></div>
+<ul>
+<li>由 iPhone Field App 設定人員、配對碼、頻率、模式與功率。</li>
+<li>長按 PRG 3 秒切換本機 SOS；啟動後每 10 秒廣播 MAYDAY。</li>
+<li>接收 ACK／SOS 後更新電量、心率、RSSI、SNR 與估算距離。</li>
+<li>收到 SOS 或 CMD 時啟動 OLED、蜂鳴器與震動提醒，並同步至 App。</li>
+</ul>
+</article>
+<article class="fw-role">
+<div class="fw-role-head"><h4>受困者端</h4><span class="fw-file">victim.ino</span></div>
+<ul>
+<li>透過 BLE 與手機同步 SOS、心率、電量、模式及配對狀態。</li>
+<li>可連接 Garmin 心率裝置；未連線時使用測試心率模式。</li>
+<li>短按 PRG 切換 SOS，長按 2 秒切換心率模式。</li>
+<li>一般狀態定期送出 ACK；SOS 時切換頻率並提高發送頻率。</li>
+</ul>
+</article>
+</div>
+<div class="fw-role-grid l-en">
+<article class="fw-role">
+<div class="fw-role-head"><h4>HQ node</h4><span class="fw-file">hq.ino</span></div>
+<ul>
+<li>Initializes OLED, battery, LoRa and BLE, then awaits the Mac/iPad HQ App.</li>
+<li>Converts app commands into CMD packets and broadcasts them over 433 MHz.</li>
+<li>Relays received CMD packets and periodic node status to the app via BLE Notify.</li>
+</ul>
+</article>
+<article class="fw-role">
+<div class="fw-role-head"><h4>Rescue / leader node</h4><span class="fw-file">rescue.ino</span></div>
+<ul>
+<li>The iPhone Field App configures identity, pairing, frequency, mode and power.</li>
+<li>A three-second PRG hold toggles local SOS and sends MAYDAY every 10 seconds.</li>
+<li>ACK, SOS and CMD packets update status, activate alerts and sync to the app.</li>
+</ul>
+</article>
+<article class="fw-role">
+<div class="fw-role-head"><h4>Victim node</h4><span class="fw-file">victim.ino</span></div>
+<ul>
+<li>BLE synchronizes SOS, heart rate, battery, mode and pairing with a phone.</li>
+<li>Uses Garmin heart rate when available, otherwise a test heart-rate mode.</li>
+<li>Sends regular ACK packets, or faster SOS packets after SOS is activated.</li>
+</ul>
+</article>
+</div>
+<div aria-label="韌體資料流程" class="fw-flow-list l-zh">
+<div class="fw-flow">
+<span class="fw-flow-label">指揮命令</span>
+<span class="fw-step">HQ App</span><span class="fw-arrow">→</span>
+<span class="fw-step">BLE</span><span class="fw-arrow">→</span>
+<span class="fw-step radio">433 MHz CMD</span><span class="fw-arrow">→</span>
+<span class="fw-step">搜救節點</span><span class="fw-arrow">→</span>
+<span class="fw-step alert">聲音／震動</span><span class="fw-arrow">→</span>
+<span class="fw-step">iPhone App</span>
+</div>
+<div class="fw-flow">
+<span class="fw-flow-label">受困者 SOS</span>
+<span class="fw-step">Victim</span><span class="fw-arrow">→</span>
+<span class="fw-step radio">SOS LoRa</span><span class="fw-arrow">→</span>
+<span class="fw-step">搜救節點</span><span class="fw-arrow">→</span>
+<span class="fw-step">OLED 資訊</span><span class="fw-arrow">→</span>
+<span class="fw-step alert">聲音／震動</span><span class="fw-arrow">→</span>
+<span class="fw-step">iPhone App</span>
+</div>
+<div class="fw-flow">
+<span class="fw-flow-label">搜救員求救</span>
+<span class="fw-step">長按 PRG 3 秒</span><span class="fw-arrow">→</span>
+<span class="fw-step alert">本機 SOS</span><span class="fw-arrow">→</span>
+<span class="fw-step radio">每 10 秒 MAYDAY</span><span class="fw-arrow">→</span>
+<span class="fw-step">其他節點</span>
+</div>
+</div>
+<div aria-label="Firmware data flows" class="fw-flow-list l-en">
+<div class="fw-flow">
+<span class="fw-flow-label">Command</span>
+<span class="fw-step">HQ App</span><span class="fw-arrow">→</span>
+<span class="fw-step">BLE</span><span class="fw-arrow">→</span>
+<span class="fw-step radio">433 MHz CMD</span><span class="fw-arrow">→</span>
+<span class="fw-step">Rescue node</span><span class="fw-arrow">→</span>
+<span class="fw-step alert">Alert</span><span class="fw-arrow">→</span>
+<span class="fw-step">iPhone App</span>
+</div>
+<div class="fw-flow">
+<span class="fw-flow-label">Victim SOS</span>
+<span class="fw-step">Victim</span><span class="fw-arrow">→</span>
+<span class="fw-step radio">SOS LoRa</span><span class="fw-arrow">→</span>
+<span class="fw-step">Rescue node</span><span class="fw-arrow">→</span>
+<span class="fw-step alert">OLED / alert</span><span class="fw-arrow">→</span>
+<span class="fw-step">iPhone App</span>
+</div>
+<div class="fw-flow">
+<span class="fw-flow-label">MAYDAY</span>
+<span class="fw-step">Hold PRG 3 sec</span><span class="fw-arrow">→</span>
+<span class="fw-step alert">Local SOS</span><span class="fw-arrow">→</span>
+<span class="fw-step radio">MAYDAY / 10 sec</span><span class="fw-arrow">→</span>
+<span class="fw-step">Other nodes</span>
+</div>
+</div>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="a-schedule" aria-expanded="false" class="acc-head">
+<span class="t"><span class="l-zh">排程與省電</span><span class="l-en">Scheduling &amp; power</span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="a-schedule"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">
             主迴圈採高速輪詢，以 <code>millis()</code> 獨立排程各項任務。Victim 一般模式每 15 秒回報，
             SOS 時縮短為 3 秒；Rescue 一般模式每 3 秒回報，並提供 Mountain、Power Save、
             Ultra Save、Quake 與 Silent 模式；HQ 每 5 秒發送 HQPING。
           </p>
-          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">
             The high-speed polling loop schedules independent tasks with <code>millis()</code>. Victim
             reports every 15 seconds, or every 3 seconds in SOS mode. Rescue reports every 3 seconds in
             Normal mode and also provides Mountain, Power Save, Ultra Save, Quake and Silent modes.
             HQ sends HQPING every 5 seconds.
           </p>
-          <p class="body-text l-zh" style="font-size:15px">
+<p class="body-text l-zh" style="font-size:15px">
             Victim 會在 30 秒無互動後關閉 OLED，完成發送後讓無線電進入休眠，並依 RSSI 在
             14／18／22 dBm 間動態調整功率；發送前再自動喚醒。
           </p>
-          <p class="body-text l-en" style="font-size:15px">
+<p class="body-text l-en" style="font-size:15px">
             Victim turns off its OLED after 30 seconds of inactivity, sleeps the radio after transmission,
             wakes it before the next send, and adjusts output power among 14, 18 and 22 dBm according to RSSI.
           </p>
-        </div></div></div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-radio">
-          <span class="t"><span class="l-zh">頻道存取與封包可靠性</span><span class="l-en">Channel access &amp; reliability</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-radio"><div><div class="acc-inner">
-          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="a-radio" aria-expanded="false" class="acc-head">
+<span class="t"><span class="l-zh">頻道存取與封包可靠性</span><span class="l-en">Channel access &amp; reliability</span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="a-radio"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">
             發送前先執行 LoRa 頻道活動偵測，並搭配 Binary Exponential Backoff：
             BE 2–4、5 ms Slot、最多 3 次嘗試。系統使用 18 個搜尋頻道分流，另以 433 MHz
             承載 HQ 指揮鏈、913 MHz 承載隊伍命令。
           </p>
-          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">
             Before transmission, LoRa channel activity detection is combined with binary exponential backoff:
             BE 2–4, 5 ms slots and up to three attempts. Eighteen search channels distribute traffic,
             while 433 MHz carries the HQ chain and 913 MHz carries team commands.
           </p>
-          <p class="body-text l-zh" style="font-size:15px">
+<p class="body-text l-zh" style="font-size:15px">
             Rescue 保存最近 10 個封包 ID、HQ 保存最近 20 個，避免重複套用；SOS 與 MAYDAY
             採週期重播，緊急封包同時使用搜尋頻率與 913 MHz 雙頻送出，提升抵達率。
           </p>
-          <p class="body-text l-en" style="font-size:15px">
+<p class="body-text l-en" style="font-size:15px">
             Rescue retains the latest 10 packet IDs and HQ retains 20 for deduplication. SOS and MAYDAY
             use periodic rebroadcasting, while emergency packets are sent on both the search frequency
             and 913 MHz to improve delivery.
           </p>
-        </div></div></div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-packet">
-          <span class="t"><span class="l-zh">資料封包格式</span><span class="l-en">Packet format</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-packet"><div><div class="acc-inner">
-          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="a-packet" aria-expanded="false" class="acc-head">
+<span class="t"><span class="l-zh">資料封包格式</span><span class="l-en">Packet format</span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="a-packet"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">
             線路資料使用 UTF-8 字串，以 <code>|</code> 分隔；共用 Header 依序為
             <strong>pktId、pairCode、senderID、type、payload</strong>。接收端以 pktId 去重，
             pairCode 則用於區分不同隊伍。
           </p>
-          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">
             On-air data uses UTF-8 strings separated by <code>|</code>. The shared header is
             <strong>pktId, pairCode, senderID, type and payload</strong>. Receivers deduplicate by
             pktId, while pairCode separates teams.
           </p>
-          <pre class="code"><span class="c">// Victim SOS · 典型 27–32 bytes</span>
+<pre aria-label="封包格式範例 / Packet format examples" class="code" role="region" tabindex="0"><span class="c">// Victim SOS · 典型 27–32 bytes</span>
 <span class="k">pktId|pair|sender|SOS|B{bat}|BPM{hr}</span>
 
 <span class="c">// Rescue Team · 典型 30–40 bytes</span>
@@ -362,237 +356,220 @@
 
 <span class="c">// Mayday · 約 80–150 bytes（含 GPS）</span>
 <span class="k">pktId|pair|sender|MAYDAY|B{bat}|N{name}|T{title}|LAT{lat}|LON{lon}|ACC{accuracy}</span></pre>
-          <p class="body-text l-zh" style="font-size:15px">
+<p class="body-text l-zh" style="font-size:15px">
             預設 L4 Profile 下，30-byte 封包空中時間約 0.25 秒、100-byte 約 0.65 秒、
             200-byte 約 1.19 秒；系統依 255-byte payload 上限管理可變長度內容。
           </p>
-          <p class="body-text l-en" style="font-size:15px">
+<p class="body-text l-en" style="font-size:15px">
             Under the default L4 profile, estimated time-on-air is approximately 0.25 seconds for
             30 bytes, 0.65 seconds for 100 bytes and 1.19 seconds for 200 bytes. Variable-length
             content is managed within the 255-byte payload limit.
           </p>
-          <div class="specs" style="margin-top:16px">
-            <div class="spec"><span class="k"><span class="l-zh">封包大小</span><span class="l-en">Packet size</span></span><span class="v"><span class="l-zh">約 30–150 bytes（依類型；Mayday 含 GPS）</span><span class="l-en">~30–150 bytes (by type; Mayday w/ GPS)</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">傳送／看門狗</span><span class="l-en">TX / watchdog</span></span><span class="v"><span class="l-zh">環境 5 分鐘；Watchdog 30 秒</span><span class="l-en">Env 5 min; watchdog 30 s</span></span></div>
-            <div class="spec"><span class="k"><span class="l-zh">遺失率目標</span><span class="l-en">Loss target</span></span><span class="v"><span class="l-zh">開闊地 &lt; 5%；邊緣 &lt; 15%</span><span class="l-en">Open &lt; 5%; edge &lt; 15%</span></span></div>
-          </div>
-        </div></div></div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-head" aria-expanded="false" aria-controls="a-quake-path">
-          <span class="t"><span class="l-zh">地震模式（LinkGuard-E）傳輸路徑與信標流程</span><span class="l-en">Earthquake mode (LinkGuard-E): data path and beacon logic</span></span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="acc-body" id="a-quake-path"><div><div class="acc-inner">
-          <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
+<div class="specs" style="margin-top:16px">
+<div class="spec"><span class="k"><span class="l-zh">封包大小</span><span class="l-en">Packet size</span></span><span class="v"><span class="l-zh">約 30–150 bytes（依類型；Mayday 含 GPS）</span><span class="l-en">~30–150 bytes (by type; Mayday w/ GPS)</span></span></div>
+<div class="spec"><span class="k"><span class="l-zh">傳送／看門狗</span><span class="l-en">TX / watchdog</span></span><span class="v"><span class="l-zh">環境 5 分鐘；Watchdog 30 秒</span><span class="l-en">Env 5 min; watchdog 30 s</span></span></div>
+<div class="spec"><span class="k"><span class="l-zh">遺失率目標</span><span class="l-en">Loss target</span></span><span class="v"><span class="l-zh">開闊地 &lt; 5%；邊緣 &lt; 15%</span><span class="l-en">Open &lt; 5%; edge &lt; 15%</span></span></div>
+</div>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="a-quake-path" aria-expanded="false" class="acc-head">
+<span class="t"><span class="l-zh">地震模式（LinkGuard-E）傳輸路徑與信標流程</span><span class="l-en">Earthquake mode (LinkGuard-E): data path and beacon logic</span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="a-quake-path"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">
             地震搜救模式由三段鏈路組成：<strong>智慧手錶 → ESP32 採集端</strong>（BLE 短距低功耗，讀取心率等生理數據）、
             <strong>ESP32 採集端 → 指揮中心</strong>（923 MHz LoRa，繞射與穿透能力最佳，是主要的「破障傳輸」階段）、
             <strong>指揮中心 → 搜救員手持終端</strong>（LoRa 廣播轉發，前線即時查看受困者心跳與狀態，作為救援排序依據）。
           </p>
-          <p class="body-text l-en" style="margin-top:6px;font-size:15px">
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">
             Earthquake mode chains three links: <strong>smartwatch → ESP32 collector</strong> (short-range, low-power BLE carrying heart rate and other vitals),
             <strong>ESP32 collector → command centre</strong> (923 MHz LoRa, the diffraction-capable "breakthrough" hop), and
             <strong>command centre → rescuer handheld</strong> (LoRa rebroadcast so the front line sees each victim's heart rate and status for dispatch priority).
           </p>
-          <div class="fw-role-grid">
-            <article class="fw-role">
-              <div class="fw-role-head"><h4><span class="l-zh">指揮與搜救協同模組</span><span class="l-en">Command &amp; rescue coordination</span></h4></div>
-              <ul class="fw-flow-list l-zh">
-                <li><strong>指揮決策層</strong>：戰情儀表板顯示在線裝置、傷患統計、SOS 警報與災區概況；指揮命令結構化派送並記錄對象與時間</li>
-                <li><strong>現場回報層</strong>：搜救員於廢墟外圍回傳 GPS；信標位置由手持終端依 LoRa RSSI 估算並手動標記；照片附時間與座標；安全管制記錄人員進出危險區</li>
-                <li><strong>資訊整合層</strong>：受困者總覽顯示 LoRa 節點生命徵象；分區地圖呈現等待、淨空、危險與限制區域；事件日誌保存 AI 決策、命令、警報與回報</li>
-                <li><strong>通訊備援層</strong>：文字、推播、緊急廣播、PTT 對講與 Whisper AI 語音轉錄，並接收中央氣象署 PWS 警報分級推送</li>
-              </ul>
-              <ul class="fw-flow-list l-en">
-                <li><strong>Decision layer</strong>: a situation dashboard with online devices, casualty counts, SOS alerts and scene overview; structured commands logged with recipient and time</li>
-                <li><strong>Field-report layer</strong>: rescuers outside the rubble send GPS; beacon positions are estimated from LoRa RSSI on the handheld and marked manually; photos carry time and coordinates; safety control logs entry to hazard zones</li>
-                <li><strong>Integration layer</strong>: a victim overview with LoRa vital signs; sector maps for waiting, cleared, hazardous and restricted areas; an event log of AI decisions, commands, alerts and reports</li>
-                <li><strong>Comms fallback layer</strong>: text, push, emergency broadcast, PTT voice and Whisper AI transcription, plus CWA public-warning (PWS) alerts pushed by severity</li>
-              </ul>
-            </article>
-            <article class="fw-role">
-              <div class="fw-role-head"><h4><span class="l-zh">智慧手錶生理感知</span><span class="l-en">Smartwatch sensing</span></h4></div>
-              <ul class="fw-flow-list l-zh">
-                <li>BYOD（自帶裝置）：利用受困者既有的智慧手錶，透過標準 BLE Heart Rate Service 取得心率，作為檢傷分類的優先權重數據</li>
-                <li>續航：Garmin vívosmart 5 一般模式約 7 天，72 小時搜救窗口內裕度充足；Apple Watch 等高耗電裝置約 18–36 小時</li>
-                <li>雙路徑切換：手錶連線正常時以 BLE 取得即時心率；手錶斷線或電量耗盡時自動切換至手動模式，由搜救員到達後目視補充檢傷資訊</li>
-                <li>未來規劃於信標背包整合獨立 PPG 感測模組，使生理監測不依賴受困者自有設備</li>
-              </ul>
-              <ul class="fw-flow-list l-en">
-                <li>BYOD: the victim's own smartwatch provides heart rate over the standard BLE Heart Rate Service as the priority input for triage</li>
-                <li>Battery: a Garmin vívosmart 5 lasts about 7 days in normal mode, ample for the 72-hour window; power-hungry watches such as Apple Watch last 18–36 hours</li>
-                <li>Dual path: live heart rate over BLE while the watch is connected; on disconnect or battery loss the system falls back to manual mode and rescuers add triage data on arrival</li>
-                <li>Planned: an independent PPG sensor in the beacon pack so monitoring no longer depends on the victim's device</li>
-              </ul>
-            </article>
-            <article class="fw-role">
-              <div class="fw-role-head"><h4><span class="l-zh">生存信標背包</span><span class="l-en">Rescue beacon pack</span></h4></div>
-              <ul class="fw-flow-list l-zh">
-                <li>整合於避難背包內的關鍵生存模組：平時低功耗休眠，災後由控制中心喚醒（LoRa 長前導碼）或偵測震動自動啟動</li>
-                <li>可透過藍牙獲取手錶數據，或利用內建終端進行被動式生命偵測</li>
-                <li>通訊：SX1262 LoRa 模組；高增益雙頻 923 MHz 天線</li>
-                <li>電源：10,000 mAh 鋰電池，休眠電流僅 0.1 mA，待機年限 1–2 年</li>
-                <li>3D 列印保護盒與防爆盒（ABS／ASA+／PETG／PLA 耗材）</li>
-              </ul>
-              <ul class="fw-flow-list l-en">
-                <li>A survival module built into an evacuation backpack: deep sleep in normal times, woken after a quake by the control centre (long LoRa preamble) or by vibration</li>
-                <li>Reads the watch over Bluetooth, or performs passive life detection with its built-in terminal</li>
-                <li>Radio: SX1262 LoRa module with a high-gain dual-band 923 MHz antenna</li>
-                <li>Power: 10,000 mAh lithium battery, 0.1 mA sleep current, 1–2 years of standby</li>
-                <li>3D-printed protective and blast-resistant enclosures (ABS / ASA+ / PETG / PLA)</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="fig-grid" style="margin-top:22px">
-            <figure><img src="assets/experiments/beacon-inside.jpg" alt="生存信標保護盒內部：LoRa 模組與鋰電池" loading="lazy"><figcaption><span class="l-zh">圖十二 · 保護盒內部</span><span class="l-en">Fig. 12 · Inside the enclosure</span></figcaption></figure>
-            <figure><img src="assets/experiments/beacon-box.jpg" alt="生存信標防爆盒上蓋" loading="lazy"><figcaption><span class="l-zh">圖十三 · 防爆盒上圖</span><span class="l-en">Fig. 13 · Blast-resistant box, top</span></figcaption></figure>
-            <figure><img src="assets/experiments/beacon-3d.jpg" alt="生存信標外殼 3D 列印模型" loading="lazy"><figcaption><span class="l-zh">圖十四 · 3D 列印圖</span><span class="l-en">Fig. 14 · 3D-printed enclosure model</span></figcaption></figure>
-          </div>
-
-          <div class="split" style="margin-top:26px;gap:32px;align-items:start">
-            <figure class="fig-single" style="margin-top:0">
-              <img src="assets/experiments/beacon-flow.png" alt="信標背包程式事件處理流程圖：地震發生 → 是否在震度達 3 級以上之地區 → 發出 LED 與螢幕提示 → 進入 CAD → 是否連接藍牙手錶 → 增加 bpm 標籤或進入手動模式 → 計算 RSSI 距離 → 心率是否小於 60 bpm 或 GPIO0 是否發送 SOS → 增加 SOS 標籤或標準呼叫模式" loading="lazy" style="max-height:560px;width:auto;margin-inline:auto">
-              <figcaption><span class="l-zh">圖十五 · 信標背包程式事件處理流程圖</span><span class="l-en">Fig. 15 · Beacon-pack event-handling flow</span></figcaption>
-            </figure>
-            <div>
-              <p class="body-text l-zh" style="font-size:15px">
-                <strong>判斷流程：</strong>地震發生後，信標先判斷是否位於震度達 3 級以上的地區，否則不作動；是則發出 LED 與螢幕提示並進入 CAD 模式。
+<div class="fw-role-grid">
+<article class="fw-role">
+<div class="fw-role-head"><h4><span class="l-zh">指揮與搜救協同模組</span><span class="l-en">Command &amp; rescue coordination</span></h4></div>
+<ul class="fw-flow-list l-zh">
+<li><strong>指揮決策層</strong>：戰情儀表板顯示在線裝置、傷患統計、SOS 警報與災區概況；指揮命令結構化派送並記錄對象與時間</li>
+<li><strong>現場回報層</strong>：搜救員於廢墟外圍回傳 GPS；信標位置由手持終端依 LoRa RSSI 估算並手動標記；照片附時間與座標；安全管制記錄人員進出危險區</li>
+<li><strong>資訊整合層</strong>：受困者總覽顯示 LoRa 節點生命徵象；分區地圖呈現等待、淨空、危險與限制區域；事件日誌保存 AI 決策、命令、警報與回報</li>
+<li><strong>通訊備援層</strong>：文字、推播、緊急廣播、PTT 對講與 Whisper AI 語音轉錄，並接收中央氣象署 PWS 警報分級推送</li>
+</ul>
+<ul class="fw-flow-list l-en">
+<li><strong>Decision layer</strong>: a situation dashboard with online devices, casualty counts, SOS alerts and scene overview; structured commands logged with recipient and time</li>
+<li><strong>Field-report layer</strong>: rescuers outside the rubble send GPS; beacon positions are estimated from LoRa RSSI on the handheld and marked manually; photos carry time and coordinates; safety control logs entry to hazard zones</li>
+<li><strong>Integration layer</strong>: a victim overview with LoRa vital signs; sector maps for waiting, cleared, hazardous and restricted areas; an event log of AI decisions, commands, alerts and reports</li>
+<li><strong>Comms fallback layer</strong>: text, push, emergency broadcast, PTT voice and Whisper AI transcription, plus CWA public-warning (PWS) alerts pushed by severity</li>
+</ul>
+</article>
+<article class="fw-role">
+<div class="fw-role-head"><h4><span class="l-zh">智慧手錶生理感知</span><span class="l-en">Smartwatch sensing</span></h4></div>
+<ul class="fw-flow-list l-zh">
+<li>BYOD（自帶裝置）：利用受困者既有的智慧手錶，透過標準 BLE Heart Rate Service 取得心率，作為檢傷分類的優先權重數據</li>
+<li>續航：Garmin vívosmart 5 一般模式約 7 天，72 小時搜救窗口內裕度充足；Apple Watch 等高耗電裝置約 18–36 小時</li>
+<li>雙路徑切換：手錶連線正常時以 BLE 取得即時心率；手錶斷線或電量耗盡時自動切換至手動模式，由搜救員到達後目視補充檢傷資訊</li>
+<li>未來規劃於信標背包整合獨立 PPG 感測模組，使生理監測不依賴受困者自有設備</li>
+</ul>
+<ul class="fw-flow-list l-en">
+<li>BYOD: the victim's own smartwatch provides heart rate over the standard BLE Heart Rate Service as the priority input for triage</li>
+<li>Battery: a Garmin vívosmart 5 lasts about 7 days in normal mode, ample for the 72-hour window; power-hungry watches such as Apple Watch last 18–36 hours</li>
+<li>Dual path: live heart rate over BLE while the watch is connected; on disconnect or battery loss the system falls back to manual mode and rescuers add triage data on arrival</li>
+<li>Planned: an independent PPG sensor in the beacon pack so monitoring no longer depends on the victim's device</li>
+</ul>
+</article>
+<article class="fw-role">
+<div class="fw-role-head"><h4><span class="l-zh">生存信標背包</span><span class="l-en">Rescue beacon pack</span></h4></div>
+<ul class="fw-flow-list l-zh">
+<li>整合於避難背包內的關鍵生存模組：平時低功耗休眠，災後由控制中心喚醒（LoRa 長前導碼）或偵測震動自動啟動</li>
+<li>可透過藍牙獲取手錶數據，或利用內建終端進行被動式生命偵測</li>
+<li>通訊：SX1262 LoRa 模組；高增益雙頻 923 MHz 天線</li>
+<li>電源：10,000 mAh 鋰電池，休眠電流僅 0.1 mA，待機年限 1–2 年</li>
+<li>3D 列印保護盒與防爆盒（ABS／ASA+／PETG／PLA 耗材）</li>
+</ul>
+<ul class="fw-flow-list l-en">
+<li>A survival module built into an evacuation backpack: deep sleep in normal times, woken after a quake by the control centre (long LoRa preamble) or by vibration</li>
+<li>Reads the watch over Bluetooth, or performs passive life detection with its built-in terminal</li>
+<li>Radio: SX1262 LoRa module with a high-gain dual-band 923 MHz antenna</li>
+<li>Power: 10,000 mAh lithium battery, 0.1 mA sleep current, 1–2 years of standby</li>
+<li>3D-printed protective and blast-resistant enclosures (ABS / ASA+ / PETG / PLA)</li>
+</ul>
+</article>
+</div>
+<div class="fig-grid" style="margin-top:22px">
+<figure><img alt="生存信標保護盒內部：LoRa 模組與鋰電池" loading="lazy" src="assets/experiments/beacon-inside.jpg"/><figcaption><span class="l-zh">圖十二 · 保護盒內部</span><span class="l-en">Fig. 12 · Inside the enclosure</span></figcaption></figure>
+<figure><img alt="生存信標防爆盒上蓋" loading="lazy" src="assets/experiments/beacon-box.jpg"/><figcaption><span class="l-zh">圖十三 · 防爆盒上圖</span><span class="l-en">Fig. 13 · Blast-resistant box, top</span></figcaption></figure>
+<figure><img alt="生存信標外殼 3D 列印模型" loading="lazy" src="assets/experiments/beacon-3d.jpg"/><figcaption><span class="l-zh">圖十四 · 3D 列印圖</span><span class="l-en">Fig. 14 · 3D-printed enclosure model</span></figcaption></figure>
+</div>
+<div class="split" style="margin-top:26px;gap:32px;align-items:start">
+<figure class="fig-single" style="margin-top:0">
+<img alt="信標背包程式事件處理流程圖：地震發生 → 是否在震度達 3 級以上之地區 → 發出 LED 與螢幕提示 → 進入 CAD → 是否連接藍牙手錶 → 增加 bpm 標籤或進入手動模式 → 計算 RSSI 距離 → 心率是否小於 60 bpm 或 GPIO0 是否發送 SOS → 增加 SOS 標籤或標準呼叫模式" loading="lazy" src="assets/experiments/beacon-flow.png" style="max-height:560px;width:auto;margin-inline:auto"/>
+<figcaption><span class="l-zh">圖十五 · 信標背包程式事件處理流程圖</span><span class="l-en">Fig. 15 · Beacon-pack event-handling flow</span></figcaption>
+</figure>
+<div>
+<p class="body-text l-zh" style="font-size:15px">
+<strong>判斷流程：</strong>地震發生後，信標先判斷是否位於震度達 3 級以上的地區，否則不作動；是則發出 LED 與螢幕提示並進入 CAD 模式。
                 若連接到藍牙手錶，封包加入 bpm 標籤並計算 RSSI 距離，心率低於 60 bpm 時自動加上 SOS 標籤；若未連接手錶則進入手動模式，
                 由腳位 GPIO0 決定是否發送 SOS，否則維持標準呼叫模式。
               </p>
-              <p class="body-text l-en" style="font-size:15px">
-                <strong>Decision flow:</strong> after a quake the beacon first checks whether it is in an area with intensity 3 or above; if not it stays idle. Otherwise it lights the LED and screen and enters CAD mode.
+<p class="body-text l-en" style="font-size:15px">
+<strong>Decision flow:</strong> after a quake the beacon first checks whether it is in an area with intensity 3 or above; if not it stays idle. Otherwise it lights the LED and screen and enters CAD mode.
                 With a Bluetooth watch connected it adds a bpm tag and computes RSSI distance, tagging SOS automatically when heart rate drops below 60 bpm; without a watch it enters manual mode, where GPIO0 decides whether to send SOS, otherwise it stays in standard call mode.
               </p>
-              <p class="body-text l-zh" style="font-size:15px">
-                <strong>位置估算：</strong>受困者信標無法透過 GPS 回傳絕對座標。搜救員手持終端接收信標 LoRa 訊號後，依 RSSI 值估算距離，並於廢墟外圍多點量測後以三角定位法取得概略方位，再手動標記於地圖。
+<p class="body-text l-zh" style="font-size:15px">
+<strong>位置估算：</strong>受困者信標無法透過 GPS 回傳絕對座標。搜救員手持終端接收信標 LoRa 訊號後，依 RSSI 值估算距離，並於廢墟外圍多點量測後以三角定位法取得概略方位，再手動標記於地圖。
                 此方式精度受廢墟多路徑干擾影響，屬概略估算；未來可整合 UWB 模組（Decawave DW3000）提升室內定位精度。
               </p>
-              <p class="body-text l-en" style="font-size:15px">
-                <strong>Localisation:</strong> a buried beacon cannot report GPS coordinates. The rescuer's handheld estimates distance from the beacon's LoRa RSSI, takes readings from several points around the rubble and triangulates a rough bearing, which is then marked on the map by hand.
+<p class="body-text l-en" style="font-size:15px">
+<strong>Localisation:</strong> a buried beacon cannot report GPS coordinates. The rescuer's handheld estimates distance from the beacon's LoRa RSSI, takes readings from several points around the rubble and triangulates a rough bearing, which is then marked on the map by hand.
                 Multipath in rubble limits accuracy, so this is an approximation; a UWB module (Decawave DW3000) is planned to improve indoor positioning.
               </p>
-              <div class="fig-grid" style="margin-top:18px;grid-template-columns:repeat(3,minmax(0,1fr))">
-                <figure><img src="assets/experiments/app-cmd-dashboard.jpg" alt="指揮中心儀表板畫面" loading="lazy" style="aspect-ratio:16/10"><figcaption><span class="l-zh">圖一 · 指揮中心儀表板</span><span class="l-en">Fig. 1 · Command Center dashboard</span></figcaption></figure>
-                <figure><img src="assets/experiments/app-rr-home.jpg" alt="搜救員手持終端 Rescue Radar 首頁" loading="lazy" style="aspect-ratio:16/10;object-position:top"><figcaption><span class="l-zh">圖七 · Rescue Radar 首頁</span><span class="l-en">Fig. 7 · Rescue Radar home</span></figcaption></figure>
-                <figure><img src="assets/experiments/app-garmin.jpg" alt="智慧手錶 Garmin 連接畫面" loading="lazy" style="aspect-ratio:16/10"><figcaption><span class="l-zh">圖十一 · 智慧手錶連接（Garmin）</span><span class="l-en">Fig. 11 · Smartwatch link (Garmin)</span></figcaption></figure>
-              </div>
-            </div>
-          </div>
-          <p class="mini-note l-zh">介面於 Flutter／React 架構下實作，圖示為實機運作截圖。完整實驗數據與模擬結果見「實驗驗證」頁。</p>
-          <p class="mini-note l-en">The interface is implemented in Flutter / React; images are screenshots from the running system. Full experimental data and simulation results are on the Experiments page.</p>
-        </div></div></div>
-      </div>
-
-    </div>
-
-    <div class="safety-block" id="safety">
-      <div class="safety-head reveal">
-        <div>
-          <div class="eyebrow"><span class="l-zh">安全與部署</span><span class="l-en">Safety &amp; Deployment</span></div>
-          <h3 class="l-zh">不只要傳得到，<br>也要能在現場撐得住。</h3>
-          <h3 class="l-en">Built not only to connect,<br>but to endure the field.</h3>
-        </div>
-        <div>
-          <p class="l-zh">從裝置保護、斷線容錯到命令權限，系統以災區持續運作與可控部署為設計前提。</p>
-          <p class="l-en">From enclosure protection and link-loss tolerance to command authority, the system is designed for controlled, continuous disaster-field operation.</p>
-          <div class="safety-status">
-            <span><span class="l-zh">環境防護</span><span class="l-en">FIELD PROTECTION</span></span>
-            <span><span class="l-zh">故障容錯</span><span class="l-en">FAULT TOLERANCE</span></span>
-            <span><span class="l-zh">權限控管</span><span class="l-en">ACCESS CONTROL</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc reveal" id="safetyAcc">
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-enclosure">
-            <span class="t"><span class="safety-num">01</span><span><span class="l-zh">裝置防水、防塵與耐摔設計</span><span class="l-en">Water, dust and drop protection</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-enclosure"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">外殼採封閉式結構、接縫防潑水處理與連接埠防護蓋，降低雨水與粉塵進入風險；四角緩衝與內部固定結構可吸收跌落及運輸震動。操作按鍵保留戴手套時的辨識度，方便救援現場快速使用。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">The enclosure uses a closed structure, splash-resistant seams and protected ports to reduce water and dust ingress. Corner buffers and internal mounting absorb drops and transport vibration, while controls remain identifiable when wearing gloves.</p>
-          </div></div></div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-battery">
-            <span class="t"><span class="safety-num">02</span><span><span class="l-zh">電池保護與低電量警報</span><span class="l-en">Battery protection and low-power alerts</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-battery"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">電源模組具備過充、過放、過流與短路保護。節點持續回報電量，低於警戒值時會在 OLED 與 App 顯示警報；電量進一步下降後，自動降低非必要更新頻率，優先保留 SOS、定位與基本通訊能力。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">The power module protects against overcharge, over-discharge, overcurrent and short circuits. Nodes continuously report battery level; OLED and app warnings appear below the alert threshold, followed by reduced non-essential updates to preserve SOS, location and basic communications.</p>
-          </div></div></div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-offline">
-            <span class="t"><span class="safety-num">03</span><span><span class="l-zh">斷線後的系統行為</span><span class="l-en">Behaviour after link loss</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-offline"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">通訊中斷不會停止節點本地工作：感測、SOS 按鍵與警報判斷仍持續運作。系統會重試可用頻道並保留最新狀態；指揮端在逾時後標示節點離線，重新連線時再更新狀態，避免舊資料被誤認為即時資訊。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">A lost link does not stop local sensing, the SOS button or alert decisions. The node retries available channels and retains its latest status. Command interfaces mark timed-out nodes offline and refresh their state after reconnection so stale data is not mistaken for live information.</p>
-          </div></div></div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-tolerance">
-            <span class="t"><span class="safety-num">04</span><span><span class="l-zh">節點遺失或損壞時的容錯方式</span><span class="l-en">Tolerance of lost or damaged nodes</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-tolerance"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">系統不依賴單一中心節點維持前線通訊；個別節點失聯時，其餘節點仍可繼續交換資料。指揮端依心跳逾時標示失聯節點與最後狀態，替換節點則可透過相同隊伍配對流程重新加入，不需要重建整套網路。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">Front-line communications do not depend on one central node. Other nodes continue exchanging data when an individual unit is lost. The command interface shows its last state and heartbeat timeout, while a replacement can rejoin through the same team-pairing process.</p>
-          </div></div></div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-access">
-            <span class="t"><span class="safety-num">05</span><span><span class="l-zh">配對碼與命令權限</span><span class="l-en">Pair codes and command authority</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-access"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">節點僅接受相同隊伍配對碼的資料，避免不同搜救隊伍互相套用命令。一般隊員、隊長與 HQ 依角色分級：狀態回報可由前線節點送出，隊伍命令由隊長發布，跨隊或 HQ 級指令則限指揮端操作。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">Nodes accept data only from the matching team code, preventing commands from one rescue team being applied by another. Authority is role-based: field nodes report status, team leaders issue team commands, and cross-team or HQ-level instructions are restricted to command operators.</p>
-            <div class="safety-note"><span class="l-zh">配對碼負責隊伍隔離與基本存取控制，不等同端對端加密；正式部署可依任務風險加入金鑰與訊息驗證機制。</span><span class="l-en">Pair codes provide team isolation and basic access control; they are not equivalent to end-to-end encryption. Deployment profiles can add keys and message authentication according to mission risk.</span></div>
-          </div></div></div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-priority">
-            <span class="t"><span class="safety-num">06</span><span><span class="l-zh">緊急封包優先級</span><span class="l-en">Emergency packet priority</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-priority"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">SOS、MAYDAY、ALERT 與高優先級 CMD 會優先於一般心跳與狀態回報。緊急訊息採較短重播週期，並透過搜索頻率與 913 MHz 雙頻送出；接收端以封包 ID 去重，降低重播造成的重複警報。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">SOS, MAYDAY, ALERT and high-priority CMD traffic takes precedence over routine heartbeats and status reports. Emergency messages use shorter rebroadcast intervals and transmit on both the search frequency and 913 MHz; packet-ID deduplication prevents repeated alerts at the receiver.</p>
-          </div></div></div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false" aria-controls="safe-compliance">
-            <span class="t"><span class="safety-num">07</span><span><span class="l-zh">頻率、發射功率與設備合規</span><span class="l-en">Frequency, power and equipment compliance</span></span></span>
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="acc-body" id="safe-compliance"><div><div class="acc-inner">
-            <p class="body-text l-zh" style="margin-top:6px;font-size:15px">網站所列頻率與 14／18／22 dBm 功率為系統測試 Profile。正式部署時，會依使用地區的頻譜規範、允許頻段、等效輻射功率、占空比與設備認證條件選用設定，並使用符合當地要求的無線模組、天線及電源配置。</p>
-            <p class="body-text l-en" style="margin-top:6px;font-size:15px">The listed frequencies and 14 / 18 / 22 dBm levels are system test profiles. Operational deployment selects settings according to local spectrum rules, permitted bands, effective radiated power, duty-cycle limits and equipment certification, using compliant radio modules, antennas and power configurations.</p>
-            <div class="safety-note"><span class="l-zh">測試 Profile 不代表在所有地區均可直接使用；每次跨地區或正式部署前，均須重新完成法規與設備條件檢核。</span><span class="l-en">A test profile is not automatically authorised in every region. Regulatory and equipment conditions must be checked again before operational deployment or use in another jurisdiction.</span></div>
-          </div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="fig-grid" style="margin-top:18px;grid-template-columns:repeat(3,minmax(0,1fr))">
+<figure><img alt="指揮中心儀表板畫面" loading="lazy" src="assets/experiments/app-cmd-dashboard.jpg" style="aspect-ratio:16/10"/><figcaption><span class="l-zh">圖一 · 指揮中心儀表板</span><span class="l-en">Fig. 1 · Command Center dashboard</span></figcaption></figure>
+<figure><img alt="搜救員手持終端 Rescue Radar 首頁" loading="lazy" src="assets/experiments/app-rr-home.jpg" style="aspect-ratio:16/10;object-position:top"/><figcaption><span class="l-zh">圖七 · Rescue Radar 首頁</span><span class="l-en">Fig. 7 · Rescue Radar home</span></figcaption></figure>
+<figure><img alt="智慧手錶 Garmin 連接畫面" loading="lazy" src="assets/experiments/app-garmin.jpg" style="aspect-ratio:16/10"/><figcaption><span class="l-zh">圖十一 · 智慧手錶連接（Garmin）</span><span class="l-en">Fig. 11 · Smartwatch link (Garmin)</span></figcaption></figure>
+</div>
+</div>
+</div>
+<p class="mini-note l-zh">介面於 Flutter／React 架構下實作，圖示為實機運作截圖。完整實驗數據與模擬結果見「實驗驗證」頁。</p>
+<p class="mini-note l-en">The interface is implemented in Flutter / React; images are screenshots from the running system. Full experimental data and simulation results are on the Experiments page.</p>
+</div></div></div>
+</div>
+</div><div class="safety-block" id="safety">
+<div class="safety-head reveal">
+<div>
+<div class="eyebrow"><span class="l-zh">安全與部署</span><span class="l-en">Safety &amp; Deployment</span></div>
+<h3 class="l-zh">不只要傳得到，<br/>也要能在現場撐得住。</h3>
+<h3 class="l-en">Built not only to connect,<br/>but to endure the field.</h3>
+</div>
+<div>
+<p class="l-zh">從裝置保護、斷線容錯到命令權限，系統以災區持續運作與可控部署為設計前提。</p>
+<p class="l-en">From enclosure protection and link-loss tolerance to command authority, the system is designed for controlled, continuous disaster-field operation.</p>
+<div class="safety-status">
+<span><span class="l-zh">環境防護</span><span class="l-en">FIELD PROTECTION</span></span>
+<span><span class="l-zh">故障容錯</span><span class="l-en">FAULT TOLERANCE</span></span>
+<span><span class="l-zh">權限控管</span><span class="l-en">ACCESS CONTROL</span></span>
+</div>
+</div>
+</div>
+<div class="acc reveal" id="safetyAcc">
+<div class="acc-item">
+<button aria-controls="safe-enclosure" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">01</span><span><span class="l-zh">裝置防水、防塵與耐摔設計</span><span class="l-en">Water, dust and drop protection</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-enclosure"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">外殼採封閉式結構、接縫防潑水處理與連接埠防護蓋，降低雨水與粉塵進入風險；四角緩衝與內部固定結構可吸收跌落及運輸震動。操作按鍵保留戴手套時的辨識度，方便救援現場快速使用。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">The enclosure uses a closed structure, splash-resistant seams and protected ports to reduce water and dust ingress. Corner buffers and internal mounting absorb drops and transport vibration, while controls remain identifiable when wearing gloves.</p>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="safe-battery" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">02</span><span><span class="l-zh">電池保護與低電量警報</span><span class="l-en">Battery protection and low-power alerts</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-battery"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">電源模組具備過充、過放、過流與短路保護。節點持續回報電量，低於警戒值時會在 OLED 與 App 顯示警報；電量進一步下降後，自動降低非必要更新頻率，優先保留 SOS、定位與基本通訊能力。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">The power module protects against overcharge, over-discharge, overcurrent and short circuits. Nodes continuously report battery level; OLED and app warnings appear below the alert threshold, followed by reduced non-essential updates to preserve SOS, location and basic communications.</p>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="safe-offline" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">03</span><span><span class="l-zh">斷線後的系統行為</span><span class="l-en">Behaviour after link loss</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-offline"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">通訊中斷不會停止節點本地工作：感測、SOS 按鍵與警報判斷仍持續運作。系統會重試可用頻道並保留最新狀態；指揮端在逾時後標示節點離線，重新連線時再更新狀態，避免舊資料被誤認為即時資訊。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">A lost link does not stop local sensing, the SOS button or alert decisions. The node retries available channels and retains its latest status. Command interfaces mark timed-out nodes offline and refresh their state after reconnection so stale data is not mistaken for live information.</p>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="safe-tolerance" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">04</span><span><span class="l-zh">節點遺失或損壞時的容錯方式</span><span class="l-en">Tolerance of lost or damaged nodes</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-tolerance"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">系統不依賴單一中心節點維持前線通訊；個別節點失聯時，其餘節點仍可繼續交換資料。指揮端依心跳逾時標示失聯節點與最後狀態，替換節點則可透過相同隊伍配對流程重新加入，不需要重建整套網路。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">Front-line communications do not depend on one central node. Other nodes continue exchanging data when an individual unit is lost. The command interface shows its last state and heartbeat timeout, while a replacement can rejoin through the same team-pairing process.</p>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="safe-access" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">05</span><span><span class="l-zh">配對碼與命令權限</span><span class="l-en">Pair codes and command authority</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-access"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">節點僅接受相同隊伍配對碼的資料，避免不同搜救隊伍互相套用命令。一般隊員、隊長與 HQ 依角色分級：狀態回報可由前線節點送出，隊伍命令由隊長發布，跨隊或 HQ 級指令則限指揮端操作。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">Nodes accept data only from the matching team code, preventing commands from one rescue team being applied by another. Authority is role-based: field nodes report status, team leaders issue team commands, and cross-team or HQ-level instructions are restricted to command operators.</p>
+<div class="safety-note"><span class="l-zh">配對碼負責隊伍隔離與基本存取控制，不等同端對端加密；正式部署可依任務風險加入金鑰與訊息驗證機制。</span><span class="l-en">Pair codes provide team isolation and basic access control; they are not equivalent to end-to-end encryption. Deployment profiles can add keys and message authentication according to mission risk.</span></div>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="safe-priority" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">06</span><span><span class="l-zh">緊急封包優先級</span><span class="l-en">Emergency packet priority</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-priority"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">SOS、MAYDAY、ALERT 與高優先級 CMD 會優先於一般心跳與狀態回報。緊急訊息採較短重播週期，並透過搜索頻率與 913 MHz 雙頻送出；接收端以封包 ID 去重，降低重播造成的重複警報。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">SOS, MAYDAY, ALERT and high-priority CMD traffic takes precedence over routine heartbeats and status reports. Emergency messages use shorter rebroadcast intervals and transmit on both the search frequency and 913 MHz; packet-ID deduplication prevents repeated alerts at the receiver.</p>
+</div></div></div>
+</div>
+<div class="acc-item">
+<button aria-controls="safe-compliance" aria-expanded="false" class="acc-head">
+<span class="t"><span class="safety-num">07</span><span><span class="l-zh">頻率、發射功率與設備合規</span><span class="l-en">Frequency, power and equipment compliance</span></span></span>
+<svg aria-hidden="true" class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<div class="acc-body" id="safe-compliance"><div><div class="acc-inner">
+<p class="body-text l-zh" style="margin-top:6px;font-size:15px">網站所列頻率與 14／18／22 dBm 功率為系統測試 Profile。正式部署時，會依使用地區的頻譜規範、允許頻段、等效輻射功率、占空比與設備認證條件選用設定，並使用符合當地要求的無線模組、天線及電源配置。</p>
+<p class="body-text l-en" style="margin-top:6px;font-size:15px">The listed frequencies and 14 / 18 / 22 dBm levels are system test profiles. Operational deployment selects settings according to local spectrum rules, permitted bands, effective radiated power, duty-cycle limits and equipment certification, using compliant radio modules, antennas and power configurations.</p>
+<div class="safety-note"><span class="l-zh">測試 Profile 不代表在所有地區均可直接使用；每次跨地區或正式部署前，均須重新完成法規與設備條件檢核。</span><span class="l-en">A test profile is not automatically authorised in every region. Regulatory and equipment conditions must be checked again before operational deployment or use in another jurisdiction.</span></div>
+</div></div></div>
+</div>
+</div>
+</div></div></div>
 </section>
-
 <!-- ============ 10 ROADMAP ============ -->
-
-
 </main>
 <footer>
   <div class="wrap">
