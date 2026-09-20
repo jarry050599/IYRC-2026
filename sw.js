@@ -1,4 +1,4 @@
-const CACHE_NAME = "linkguard-site-v34";
+const CACHE_NAME = "linkguard-site-v35";
 const OFFLINE_ASSETS = [
   "./index.html",
   "./overview.html",
@@ -28,7 +28,7 @@ const OFFLINE_ASSETS = [
   "./home-hero.css?v=921-6",
   "./assets/archive/taiwan-921-locator.svg",
   "./memorial-intro.css?v=921-5",
-  "./memorial-intro.js?v=921-5",
+  "./memorial-intro.js?v=921-6",
   "./memorial-voice.js?v=921-1",
   "./manifest.webmanifest",
   "./assets/linkguard-logo.jpg",

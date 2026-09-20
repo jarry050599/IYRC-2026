@@ -25,14 +25,14 @@ The homepage loads `memorial-intro.css` and `memorial-intro.js`. A native modal 
 - Year count is computed from the current local year minus 1999; Chinese and English wording update together.
 - Entrance uses opacity only and completes in 1,550 ms. Exit crossfades into the homepage over 500 ms, with a 600 ms event fallback.
 - The close icon, Enter LinkGuard button and Escape all dismiss without navigation or reload.
-- The second-stage refinement restores first-visit behavior, following the latest request. The original `linkguard-921-intro` key stores `seen` on Enter, close or Escape. Refreshes and new tabs then skip the introduction. The original sessionStorage fallback is retained only when localStorage is unavailable; no second key is introduced.
+- The introduction opens on every full homepage load, including refreshes and new tabs. Old `linkguard-921-intro` dismissal records in localStorage/sessionStorage no longer suppress it. Closing still reveals the homepage normally and does not reopen the dialog within that document. The separate `lg-lang` language preference is unchanged.
 - Native modal background inertness, explicit focus containment, visible keyboard controls and focus restoration protect keyboard navigation. The dialog has a labelled title/description and `aria-modal="true"`.
 - The existing language handlers serve the introduction's segmented control; no duplicate language state is introduced.
 - Reduced motion removes entrance staging and closes immediately.
 - Mobile uses `100dvh`, safe-area padding, 44 px language/close controls and a 48 px entry button (44 px on short screens). Short landscape screens scroll within the dialog while the close control stays accessible.
 - The service-worker cache is updated to v33 and both introduction assets are versioned `921-4`. Its install/fetch behavior is unchanged.
 
-To test a fresh visit, run `localStorage.removeItem('linkguard-921-intro')` and reload. If localStorage is blocked and the original session fallback is active, remove the same key from sessionStorage instead.
+Reload the homepage to see the introduction again; clearing storage is no longer necessary.
 
 ## Validation
 
@@ -86,8 +86,14 @@ Enter, close and Escape stop the narration immediately, before the overlay fades
 
 `MemorialVoiceController.create` accepts a `createPlayer(onStateChange)` adapter. A future recorded-audio player can expose `supported`, `play({lang, segments})`, `pause`, `resume`, `stop` and `destroy`, and report `idle`, `starting`, `playing`, `paused`, `ended` or `error`, without replacing the dialog or its controls.
 
-The original `linkguard-921-intro` preference, session fallback and reset command are unchanged. To inspect the introduction again, run `localStorage.removeItem('linkguard-921-intro')` and reload. Presentation assets advance to `memorial-intro.css/js?v=921-5`; the new module is `memorial-voice.js?v=921-1`; the service-worker cache advances to v34.
+The voice addition initially preserved the `linkguard-921-intro` first-visit preference. The subsequent visibility correction below supersedes that behavior. At the voice release, presentation assets advanced to `memorial-intro.css/js?v=921-5`; the new module is `memorial-voice.js?v=921-1`; the service-worker cache advanced to v34.
 
 Validation: 13 dependency-free adapter tests pass (`node --test tools/test-memorial-voice.mjs`). All 44 Chromium browser checks pass, covering user activation, Chinese/English narration, voice fallback, asynchronous voice lists, pause/resume/replay, canceled callbacks, immediate cancellation on entry/close/Escape, focus containment, refresh persistence, error recovery, unsupported APIs, reduced motion, mobile navigation and existing contact/language controls. Desktop, tablet and mobile layouts were inspected at 1440×960, 820×1180, 390×844, 412×915 and 320×568; visible controls are at least 44 px high. No runtime/resource errors or automated accessibility violations were found in the checked states. A source comparison confirms unchanged main/nav/footer content, original inline scripts, memorial wording and all thirteen other route files.
 
 These voice lifecycle tests simulate native speech events. The actual headless Chromium engine has no installed voices; its unavailable-service error path and cancellation were verified. WebKit could not run because required system libraries could not be installed in this environment. Audible narration and native pause/resume on macOS Safari, iOS Safari and physical Android Chrome still require device verification; mobile viewport emulation is not a substitute for those checks.
+
+## Memorial visibility correction
+
+The user reported that the introduction did not appear. The prior dismissal check was the cause: a previously stored `linkguard-921-intro` value exited the script before opening the dialog. Removed that check and its writes so every full homepage load opens the existing dialog, including for returning visitors with an old localStorage or sessionStorage record. No manual reset is needed. Enter, close and Escape still dismiss normally; language persistence and voice cancellation are unchanged. No second overlay was added. The script advances to `memorial-intro.js?v=921-6` and the service-worker cache to v35.
+
+Validation: all 46 Chromium interaction/layout checks pass, including pre-existing dismissal records in both storage mechanisms, repeated reload, a new tab, normal dismissal, voice cancellation, keyboard controls and mobile layouts. No runtime/resource errors or automated accessibility violations were found in the checked states. The homepage source differs only in the script version; the voice module and other page content remain unchanged.
