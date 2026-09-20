@@ -1,27 +1,10 @@
-/* 921 Digital Memorial Introduction. Homepage presentation only.
-   Reset for another first visit: localStorage.removeItem('linkguard-921-intro'); then reload. */
+/* 921 Digital Memorial Introduction. Shown on every homepage load.
+   Closing dismisses only the current view; no visit preference is stored. */
 (function () {
   'use strict';
 
   var dialog = document.getElementById('memorialIntro');
-  var storageKey = 'linkguard-921-intro';
   if (!dialog || typeof dialog.showModal !== 'function') return;
-
-  function wasDismissed() {
-    try { return !!window.localStorage.getItem(storageKey); }
-    catch (_) {
-      try { return !!window.sessionStorage.getItem(storageKey); }
-      catch (_) { return false; }
-    }
-  }
-  function rememberDismissal() {
-    try { window.localStorage.setItem(storageKey, 'seen'); return; }
-    catch (_) {
-      try { window.sessionStorage.setItem(storageKey, 'seen'); }
-      catch (_) { /* The introduction remains dismissible when storage is unavailable. */ }
-    }
-  }
-  if (wasDismissed()) return;
 
   var root = document.documentElement;
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -66,7 +49,6 @@
   function dismiss() {
     if (closing || !dialog.open) return;
     closing = true;
-    rememberDismissal();
     if (motion.matches) { finishDismissal(); return; }
     dialog.classList.add('is-leaving');
     // A fallback also releases the page if a browser does not dispatch animationend.

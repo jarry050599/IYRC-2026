@@ -25,18 +25,14 @@ The homepage loads `memorial-intro.css` and `memorial-intro.js`. A native modal 
 - Year count is computed from the current local year minus 1999; Chinese and English wording update together.
 - Entrance uses opacity only and completes in 1,500 ms. Exit fades over 500 ms, with a 600 ms event fallback.
 - The close icon, Enter LinkGuard button and Escape all dismiss without navigation or reload.
-- Closing records `linkguard-921-intro` in localStorage. sessionStorage is used when localStorage is inaccessible. If both are unavailable, the introduction still closes normally.
+- The introduction appears on every homepage load, including refreshes and new tabs. Closing dismisses only the current view. The former `linkguard-921-intro` storage key is no longer read or written, so returning visitors also see the introduction.
 - Native modal background inertness, explicit focus containment, visible keyboard controls and focus restoration protect keyboard navigation. The dialog has a labelled title/description and `aria-modal="true"`.
 - The existing language handlers serve the introduction's segmented control; no duplicate language state is introduced.
 - Reduced motion removes entrance staging and closes immediately.
 - Mobile uses `100dvh`, safe-area padding, 44 px language controls, a 48 px close control, and a 48 px minimum entry button. Short landscape screens can scroll the dialog content.
-- The service-worker cache is updated to v28 to include the new presentation assets. Its install/fetch behavior is unchanged.
+- The service-worker cache is updated to v29 and the introduction script is versioned `921-3`. Its install/fetch behavior is unchanged.
 
-To see the introduction again, run the following in the browser console on LinkGuard and then reload:
-
-```js
-localStorage.removeItem('linkguard-921-intro');
-```
+Reload the homepage to see the introduction again. No storage reset is required.
 
 ## Validation
 
@@ -44,7 +40,7 @@ Baseline: commit `1e6c0440ddfcba23d18eed9b570e4af00506f02b`.
 
 - All 3,594 original main-content text nodes across fourteen routes are retained. Existing IDs, links and image references are retained. Every original script block is preserved byte-for-byte.
 - All fourteen routes checked at 1440, 820, 390 and 320 px (56 route/viewport combinations): no unintended horizontal overflow, missing resources, undersized text findings or page runtime errors. English checked on every mobile route.
-- Forty-three memorial checks cover first visit, dismissal persistence, refresh, another tab, reset, close icon, Escape, focus containment/restoration, both languages, future-year calculation, storage failures, reduced motion, portrait/tablet/short landscape and unchanged URL/document.
+- The original refinement passed forty-three memorial checks, including the former first-visit persistence behavior. The follow-up frequency change removes that persistence; the introduction now appears on every homepage load while retaining its existing close, language, motion and keyboard behavior.
 - Original navigation, contact dialog, hardware disclosures, architecture simulation, functionality steps, experiment and technical accordions, story and team disclosures, photo lightbox, carousels, comparison keyboard scrolling and legacy bookmarks were exercised successfully.
 - All six new operation links reach the original content and open specifications where applicable. The original system-overview bookmark still opens the retained node path.
 - Fifty-seven referenced local image/PDF URLs return successfully; the proposal has a valid PDF signature. Existing unavailable certificate slots remain explicit placeholders.
