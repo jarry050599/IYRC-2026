@@ -28,7 +28,7 @@ This follow-up redesign builds on commit `0685d3091d8a7b4072405f07abebaf7c2481d9
 | Motion | Short ease-out highlights and disclosures; continuous diagram packets hidden; reduced-motion preference respected |
 | Accessibility | Visible focus, labelled controls, semantic headings and lists, touch targets, readable contrast and keyboard-accessible scrolling |
 
-The legacy `multipage.css` home-section filter now allows the new home reading sections. The service worker cache changes from v24 to v25 and includes the two new presentation files; its lifecycle and fetch logic are unchanged.
+The legacy `multipage.css` home-section filter now allows the new home reading sections. The versioned reading stylesheet also overrides the earlier cached filter, so mixed cached styles cannot hide the new chapters. The service worker cache changes from v24 to v26 and includes the two new presentation files; its lifecycle and fetch logic are unchanged.
 
 ## Page changes
 
@@ -74,7 +74,7 @@ These distinctions are explicit next to highlighted values, rather than inferred
 - axe-core WCAG 2 A/AA and WCAG 2.1 AA checks passed on all 14 initial page states, all six expanded-content page types, and the open mobile drawer. Reference-link contrast, code-comment contrast, technical-note contrast and keyboard code scrolling were corrected during expanded-state verification.
 - Preservation comparison: 14/14 pages retain every original main-content text node, anchor ID, link destination and original script tag. No duplicate IDs.
 - JavaScript syntax and Git whitespace checks passed.
-- v25 offline cache verified for the home and technical routes, including the new visual layer.
+- v26 offline cache verified for the home and technical routes, including the new visual layer.
 
 Tests used Chromium on Linux. Safari/iOS and physical rescue hardware were not tested. Automated accessibility checks are not a complete accessibility certification.
 

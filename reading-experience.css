@@ -13,6 +13,8 @@ body.reading-site[data-page] {
   font-variant-numeric: lining-nums;
 }
 body.reading-site main { overflow-wrap: break-word; }
+/* Older cached multipage styles hid every home section except #summary. */
+body.reading-site[data-page="home"] #main-content > section.reading-section { display: block !important; }
 body.reading-site :is(h1,h2,h3) { text-wrap: balance; }
 body.reading-site :is(.metric-number,.cost-row strong,.deployment-scale strong) { font-variant-numeric: tabular-nums; }
 body.reading-site .reading-kicker { color: var(--fg-dim); font: 550 12px/1.6 var(--sans); letter-spacing: .1em; margin: 0 0 16px; }
