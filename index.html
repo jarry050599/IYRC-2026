@@ -69,7 +69,7 @@
 <script src="reading-experience.js" defer></script>
 <link rel="stylesheet" href="archive-theme.css?v=921-2">
 <link rel="stylesheet" href="home-hero.css?v=921-6">
-<link rel="stylesheet" href="memorial-intro.css?v=921-4">
+<link rel="stylesheet" href="memorial-intro.css?v=921-5">
 </head>
 <body class="reading-site archive-site" data-route="index" data-page="home">
 <dialog class="memorial-intro" id="memorialIntro" role="dialog" aria-modal="true" aria-labelledby="memorialNumber memorialTitle" aria-describedby="memorialRemembrance memorialReflection" tabindex="-1">
@@ -80,11 +80,19 @@
 <h2 class="memorial-title memorial-stage" id="memorialTitle"><span class="memorial-title-zh" lang="zh-Hant">集集大地震</span><span class="memorial-title-en" lang="en">The Chi-Chi earthquake</span></h2>
 <p class="memorial-remembrance memorial-stage" id="memorialRemembrance"><span class="l-zh"><span data-memorial-years-zh>二十七</span>年後，<br>我們仍然記得那一天。</span><span class="l-en"><span data-memorial-years>27</span> years later,<br>we still remember that day.</span></p>
 <p class="memorial-reflection memorial-stage" id="memorialReflection"><span class="l-zh">而記住，<br>是為了讓下一次的我們<br>準備得更好。</span><span class="l-en">We remember<br>so that, when the next disaster comes,<br>we are better prepared.</span></p>
-<div class="memorial-actions memorial-stage"><button class="memorial-enter" type="button" data-memorial-close><span class="l-zh">進入 LinkGuard</span><span class="l-en">Enter LinkGuard</span></button></div>
+<div class="memorial-actions memorial-stage"><button class="memorial-enter" type="button" data-memorial-close><span class="l-zh">進入 LinkGuard</span><span class="l-en">Enter LinkGuard</span></button>
+<div class="memorial-voice" data-state="idle" hidden>
+<div class="memorial-voice-controls">
+<button class="memorial-voice-toggle" type="button" data-voice-toggle aria-label="播放 921 紀念語音" aria-describedby="memorialVoiceStatus"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g class="voice-symbol-speaker"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></g><g class="voice-symbol-pause"><path d="M8 5v14M16 5v14"/></g></svg><span data-voice-label>播放紀念語音</span></button>
+<button class="memorial-voice-replay" type="button" data-voice-replay aria-label="重新播放 921 紀念語音" hidden>重新播放</button>
+</div>
+<p class="memorial-voice-status" id="memorialVoiceStatus" data-voice-status role="status" aria-live="polite" aria-atomic="true"></p>
+</div></div>
 </div>
 <div class="memorial-signature memorial-stage"><strong>LINKGUARD</strong><span>921 MEMORY EDITION</span></div>
 </dialog>
-<script src="memorial-intro.js?v=921-4"></script>
+<script src="memorial-voice.js?v=921-1"></script>
+<script src="memorial-intro.js?v=921-5"></script>
 
 <a class="sr-only skip-link" href="#top"><span class="l-zh">跳到主要內容</span><span class="l-en">Skip to content</span></a>
 

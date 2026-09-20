@@ -53,6 +53,15 @@
   dialog.querySelectorAll('[data-memorial-years]').forEach(function (el) { el.textContent = String(elapsed); });
   dialog.querySelectorAll('[data-memorial-years-zh]').forEach(function (el) { el.textContent = chineseYears(elapsed); });
 
+  var memorialVoice = null;
+  if (globalThis.MemorialVoiceController) {
+    try {
+      memorialVoice = globalThis.MemorialVoiceController.create({
+        dialog: dialog, language: initialLanguage, years: elapsed, yearsZh: chineseYears(elapsed)
+      });
+    } catch (_) { /* Optional voice support must never block the memorial entrance. */ }
+  }
+
   function syncAccessibleLanguage() {
     var english = root.getAttribute('data-lang') === 'en';
     dialog.querySelector('.memorial-close').setAttribute('aria-label', english ? 'Close 921 memorial' : '關閉 921 紀念頁');
@@ -60,6 +69,7 @@
     dialog.querySelectorAll('[data-set-lang]').forEach(function (button) {
       button.setAttribute('aria-pressed', String(button.getAttribute('data-set-lang') === (english ? 'en' : 'zh')));
     });
+    if (memorialVoice) memorialVoice.setLanguage(english ? 'en' : 'zh');
   }
   syncAccessibleLanguage();
   var languageObserver = new MutationObserver(syncAccessibleLanguage);
@@ -67,6 +77,7 @@
 
   function restorePage() {
     window.clearTimeout(closeTimer);
+    if (memorialVoice) memorialVoice.destroy();
     root.classList.remove('memorial-open', 'memorial-revealing');
     dialog.classList.remove('is-leaving');
     languageObserver.disconnect();
@@ -83,6 +94,7 @@
   function dismiss() {
     if (closing || !dialog.open) return;
     closing = true;
+    if (memorialVoice) memorialVoice.stop();
     rememberDismissal();
     if (motion.matches) { finishDismissal(); return; }
     root.classList.add('memorial-revealing');
@@ -127,6 +139,9 @@
   // Native modal semantics also keep subsequently parsed background controls inert.
   root.classList.add('memorial-open');
   try { dialog.showModal(); }
-  catch (_) { root.classList.remove('memorial-open'); return; }
+  catch (_) {
+    if (memorialVoice) memorialVoice.destroy();
+    root.classList.remove('memorial-open'); return;
+  }
   dialog.focus({ preventScroll: true });
 })();
