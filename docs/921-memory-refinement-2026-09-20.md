@@ -30,7 +30,7 @@ The homepage loads `memorial-intro.css` and `memorial-intro.js`. A native modal 
 - The existing language handlers serve the introduction's segmented control; no duplicate language state is introduced.
 - Reduced motion removes entrance staging and closes immediately.
 - Mobile uses `100dvh`, safe-area padding, 44 px language controls, a 48 px close control, and a 48 px minimum entry button. Short landscape screens can scroll the dialog content.
-- The service-worker cache is updated to v30 and the introduction script is versioned `921-3`. Its install/fetch behavior is unchanged.
+- The service-worker cache is updated to v31 and the introduction script is versioned `921-3`. Its install/fetch behavior is unchanged.
 
 Reload the homepage to see the introduction again. No storage reset is required.
 
@@ -52,8 +52,10 @@ Validation uses Chromium desktop/mobile viewport emulation. Physical-device or S
 
 ## Homepage opening consolidation
 
-The 921 historical opening and LinkGuard system introduction now form one `#top` header. The existing `#linkguard-now` anchor moves inside that opening, ahead of the problem, timeline and workflow sections. Desktop places the memory narrative beside the product name, system title and original actions; mobile presents the product first. The original map, source captions and communication diagram remain visible in a supporting row within the same opening.
+The 921 historical opening and LinkGuard system introduction now form one `#top` header. The existing `#linkguard-now` anchor moves inside that opening, ahead of the problem, timeline and workflow sections. Desktop places LinkGuard on the left and the 921 memory narrative on the right, with the communication diagram and map aligned below their respective columns; mobile presents the product first. The original map, source captions and communication diagram remain visible in a supporting row within the same opening.
 
-The system title becomes the page H1 and the historical title becomes an H2. All original text, IDs, links, image sources and scripts are retained. The independent `home-hero.css?v=921-4` stylesheet applies only to this opening; the service-worker cache advances to v30. The memorial continues to appear on every homepage load.
+The system title becomes the page H1 and the historical title becomes an H2. All original text, IDs, links, image sources and scripts are retained. The independent `home-hero.css?v=921-5` stylesheet applies only to this opening; the service-worker cache advances to v31. The memorial continues to appear on every homepage load.
 
 The combined opening was reviewed in Chinese and English at 1440, 1280, 820, 390 and 320 px, including a 320 × 568 viewport. The brand and primary action fit in the initial viewport. Existing anchors, contact controls, research navigation and the mobile drawer were exercised; no new runtime errors or automated accessibility violations were found.
+
+The desktop column reversal was checked again in both languages at all five viewport widths. The directional link points toward LinkGuard, mobile ordering is retained, and no horizontal overflow, runtime/resource errors or automated accessibility violations were found. This follow-up changes only homepage layout CSS and cache versions.
