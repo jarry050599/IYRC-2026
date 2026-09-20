@@ -20,11 +20,21 @@
     function refreshVoices() {
       try { voices = Array.from(synth.getVoices() || []); } catch (_) { voices = []; }
     }
+    function voicePreference(voice) {
+      // The API has no standard quality field. These are optional hints in voices
+      // actually returned by the browser, never a dependency on a specific name.
+      var identity = (voice.name || '') + ' ' + (voice.voiceURI || '');
+      var quality = /\b(premium|natural|neural)\b/i.test(identity) ? 3 :
+        /\benhanced\b/i.test(identity) ? 2 : 0;
+      return quality * 100 + (voice.default ? 10 : 0) + (voice.localService ? 1 : 0);
+    }
     function selectVoice(locale) {
       var exact = locale.toLowerCase(), base = exact.split('-')[0];
       var matches = function (test) {
         var list = voices.filter(function (voice) { return test((voice.lang || '').toLowerCase().replace(/_/g, '-')); });
-        return list.find(function (voice) { return voice.localService; }) || list[0];
+        return list.reduce(function (preferred, voice) {
+          return !preferred || voicePreference(voice) > voicePreference(preferred) ? voice : preferred;
+        }, null);
       };
       return matches(function (lang) { return lang === exact; }) ||
         (base === 'zh' && matches(function (lang) { return lang.indexOf('zh-hant') === 0; })) ||
@@ -72,7 +82,8 @@
           var utterance = new Utterance(text.slice(offset));
           utterance.lang = request.lang;
           if (voice) utterance.voice = voice; // A missing list/name uses the browser's locale default.
-          utterance.rate = 0.9;
+          // Stay close to the engine's natural pace instead of stretching syllables.
+          utterance.rate = 0.95;
           utterance.pitch = 1;
           utterance.volume = 0.8;
           utterance.onstart = function () {
@@ -164,11 +175,12 @@
       'That is the question LinkGuard seeks to answer:',
       'When disaster strikes, when communications fail, can we still send the signal, and find the people who need us?'
     ] } : { lang: 'zh-TW', segments: [
-      '1999 年 9 月 21 日，台灣發生了九二一集集大地震。',
+      // Spoken form only: read the year as digits, without changing visible copy.
+      '一九九九年九月二十一日，台灣發生了九二一集集大地震。',
       yearsZh + '年後，我們仍然記得那一天。',
-      '而記住，是為了讓下一次的我們，準備得更好。',
+      '而記住，是為了讓下一次的我們準備得更好。',
       '這也是 LinkGuard 想回答的問題：',
-      '當災害發生，當通訊中斷，我們還能不能，把訊號送出去，把人找回來。'
+      '當災害發生，當通訊中斷，我們還能不能把訊號送出去，把人找回來？'
     ] };
   }
   var labels = {

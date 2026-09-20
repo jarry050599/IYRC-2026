@@ -72,11 +72,46 @@ test('an empty initial list can play immediately; delayed voices apply to the ne
   assert.equal(h.spoken().at(-1).voice.lang, 'zh-TW');
 });
 
+test('available enhanced voices outrank the first basic local voice without changing locale', t => {
+  const h = setup(t, [
+    {lang: 'zh-TW', name: 'Standard', localService: true, default: true},
+    {lang: 'zh-TW', name: 'Narrator', voiceURI: 'device.voice.enhanced.zh-TW', localService: true},
+    {lang: 'zh-CN', name: 'Narrator (Premium)', localService: true}
+  ]);
+  h.player.play(message);
+  assert.equal(h.spoken()[0].voice.voiceURI, 'device.voice.enhanced.zh-TW');
+  assert.equal(h.spoken()[0].lang, 'zh-TW');
+});
+
+test('quality hints use only available voices and do not outrank a matching locale', t => {
+  const h = setup(t, [
+    {lang: 'en-GB', name: 'Narrator (Premium)'},
+    {lang: 'en-US', name: 'Standard', localService: true},
+    {lang: 'en-US', name: 'Narrator (Natural)'}
+  ]);
+  h.player.play({lang: 'en-US', segments: ['Hello.']});
+  assert.equal(h.spoken()[0].voice.name, 'Narrator (Natural)');
+  assert.equal(h.spoken()[0].voice.lang, 'en-US');
+  h.voices([{lang: 'en-US', name: 'Standard'}, {lang: 'en-GB', name: 'Narrator (Premium)'}]);
+  h.player.play({lang: 'en-US', segments: ['Hello.']});
+  assert.equal(h.spoken().at(-1).voice.name, 'Standard');
+});
+
+test('without quality hints, the system default is preferred within the same locale', t => {
+  const h = setup(t, [
+    {lang: 'zh-TW', name: 'First', localService: true},
+    {lang: 'zh-TW', name: 'Preferred', localService: true, default: true}
+  ]);
+  h.player.play(message);
+  assert.equal(h.spoken()[0].voice.name, 'Preferred');
+  assert.equal(h.spoken().length, 2);
+});
+
 test('all short paragraphs use quiet parameters and are queued in order', t => {
   const h = setup(t); h.player.play(message);
   assert.deepEqual(h.spoken().map(u => u.text), message.segments);
   for (const u of h.spoken()) {
-    assert.equal(u.rate, 0.9); assert.equal(u.pitch, 1); assert.equal(u.volume, 0.8);
+    assert.equal(u.rate, 0.95); assert.equal(u.pitch, 1); assert.equal(u.volume, 0.8);
   }
   h.start(); h.player.pause(); assert.equal(h.state, 'paused');
   h.player.resume(); assert.equal(h.state, 'playing');
