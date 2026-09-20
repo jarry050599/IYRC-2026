@@ -59,3 +59,7 @@ The system title becomes the page H1 and the historical title becomes an H2. All
 The combined opening was reviewed in Chinese and English at 1440, 1280, 820, 390 and 320 px, including a 320 × 568 viewport. The brand and primary action fit in the initial viewport. Existing anchors, contact controls, research navigation and the mobile drawer were exercised; no new runtime errors or automated accessibility violations were found.
 
 The desktop column reversal was checked again in both languages at all five viewport widths. The directional link points toward LinkGuard, mobile ordering is retained, and no horizontal overflow, runtime/resource errors or automated accessibility violations were found. This follow-up changes only homepage layout CSS and cache versions.
+
+## Redundant introduction link
+
+Removed the Chinese/English “Explore today’s rescue technology” link, its arrow and underline at the user’s request. LinkGuard is already beside the memory narrative, so the internal jump is unnecessary. The `linkguard-now` target remains available; all other text, links and JavaScript are unchanged. Removed the unused homepage arrow overrides and updated the homepage stylesheet to `921-6` and service-worker cache to v32.
