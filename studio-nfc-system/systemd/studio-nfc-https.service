@@ -1,0 +1,18 @@
+[Unit]
+Description=Studio PN532 NFC reader (HTTPS API)
+After=studio-api-https.service
+Requires=studio-api-https.service
+Conflicts=studio-nfc.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/opt/studio-nfc
+EnvironmentFile=-/opt/studio-nfc/.env
+ExecStart=/opt/studio-nfc/.venv/bin/python services/nfc_reader.py --api-url https://127.0.0.1:8443 --device usb --ca-cert /opt/studio-nfc/data/cert.pem
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

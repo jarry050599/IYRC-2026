@@ -5,8 +5,12 @@ DB_FILE = Path(__file__).parent / "test.db"
 os.environ["DATABASE_URL"] = f"sqlite:///{DB_FILE}"
 os.environ["ADMIN_PASSWORD"] = "test-password"
 
+from datetime import timedelta
+
 from fastapi.testclient import TestClient
 from app.main import app
+from app.models import now_local
+from app.security import token_digest
 
 
 def auth(client):
@@ -263,3 +267,38 @@ def test_tool_qr_borrow_return_and_records():
         assert any(row["item_id"] == tool["id"] and row["status"] == "returned" for row in records)
         actions = {row["action"] for row in client.get("/api/admin/audit-logs", headers=headers).json()}
         assert {"tool_borrow", "tool_return"} <= actions
+
+
+def test_admin_session_is_database_backed_expires_and_logs_out():
+    with TestClient(app) as client:
+        headers = auth(client)
+        assert client.get("/api/admin/users", headers=headers).status_code == 200
+
+    # A new lifespan must resolve the token, and only from SQLite (checked below).
+    with TestClient(app) as restarted:
+        assert restarted.get("/api/admin/users", headers=headers).status_code == 200
+
+        forged = {"Authorization": "Bearer not-a-real-token"}
+        assert restarted.get("/api/admin/users", headers=forged).status_code == 401
+
+        # The raw token is never stored, only its digest.
+        raw = headers["Authorization"].removeprefix("Bearer ")
+        from app.database import SessionLocal
+        from app.models import AdminSession
+        with SessionLocal() as db:
+            assert db.get(AdminSession, raw) is None
+            session = db.get(AdminSession, token_digest(raw))
+            assert session is not None and session.expires_at > now_local()
+            # Expire it in place; the next call must reject and clean it up.
+            session.expires_at = now_local() - timedelta(seconds=1)
+            db.commit()
+        assert restarted.get("/api/admin/users", headers=headers).status_code == 401
+        with SessionLocal() as db:
+            assert db.get(AdminSession, token_digest(raw)) is None
+
+    # Logging out deletes the row, so no later process can accept the token.
+    with TestClient(app) as client:
+        fresh = auth(client)
+        assert client.post("/api/admin/logout", headers=fresh).status_code == 200
+    with TestClient(app) as restarted:
+        assert restarted.get("/api/admin/users", headers=fresh).status_code == 401

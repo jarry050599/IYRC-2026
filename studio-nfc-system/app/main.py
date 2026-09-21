@@ -15,15 +15,16 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Web
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from sqlalchemy import String, and_, func, inspect, or_, select, text, update
+from sqlalchemy import String, and_, delete, func, inspect, or_, select, text, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, joinedload
 
 from .database import Base, SessionLocal, engine, get_db
 from .labels import labels_pdf
-from .models import (AttendanceRecord, AuditLog, Computer, Inventory, Item, Material,
+from .models import (AdminSession, AttendanceRecord, AuditLog, Computer, Inventory, Item, Material,
                      MaterialRental, RentalRecord, Setting, Slot, ToolRental, User, now_local)
-from .security import TOKENS, default_admin_password, hash_password, new_token, verify_password
+from .security import (LEGACY_DEFAULT_PASSWORD, default_admin_password, hash_password, new_token,
+                       session_lifetime, token_digest, verify_password)
 
 STATIC = Path(__file__).resolve().parent / "static"
 connections: set[WebSocket] = set()
@@ -276,10 +277,23 @@ def audit(db: Session, admin_id: int, action: str, target: str, detail: Any):
                     detail=json.dumps(detail, ensure_ascii=False, default=str)))
 
 
+def start_admin_session(db: Session, user_id: int) -> str:
+    db.execute(delete(AdminSession).where(AdminSession.expires_at <= now_local()))
+    token = new_token()
+    db.add(AdminSession(token_digest=token_digest(token), user_id=user_id,
+                        expires_at=now_local() + session_lifetime()))
+    db.commit()
+    return token
+
+
 def current_admin(authorization: Optional[str] = Header(default=None), db: Session = Depends(get_db)) -> User:
     token = authorization.removeprefix("Bearer ") if authorization else ""
-    user_id = TOKENS.get(token)
-    user = db.get(User, user_id) if user_id else None
+    session = db.get(AdminSession, token_digest(token)) if token else None
+    if session and session.expires_at <= now_local():
+        db.delete(session)
+        db.commit()
+        session = None
+    user = db.get(User, session.user_id) if session else None
     if not user or user.role != "admin" or user.status != "active":
         raise HTTPException(401, "請先登入管理後台")
     return user
@@ -332,9 +346,18 @@ def init_db():
                 db.add(Computer(id=pc_id, name=pc_id))
         if not db.scalar(select(Setting).where(Setting.key == "closing_time")):
             db.add(Setting(key="closing_time", value=os.getenv("CLOSING_TIME", "22:00")))
-        if not db.scalar(select(User).where(User.role == "admin")):
+        admin = db.scalar(select(User).where(User.role == "admin"))
+        if not admin:
+            password, generated = default_admin_password()
             db.add(User(name="admin", role="admin", status="active",
-                        password_hash=hash_password(default_admin_password())))
+                        password_hash=hash_password(password)))
+            if generated:
+                print("=" * 62, f"已建立管理員 admin，隨機密碼：{password}",
+                      "此密碼只顯示這一次，請立刻登入後台改掉。",
+                      "要自訂初始密碼，請在建立資料庫前設定 ADMIN_PASSWORD。",
+                      "=" * 62, sep="\n")
+        elif verify_password(LEGACY_DEFAULT_PASSWORD, admin.password_hash):
+            print("警告：管理員仍在使用舊版預設密碼，請立即到後台更換。")
         if not db.scalar(select(Slot.id).limit(1)):
             for cabinet in ("A", "B"):
                 for number in range(1, 151):
@@ -1094,13 +1117,15 @@ def login(data: LoginIn, db: Session = Depends(get_db)):
     user = db.scalar(select(User).where(User.name == data.username, User.role == "admin", User.status == "active"))
     if not user or not verify_password(data.password, user.password_hash):
         raise HTTPException(401, "帳號或密碼錯誤")
-    return {"token": new_token(user.id), "user": user_json(user)}
+    return {"token": start_admin_session(db, user.id), "user": user_json(user)}
 
 
 @app.post("/api/admin/logout")
-def logout(authorization: Optional[str] = Header(default=None)):
+def logout(authorization: Optional[str] = Header(default=None), db: Session = Depends(get_db)):
     if authorization:
-        TOKENS.pop(authorization.removeprefix("Bearer "), None)
+        db.execute(delete(AdminSession).where(
+            AdminSession.token_digest == token_digest(authorization.removeprefix("Bearer "))))
+        db.commit()
     return {"ok": True}
 
 

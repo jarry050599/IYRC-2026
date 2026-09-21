@@ -9,7 +9,8 @@
 - `/docs`：FastAPI 自動產生的 API 文件
 - `app/`：API、SQLite models 及靜態前端
 - `services/nfc_reader.py`：PN532 常駐讀卡程式及鍵盤模擬模式
-- `systemd/`：API 與 NFC 服務範本
+- `services/generate_cert.py`：產生區網用自簽憑證（手機掃 QR 需要）
+- `systemd/`：API 與 NFC 服務範本，含 HTTPS 版本
 - `data/studio.db`：首次啟動時自動建立（請定期備份）
 
 材料管理內建電阻、電容、電晶體三種分類，可用名稱、規格或存放位置即時搜尋；搜尋欄同時提供可輸入的下拉建議。每項材料可記錄庫存數量、規格、位置及啟用狀態，新增、編輯和停用都會寫入稽核紀錄。
@@ -50,7 +51,18 @@ cp .env.example .env
 ADMIN_PASSWORD='你的安全密碼' uvicorn app.main:app --reload --host 0.0.0.0
 ```
 
-瀏覽 `http://127.0.0.1:8000/`；後台為 `http://127.0.0.1:8000/admin`。初始帳號是 `admin`。若未設定 `ADMIN_PASSWORD`，開發預設密碼是 `change-me-now`，正式使用前務必更換。環境變數只在資料庫首次建立管理員時生效；已建立後可在後台編輯管理員密碼。
+瀏覽 `http://127.0.0.1:8000/`；後台為 `http://127.0.0.1:8000/admin`。初始帳號是 `admin`。
+
+若未設定 `ADMIN_PASSWORD`，首次建立資料庫時會**自動產生一組隨機密碼並印在啟動日誌**，只顯示這一次：
+
+```
+==============================================================
+已建立管理員 admin，隨機密碼：8ZKUa-8jsWKCh1ED
+此密碼只顯示這一次，請立刻登入後台改掉。
+==============================================================
+```
+
+在 Raspberry Pi 上用 `journalctl -u studio-api.service | grep 隨機密碼` 取得。環境變數只在資料庫首次建立管理員時生效；已建立後請在後台編輯管理員密碼。舊版資料庫若仍在用 `change-me-now`，每次啟動都會印出警告。
 
 沒有 NFC 硬體時，另開終端機：
 
@@ -97,7 +109,40 @@ systemctl status studio-api.service studio-nfc.service
 journalctl -u studio-api.service -u studio-nfc.service -f
 ```
 
-區網管理後台網址是 `http://樹莓派IP:8000/admin`。建議替 Raspberry Pi 設 DHCP 固定租約，並只允許可信任的內網連線；若需跨網際網路存取，應另加 HTTPS reverse proxy、持久化 session 與更完整的存取控管。
+區網管理後台網址是 `http://樹莓派IP:8000/admin`。建議替 Raspberry Pi 設 DHCP 固定租約，並只允許可信任的內網連線；若需跨網際網路存取，應另加 reverse proxy 與更完整的存取控管。
+
+管理後台登入 session 存在 SQLite 的 `admin_sessions`，**服務重啟不會把人踢出去**；資料庫只存 token 的 SHA-256 digest。預設有效 12 小時，可用 `SESSION_HOURS` 調整；登出會刪除該筆 session，過期的會在下次登入時清掉。
+
+## 區網 HTTPS（手機掃 QR 必要）
+
+手機用區網 IP 開後台時，瀏覽器不把 `http://192.168.x.x` 當成安全來源，相機和 Service Worker 都不會出現。
+在 Raspberry Pi 上產生自簽憑證即可解決，不需要網域或額外軟體：
+
+```bash
+cd /opt/studio-nfc
+.venv/bin/python services/generate_cert.py --host 192.168.1.50
+```
+
+`--host` 填手機網址列會打的位址；不指定就自動偵測本機區網 IP。憑證會寫到 `data/cert.pem`、`data/key.pem`
+（私鑰權限 600，已被 `.gitignore` 排除，請勿提交）。預設有效 825 天，到期重跑一次即可。
+
+HTTPS 版的 service 會取代原本的 HTTP 版（兩者互斥，避免兩個程序同時寫同一個 SQLite）：
+
+```bash
+sudo cp systemd/studio-api-https.service systemd/studio-nfc-https.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl disable --now studio-api.service studio-nfc.service
+sudo systemctl enable --now studio-api-https.service studio-nfc-https.service
+```
+
+讀卡機改連 `https://127.0.0.1:8443`，並用 `--ca-cert` 指向自己的憑證來驗證，不是關掉驗證。
+
+手機開 `https://192.168.1.50:8443/admin`，第一次會跳憑證警告，選「進階 → 仍要前往」，之後相機就能掃 QR。
+每台裝置只需要做一次。
+
+改用 HTTPS 後，Kiosk 的 Chromium 也要改指向 `https://127.0.0.1:8443/`，並在 `Exec` 加上
+`--ignore-certificate-errors`（它只連自己的 loopback），否則開機會停在憑證警告畫面。
+若不需要手機掃 QR，維持原本的 HTTP 版即可，Pi 本機的 Kiosk 走 `localhost` 本來就算安全來源。
 
 ## Chromium Kiosk 自動啟動
 
@@ -137,13 +182,15 @@ source .venv/bin/activate
 pytest -q
 ```
 
-核心測試涵蓋簽到 → 借用 → 阻擋簽退 → 歸還 → 簽退，以及未知卡片處理。
+核心測試涵蓋簽到 → 借用 → 阻擋簽退 → 歸還 → 簽退、未知卡片處理、材料領用的冪等與庫存、QR 庫存與工具借還，以及管理後台 session 存在資料庫、會過期、登出即失效。
 
 ## QR 庫存與儲位
 
 管理後台的「材料管理」已擴充為材料、消耗品與工具庫存。首次啟動新版服務時會建立 `items`、`slots`、`inventory`、`tool_rentals`，建立 A001–A150、B001–B150 共 300 個儲位，並將舊 `materials` 資料複製到新結構；舊表保留，因此 migration 不會刪除既有紀錄。
 
-儲位 QR 只存代碼（例如 `A045-03`），工具 QR 可存品項 ID 或 MPN。管理後台可用相機掃描；瀏覽器通常只允許 `localhost` 或 HTTPS 使用相機，因此從手機以區網 IP 開啟時請在 Raspberry Pi 前方配置 HTTPS reverse proxy。未支援 `BarcodeDetector` 的瀏覽器仍可手動輸入標籤內容。
+儲位 QR 只存代碼（例如 `A045-03`），工具 QR 可存品項 ID 或 MPN。管理後台可用相機掃描。
+
+瀏覽器只在 `localhost` 或 HTTPS 下開放相機，所以從手機用區網 IP 開啟時必須走 HTTPS，否則 `navigator.mediaDevices` 根本不存在（Service Worker 也一樣）。設定方式見下方「區網 HTTPS」。未支援 `BarcodeDetector` 的瀏覽器仍可手動輸入標籤內容。
 
 下載目前資料庫內全部儲位標籤：登入後呼叫 `GET /api/slots/labels.pdf`。也可離線產生預設 300 張 50 mm × 12 mm 標籤：
 

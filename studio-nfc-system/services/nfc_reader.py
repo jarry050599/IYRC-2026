@@ -14,6 +14,10 @@ import requests
 # the latch immediately, while one continuously held card still emits one tap.
 last_tap = {"uid": None}
 
+# requests' verify argument: True for ordinary TLS, or the path to the
+# self-signed certificate when the API is served over HTTPS with one.
+api_verify = True
+
 
 def normalize(uid: str) -> str:
     return uid.strip().upper().replace(":", "").replace("-", "")
@@ -22,7 +26,8 @@ def normalize(uid: str) -> str:
 def post_uid(api_url: str, uid: str):
     try:
         response = requests.post(f"{api_url.rstrip('/')}/api/nfc/tap",
-                                 json={"card_uid": normalize(uid)}, timeout=5)
+                                 json={"card_uid": normalize(uid)}, timeout=5,
+                                 verify=api_verify)
         payload = response.json()
         logging.info("tap %s: %s", uid, payload.get("message", payload))
     except requests.RequestException as exc:
@@ -192,7 +197,11 @@ if __name__ == "__main__":
     parser.add_argument("--simulate", action="store_true", help="鍵盤輸入 UID 模擬讀卡")
     parser.add_argument("--api-url", default="http://127.0.0.1:8000")
     parser.add_argument("--device", default="usb", help="nfcpy device，例如 usb 或 tty:S0:pn532")
+    parser.add_argument("--ca-cert", default=None, metavar="PATH",
+                        help="API 走 HTTPS 自簽憑證時，指向 data/cert.pem 以便驗證")
     args = parser.parse_args()
+    if args.ca_cert:
+        api_verify = args.ca_cert
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     try:
         simulate(args.api_url) if args.simulate else hardware(args.api_url, args.device)
