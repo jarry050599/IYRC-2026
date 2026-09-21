@@ -4,9 +4,12 @@ import hashlib
 import hmac
 import os
 import secrets
+from datetime import timedelta
 from typing import Optional
 
-TOKENS: dict[str, int] = {}
+# Databases created before login sessions moved into SQLite were seeded with
+# this password. init_db warns when an admin is still using it.
+LEGACY_DEFAULT_PASSWORD = "change-me-now"
 
 
 def hash_password(password: str, salt: Optional[str] = None) -> str:
@@ -25,11 +28,26 @@ def verify_password(password: str, encoded: Optional[str]) -> bool:
         return False
 
 
-def new_token(user_id: int) -> str:
-    token = secrets.token_urlsafe(32)
-    TOKENS[token] = user_id
-    return token
+def new_token() -> str:
+    return secrets.token_urlsafe(32)
 
 
-def default_admin_password() -> str:
-    return os.getenv("ADMIN_PASSWORD", "change-me-now")
+def token_digest(token: str) -> str:
+    """Sessions are stored by digest so a database copy cannot be replayed."""
+    return hashlib.sha256(token.encode()).hexdigest()
+
+
+def session_lifetime() -> timedelta:
+    try:
+        hours = int(os.getenv("SESSION_HOURS", "12"))
+    except ValueError:
+        hours = 12
+    return timedelta(hours=max(1, hours))
+
+
+def default_admin_password() -> tuple[str, bool]:
+    """Return (password, generated). A generated one is printed once at startup."""
+    configured = os.getenv("ADMIN_PASSWORD")
+    if configured:
+        return configured, False
+    return secrets.token_urlsafe(12), True

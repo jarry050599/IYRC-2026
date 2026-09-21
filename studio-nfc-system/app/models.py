@@ -69,6 +69,16 @@ class AuditLog(Base):
     admin: Mapped[User] = relationship()
 
 
+class AdminSession(Base):
+    """Admin login sessions live here so a service restart does not log everyone out."""
+    __tablename__ = "admin_sessions"
+    token_digest: Mapped[str] = mapped_column(String(64), primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=now_local)
+    expires_at: Mapped[datetime] = mapped_column(DateTime, index=True)
+    user: Mapped[User] = relationship()
+
+
 class Setting(Base):
     __tablename__ = "settings"
     key: Mapped[str] = mapped_column(String(80), primary_key=True)
