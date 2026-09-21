@@ -423,6 +423,11 @@ def service_worker():
     return FileResponse(STATIC / "sw.js", media_type="application/javascript")
 
 
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return FileResponse(STATIC / "favicon.ico", media_type="image/x-icon")
+
+
 @app.get("/health")
 def health():
     return {"status": "ok", "time": dt(now_local())}
