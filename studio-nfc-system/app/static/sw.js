@@ -1,5 +1,5 @@
 const CACHE = 'maker-space-shell-v1';
-const SHELL = ['/admin', '/static/admin.js?v=inventory-2', '/static/styles.css?v=inventory-2'];
+const SHELL = ['/admin', '/static/admin.js?v=student-fields-2', '/static/styles.css?v=inventory-2', '/static/icon.svg'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))));
 self.addEventListener('fetch', event => {
