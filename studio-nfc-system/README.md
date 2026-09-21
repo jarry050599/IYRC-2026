@@ -10,6 +10,7 @@
 - `app/`：API、SQLite models 及靜態前端
 - `services/nfc_reader.py`：PN532 常駐讀卡程式及鍵盤模擬模式
 - `services/generate_cert.py`：產生區網用自簽憑證（手機掃 QR 需要）
+- `start-local.sh`：在一般電腦上一行啟動（venv、套件、服務、瀏覽器）
 - `systemd/`：API 與 NFC 服務範本，含 HTTPS 版本
 - `data/studio.db`：首次啟動時自動建立（請定期備份）
 
@@ -40,7 +41,16 @@ Kiosk 與管理後台皆由 FastAPI 同源提供，不需要 CORS。畫面不含
 
 ## 在一般電腦快速啟動
 
-需要 Python 3.11 以上：
+需要 Python 3.11 以上。最快的方式是用內建腳本，它會建立 venv、裝好套件、首次啟動時問你要設哪組管理員密碼，然後開服務並打開瀏覽器：
+
+```bash
+cd studio-nfc-system
+./start-local.sh
+```
+
+沒有讀卡機時，另開一個視窗跑 `./start-local.sh --simulate`，輸入卡片 UID 就等於刷卡。其他選項見 `./start-local.sh --help`。
+
+手動的步驟則是：
 
 ```bash
 cd studio-nfc-system
