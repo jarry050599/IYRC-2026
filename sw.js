@@ -1,4 +1,4 @@
-const CACHE_NAME = "linkguard-site-v38";
+const CACHE_NAME = "linkguard-site-v26";
 const OFFLINE_ASSETS = [
   "./index.html",
   "./overview.html",
@@ -24,12 +24,6 @@ const OFFLINE_ASSETS = [
   "./ui-accessibility.js",
   "./reading-experience.css?v=26",
   "./reading-experience.js",
-  "./archive-theme.css?v=921-2",
-  "./home-hero.css?v=921-6",
-  "./assets/archive/taiwan-921-locator.svg",
-  "./memorial-intro.css?v=921-5",
-  "./memorial-intro.js?v=921-6",
-  "./memorial-voice.js?v=921-3",
   "./manifest.webmanifest",
   "./assets/linkguard-logo.jpg",
   "./assets/linkguard-proposal.pdf"
