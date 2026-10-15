@@ -8,15 +8,74 @@
   var compact = window.matchMedia('(max-width: 1000px)');
   var background = [document.querySelector('main'), document.querySelector('footer'), document.getElementById('toTop')].filter(Boolean);
   var isDrawerOpen = false;
+  function refineSharedChrome() {
+    document.querySelectorAll('.nav-right [data-modal-open] .btn-label').forEach(function (label) {
+      label.closest('[data-modal-open]').setAttribute('aria-label', '聯絡我們 / Contact us');
+      var zh = label.querySelector('.l-zh');
+      var en = label.querySelector('.l-en');
+      if (zh) zh.textContent = '聯絡我們';
+      if (en) en.textContent = 'Contact';
+    });
+    document.querySelectorAll('.sec-head .eyebrow').forEach(function (label) {
+      label.innerHTML = label.innerHTML.replace(/^\s*\d+[A-Z]?\s*[—–-]\s*/, '');
+    });
+    if (menu && !menu.querySelector('.mobile-nav-flat')) {
+      var flat = document.createElement('div');
+      flat.className = 'mobile-nav-flat';
+      menu.querySelectorAll('.nav-group').forEach(function (group) {
+        var heading = document.createElement('div');
+        heading.className = 'mobile-nav-heading';
+        heading.innerHTML = group.querySelector('summary').innerHTML;
+        flat.appendChild(heading);
+        group.querySelectorAll('.nav-group-links a').forEach(function (link) { flat.appendChild(link.cloneNode(true)); });
+      });
+      var contact = document.createElement('button');
+      contact.className = 'btn btn-primary mobile-nav-contact';
+      contact.setAttribute('data-modal-open', 'contactModal');
+      contact.innerHTML = '<span class="l-zh">聯絡我們</span><span class="l-en">Contact us</span>';
+      contact.addEventListener('click', function () {
+        var original = document.querySelector('.nav-right [data-modal-open]');
+        if (original) original.click();
+      });
+      flat.appendChild(contact);
+      menu.appendChild(flat);
+    }
+    document.querySelectorAll('footer .credits').forEach(function (credits) {
+      var groups = credits.querySelectorAll('.credit-group');
+      if (!groups.length || credits.querySelector('.footer-contact')) return;
+      if (groups[0]) groups[0].remove();
+      if (groups[2]) groups[2].remove();
+      var schools = credits.querySelector('.credit-group');
+      if (schools) {
+        var zh = schools.querySelector('.credit-label .l-zh');
+        var en = schools.querySelector('.credit-label .l-en');
+        if (zh) zh.textContent = '團隊所屬學校';
+        if (en) en.textContent = 'Team Schools';
+      }
+      var contact = document.createElement('div');
+      contact.className = 'credit-group footer-contact';
+      contact.innerHTML = '<div class="credit-label"><span class="l-zh">聯絡 LinkGuard</span><span class="l-en">Contact LinkGuard</span></div><ul class="credit-list"><li><span class="b">→</span><span><a href="mailto:jouyun@alinkguard.com">jouyun@alinkguard.com</a></span></li><li><span class="b">→</span><span><a href="https://www.instagram.com/linkguard_dev_team/" target="_blank" rel="noopener noreferrer">@linkguard_dev_team</a></span></li></ul>';
+      credits.appendChild(contact);
+    });
+  }
   function syncDrawer() {
     var open = compact.matches && menu.classList.contains('open');
+    if (open) menu.querySelectorAll('details').forEach(function (group) { group.open = true; });
     document.body.classList.toggle('drawer-open', open);
     background.forEach(function (el) { el.inert = open; });
     toggle.setAttribute('aria-label', open ? '關閉導覽 / Close navigation' : '開啟導覽 / Open navigation');
     if (open && !isDrawerOpen) menu.querySelector('summary').focus();
     isDrawerOpen = open;
   }
+  refineSharedChrome();
   new MutationObserver(syncDrawer).observe(menu, { attributes: true, attributeFilter: ['class'] });
+  toggle.addEventListener('click', function () {
+    requestAnimationFrame(function () {
+      if (compact.matches && menu.classList.contains('open')) {
+        menu.querySelectorAll('details').forEach(function (group) { group.open = true; });
+      }
+    });
+  });
   compact.addEventListener('change', function () {
     if (!compact.matches && menu.classList.contains('open')) toggle.click();
     syncDrawer();

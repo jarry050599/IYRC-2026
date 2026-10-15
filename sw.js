@@ -1,69 +1,28 @@
-const CACHE_NAME = "linkguard-site-v28";
+const CACHE_NAME = "linkguard-site-v29";
 const OFFLINE_ASSETS = [
-  "./index.html",
-  "./overview.html",
-  "./background.html",
-  "./functionality.html",
-  "./data.html",
-  "./experiments.html",
-  "./comparison.html",
-  "./deployment.html",
-  "./site-pages.js",
-  "./system.html",
-  "./research.html",
-  "./field.html",
-  "./technical.html",
-  "./team.html",
-  "./awards.html",
-  "./wayfinder-ui.css",
-  "./multipage.css",
-  "./site-foundation.css",
-  "./site-layout.css",
-  "./site-technical.css",
-  "./design-system.css",
-  "./ui-accessibility.js",
-  "./reading-experience.css?v=28",
-  "./reading-experience.js",
-  "./manifest.webmanifest",
-  "./assets/linkguard-logo.jpg",
+  "./index.html", "./overview.html", "./background.html", "./functionality.html",
+  "./data.html", "./experiments.html", "./comparison.html", "./deployment.html",
+  "./site-pages.js", "./system.html", "./research.html", "./field.html",
+  "./technical.html", "./team.html", "./awards.html", "./wayfinder-ui.css",
+  "./multipage.css", "./site-foundation.css", "./site-layout.css",
+  "./site-technical.css", "./design-system.css", "./ui-accessibility.js",
+  "./reading-experience.css?v=29", "./reading-experience.js",
+  "./manifest.webmanifest", "./assets/linkguard-logo.jpg",
   "./assets/linkguard-proposal.pdf"
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(OFFLINE_ASSETS))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(OFFLINE_ASSETS)).then(() => self.skipWaiting()));
 });
-
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      ))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim()));
 });
-
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
-
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        if (!response || response.status !== 200 || response.type === "opaque") {
-          return response;
-        }
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      })
-      .catch(() =>
-        caches.match(event.request).then((cached) =>
-          cached || caches.match("./index.html")
-        )
-      )
-  );
+  event.respondWith(fetch(event.request).then((response) => {
+    if (!response || response.status !== 200 || response.type === "opaque") return response;
+    const copy = response.clone();
+    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+    return response;
+  }).catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html"))));
 });
