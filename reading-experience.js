@@ -9,13 +9,6 @@
   var background = [document.querySelector('main'), document.querySelector('footer'), document.getElementById('toTop')].filter(Boolean);
   var isDrawerOpen = false;
   function refineSharedChrome() {
-    document.querySelectorAll('.nav-right [data-modal-open] .btn-label').forEach(function (label) {
-      label.closest('[data-modal-open]').setAttribute('aria-label', '聯絡我們 / Contact us');
-      var zh = label.querySelector('.l-zh');
-      var en = label.querySelector('.l-en');
-      if (zh) zh.textContent = '聯絡我們';
-      if (en) en.textContent = 'Contact';
-    });
     document.querySelectorAll('.sec-head .eyebrow').forEach(function (label) {
       label.innerHTML = label.innerHTML.replace(/^\s*\d+[A-Z]?\s*[—–-]\s*/, '');
     });

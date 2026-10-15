@@ -120,7 +120,6 @@ body[data-page] :is(.icon-btn,.social,.modal-close,.photo-lightbox-close):hover 
 /* A real search vehicle anchors the hero; the existing copy remains intact. */
 body[data-page="home"] .hero { padding: 88px 0 48px; border: 0; background: #fff; }
 body[data-page="home"] .hero > .wrap { grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: 64px; row-gap: 0; align-items: start; }
-body[data-page="home"] .hero > .wrap::before { content: none; }
 body[data-page="home"] .hero .eyebrow { margin-bottom: 20px; font-size: 12px; letter-spacing: .09em; line-height: 1.7; color: var(--fg-dim); max-width: 34ch; }
 body[data-page="home"] .hero .hero-title { grid-column: 1; grid-row: 2; }
 body[data-page="home"] .hero .hero-title h1.l-zh { font-size: clamp(42px,4.6vw,64px); letter-spacing: -.035em; line-height: 1.18; white-space: normal; }
