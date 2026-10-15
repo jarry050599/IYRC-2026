@@ -425,3 +425,109 @@ body.reading-site[data-route="field"] .photo-wall { margin-top: 32px; }
   body.reading-site .table-scroll { overflow: visible; }
   body.reading-site main { padding: 0; }
 }
+
+/* 2026-10 UI polish: clearer navigation hierarchy and calmer touch states. */
+body.reading-site .nav {
+  background: color-mix(in srgb, #fff 92%, transparent);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  backdrop-filter: saturate(160%) blur(18px);
+}
+body.reading-site .brand-logo {
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 6px 18px rgb(17 24 39 / 8%);
+}
+body.reading-site .nav-group > summary {
+  border-radius: 10px;
+  transition: color var(--ui-transition), background-color var(--ui-transition);
+}
+body.reading-site .nav-group > summary:hover,
+body.reading-site .nav-group[open] > summary {
+  color: var(--accent);
+  background: var(--bg-alt);
+}
+body.reading-site .nav-group > summary svg {
+  transition: transform var(--ui-transition);
+}
+body.reading-site .nav-group[open] > summary svg {
+  transform: rotate(180deg);
+}
+body.reading-site .nav-group-links {
+  margin-top: 10px;
+  box-shadow: 0 22px 60px rgb(17 24 39 / 13%);
+}
+body.reading-site .nav-group-links a {
+  border-radius: 10px;
+  transition: color var(--ui-transition), background-color var(--ui-transition);
+}
+body.reading-site .nav-group-links a:hover,
+body.reading-site .nav-group-links a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+body.reading-site .nav-toggle,
+body.reading-site .lang button,
+body.reading-site .nav .btn {
+  transition: color var(--ui-transition), background-color var(--ui-transition), border-color var(--ui-transition), box-shadow var(--ui-transition);
+}
+body.reading-site .nav-toggle:hover,
+body.reading-site .nav-toggle[aria-expanded="true"] {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+  background: var(--accent-soft);
+}
+
+@media (max-width: 1000px) {
+  body.reading-site[data-page] .nav .nav-links,
+  html[data-device] body.reading-site[data-page] .nav .nav-links {
+    padding: 20px 24px max(28px, env(safe-area-inset-bottom));
+    border-left: 1px solid var(--line-soft);
+  }
+  body.reading-site .nav-group > summary:hover,
+  body.reading-site .nav-group[open] > summary {
+    background: transparent;
+  }
+  body.reading-site .nav-group-links {
+    margin-top: 0;
+    box-shadow: none;
+  }
+  body.reading-site.drawer-open .nav-scrim {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+}
+
+@media (max-width: 760px) {
+  body.reading-site[data-route="index"] .hero .cta-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  body.reading-site[data-route="index"] .hero .cta-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  body.reading-site[data-route="index"] .hero .cta-row > :nth-child(n+3) {
+    min-height: 44px;
+    padding-inline: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  body.reading-site[data-page] .nav-inner {
+    gap: 6px;
+  }
+  body.reading-site[data-page] .brand {
+    font-size: 11px;
+    letter-spacing: .075em;
+  }
+  body.reading-site[data-page] .brand-logo {
+    width: 30px;
+    height: 30px;
+  }
+  body.reading-site[data-page] .nav-right {
+    gap: 4px;
+  }
+  body.reading-site[data-page] .lang button {
+    min-width: 34px;
+    padding-inline: 6px;
+  }
+}
