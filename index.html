@@ -64,7 +64,7 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
-<link rel="stylesheet" href="reading-experience.css?v=30">
+<link rel="stylesheet" href="reading-experience.css?v=31">
 <script src="ui-accessibility.js" defer></script>
 <script src="reading-experience.js" defer></script>
 </head>
@@ -103,34 +103,33 @@
 
 <!-- ============ HERO ============ -->
 <main id="main-content" tabindex="-1">
-<header class="hero" id="top">
-<div class="wrap"><div class="hero-copy"><div class="eyebrow">LinkGuard · Disaster Search and Rescue System</div><div class="hero-title">
-<h1 class="l-zh"><span class="hero-line hero-line-primary">聯動守護</span><span class="hero-line hero-line-accent">災害搜救系統</span></h1>
-<h1 class="l-en">LinkGuard — Disaster Search<br/>and Rescue System</h1>
-<p class="hero-sub l-zh">平時守護山林，災時搶救生命。</p>
-<p class="hero-sub l-en">Guarding the forest in normal times, saving lives when disaster strikes.</p>
-<p class="hero-lede l-zh">行動網路中斷時，以 LoRa 把現場訊息送回指揮中心，讓搜救決策不中斷。</p>
-<p class="hero-lede l-en">When mobile networks fail, LoRa carries field data back to command so rescue decisions can continue.</p>
-</div><div class="cta-row">
-<a class="btn btn-primary" data-play-video="" href="field.html#video">
-<svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-<span class="l-zh">觀看介紹影片</span><span class="l-en">Watch the video</span>
-</a>
-<a class="btn" href="functionality.html#functionality">
-<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 5v14m0 0l-6-6m6 6l6-6"></path></svg>
-<span class="l-zh">系統如何運作</span><span class="l-en">How it works</span>
-</a>
+<header class="hero hero--terrain" id="top">
+<div class="hero-map">
+<img class="hero-topo" src="assets/hero-topo.svg" alt="" aria-hidden="true">
+<svg class="hero-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+<line x1="22" y1="70" x2="44" y2="30"/>
+<line x1="44" y1="30" x2="72" y2="46"/>
+<line class="is-dispatch" x1="72" y1="46" x2="60" y2="80"/>
+</svg>
+<ol class="hero-nodes" aria-label="系統運作 / How it works">
+<li class="hero-node is-source" style="--x:22%;--y:70%"><span class="hero-node-dot"></span><span class="hero-node-label"><b>SENSE</b><span class="l-zh">生存信標</span><span class="l-en">Survival beacon</span></span></li>
+<li class="hero-node is-relay" style="--x:44%;--y:30%"><span class="hero-node-dot"></span><span class="hero-node-label"><b>CONNECT</b><span class="l-zh">LoRa 中繼</span><span class="l-en">LoRa relay</span></span></li>
+<li class="hero-node" style="--x:72%;--y:46%"><span class="hero-node-dot"></span><span class="hero-node-label"><b>DECIDE</b><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></span></li>
+<li class="hero-node" style="--x:60%;--y:80%"><span class="hero-node-dot"></span><span class="hero-node-label"><b>RESPOND</b><span class="l-zh">搜救隊</span><span class="l-en">Rescue team</span></span></li>
+</ol>
+</div>
+<div class="wrap">
+<div class="hero-copy">
+<p class="hero-kicker">LinkGuard <span class="l-zh">聯動守護 · LoRa 災害搜救系統</span><span class="l-en">· LoRa disaster search &amp; rescue</span></p>
+<h1 class="hero-claim l-zh">斷訊之後，<br>搜救不中斷。</h1>
+<h1 class="hero-claim l-en">When the network fails,<br>rescue keeps going.</h1>
+<p class="hero-lede l-zh">行動網路中斷時，以 LoRa 把受困者的生命徵象與現場資料送回指揮中心。平時守護山林，災時搶救生命。</p>
+<p class="hero-lede l-en">When mobile networks fail, LoRa carries vital signs and field data back to command. Guarding the forest every day, saving lives when disaster strikes.</p>
+<div class="cta-row">
+<a class="btn btn-primary" data-play-video="" href="field.html#video"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg><span class="l-zh">觀看介紹影片</span><span class="l-en">Watch the video</span></a>
+<a class="btn" href="functionality.html#functionality"><span class="l-zh">系統如何運作</span><span class="l-en">How it works</span><span aria-hidden="true"> →</span></a>
 </div>
 <div class="hero-proof" aria-label="Key evidence"><a href="awards.html"><strong>IYRC 2026</strong><span class="l-zh">最高榮譽獎</span><span class="l-en">Grand Prize</span></a><a href="awards.html"><strong><span class="l-zh">全國科展</span><span class="l-en">Science Fair</span></strong><span class="l-zh">第三名</span><span class="l-en">National 3rd Place</span></a><a href="data.html"><strong>1.96 km</strong><span class="l-zh">LoRa 最遠實測</span><span class="l-en">LoRa field test</span></a></div>
-</div>
-<div class="hero-chain">
-<p class="hero-chain-title"><span class="l-zh">系統怎麼運作</span><span class="l-en">How the system works</span></p>
-<ol>
-<li><span class="hero-chain-tag">SENSE</span><strong><span class="l-zh">現場感測</span><span class="l-en">Field sensing</span></strong><span class="hero-chain-note"><span class="l-zh">生命徵象 · 環境感測</span><span class="l-en">Vital signs · Environment</span></span></li>
-<li><span class="hero-chain-tag">CONNECT</span><strong><span class="l-zh">離線通訊</span><span class="l-en">Offline link</span></strong><span class="hero-chain-note">LoRa ESP32-S3</span></li>
-<li><span class="hero-chain-tag">DECIDE</span><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><span class="hero-chain-note"><span class="l-zh">本地端 AI · Rescue Radar</span><span class="l-en">On-device AI · Rescue Radar</span></span></li>
-<li><span class="hero-chain-tag">RESPOND</span><strong><span class="l-zh">搜救行動</span><span class="l-en">Search &amp; rescue</span></strong><span class="hero-chain-note"><span class="l-zh">空中搜索 · 地面確認</span><span class="l-en">Aerial search · Ground confirmation</span></span></li>
-</ol>
 </div>
 </div>
 </header>
