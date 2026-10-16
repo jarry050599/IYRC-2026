@@ -554,21 +554,6 @@ body.reading-site[data-route="index"] .hero > .wrap {
 body.reading-site[data-route="index"] .hero-copy { grid-column: 1; grid-row: 1; }
 
 body.reading-site .hero-lede { max-width: 36em; margin-top: 18px; font-size: 17px; line-height: 1.8; color: var(--fg-mid); }
-body.reading-site .hero-proof {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  overflow: hidden;
-  border: 1px solid var(--line-soft);
-  border-radius: 20px;
-  background: var(--navy, #0b1a33);
-  box-shadow: var(--panel-shadow-soft);
-}
-body.reading-site .hero-proof a { display: grid; gap: 4px; min-width: 0; padding: 22px 26px; color: #fff; border-right: 1px solid rgb(255 255 255 / 18%); }
-body.reading-site .hero-proof a:last-child { border-right: 0; }
-body.reading-site .hero-proof strong { font-size: 18px; line-height: 1.4; }
-body.reading-site .hero-proof a > span { font-size: 14px; color: rgb(255 255 255 / 76%); }
 
 body.reading-site .reading-section { position: relative; }
 body.reading-site[data-page="home"] #home-workflow,
@@ -665,9 +650,6 @@ body.reading-site[data-page]:not([data-page="home"]) :is(.card,.exp-card,.place-
   body.reading-site[data-route="index"] .hero { padding: 42px 0 56px; }
   body.reading-site[data-route="index"] .hero > .wrap { display: grid; grid-template-columns: minmax(0,1fr); gap: 32px; }
   body.reading-site[data-route="index"] .hero-copy { grid-column: 1; grid-row: 1; }
-  body.reading-site .hero-proof { grid-column: 1; grid-row: 2; grid-template-columns: minmax(0,1fr); }
-  body.reading-site .hero-proof a { padding: 17px 20px; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 18%); }
-  body.reading-site .hero-proof a:last-child { border-bottom: 0; }
   body.reading-site .evidence-metrics { grid-template-columns: minmax(0,1fr); }
   body.reading-site .evidence-metrics .large-metric,
   body.reading-site .evidence-metrics .large-metric:nth-child(n+4),
@@ -695,11 +677,25 @@ body.reading-site .hero-chain li:not(:last-child)::after { content: ""; position
 body.reading-site .hero-chain-tag { font-size: 13px; font-weight: 600; letter-spacing: .1em; color: var(--accent); }
 body.reading-site .hero-chain strong { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--fg); }
 body.reading-site .hero-chain-note { font-size: 15px; line-height: 1.6; color: var(--fg-mid); }
-body.reading-site .hero-proof { grid-column: 1 / -1; grid-row: 2; }
-body.reading-site .hero-proof a { text-decoration: none; transition: background .2s; }
-body.reading-site .hero-proof a:hover { background: rgb(255 255 255 / 6%); }
-body.reading-site .hero-proof a:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
-body.reading-site .hero-lede { text-wrap: pretty; }
 @media (max-width: 760px) {
   body.reading-site .hero-chain { display: none; }
+}
+
+/* ===== Hero proof row: quiet credentials under the buttons ===== */
+body.reading-site .hero-proof { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+body.reading-site .hero-proof a { display: grid; align-content: start; gap: 4px; min-width: 0; padding: 0 28px; border-left: 1px solid var(--line-soft); color: inherit; text-decoration: none; }
+body.reading-site .hero-proof a:first-child { padding-left: 0; border-left: 0; }
+body.reading-site .hero-proof strong { font-size: 17px; font-weight: 600; line-height: 1.4; color: var(--fg); white-space: nowrap; }
+body.reading-site .hero-proof a > span { font-size: 14px; line-height: 1.5; color: var(--fg-mid); }
+body.reading-site .hero-proof a:hover strong { color: var(--accent); }
+body.reading-site .hero-proof a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+body.reading-site .hero-lede { text-wrap: balance; }
+@media (max-width: 1000px) {
+  body.reading-site .hero-proof a { padding: 0 20px; }
+}
+@media (max-width: 760px) {
+  body.reading-site .hero-proof { margin-top: 32px; padding-top: 20px; }
+  body.reading-site .hero-proof a { padding: 0 14px; }
+  body.reading-site .hero-proof strong { font-size: 16px; }
+  body.reading-site .hero-proof a > span { font-size: 13px; }
 }
