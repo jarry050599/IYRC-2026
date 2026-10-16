@@ -212,7 +212,6 @@ body[data-page="home"] .hero .hero-title { grid-column: 1; grid-row: 2; margin: 
 body[data-page="home"] .hero .hero-sub { color: var(--fg); }
 .hero .hero-sub + .lede { margin-top: 18px; }
 body[data-page="home"] .hero .hero-title h1.l-zh { font-size: clamp(30px, 3.2vw, 48px); line-height: 1.2; letter-spacing: 0; white-space: nowrap; }
-body[data-page="home"] .hero .hero-title h1.l-zh .hero-line-accent { margin-left: .22em; }
 body[data-page="home"] .hero .hero-title .hero-sub { font-size: clamp(18px, 1.9vw, 26px); }
 @media (max-width: 900px) {
   body[data-page="home"] .hero .hero-title h1.l-zh { font-size: clamp(24px, 7.6vw, 44px); white-space: nowrap; }

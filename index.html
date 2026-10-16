@@ -64,7 +64,7 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
-<link rel="stylesheet" href="reading-experience.css?v=29">
+<link rel="stylesheet" href="reading-experience.css?v=30">
 <script src="ui-accessibility.js" defer></script>
 <script src="reading-experience.js" defer></script>
 </head>
@@ -89,9 +89,9 @@
 <button aria-pressed="true" data-set-lang="zh" type="button">中文</button>
 <button aria-pressed="false" data-set-lang="en" type="button">EN</button>
 </div>
-<button aria-label="下載簡報 / Download deck" class="btn btn-primary btn-sm" data-modal-open="contactModal">
-<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
-<span class="btn-label"><span class="l-zh">下載簡報</span><span class="l-en">Deck</span></span>
+<button aria-label="聯絡我們 / Contact us" class="btn btn-primary btn-sm" data-modal-open="contactModal">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2"></path></svg>
+<span class="btn-label"><span class="l-zh">聯絡我們</span><span class="l-en">Contact</span></span>
 </button>
 <button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
 <svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
@@ -120,16 +120,19 @@
 <svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 5v14m0 0l-6-6m6 6l6-6"></path></svg>
 <span class="l-zh">系統如何運作</span><span class="l-en">How it works</span>
 </a>
-</div></div>
-<figure class="hero-visual">
-<img alt="LinkGuard 四旋翼搜索載具於戶外執行搜救通訊測試" height="674" src="assets/optimized/system-06.webp" width="1200"/>
-<figcaption>
-<strong><span class="l-zh">把通訊帶進沒有訊號的地方</span><span class="l-en">Taking communication beyond the network</span></strong>
-<span>LINKGUARD · FIELD SYSTEM</span>
-</figcaption>
-</figure>
-<div class="hero-proof" aria-label="Key evidence"><a href="awards.html"><strong>IYRC 2026</strong><span class="l-zh">最高榮譽獎</span><span class="l-en">Grand Prize</span></a><a href="awards.html"><strong><span class="l-zh">全國科展</span><span class="l-en">National Science Fair</span></strong><span class="l-zh">第三名</span><span class="l-en">3rd Place</span></a><a href="data.html"><strong>1.96 km</strong><span class="l-zh">LoRa 最遠實測</span><span class="l-en">LoRa field test</span></a></div>
-<div class="hero-system"><p class="reading-kicker">SENSE · CONNECT · RESPOND</p><div class="hero-system-top"><span><span class="l-zh">生命徵象</span><span class="l-en">Vital signs</span></span><span><span class="l-zh">環境感測</span><span class="l-en">Environment</span></span></div><div class="hero-radio"><span>LoRa ESP32-S3</span><strong><span class="l-zh">離線通訊</span><span class="l-en">Offline communication</span></strong></div><div class="hero-command"><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><span><span class="l-zh">本地端 AI · Rescue Radar</span><span class="l-en">On-device AI · Rescue Radar</span></span></div><div class="hero-response"><span class="l-zh">空中搜索</span><span class="l-en">Aerial search</span><span aria-hidden="true">·</span><span class="l-zh">地面確認</span><span class="l-en">Ground confirmation</span></div></div></div>
+</div>
+<div class="hero-proof" aria-label="Key evidence"><a href="awards.html"><strong>IYRC 2026</strong><span class="l-zh">最高榮譽獎</span><span class="l-en">Grand Prize</span></a><a href="awards.html"><strong><span class="l-zh">全國科展</span><span class="l-en">Science Fair</span></strong><span class="l-zh">第三名</span><span class="l-en">National 3rd Place</span></a><a href="data.html"><strong>1.96 km</strong><span class="l-zh">LoRa 最遠實測</span><span class="l-en">LoRa field test</span></a></div>
+</div>
+<div class="hero-chain">
+<p class="hero-chain-title"><span class="l-zh">系統怎麼運作</span><span class="l-en">How the system works</span></p>
+<ol>
+<li><span class="hero-chain-tag">SENSE</span><strong><span class="l-zh">現場感測</span><span class="l-en">Field sensing</span></strong><span class="hero-chain-note"><span class="l-zh">生命徵象 · 環境感測</span><span class="l-en">Vital signs · Environment</span></span></li>
+<li><span class="hero-chain-tag">CONNECT</span><strong><span class="l-zh">離線通訊</span><span class="l-en">Offline link</span></strong><span class="hero-chain-note">LoRa ESP32-S3</span></li>
+<li><span class="hero-chain-tag">DECIDE</span><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><span class="hero-chain-note"><span class="l-zh">本地端 AI · Rescue Radar</span><span class="l-en">On-device AI · Rescue Radar</span></span></li>
+<li><span class="hero-chain-tag">RESPOND</span><strong><span class="l-zh">搜救行動</span><span class="l-en">Search &amp; rescue</span></strong><span class="hero-chain-note"><span class="l-zh">空中搜索 · 地面確認</span><span class="l-en">Aerial search · Ground confirmation</span></span></li>
+</ol>
+</div>
+</div>
 </header>
 <!-- ============ 01 SUMMARY ============ -->
 <section class="reading-section" id="home-problem"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">01 / PROBLEM → SOLUTION</p><h2><span class="l-zh">行動網路一旦中斷，搜救就先斷了線。</span><span class="l-en">When the mobile network goes down, the rescue loses its line first.</span></h2></div><div class="home-intro-copy"><p class="lede l-zh">

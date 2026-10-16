@@ -186,12 +186,6 @@ body[data-page="home"] .hero > .wrap {
   display: grid; grid-template-columns: minmax(0,1.04fr) minmax(0,1fr);
   column-gap: 64px; row-gap: 0; min-height: 0; align-content: start; align-items: start;
 }
-body[data-page="home"] .hero > .wrap::before {
-  content: ""; grid-column: 2; grid-row: 1 / 5; align-self: stretch; min-height: 440px;
-  border: 1px solid var(--line); border-radius: 16px;
-  background: #f8fafc url("assets/optimized/system-06.webp") center / cover no-repeat;
-  box-shadow: 0 6px 24px rgba(17,24,39,.045);
-}
 body[data-page="home"] .hero .eyebrow {
   grid-column: 1; grid-row: 1; margin: 0 0 24px; padding: 0;
   max-width: none; color: var(--accent); background: none; border: 0;
@@ -585,7 +579,6 @@ body[data-page] .hero > .wrap > * { animation: none; }
   html[data-device] body[data-page] .nav-links { max-height: calc(100svh - 68px); }
   body[data-page="home"] .hero { padding: 64px 0 40px; }
   body[data-page="home"] .hero > .wrap { grid-template-columns: minmax(0,1fr); }
-  body[data-page="home"] .hero > .wrap::before { grid-column: 1; grid-row: 5; min-height: 0; aspect-ratio: 16/9; margin-top: 40px; }
   body[data-page="home"] .hero h1,
   body[data-page="home"] .hero h1.l-zh { font-size: 52px; }
   body[data-page="home"] .hero h1.l-en { font-size: 48px; }
@@ -648,7 +641,6 @@ body[data-page] .hero > .wrap > * { animation: none; }
   body[data-page="home"] .hero .lede { margin-top: 24px; font-size: 15px; line-height: 1.85; }
   body[data-page="home"] .hero .cta-row { display: grid; grid-template-columns: minmax(0,1fr); gap: 10px; margin-top: 26px; }
   body[data-page="home"] .hero .cta-row .btn { width: 100%; min-height: 48px; font-size: 14px; justify-content: center; }
-  body[data-page="home"] .hero > .wrap::before { margin-top: 32px; border-radius: 12px; }
   body[data-page="home"] .hero .chips { grid-template-columns: repeat(2,minmax(0,1fr)); padding: 0; margin-top: 32px; }
   body[data-page="home"] .hero .chip { padding: 20px 0 20px 16px; font-size: 12px; border-left: 1px solid var(--line); }
   body[data-page="home"] .hero .chip:nth-child(odd) { padding-left: 0; border-left: 0; }
