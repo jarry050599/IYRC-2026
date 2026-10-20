@@ -8,6 +8,24 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) return;
 
+
+  // Reading progress hairline (decorative, aria-hidden).
+  (function () {
+    var bar = document.createElement('div');
+    bar.className = 'lg-progress'; bar.setAttribute('aria-hidden', 'true');
+    var fill = document.createElement('i'); bar.appendChild(fill);
+    document.body.appendChild(bar);
+    var ticking = false;
+    function update() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      fill.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0) + ')';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
   var SELECTOR = [
     '.reading-section-head', '.sec-head', '.system-flow > li', '.large-metric', '.evidence-caveat',
     '#home-system .chip', '.system-home-photo', '.home-team-grid > a', '.home-intro-copy',

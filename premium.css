@@ -574,9 +574,9 @@ html body[data-page] .wf-dot { width: 7px; height: 7px; border-radius: 50%; back
 html body[data-page] .wf-drawer-link { display: none; }
 html body.reading-site .wf-entry { background: var(--lg-accent); color: #fff; padding: 0; }
 html body.reading-site .wf-entry > .wrap { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-block: 36px; }
-html body.reading-site .wf-entry-kicker { margin: 0 0 10px; font: 500 12px/1 var(--lg-mono); letter-spacing: .16em; color: rgb(255 255 255 / 78%); }
+html body.reading-site .wf-entry-kicker { margin: 0 0 10px; font: 500 12px/1 var(--lg-mono); letter-spacing: .16em; color: #fff; opacity: .92; }
 html body.reading-site .wf-entry h2 { margin: 0; color: #fff; font-size: clamp(24px, 3vw, 36px); line-height: 1.25; letter-spacing: -.01em; }
-html body.reading-site .wf-entry-url { margin: 10px 0 0; font: 500 14px/1.4 var(--lg-mono); color: rgb(255 255 255 / 85%); }
+html body.reading-site .wf-entry-url { margin: 10px 0 0; font: 500 14px/1.4 var(--lg-mono); color: #fff; }
 html body.reading-site .wf-entry-btn { display: inline-flex; align-items: center; gap: 10px; flex: none; min-height: 52px; padding: 0 26px; border-radius: 8px; background: #fff; color: var(--lg-accent); font: 600 16px/1 var(--lg-sans); text-decoration: none; box-shadow: 0 1px 2px rgb(15 23 42 / 18%); transition: transform 160ms ease, box-shadow 160ms ease; }
 html body.reading-site .wf-entry-btn svg { width: 16px; height: 16px; }
 html body.reading-site .wf-entry-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgb(15 23 42 / 22%); }
@@ -590,6 +590,27 @@ html body.reading-site .wf-entry-btn:focus-visible, html body[data-page] .wf-nav
   html body.reading-site .wf-entry > .wrap { flex-direction: column; align-items: stretch; gap: 20px; padding-block: 28px; }
   html body.reading-site .wf-entry-btn { justify-content: center; }
 }
+/* Finishing details */
+html { scrollbar-color: var(--lg-line-strong) transparent; scrollbar-width: thin; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+html body[data-page] { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html body[data-page] :is(h1, h2, h3) { text-wrap: balance; }
+html body[data-page] :is(p, li, figcaption, .lede) { text-wrap: pretty; }
+html body[data-page] main img { image-rendering: auto; }
+html body[data-page] :is(.system-home-photo, .wall-photo, .avatar, .video-player, .field-photo, figure) { position: relative; }
+html body[data-page] :is(.system-home-photo, .wall-photo) img { border-radius: inherit; }
+html body[data-page] :is(.system-home-photo, .wall-photo)::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(15 23 42 / 7%); pointer-events: none; }
+html body[data-page] :is(.system-home-photo, .wall-photo) { box-shadow: 0 1px 2px rgb(15 23 42 / 5%), 0 12px 32px -16px rgb(15 23 42 / 18%); transition: box-shadow 300ms var(--lg-ease), transform 300ms var(--lg-ease); }
+html body[data-page] :is(.system-home-photo, .wall-photo):hover { box-shadow: 0 2px 4px rgb(15 23 42 / 6%), 0 20px 44px -18px rgb(15 23 42 / 26%); transform: translateY(-2px); }
+html body[data-page] .btn { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 220ms var(--lg-ease), transform 160ms var(--lg-ease); }
+html body[data-page] .btn:active { transform: translateY(1px) scale(.99); }
+html body[data-page] .btn-primary:hover { box-shadow: 0 1px 0 rgb(255 255 255 / 22%) inset, 0 8px 20px -8px rgb(37 99 235 / 55%); }
+html body[data-page] a:not(.btn):not([class]) { text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); transition: text-decoration-color 160ms ease, color 160ms ease; }
+html body[data-page] a:not(.btn):not([class]):hover { text-decoration-color: currentColor; }
+html body[data-page] .nav.stuck, html body[data-page] nav.stuck { box-shadow: 0 1px 0 var(--lg-line), 0 8px 24px -18px rgb(15 23 42 / 22%); }
+.lg-progress { position: fixed; z-index: 1000; top: 0; left: 0; right: 0; height: 2px; background: transparent; pointer-events: none; }
+.lg-progress > i { display: block; height: 100%; width: 100%; background: var(--lg-accent); transform-origin: 0 50%; transform: scaleX(0); will-change: transform; }
+@media print { .lg-progress { display: none; } }
 /* -------------------------------------------------------------------------
    10. Responsive
    ------------------------------------------------------------------------- */
