@@ -33,6 +33,32 @@
       flat.appendChild(contact);
       menu.appendChild(flat);
     }
+    var WF = 'https://wayfinder.linkguard.tw';
+    var arrow = '<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 11l6-6M6 5h5v5"/></svg>';
+    var navRight = document.querySelector('.nav-right');
+    if (navRight && !navRight.querySelector('.wf-nav-link')) {
+      var wl = document.createElement('a');
+      wl.className = 'wf-nav-link';
+      wl.href = WF; wl.target = '_blank'; wl.rel = 'noopener';
+      wl.innerHTML = '<span class="wf-dot" aria-hidden="true"></span><span>WAYFINDER</span>' + arrow;
+      wl.setAttribute('aria-label', 'WAYFINDER 官方網站 / WAYFINDER website');
+      navRight.insertBefore(wl, navRight.firstChild);
+    }
+    if (menu && !menu.querySelector('.wf-drawer-link')) {
+      var dl = document.createElement('a');
+      dl.className = 'wf-drawer-link';
+      dl.href = WF; dl.target = '_blank'; dl.rel = 'noopener';
+      dl.innerHTML = '<span><b>WAYFINDER</b><small>wayfinder.linkguard.tw</small></span>' + arrow;
+      menu.appendChild(dl);
+    }
+    var homeProblem = document.getElementById('home-problem');
+    if (homeProblem && !document.querySelector('.wf-entry')) {
+      var band = document.createElement('div');
+      band.className = 'wf-entry';
+      band.setAttribute('role', 'region'); band.setAttribute('aria-label', 'WAYFINDER');
+      band.innerHTML = '<div class="wrap"><div class="wf-entry-copy"><p class="wf-entry-kicker">WAYFINDER</p><h2><span class="l-zh">前往 WAYFINDER 尋途官方網站</span><span class="l-en">Visit the WAYFINDER website</span></h2><p class="wf-entry-url">wayfinder.linkguard.tw</p></div><a class="wf-entry-btn" href="' + WF + '" target="_blank" rel="noopener"><span class="l-zh">前往網站</span><span class="l-en">Go to website</span>' + arrow + '</a></div>';
+      homeProblem.parentNode.insertBefore(band, homeProblem);
+    }
     document.querySelectorAll('footer .credits').forEach(function (credits) {
       var groups = credits.querySelectorAll('.credit-group');
       if (!groups.length || credits.querySelector('.footer-contact')) return;
