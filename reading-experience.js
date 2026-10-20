@@ -49,6 +49,10 @@
       contact.className = 'credit-group footer-contact';
       contact.innerHTML = '<div class="credit-label"><span class="l-zh">聯絡 LinkGuard</span><span class="l-en">Contact LinkGuard</span></div><ul class="credit-list"><li><span class="b">→</span><span><a href="mailto:jouyun@alinkguard.com">jouyun@alinkguard.com</a></span></li><li><span class="b">→</span><span><a href="https://www.instagram.com/linkguard_dev_team/" target="_blank" rel="noopener noreferrer">@linkguard_dev_team</a></span></li></ul>';
       credits.appendChild(contact);
+      var company = document.createElement('div');
+      company.className = 'credit-group footer-company';
+      company.innerHTML = '<div class="credit-label"><span class="l-zh">公司資訊</span><span class="l-en">Company</span></div><ul class="credit-list"><li><span class="b">→</span><span><span class="l-zh">固碩實業有限公司</span><span class="l-en">GOOD SO INDUSTRIAL CO., LTD.</span></span></li><li><span class="b">→</span><span><span class="l-zh">統一編號 27617680</span><span class="l-en">Tax ID 27617680</span></span></li><li><span class="b">→</span><span><span class="l-zh">新竹縣竹東鎮北興路一段571號</span><span class="l-en">No. 571, Sec. 1, Beixing Rd., Zhudong Township, Hsinchu County</span></span></li></ul>';
+      credits.appendChild(company);
     });
   }
   function syncDrawer() {
