@@ -7,7 +7,7 @@ const OFFLINE_ASSETS = [
   "./multipage.css", "./site-foundation.css", "./site-layout.css",
   "./site-technical.css", "./design-system.css", "./ui-accessibility.js",
   "./reading-experience.css?v=31", "./reading-experience.js",
-  "./premium.css?v=13", "./premium.js", "./i18n.js?v=1", "./i18n/ja.json?v=1", "./i18n/ko.json?v=1",
+  "./premium.css?v=14", "./premium.js", "./i18n.js?v=1", "./i18n/ja.json?v=1", "./i18n/ko.json?v=1",
   "./assets/fonts/inter-latin-wght-normal.woff2", "./assets/fonts/jetbrains-mono-latin-wght-normal.woff2",
   "./manifest.webmanifest", "./assets/linkguard-logo.jpg", "./assets/hero-topo.svg",
   "./assets/linkguard-proposal.pdf"

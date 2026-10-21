@@ -643,9 +643,6 @@ html body[data-page] .nav.stuck, html body[data-page] nav.stuck { box-shadow: 0 
 @media (max-width: 760px) {
   html body[data-page] .table-scroll { background: linear-gradient(to right, #fff 30%, rgb(255 255 255 / 0%)) left center / 28px 100% no-repeat local, linear-gradient(to left, #fff 30%, rgb(255 255 255 / 0%)) right center / 28px 100% no-repeat local, linear-gradient(to right, rgb(15 23 42 / 10%), rgb(15 23 42 / 0%)) left center / 10px 100% no-repeat scroll, linear-gradient(to left, rgb(15 23 42 / 10%), rgb(15 23 42 / 0%)) right center / 10px 100% no-repeat scroll; }
 }
-@media (max-width: 600px) {
-  html body.reading-site .home-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
 @media (max-width: 760px) {
   html body[data-page] .table-scroll :is(th, td):first-child { min-width: 104px; overflow-wrap: normal; word-break: normal; hyphens: none; }
   html body[data-page] .table-scroll td:not(:first-child) { min-width: 150px; }
@@ -679,6 +676,18 @@ html body[data-page] .lg-langmenu .lang.lg-lang-list button:hover { background: 
 html body[data-page] .lg-langmenu .lang.lg-lang-list button[aria-pressed="true"] { background: var(--lg-accent-soft); color: var(--lg-accent); font-weight: 600; box-shadow: none; }
 html body[data-page] .lg-langmenu .lang.lg-lang-list button[aria-pressed="true"]::after { content: ""; width: 10px; height: 6px; margin-left: auto; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(-45deg); }
 html.lg-xl-loading .lg-lang-trigger { cursor: progress; }
+html[lang="ja"] body[data-page], html[lang="ja"] body.reading-site[data-page] { --lg-mono: "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo, "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", Meiryo, monospace; }
+html[lang="ko"] body[data-page], html[lang="ko"] body.reading-site[data-page] { --lg-mono: "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", monospace; }
+html[data-lang="ja"] .l-ja, html[data-lang="ko"] .l-ko { letter-spacing: .01em; text-transform: none; }
+html[lang="ja"] body[data-page] :is(h1, h2, h3) { word-break: auto-phrase; }
+body.reading-site[data-route="index"] .hero--terrain .hero-proof strong :is(.l-ja, .l-ko) { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  html[data-lang="ja"] body.reading-site[data-route="index"] .hero--terrain .hero-proof strong, html[data-lang="ko"] body.reading-site[data-route="index"] .hero--terrain .hero-proof strong { font-size: 14px; line-height: 1.3; }
+}
+body.reading-site[data-route="index"] .hero--terrain h1.hero-claim:is(.l-ja, .l-ko) { font-size: clamp(36px, 4.1vw, 60px); line-height: 1.22; letter-spacing: -.01em; }
+@media (max-width: 760px) {
+  body.reading-site[data-route="index"] .hero--terrain h1.hero-claim:is(.l-ja, .l-ko) { font-size: clamp(30px, 8.6vw, 40px); }
+}
 @media (max-width: 760px) {
   html body[data-page] .lg-lang-trigger { min-height: 40px; padding: 0 8px; gap: 4px; font-size: 12.5px; }
   html body[data-page] .lg-lang-trigger .lg-lang-chev { display: none; }
@@ -737,6 +746,11 @@ html body.reading-site[data-route="data"] #data .dashboard-primary .chart-card {
   html body.reading-site .system-home-gallery { grid-template-columns: 1fr; }
   html body.reading-site .system-home-photo:first-child { grid-column: auto; }
 }
+
+@media (max-width: 600px) {
+  html body.reading-site .home-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+html:is([data-lang="ja"], [data-lang="ko"]) body.reading-site .evidence-label { white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero--terrain .hero-copy > *, .hero--terrain .hero-map, .hero--terrain .hero-node, .hero--terrain .hero-links line,
