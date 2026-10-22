@@ -1,4 +1,4 @@
-const CACHE_NAME = "linkguard-site-v38";
+const CACHE_NAME = "linkguard-site-v39";
 const OFFLINE_ASSETS = [
   "./index.html", "./overview.html", "./background.html", "./functionality.html",
   "./data.html", "./experiments.html", "./comparison.html", "./deployment.html",
@@ -7,7 +7,7 @@ const OFFLINE_ASSETS = [
   "./multipage.css", "./site-foundation.css", "./site-layout.css",
   "./site-technical.css", "./design-system.css", "./ui-accessibility.js",
   "./reading-experience.css?v=31", "./reading-experience.js",
-  "./premium.css?v=14", "./premium.js", "./i18n.js?v=1", "./i18n/ja.json?v=1", "./i18n/ko.json?v=1",
+  "./premium.css?v=15", "./premium.js", "./i18n.js?v=2", "./i18n/ja.json?v=2", "./i18n/ko.json?v=2", "./view-counter.js?v=1",
   "./assets/fonts/inter-latin-wght-normal.woff2", "./assets/fonts/jetbrains-mono-latin-wght-normal.woff2",
   "./manifest.webmanifest", "./assets/linkguard-logo.jpg", "./assets/hero-topo.svg",
   "./assets/linkguard-proposal.pdf"
@@ -21,6 +21,7 @@ self.addEventListener("activate", (event) => {
 });
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  if (new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(fetch(event.request).then((response) => {
     if (!response || response.status !== 200 || response.type === "opaque") return response;
     const copy = response.clone();

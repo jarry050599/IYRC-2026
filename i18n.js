@@ -11,7 +11,7 @@
     ja: { label: '日本語', htmlLang: 'ja', home: 'LinkGuard — 災害捜索救助システム', toastOk: 'メールアドレスをコピーしました：', toastFail: 'メールアドレスをコピーできませんでした' },
     ko: { label: '한국어', htmlLang: 'ko', home: 'LinkGuard — 재난 수색 구조 시스템', toastOk: '이메일 주소를 복사했습니다: ', toastFail: '이메일 주소를 복사하지 못했습니다' }
   };
-  var VERSION = '1';
+  var VERSION = '2';
   var root = document.documentElement;
   var dicts = {};
   var current = null;          // 'ja' | 'ko' | null

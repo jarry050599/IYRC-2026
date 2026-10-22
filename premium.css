@@ -692,6 +692,14 @@ body.reading-site[data-route="index"] .hero--terrain h1.hero-claim:is(.l-ja, .l-
   html body[data-page] .lg-lang-trigger { min-height: 40px; padding: 0 8px; gap: 4px; font-size: 12.5px; }
   html body[data-page] .lg-lang-trigger .lg-lang-chev { display: none; }
 }
+/* Footer page-view counter (view-counter.js) */
+html body[data-page] footer .lg-views { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 5px 12px 5px 10px; border: 1px solid var(--lg-line); border-radius: 999px; background: #fff; color: var(--lg-mid); font: 500 12px/1.4 var(--lg-sans); white-space: nowrap; }
+html body[data-page] footer .lg-views[hidden] { display: none; }
+html body[data-page] footer .lg-views-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lg-blue-mid); box-shadow: 0 0 0 3px var(--lg-blue-pale); }
+html body[data-page] footer .lg-views-n { color: var(--lg-ink); font: 600 13px/1.4 var(--lg-mono); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) {
+  html body[data-page] footer .foot { flex-direction: column; align-items: flex-start; text-align: left; gap: 12px; }
+}
 /* -------------------------------------------------------------------------
    10. Responsive
    ------------------------------------------------------------------------- */
