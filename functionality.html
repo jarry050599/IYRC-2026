@@ -8,7 +8,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#ffffff">
 <title>功能 — LinkGuard</title>
-<meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
+<meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。斷網仍能傳遞生命徵象、現場資訊與搜救指令。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://linkguard.tw/functionality.html">
 
@@ -30,7 +30,7 @@
 <!-- X / Twitter preview -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
-<meta name="twitter:description" content="平時守護山林，災時搶救生命。">
+<meta name="twitter:description" content="斷網仍能傳遞生命徵象、現場資訊與搜救指令。">
 <meta name="twitter:image" content="https://linkguard.tw/assets/linkguard-logo.jpg">
 <meta name="twitter:image:alt" content="LinkGuard 團隊識別標誌">
 
@@ -66,7 +66,7 @@
 <link rel="stylesheet" href="design-system.css">
 <link rel="stylesheet" href="reading-experience.css?v=33">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="premium.css?v=18">
+<link rel="stylesheet" href="premium.css?v=24">
 <script src="i18n.js?v=2"></script>
 <script src="view-counter.js?v=1" defer></script>
 <script src="ui-accessibility.js" defer></script>
@@ -143,15 +143,15 @@
 </g>
 <g class="dg-node" data-node="fw">
 <rect class="dg-box" height="48" rx="10" width="160" x="36" y="38"></rect>
-<text class="dg-label l-zh" text-anchor="middle" x="116" y="60">定翼無人機</text>
-<text class="dg-label l-en" text-anchor="middle" x="116" y="60">Fixed-Wing</text>
-<text class="dg-sub" text-anchor="middle" x="116" y="75">WIDE SCAN</text>
+<text class="dg-label l-zh" text-anchor="middle" x="116" y="60">無人機 UAV</text>
+<text class="dg-label l-en" text-anchor="middle" x="116" y="60">UAV</text>
+<text class="dg-sub" text-anchor="middle" x="116" y="75">AERIAL RECON</text>
 </g>
 <g class="dg-node" data-node="qr">
 <rect class="dg-box" height="48" rx="10" width="158" x="228" y="38"></rect>
-<text class="dg-label l-zh" text-anchor="middle" x="307" y="60">四旋翼無人機</text>
-<text class="dg-label l-en" text-anchor="middle" x="307" y="60">Four-Rotor</text>
-<text class="dg-sub" text-anchor="middle" x="307" y="75">CLOSE CHECK</text>
+<text class="dg-label l-zh" text-anchor="middle" x="307" y="60">搜救員手持終端</text>
+<text class="dg-label l-en" text-anchor="middle" x="307" y="60">Rescuer Handheld</text>
+<text class="dg-sub" text-anchor="middle" x="307" y="75">FIELD RESPONSE</text>
 </g>
 <g class="dg-node" data-node="ugv">
 <rect class="dg-box" height="48" rx="10" width="164" x="418" y="38"></rect>
@@ -180,10 +180,10 @@
 </g>
 <g class="dg-node" data-node="sen">
 <rect class="dg-box" height="48" rx="10" width="164" x="36" y="276"></rect>
-<text class="dg-label l-zh" text-anchor="middle" x="118" y="298">環境感測節點</text>
-<text class="dg-label l-en" text-anchor="middle" x="118" y="298">Sensor Node</text>
-<text class="dg-sub l-zh" text-anchor="middle" x="118" y="313">含水 / 坡度 / 水位</text>
-<text class="dg-sub l-en" text-anchor="middle" x="118" y="313">SOIL / SLOPE / WATER</text>
+<text class="dg-label l-zh" text-anchor="middle" x="118" y="298">泰坦 TITAN</text>
+<text class="dg-label l-en" text-anchor="middle" x="118" y="298">TITAN</text>
+<text class="dg-sub l-zh" text-anchor="middle" x="118" y="313">結構監測 · 災時警示</text>
+<text class="dg-sub l-en" text-anchor="middle" x="118" y="313">STRUCTURE ALERT</text>
 </g>
 <g class="dg-node" data-node="cmd">
 <rect class="dg-box" height="72" rx="12" width="240" x="380" y="176"></rect>
@@ -226,11 +226,11 @@
 <div class="layer l-zh">Sense &amp; Send</div>
 <div class="layer l-en">Step one</div>
 <p class="desc l-zh">
-            LoRa ESP32-S3 讀取受困者的生命徵象與環境資料；LoRa 承載這些資料長距離傳輸，
+            LoRa ESP32-S3 讀取受困者的生命徵象、位置與現場資訊；LoRa 承載這些資料長距離傳輸，
             穿透倒塌建築、跨越山區抵達指揮中心。
           </p>
 <p class="desc l-en">
-            LoRa ESP32-S3 reads victims’ vital signs and environment data; LoRa carries it long-range,
+            LoRa ESP32-S3 reads victims’ vital signs, locations and field data; LoRa carries it long-range,
             through broken buildings and across mountains.
           </p>
 </button>
@@ -240,12 +240,10 @@
 <h3 class="l-en">Search</h3>
 <div class="layer">Wide → Close → Ground</div>
 <p class="desc l-zh">
-            定翼無人機廣域掃描、四旋翼無人機近距查證、地面機器人最終確認 ——
-            形成「廣域 → 近距 → 地面」的三層搜索流程。
+            無人機從空中確認現場與救援路線，地面機器人進入狹窄或危險區域，以光達建圖協助找人。
           </p>
 <p class="desc l-en">
-            Fixed-wing drone scans wide, four-rotor drone checks close, ground robot confirms —
-            a “wide → close → ground” three-layer process.
+            The UAV checks the scene and rescue routes from the air; the UGV enters narrow or dangerous spaces and maps them with LiDAR.
           </p>
 </button>
 <button aria-pressed="false" class="step" data-step="3">

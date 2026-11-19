@@ -8,7 +8,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#ffffff">
 <title>LinkGuard｜LoRa 災害搜救通訊系統</title>
-<meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。一張網路，兩種模式：平時守護山林，災時搶救生命。">
+<meta name="description" content="LinkGuard 是一套以長距離無線通訊為核心的災害救援系統。斷網仍能傳遞生命徵象、現場資訊與搜救指令。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://linkguard.tw/">
 
@@ -30,7 +30,7 @@
 <!-- X / Twitter preview -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
-<meta name="twitter:description" content="平時守護山林，災時搶救生命。">
+<meta name="twitter:description" content="斷網仍能傳遞生命徵象、現場資訊與搜救指令。">
 <meta name="twitter:image" content="https://linkguard.tw/assets/linkguard-logo.jpg">
 <meta name="twitter:image:alt" content="LinkGuard 團隊識別標誌">
 
@@ -66,7 +66,7 @@
 <link rel="stylesheet" href="design-system.css">
 <link rel="stylesheet" href="reading-experience.css?v=33">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="premium.css?v=18">
+<link rel="stylesheet" href="premium.css?v=24">
 <script src="i18n.js?v=2"></script>
 <script src="view-counter.js?v=1" defer></script>
 <script src="ui-accessibility.js" defer></script>
@@ -128,7 +128,7 @@
 <p class="hero-kicker">LinkGuard <span class="l-zh">聯動守護 · LoRa 災害搜救系統</span><span class="l-en">· LoRa disaster search &amp; rescue</span></p>
 <h1 class="hero-claim l-zh">斷訊之後，<br>搜救不中斷。</h1>
 <h1 class="hero-claim l-en">When the network fails,<br>rescue keeps going.</h1>
-<p class="hero-lede l-zh">行動網路中斷時，以 LoRa 把受困者的生命徵象與現場資料送回指揮中心。平時守護山林，災時搶救生命。</p>
+<p class="hero-lede l-zh">行動網路中斷時，以 LoRa 把受困者的生命徵象與現場資料送回指揮中心。斷網仍能傳遞生命徵象、現場資訊與搜救指令。</p>
 <p class="hero-lede l-en">When mobile networks fail, LoRa carries vital signs and field data back to command. Guarding the forest every day, saving lives when disaster strikes.</p>
 <div class="cta-row">
 <a class="btn btn-primary" data-play-video="" href="field.html#video"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg><span class="l-zh">觀看介紹影片</span><span class="l-en">Watch the video</span></a>
@@ -141,32 +141,32 @@
 <!-- ============ 01 SUMMARY ============ -->
 <section class="reading-section" id="home-problem"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">01 / PROBLEM → SOLUTION</p><h2><span class="l-zh">行動網路一旦中斷，搜救就先斷了線。</span><span class="l-en">When the mobile network goes down, the rescue loses its line first.</span></h2></div><div class="home-intro-copy"><p class="lede l-zh">
       以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。當災害摧毀行動網路，
-      以長距離無線電、穿戴式生理感測與本地端 AI，把受困者的生命徵象與環境資料送回指揮中心 ——
-      重新接起搜救人員與受困者之間的連結。一張網路，兩種模式。
+      以長距離無線電、穿戴式生理感測與本地端 AI，把受困者的生命徵象、定位與現場資訊送回指揮中心 ——
+      重新接起搜救人員與受困者之間的連結。七大模組共同維持完整搜救鏈。
     </p><p class="lede l-en">
       A disaster rescue communication system built with <strong>LoRa ESP32-S3</strong> as the core.
       When a disaster destroys mobile networks, long-range wireless, body sensors and on-device AI
-      carry victims’ vital signs and environment data back to the command center —
-      connecting rescuers and victims again. One network, two modes.
-    </p><a class="chapter-link" href="background.html"><span><span class="l-zh">研究背景</span><span class="l-en">Research background</span></span><span class="chapter-link-note"></span><span aria-hidden="true">→</span></a></div></div></section><section class="reading-section" id="home-workflow"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">02 / HOW IT WORKS</p><h2><span class="l-zh">五個節點，一條搜救鏈路。</span><span class="l-en">Five nodes. One rescue link.</span></h2></div><div class="system-overview compact-flow"><p class="reading-kicker">SYSTEM OVERVIEW</p><ol class="system-flow"><li><span class="flow-order">01</span><strong><span class="l-zh">受困者</span><span class="l-en">Victim</span></strong><small><span class="l-zh">生理訊號</span><span class="l-en">Vital signs</span></small></li><li><span class="flow-order">02</span><strong><span class="l-zh">感測節點</span><span class="l-en">Sensor node</span></strong><small><span class="l-zh">LoRa ESP32-S3</span><span class="l-en">LoRa ESP32-S3</span></small></li><li><span class="flow-order">03</span><strong><span class="l-zh">LoRa</span><span class="l-en">LoRa</span></strong><small><span class="l-zh">長距離無線電</span><span class="l-en">Long-range radio</span></small></li><li><span class="flow-order">04</span><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><small><span class="l-zh">本地端 AI</span><span class="l-en">On-device AI</span></small></li><li><span class="flow-order">05</span><strong><span class="l-zh">搜救隊</span><span class="l-en">Rescue team</span></strong><small><span class="l-zh">搜救雷達</span><span class="l-en">Rescue Radar</span></small></li></ol></div><a class="chapter-link" href="functionality.html"><span><span class="l-zh">感測、搜索、決策 —— 五個節點接起斷掉的那條線。</span><span class="l-en">Sense, search, decide — five nodes reconnect the line.</span></span><span class="chapter-link-note"></span><span aria-hidden="true">→</span></a></div></section><section class="reading-section" id="home-system"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">03 / SYSTEM</p><h2><span class="l-zh">兩種節點、三台載具。</span><span class="l-en">Two node types. Three vehicles.</span></h2></div><div class="chips">
+      carry victims’ vital signs, location and field data back to the command center —
+      connecting rescuers and victims again. Seven modules maintain one complete rescue chain.
+    </p><a class="chapter-link" href="background.html"><span><span class="l-zh">研究背景</span><span class="l-en">Research background</span></span><span class="chapter-link-note"></span><span aria-hidden="true">→</span></a></div></div></section><section class="reading-section" id="home-workflow"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">02 / HOW IT WORKS</p><h2><span class="l-zh">從受困者到指揮中心，一條搜救鏈路。</span><span class="l-en">From victims to command, one rescue link.</span></h2></div><div class="system-overview compact-flow"><p class="reading-kicker">SYSTEM OVERVIEW</p><ol class="system-flow"><li><span class="flow-order">01</span><strong><span class="l-zh">受困者</span><span class="l-en">Victim</span></strong><small><span class="l-zh">生理訊號</span><span class="l-en">Vital signs</span></small></li><li><span class="flow-order">02</span><strong><span class="l-zh">生存信標背包</span><span class="l-en">Beacon pack</span></strong><small><span class="l-zh">LoRa ESP32-S3</span><span class="l-en">LoRa ESP32-S3</span></small></li><li><span class="flow-order">03</span><strong><span class="l-zh">LoRa</span><span class="l-en">LoRa</span></strong><small><span class="l-zh">長距離無線電</span><span class="l-en">Long-range radio</span></small></li><li><span class="flow-order">04</span><strong><span class="l-zh">指揮中心</span><span class="l-en">Command center</span></strong><small><span class="l-zh">本地端 AI</span><span class="l-en">On-device AI</span></small></li><li><span class="flow-order">05</span><strong><span class="l-zh">搜救隊</span><span class="l-en">Rescue team</span></strong><small><span class="l-zh">搜救雷達</span><span class="l-en">Rescue Radar</span></small></li></ol></div><a class="chapter-link" href="functionality.html"><span><span class="l-zh">回傳、偵察、決策 —— 七大模組接起斷掉的那條線。</span><span class="l-en">Transmit, reconnoitre, decide — seven modules restore the link.</span></span><span class="chapter-link-note"></span><span aria-hidden="true">→</span></a></div></section><section class="reading-section" id="home-system"><div class="wrap"><div class="reading-section-head"><p class="reading-kicker">03 / SYSTEM</p><h2><span class="l-zh">七大模組，一條搜救鏈。</span><span class="l-en">Seven modules. One rescue chain.</span></h2></div><div class="chips">
 <span class="chip" tabindex="0">
 <b>LoRa ESP32-S3</b> <span class="l-zh">為核心主控</span><span class="l-en">at the core</span>
 <span class="tip" role="tooltip">
-<span class="l-zh">兩種節點的本體都以 模組化零件構成，由 LoRa ESP32-S3 讀取感測器、封裝資料並排程發送。</span>
+<span class="l-zh">七大模組依序涵蓋受困者端、建築端、搜救端、指揮端與現場偵察。</span>
 <span class="l-en">Both node types are built from modular parts, with LoRa ESP32-S3 reading the sensors, packing the data and scheduling transmission.</span>
 </span>
 </span>
 <span class="chip" tabindex="0">
-<b>2</b> <span class="l-zh">種感測節點</span><span class="l-en">sensor node types</span>
+<b>7</b> <span class="l-zh">大系統模組</span><span class="l-en">system modules</span>
 <span class="tip" role="tooltip">
-<span class="l-zh">生存信標節點回傳受困者的心率與血氧；環境感測節點監看土壤含水量、坡度與水位，預警二次災害。</span>
-<span class="l-en">The Survival Beacon Node reports heart rate and SpO₂; the Sensor Node watches soil moisture, slope and water level to warn of second disasters.</span>
+<span class="l-zh">智慧手錶量測生命徵象，生存信標背包以 LoRa 回傳定位與資料；泰坦 TITAN 負責建築結構監測與災時警示。</span>
+<span class="l-en">The smartwatch measures vital signs, the Survival Beacon Pack sends location and data over LoRa, and TITAN monitors building structures and issues disaster alerts.</span>
 </span>
 </span>
 <span class="chip" tabindex="0">
 <b>3</b> <span class="l-zh">台搜索載具</span><span class="l-en">search vehicles</span>
 <span class="tip" role="tooltip">
-<span class="l-zh">定翼無人機廣域掃描、四旋翼無人機近距查證、地面機器人進入危險區域做最終確認。</span>
+<span class="l-zh">無人機從空中確認現場，地面機器人進入狹窄與危險區域偵察。</span>
 <span class="l-en">The fixed-wing drone scans wide, the four-rotor drone checks close, and the ground robot enters dangerous areas to confirm.</span>
 </span>
 </span>
