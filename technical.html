@@ -20,8 +20,8 @@
 <meta property="og:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
 <meta property="og:description" content="以 LoRa 自組通訊與指揮應用程式，建立災害現場的搜救通訊鏈路。">
 <meta property="og:url" content="https://linkguard.tw/technical.html">
-<meta property="og:image" content="https://alinkguard.com/assets/linkguard-logo.jpg">
-<meta property="og:image:secure_url" content="https://alinkguard.com/assets/linkguard-logo.jpg">
+<meta property="og:image" content="https://linkguard.tw/assets/linkguard-logo.jpg">
+<meta property="og:image:secure_url" content="https://linkguard.tw/assets/linkguard-logo.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="1280">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LinkGuard｜LoRa 災害搜救通訊系統">
 <meta name="twitter:description" content="平時守護山林，災時搶救生命。">
-<meta name="twitter:image" content="https://alinkguard.com/assets/linkguard-logo.jpg">
+<meta name="twitter:image" content="https://linkguard.tw/assets/linkguard-logo.jpg">
 <meta name="twitter:image:alt" content="LinkGuard 團隊識別標誌">
 
 <script type="application/ld+json">
@@ -40,16 +40,16 @@
   "@type": "WebSite",
   "name": "LinkGuard",
   "alternateName": "LinkGuard 災害搜救通訊系統",
-  "url": "https://alinkguard.com/",
+  "url": "https://linkguard.tw/",
   "description": "以 LoRa 自組通訊與指揮應用程式建立災害現場搜救通訊鏈路。",
   "inLanguage": ["zh-Hant", "en"],
-  "image": "https://alinkguard.com/assets/linkguard-logo.jpg",
+  "image": "https://linkguard.tw/assets/linkguard-logo.jpg",
   "publisher": {
     "@type": "Organization",
     "name": "LinkGuard",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://alinkguard.com/assets/linkguard-logo.jpg",
+      "url": "https://linkguard.tw/assets/linkguard-logo.jpg",
       "width": 1280,
       "height": 1280
     },
@@ -65,7 +65,7 @@
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="site-technical.css">
 <link rel="stylesheet" href="design-system.css">
-<link rel="stylesheet" href="reading-experience.css?v=31">
+<link rel="stylesheet" href="reading-experience.css?v=32">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="premium.css?v=15">
 <script src="i18n.js?v=2"></script>
@@ -120,7 +120,17 @@
 </div><nav aria-label="本頁導覽 / On this page" class="page-outline"><details open=""><summary><span class="l-zh">本頁內容</span><span class="l-en">On this page</span></summary><div class="outline-links"><a data-reading-target="a-fw" href="#a-fw"><span class="toc-index">01</span><span class="l-zh">韌體架構</span><span class="l-en">Firmware</span></a><a data-reading-target="a-firmware-flow" href="#a-firmware-flow"><span class="toc-index">02</span><span class="l-zh">運作流程</span><span class="l-en">Workflow</span></a><a data-reading-target="a-schedule" href="#a-schedule"><span class="toc-index">03</span><span class="l-zh">排程與省電</span><span class="l-en">Scheduling &amp; power</span></a><a data-reading-target="a-radio" href="#a-radio"><span class="toc-index">04</span><span class="l-zh">頻道與可靠性</span><span class="l-en">Radio &amp; reliability</span></a><a data-reading-target="a-packet" href="#a-packet"><span class="toc-index">05</span><span class="l-zh">封包格式</span><span class="l-en">Packet format</span></a><a data-reading-target="a-quake-path" href="#a-quake-path"><span class="toc-index">06</span><span class="l-zh">地震模式</span><span class="l-en">Earthquake mode</span></a><a data-reading-target="safety" href="#safety"><span class="toc-index">07</span><span class="l-zh">安全與部署</span><span class="l-en">Safety &amp; deployment</span></a></div></details></nav>
 
 
-<div class="document-body"><div class="acc reveal" id="acc">
+<div class="document-body">
+<div class="chapter-preview technical-preview" aria-label="章節摘要 / Chapter overview">
+<p><strong>01</strong><span><span class="l-zh">三種韌體角色分工處理感測、搜救與指揮鏈。</span><span class="l-en">Three firmware roles divide sensing, rescue and command-chain work.</span></span></p>
+<p><strong>02</strong><span><span class="l-zh">封包從感測、排程到 LoRa 傳輸的完整路徑。</span><span class="l-en">The full packet path from sensing and scheduling to LoRa transmission.</span></span></p>
+<p><strong>03</strong><span><span class="l-zh">以分時回報與休眠策略平衡即時性和續航。</span><span class="l-en">Timed reporting and sleep strategies balance responsiveness and endurance.</span></span></p>
+<p><strong>04</strong><span><span class="l-zh">頻道存取、重送與驗證機制提升弱訊號環境可靠性。</span><span class="l-en">Channel access, retries and validation improve weak-signal reliability.</span></span></p>
+<p><strong>05</strong><span><span class="l-zh">短封包欄位讓生命徵象、位置與命令可離線交換。</span><span class="l-en">Compact fields exchange vitals, positions and commands offline.</span></span></p>
+<p><strong>06</strong><span><span class="l-zh">地震模式把受困者信標一路送到指揮與搜救手持端。</span><span class="l-en">Earthquake mode carries a victim beacon through command to rescuer handhelds.</span></span></p>
+<p><strong>07</strong><span><span class="l-zh">安全與部署章節整理耐候、容錯、權限與法規邊界。</span><span class="l-en">Safety and deployment cover durability, fault tolerance, authority and compliance.</span></span></p>
+</div>
+<div class="acc reveal" id="acc">
 <div class="acc-item open">
 <button aria-controls="a-fw" aria-expanded="true" class="acc-head">
 <span class="t"><span class="l-zh">韌體架構</span><span class="l-en">Firmware architecture</span></span>
@@ -128,7 +138,7 @@
 </button>
 <div class="acc-body" id="a-fw"><div><div class="acc-inner">
 <p class="body-text l-zh" style="margin-top:6px;font-size:15px">
-            系統以 <strong>LoRa ESP32-S3＋LoRa 無線模組</strong>為核心，預設 L4 Profile：
+            系統以 <strong>LoRa ESP32-S3 + LoRa 無線模組</strong>為核心，預設 L4 Profile：
             <strong>SF9、125 kHz、Coding Rate 4/6</strong>。LoRa ESP32-S3 負責感測、資料封裝、
             顯示與任務排程，LoRa 模組負責長距離短封包通訊；三種程式角色分別對應
             受困者節點、搜救節點與 HQ 指揮鏈。
@@ -431,7 +441,7 @@
 <li>可透過藍牙獲取手錶數據，或利用內建終端進行被動式生命偵測</li>
 <li>通訊：SX1262 LoRa 模組；高增益雙頻 923 MHz 天線</li>
 <li>電源：10,000 mAh 鋰電池，休眠電流僅 0.1 mA，待機年限 1–2 年</li>
-<li>3D 列印保護盒與防爆盒（ABS／ASA+／PETG／PLA 耗材）</li>
+<li>3D 列印保護盒與防爆盒（ABS／ASA／PETG／PLA 耗材）</li>
 </ul>
 <ul class="fw-flow-list l-en">
 <li>A survival module built into an evacuation backpack: deep sleep in normal times, woken after a quake by the control centre (long LoRa preamble) or by vibration</li>
