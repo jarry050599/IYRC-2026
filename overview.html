@@ -64,7 +64,7 @@
 <link rel="stylesheet" href="multipage.css">
 <link rel="stylesheet" href="site-layout.css">
 <link rel="stylesheet" href="design-system.css">
-<link rel="stylesheet" href="reading-experience.css?v=31">
+<link rel="stylesheet" href="reading-experience.css?v=32">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="premium.css?v=15">
 <script src="i18n.js?v=2"></script>
@@ -121,17 +121,17 @@
 <p class="body-text reveal l-zh">
       LinkGuard 是一套以 <strong>LoRa ESP32-S3</strong> 為核心的災害救援通訊系統。
       <strong>生存信標節點</strong>與<strong>環境感測節點</strong>協同運作，
-      搭配一台地面機器人與兩架無人機（定翼與四旋翼）。
+      搭配一台地面機器人與兩架無人機（定翼與四旋翼）。<br/><br/>
       當災害摧毀行動網路，本系統以長距離無線電、穿戴式生理感測與 AI，
-      將受困者的生命徵象與環境資料回傳指揮中心 —— 重新接起搜救人員與受困者。
+      將受困者的生命徵象與環境資料回傳指揮中心 —— 重新接起搜救人員與受困者。<br/><br/>
       一張網路，兩種模式：平時守護山林，災時搶救生命。
     </p>
 <p class="body-text reveal l-en">
       LinkGuard is a disaster rescue communication system built with <strong>LoRa ESP32-S3</strong> as the
       core. The <strong>Survival Beacon Node</strong> and the <strong>Sensor Node</strong> work together
-      with one ground robot and two drones (fixed-wing and four-rotor). When a disaster destroys mobile
+      with one ground robot and two drones (fixed-wing and four-rotor).<br/><br/>When a disaster destroys mobile
       networks, our system uses long-range wireless, body sensors, and AI to send victims’ vital
-      signs and environment data back to the command center — connecting rescuers and victims again.
+      signs and environment data back to the command center — connecting rescuers and victims again.<br/><br/>
       One network, two modes: guarding the forest in normal times, and saving lives when disaster strikes.
     </p>
 <div class="report-block" id="quake-mode">
@@ -141,20 +141,20 @@
 <h2 class="l-en">Through collapsed floors,<br/>vital signs reach the command post.</h2>
 </div>
 <p class="body-text reveal l-zh">
-        台灣位於板塊交界，地震後建築倒塌易形成法拉第籠效應，造成受困者通訊中斷；現行搜救又因 LINE、無線電與多單位回報並用而資訊分散，影響黃金 72 小時內的決策效率。
-        LinkGuard-E 包含三項核心技術：（1）以 <strong>923 MHz LoRa</strong> 為主、BLE 為輔的複合組網，利用 33 cm 波長的繞射特性穿透 RC 結構網格；（2）<strong>智慧手錶生理感知</strong>，回傳心率資料；（3）<strong>整合式指揮平台</strong>，導入 ICS 分層權限、地圖標記與離線同步機制。
-        研究以鹽水等效模型驗證 LoRa 穿透能力，在 3.0% 鹽水濃度下仍可成功解碼，理論上約對應穿透 3 層 RC 樓板的衰減量；並透過蒙地卡羅模擬評估搜救效率，整體救援成功率由 82.83% 提升至 91.54%，其中紅燈傷患提升 25.85 個百分點。
+        台灣位於板塊交界，地震後建築倒塌易形成法拉第籠效應，造成受困者通訊中斷；現行搜救又因 LINE、無線電與多單位回報並用而資訊分散，影響黃金 72 小時內的決策效率。<br/><br/>
+        LinkGuard-E 包含三項核心技術：（1）以 <strong>923 MHz LoRa</strong> 為主、BLE 為輔的複合組網，利用 33 cm 波長的繞射特性穿透 RC 結構網格；（2）<strong>智慧手錶生理感知</strong>，回傳心率資料；（3）<strong>整合式指揮平台</strong>，導入 ICS 分層權限、地圖標記與離線同步機制。<br/><br/>
+        研究以鹽水等效模型驗證 LoRa 穿透能力，在 3.0% 鹽水濃度下仍可成功解碼，理論上約對應穿透 3 層 RC 樓板的衰減量；並透過蒙地卡羅模擬評估搜救效率，整體救援成功率由 82.83% 提升至 91.54%，其中紅燈傷患提升 25.86 個百分點。
       </p>
 <p class="body-text reveal l-en">
-        Taiwan sits on a plate boundary; after an earthquake, collapsed buildings act as Faraday cages that cut victims off, while rescue information is scattered across LINE, radio and multiple agencies, slowing decisions in the golden 72 hours.
-        LinkGuard-E combines three core technologies: (1) a hybrid network led by <strong>923 MHz LoRa</strong> with BLE, using the 33 cm wavelength to diffract through reinforced-concrete mesh; (2) <strong>smartwatch vital sensing</strong> that relays heart rate; and (3) an <strong>integrated command platform</strong> with ICS role permissions, map markers and offline sync.
-        A saline-equivalent model verified penetration — packets still decoded at 3.0% salinity, roughly the loss of three RC floors — and Monte Carlo simulation raised overall rescue success from 82.83% to 91.54%, with red-tag victims gaining 25.85 percentage points.
+        Taiwan sits on a plate boundary; after an earthquake, collapsed buildings act as Faraday cages that cut victims off, while rescue information is scattered across LINE, radio and multiple agencies, slowing decisions in the golden 72 hours.<br/><br/>
+        LinkGuard-E combines three core technologies: (1) a hybrid network led by <strong>923 MHz LoRa</strong> with BLE, using the 33 cm wavelength to diffract through reinforced-concrete mesh; (2) <strong>smartwatch vital sensing</strong> that relays heart rate; and (3) an <strong>integrated command platform</strong> with ICS role permissions, map markers and offline sync.<br/><br/>
+        A saline-equivalent model verified penetration — packets still decoded at 3.0% salinity, roughly the loss of three RC floors — and Monte Carlo simulation raised overall rescue success from 82.83% to 91.54%, with red-tag victims gaining 25.86 percentage points.
       </p>
 <div class="kpi-grid reveal">
-<div class="kpi"><span class="evidence-label" data-evidence="measured"><span class="l-zh">實測</span><span class="l-en">MEASURED</span></span><div class="k"><span class="l-zh">抗干擾距離</span><span class="l-en">Range under interference</span></div><div class="n">900<small>m</small></div><div class="t"><span class="l-zh">台鐵、高鐵、高壓電塔周邊實測</span><span class="l-en">Measured beside railways, HSR and power towers</span></div></div>
+<div class="kpi"><span class="evidence-label" data-evidence="measured"><span class="l-zh">實測</span><span class="l-en">MEASURED</span></span><div class="k"><span class="l-zh">最大有效通訊距離</span><span class="l-en">Maximum effective range</span></div><div class="n">900<small>m</small></div><div class="t"><span class="l-zh">台鐵、高鐵、高壓電塔周邊實測</span><span class="l-en">Measured beside railways, HSR and power towers</span></div></div>
 <div class="kpi"><span class="evidence-label" data-evidence="lab"><span class="l-zh">模型實測</span><span class="l-en">MEASURED · LAB MODEL</span></span><div class="k"><span class="l-zh">穿透極限</span><span class="l-en">Penetration limit</span></div><div class="n">3.0<small>%</small></div><div class="t"><span class="l-zh">鹽水濃度下仍可解碼，約 63 dB 衰減</span><span class="l-en">Saline still decoded, about 63 dB of loss</span></div></div>
 <div class="kpi"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="k"><span class="l-zh">救援成功率</span><span class="l-en">Rescue success</span></div><div class="n">91.54<small>%</small></div><div class="t"><span class="l-zh">1,000 次配對蒙地卡羅模擬（對照組 82.83%）</span><span class="l-en">1,000 paired Monte Carlo trials (control 82.83%)</span></div></div>
-<div class="kpi"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="k"><span class="l-zh">紅燈傷患</span><span class="l-en">Red-tag victims</span></div><div class="n">+25.85<small>pp</small></div><div class="t"><span class="l-zh">生理數據優先派遣的效果</span><span class="l-en">The effect of vitals-based dispatch</span></div></div>
+<div class="kpi"><span class="evidence-label" data-evidence="simulation"><span class="l-zh">情境模擬</span><span class="l-en">SIMULATION</span></span><div class="k"><span class="l-zh">紅燈傷患</span><span class="l-en">Red-tag victims</span></div><div class="n">+25.86<small>pp</small></div><div class="t"><span class="l-zh">生理數據優先派遣的效果</span><span class="l-en">The effect of vitals-based dispatch</span></div></div>
 </div>
 <div class="cta-row reveal" style="margin-top:28px">
 <a class="btn btn-primary" href="experiments.html">
