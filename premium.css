@@ -307,10 +307,9 @@ html body.reading-site .chapter-link:last-child { border-bottom: 1px solid var(-
 
 /* Home rhythm: alternate white and slate-50 bands. */
 html body.reading-site[data-route="index"] #home-problem,
-html body.reading-site[data-route="index"] #home-evidence,
-html body.reading-site[data-route="index"] #home-team { background: var(--lg-bg); }
+html body.reading-site[data-route="index"] #home-system { background: var(--lg-bg); }
 html body.reading-site[data-route="index"] #home-workflow,
-html body.reading-site[data-route="index"] #home-system { background: var(--lg-bg-alt); }
+html body.reading-site[data-route="index"] #home-team { background: var(--lg-bg-alt); }
 html body.reading-site[data-route="index"] #home-problem > .wrap {
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px clamp(40px, 7vw, 112px); align-items: start;
 }
