@@ -64,7 +64,7 @@ body.reading-site[data-route="index"] .hero .cta-row > :nth-child(n+3) { font-si
 body.reading-site #home-problem > .wrap { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; }
 body.reading-site #home-problem .reading-section-head { margin: 0; }
 body.reading-site .home-intro-copy .lede { font-size: 17px; line-height: 1.9; margin: 0 0 24px; max-width: 64ch; }
-body.reading-site .system-home-gallery { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin: 32px 0; }
+body.reading-site .system-home-gallery { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; margin: 32px 0; }
 body.reading-site .system-home-photo { margin: 0; min-width: 0; }
 body.reading-site .system-home-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; }
 body.reading-site .system-home-photo figcaption { font-size: 13px; color: var(--fg-mid); margin-top: 12px; }
@@ -354,7 +354,6 @@ body.reading-site .technical-preview { grid-template-columns: 1fr; margin-bottom
   body.reading-site .system-flow strong { grid-column: 2; font-size: 20px; }
   body.reading-site .system-flow small { grid-column: 2; margin-top: 4px; }
   body.reading-site .system-home-gallery { gap: 16px; grid-template-columns: 1fr 1fr; }
-  body.reading-site .system-home-gallery > :last-child { grid-column: 1 / -1; }
   body.reading-site #home-system .chips { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
   body.reading-site #home-system .chip:first-child b { font-size: 18px; }
   body.reading-site #home-system .chip:nth-child(odd) .tip { left: 0; right: auto; }

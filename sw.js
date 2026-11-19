@@ -1,4 +1,4 @@
-const CACHE_NAME = "linkguard-site-v41";
+const CACHE_NAME = "linkguard-site-v42";
 const OFFLINE_ASSETS = [
   "./index.html", "./overview.html", "./background.html", "./functionality.html",
   "./data.html", "./experiments.html", "./comparison.html", "./deployment.html",
@@ -6,8 +6,8 @@ const OFFLINE_ASSETS = [
   "./technical.html", "./team.html", "./awards.html", "./wayfinder-ui.css",
   "./multipage.css", "./site-foundation.css", "./site-layout.css",
   "./site-technical.css", "./design-system.css", "./ui-accessibility.js",
-  "./reading-experience.css?v=32", "./reading-experience.js",
-  "./premium.css?v=16", "./premium.js", "./i18n.js?v=2", "./i18n/ja.json?v=2", "./i18n/ko.json?v=2", "./view-counter.js?v=1",
+  "./reading-experience.css?v=33", "./reading-experience.js",
+  "./premium.css?v=17", "./premium.js", "./i18n.js?v=2", "./i18n/ja.json?v=2", "./i18n/ko.json?v=2", "./view-counter.js?v=1",
   "./assets/fonts/inter-latin-wght-normal.woff2", "./assets/fonts/jetbrains-mono-latin-wght-normal.woff2",
   "./manifest.webmanifest", "./assets/linkguard-logo.jpg", "./assets/hero-topo.svg",
   "./assets/linkguard-proposal.pdf"
